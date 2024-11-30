@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { keyframes } from "styled-components";
+import Button from "./Buttton";
+import PropTypes from "prop-types";
+
 const slideUp = keyframes`
   from {
     opacity: 0;
@@ -14,8 +17,10 @@ const slideUp = keyframes`
 
 const MainBanner = styled.section`
   background-color: ${(props) => props.bg};
-  padding: 20px;
+  padding: 3rem 7.5rem 0rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  gap: 10rem;
   height: 800px;
 `;
 
@@ -23,11 +28,38 @@ const SubBanner = styled.section`
   background-color: ${(props) => props.bg};
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
   height: 800px;
   animation: ${slideUp} 1s ease;
 `;
 
-const ComponentA = () => <MainBanner bg="green" />;
+MainBanner.propTypes = {
+  bg: PropTypes.string.isRequired,
+};
+SubBanner.propTypes = {
+  bg: PropTypes.string.isRequired,
+};
+
+const ComponentA = () => {
+  return (
+    <MainBanner bg="white">
+      <div style={{ display: "flex", flexDirection: "column", gap: "3.5rem" }}>
+        <h3 style={{ fontSize: "5rem" }}>
+          복잡한 코딩은 이제 안녕! <br /> 이게 되네??
+        </h3>
+        <p style={{ fontSize: "2.1rem", lineHeight: "3rem" }}>
+          어려운 이론은 그만! <br />
+          쉽고 간단하게 직접 만들어보는
+          <br />
+          웹사이트!
+        </p>
+        <Button fontSize="small" borderRadius="5rem">
+          웹사이트 만들러가기!
+        </Button>
+      </div>
+    </MainBanner>
+  );
+};
 const ComponentB = () => <SubBanner bg="red" />;
 const ComponentC = () => <SubBanner bg="black" />;
 
