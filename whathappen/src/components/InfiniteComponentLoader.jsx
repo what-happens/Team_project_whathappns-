@@ -4,6 +4,7 @@ import { keyframes } from "styled-components";
 import Button from "./Buttton";
 import PropTypes from "prop-types";
 import mainBannerImage from "../assets/main_banner_vector.png";
+import subBannerImageOne from "../assets/sub_banner_vector1.png";
 
 const slideUp = keyframes`
   from {
@@ -18,20 +19,19 @@ const slideUp = keyframes`
 
 const MainBanner = styled.section`
   background-color: ${(props) => props.bg};
-  padding: 4.9rem 4.7rem 4.9rem 12rem;
+  padding: 16.3rem 4.7rem 4.9rem 12rem;
   box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
 `;
 
 const SubBanner = styled.section`
   background-color: ${(props) => props.bg};
-  padding: 2rem;
+  padding: 23.3rem 12rem 18rem 12rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
-  height: 800px;
+
   animation: ${slideUp} 1s ease;
 `;
 
@@ -45,10 +45,16 @@ SubBanner.propTypes = {
 const ComponentA = () => {
   return (
     <MainBanner bg="white">
-      <div style={{ display: "flex", flexDirection: "column", gap: "3.5rem" }}>
-        <h3 style={{ fontSize: "8rem", fontWeight: "700" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "3.5rem",
+        }}
+      >
+        <h2 style={{ fontSize: "8rem", fontWeight: "700" }}>
           복잡한 코딩은 이제 안녕! <br /> 이게 되네??
-        </h3>
+        </h2>
         <p
           style={{ fontSize: "3.4rem", lineHeight: "5rem", fontWeight: "300" }}
         >
@@ -57,10 +63,16 @@ const ComponentA = () => {
           <br />
           웹사이트!
         </p>
-        <Button fontSize="small" borderRadius="5rem">
+        <Button
+          borderRadius="5rem"
+          fontsize="4rem"
+          width="35rem"
+          padding="3.5rem"
+        >
           웹사이트 만들러가기!
         </Button>
       </div>
+
       <div
         style={{
           backgroundImage: `url(${mainBannerImage})`,
@@ -73,10 +85,50 @@ const ComponentA = () => {
     </MainBanner>
   );
 };
-const ComponentB = () => <SubBanner bg="red" />;
-const ComponentC = () => <SubBanner bg="black" />;
+const ComponentB = () => {
+  return (
+    <SubBanner bg="#2E5DFE">
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "4.2rem",
+          color: "white",
+          alignItems: "center",
+        }}
+      >
+        <h3 style={{ fontSize: "8rem", fontWeight: "700" }}>POINT 01</h3>
+        <p
+          style={{
+            textAlign: "center",
+            fontWeight: "300",
+            lineHeight: "5rem",
+            fontSize: "3.4rem",
+          }}
+        >
+          귀여운 구황작물 친구들과 함께 HTML / CSS 로 이루어진 화면을
+          <br />
+          쉽고 재미있게 만들어 보아요!!
+        </p>
+        <div
+          style={{
+            backgroundImage: `url(${subBannerImageOne})`,
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            width: "125.3rem",
+            height: "61rem",
+          }}
+        ></div>
+      </div>
+    </SubBanner>
+  );
+};
 
-const componentsList = [ComponentA, ComponentB, ComponentC];
+const ComponentC = () => <SubBanner bg="white" />;
+const ComponentD = () => <SubBanner bg="white" />;
+
+const componentsList = [ComponentA, ComponentB, ComponentC, ComponentD];
 
 const InfiniteComponentLoader = () => {
   const [visibleComponents, setVisibleComponents] = useState([]);
