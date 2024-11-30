@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { keyframes } from "styled-components";
 import Button from "./Buttton";
 import PropTypes from "prop-types";
+import mainBannerImage from "../assets/main_banner_vector.png";
 
 const slideUp = keyframes`
   from {
@@ -17,11 +18,10 @@ const slideUp = keyframes`
 
 const MainBanner = styled.section`
   background-color: ${(props) => props.bg};
-  padding: 3rem 7.5rem 0rem;
+  padding: 3rem 0rem 3rem 7.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  flex-direction: column;
+  display: flex;
   gap: 10rem;
-  height: 800px;
 `;
 
 const SubBanner = styled.section`
@@ -57,7 +57,14 @@ const ComponentA = () => {
           웹사이트 만들러가기!
         </Button>
       </div>
-      <div style=""></div>
+      <div
+        style={{
+          backgroundImage: `url(${mainBannerImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          width: "55.7rem",
+        }}
+      ></div>
     </MainBanner>
   );
 };
