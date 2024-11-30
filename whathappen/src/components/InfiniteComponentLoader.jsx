@@ -57,6 +57,7 @@ const ComponentA = () => {
           웹사이트 만들러가기!
         </Button>
       </div>
+      <div style=""></div>
     </MainBanner>
   );
 };
