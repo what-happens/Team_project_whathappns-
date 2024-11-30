@@ -8,7 +8,7 @@ import mainBannerImage from "../assets/main_banner_vector.png";
 const slideUp = keyframes`
   from {
     opacity: 0;
-    transform: translateY(80px);
+    transform: translateY(8rem);
   }
   to {
     opacity: 2;
@@ -18,15 +18,17 @@ const slideUp = keyframes`
 
 const MainBanner = styled.section`
   background-color: ${(props) => props.bg};
-  padding: 3rem 0rem 3rem 7.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 4.9rem 4.7rem 4.9rem 12rem;
+  box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
   display: flex;
-  gap: 10rem;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
 `;
 
 const SubBanner = styled.section`
   background-color: ${(props) => props.bg};
-  padding: 20px;
+  padding: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
   height: 800px;
@@ -44,10 +46,10 @@ const ComponentA = () => {
   return (
     <MainBanner bg="white">
       <div style={{ display: "flex", flexDirection: "column", gap: "3.5rem" }}>
-        <h3 style={{ fontSize: "5rem" }}>
+        <h3 style={{ fontSize: "8rem" }}>
           복잡한 코딩은 이제 안녕! <br /> 이게 되네??
         </h3>
-        <p style={{ fontSize: "2.1rem", lineHeight: "3rem" }}>
+        <p style={{ fontSize: "3.4rem", lineHeight: "5rem" }}>
           어려운 이론은 그만! <br />
           쉽고 간단하게 직접 만들어보는
           <br />
@@ -62,7 +64,8 @@ const ComponentA = () => {
           backgroundImage: `url(${mainBannerImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          width: "55.7rem",
+          width: "792px",
+          height: "792px",
         }}
       ></div>
     </MainBanner>
