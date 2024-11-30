@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react";
+import InfiniteComponentLoader from "../components/InfiniteComponentLoader";
 
-export default function Home() {
+const App = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <div>
+      <InfiniteComponentLoader />
+    </div>
+  );
+};
+
+export default App;
