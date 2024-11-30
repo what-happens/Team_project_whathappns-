@@ -1,11 +1,13 @@
 import React from "react";
 import InfiniteComponentLoader from "../components/InfiniteComponentLoader";
+import Header from "../components/Header";
 
 const App = () => {
   return (
-    <div>
+    <>
+      <Header />
       <InfiniteComponentLoader />
-    </div>
+    </>
   );
 };
 
