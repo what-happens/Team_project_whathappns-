@@ -11,6 +11,7 @@ export default function Button({
   type = "button",
   onClick,
   children,
+  width,
 }) {
   return (
     <StyledButton
@@ -21,6 +22,7 @@ export default function Button({
       $borderRadius={borderRadius}
       type={type}
       onClick={onClick}
+      $width={width}
     >
       {children}
     </StyledButton>
@@ -45,11 +47,13 @@ const StyledButton = styled.button`
   border-radius: ${(props) => props.$borderRadius};
   cursor: pointer;
   border: none;
+  width: ${(props) => props.$width};
 `;
 
 Button.propTypes = {
   fontSize: PropTypes.oneOf(["small", "large"]),
   padding: PropTypes.string,
+  width: PropTypes.string,
   color: PropTypes.string,
   backgroundColor: PropTypes.string,
   borderRadius: PropTypes.string,
