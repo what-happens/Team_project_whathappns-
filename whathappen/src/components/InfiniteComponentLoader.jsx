@@ -123,7 +123,7 @@ const InfiniteComponentLoader = () => {
       ))}
 
       {loadedIndexRef.current < componentsList.length && (
-        <div ref={loaderRef}></div>
+        <div ref={loaderRef} style={{ width: "100%", height: "200px" }}></div>
       )}
     </div>
   );
