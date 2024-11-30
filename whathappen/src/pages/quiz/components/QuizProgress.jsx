@@ -8,8 +8,8 @@ export default function QuizProgress({
   return (
     <ProgressWrapper>
       <ProgressBar
-        current={currentQuestionNumber}
-        total={totalQuestionNumber}
+        $current={currentQuestionNumber}
+        $total={totalQuestionNumber}
       />
     </ProgressWrapper>
   );
@@ -27,7 +27,7 @@ const ProgressWrapper = styled.div`
 const ProgressBar = styled.div`
   height: 100%;
   background-color: #2e5dff;
-  width: ${(props) => (props.current / props.total) * 100}%;
+  width: ${(props) => (props.$current / props.$total) * 100}%;
   transition: width 0.3s ease;
 `;
 
