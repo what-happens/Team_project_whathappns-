@@ -1,5 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
+import { keyframes } from "styled-components";
+const slideUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+  to {
+    opacity: 2;
+    transform: translateY(0);
+  }
+`;
 
 const MainBanner = styled.section`
   background-color: ${(props) => props.bg};
@@ -13,6 +24,7 @@ const SubBanner = styled.section`
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   height: 800px;
+  animation: ${slideUp} 1s ease;
 `;
 
 const ComponentA = () => <MainBanner bg="green" />;
