@@ -9,6 +9,7 @@ export default function Button({
   backgroundColor = "blue",
   borderRadius = "2rem",
   type = "button",
+  border = "none",
   onClick,
   children,
   width,
@@ -20,6 +21,7 @@ export default function Button({
       $color={color}
       $backgroundColor={backgroundColor}
       $borderRadius={borderRadius}
+      $border={border}
       type={type}
       onClick={onClick}
       $width={width}
@@ -37,18 +39,25 @@ const StyledButton = styled.button`
       case "green":
         return "#99C84F";
       case "white":
-        return "#ffffff";
+        return "#FFFFFF";
       default:
         return "#2E5DFE";
     }
   }};
   font-size: ${(props) => (props.$fontSize === "small" ? "2rem" : "4rem")};
-  color: ${(props) => (props.$color === "blue" ? "#2E5DFE" : "#FFF")};
+  color: ${(props) =>
+    props.$color === "blue"
+      ? "#2E5DFE"
+      : props.$color === "black"
+        ? "#000"
+        : props.$color === "white"
+          ? "#FFF"
+          : "none"};
   padding: ${(props) => props.$padding};
   line-height: 3rem;
   border-radius: ${(props) => props.$borderRadius};
   cursor: pointer;
-  border: none;
+  border: ${(props) => props.$border};
   width: ${(props) => props.$width};
 `;
 
@@ -62,4 +71,5 @@ Button.propTypes = {
   type: PropTypes.oneOf(["button", "submit", "reset"]),
   onClick: PropTypes.func,
   children: PropTypes.node,
+  border: PropTypes.node,
 };
