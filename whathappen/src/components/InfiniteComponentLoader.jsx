@@ -7,6 +7,7 @@ import mainBannerImage from "../assets/main_banner_vector.png";
 import subBannerImageOne from "../assets/sub_banner_vector1.png";
 import subBannerImageTwo from "../assets/sub_banner_vector2.png";
 import subBannerImageThree from "../assets/sub_banner_vector3.png";
+import Footer from "./Footer";
 
 const slideUp = keyframes`
   from {
@@ -213,7 +214,17 @@ const ComponentD = () => {
   );
 };
 
-const componentsList = [ComponentA, ComponentB, ComponentC, ComponentD];
+const FooterComponent = () => {
+  return <Footer />;
+};
+
+const componentsList = [
+  ComponentA,
+  ComponentB,
+  ComponentC,
+  ComponentD,
+  FooterComponent,
+];
 
 const InfiniteComponentLoader = () => {
   const [visibleComponents, setVisibleComponents] = useState([]);

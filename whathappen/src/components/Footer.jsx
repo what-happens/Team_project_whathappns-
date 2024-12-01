@@ -1,18 +1,40 @@
 import React from "react";
 import styled from "styled-components";
 
-const footerContent = styled.footer`
+const FooterContent = styled.footer`
   width: 100%;
   box-sizing: border-box;
-  padding: 2.7rem 29rem 2.7rem 29rem;
+  padding: 5.7rem 29rem 2.7rem 29rem;
   background-color: #2e5dfe;
-  position: fixed;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.15);
-  z-index: 10;
+  color: white;
 `;
 export default function Footer() {
-  return <footerContent></footerContent>;
+  return (
+    <FooterContent>
+      <address>
+        <h3
+          style={{ fontSize: "3rem", fontWeight: "700", marginBottom: "2rem" }}
+        >
+          이게되네?
+        </h3>
+        <span style={{ fontSize: "1.4rem", fontWeight: "300" }}>
+          주식회사 오르미 <br />
+          대표 : 오르미
+          <br />
+          주소 : 서울시 강남구 강남대로 00
+          <br />
+          사업자 등록번호 : 000 0000 0000
+          <br />
+          whatehappen@gmail.com
+        </span>
+      </address>
+      <p>
+        Copyright 2024, whats-happns Team member All pictures cannot be copied
+        without permission
+      </p>
+    </FooterContent>
+  );
 }
