@@ -5,6 +5,8 @@ import Button from "./Buttton";
 import PropTypes from "prop-types";
 import mainBannerImage from "../assets/main_banner_vector.png";
 import subBannerImageOne from "../assets/sub_banner_vector1.png";
+import subBannerImageTwo from "../assets/sub_banner_vector2.png";
+import subBannerImageThree from "../assets/sub_banner_vector3.png";
 
 const slideUp = keyframes`
   from {
@@ -28,7 +30,7 @@ const MainBanner = styled.section`
 
 const SubBanner = styled.section`
   background-color: ${(props) => props.bg};
-  padding: 23.3rem 0rem 18rem 0rem;
+  padding: ${(props) => props.padding};
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
 
@@ -91,7 +93,7 @@ const ComponentA = () => {
 };
 const ComponentB = () => {
   return (
-    <SubBanner bg="#2E5DFE">
+    <SubBanner bg="#2E5DFE" padding="23.3rem 0rem 18rem 0rem;">
       <div
         style={{
           display: "flex",
@@ -129,8 +131,87 @@ const ComponentB = () => {
   );
 };
 
-const ComponentC = () => <SubBanner bg="white" />;
-const ComponentD = () => <SubBanner bg="white" />;
+const ComponentC = () => {
+  return (
+    <SubBanner bg="white" padding="23.3rem 0rem 18rem 12rem;">
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "4.2rem",
+        }}
+      >
+        <h3 style={{ fontSize: "6rem", fontWeight: "700", color: "#2E5DFE" }}>
+          POINT 02
+        </h3>
+        <p
+          style={{
+            fontWeight: "300",
+            lineHeight: "3rem",
+            fontSize: "2.4rem",
+          }}
+        >
+          반복적인 퀴즈게임을 통해서
+          <br />
+          재미있게 지식을 습득해보세요!
+        </p>
+        <div
+          style={{
+            backgroundImage: `url(${subBannerImageTwo})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            margin: "5rem auto",
+            width: "120rem",
+            height: "97rem",
+          }}
+        ></div>
+      </div>
+    </SubBanner>
+  );
+};
+
+const ComponentD = () => {
+  return (
+    <SubBanner bg="white" padding="23.3rem 0rem 18rem 0rem;">
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "4.2rem",
+          alignItems: "center",
+        }}
+      >
+        <h3 style={{ fontSize: "6rem", fontWeight: "700", color: "#2E5DFE" }}>
+          POINT 03
+        </h3>
+        <p
+          style={{
+            textAlign: "center",
+            fontWeight: "300",
+            lineHeight: "3rem",
+            fontSize: "2.4rem",
+          }}
+        >
+          귀여운 구황작물 친구들과 함께 HTML / CSS 로 이루어진 화면을
+          <br />
+          쉽고 재미있게 만들어 보아요!!
+        </p>
+        <div
+          style={{
+            backgroundImage: `url(${subBannerImageThree})`,
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            width: "130rem",
+            height: "86.5rem",
+            marginTop: "2rem",
+          }}
+        ></div>
+      </div>
+    </SubBanner>
+  );
+};
 
 const componentsList = [ComponentA, ComponentB, ComponentC, ComponentD];
 
