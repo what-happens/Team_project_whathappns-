@@ -36,6 +36,8 @@ const StyledButton = styled.button`
         return "#FF2E62";
       case "green":
         return "#99C84F";
+      case "white":
+        return "#ffffff";
       default:
         return "#2E5DFE";
     }
