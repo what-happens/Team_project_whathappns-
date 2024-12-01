@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import BlackLogo from "../assets/what_happns_logo_b.png";
+import BlackLogo from "../assets/what_happns_logo_white_blue.png";
 import { Link } from "react-router-dom";
 import Button from "./Buttton";
 
 const HeaderContainer = styled.header`
   width: 100%;
   box-sizing: border-box;
-  padding: 2.7rem 12rem 2.7rem 12rem;
-  background-color: white;
+  padding: 2.7rem 29rem 2.7rem 29rem;
+  background-color: #333333;
   position: fixed;
   display: flex;
   align-items: center;
@@ -18,8 +18,8 @@ const HeaderContainer = styled.header`
 `;
 
 const Logo = styled.h1`
-  width: 24rem;
-  height: 5.9rem;
+  width: 18rem;
+  height: 5rem;
   background-image: url(${BlackLogo});
   background-size: contain;
   background-repeat: no-repeat;
@@ -31,7 +31,7 @@ export default function Header() {
       <Link to="/">
         <Logo></Logo>
       </Link>
-      <Button padding="1.9rem 4.6rem" fontSize="3rem" borderRadius="5rem">
+      <Button padding="1rem 4rem " fontSize="small" borderRadius="5rem">
         로그인
       </Button>
     </HeaderContainer>
