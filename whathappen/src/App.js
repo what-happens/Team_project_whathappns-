@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store/store";
 import Quiz from "./pages/quiz/Quiz";
 import Home from "./pages/Home";
+import Exercise from "./pages/exercise/Exercise";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/quiz" element={<Quiz />} />
+          <Route path="/exercise" element={<Exercise />} />
         </Routes>
       </BrowserRouter>
     </Provider>
