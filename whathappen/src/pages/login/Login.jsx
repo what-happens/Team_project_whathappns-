@@ -3,6 +3,8 @@ import Button from "../../components/Buttton";
 import Logo from "../../assets/what_happns_logo_b.png";
 import styled from "styled-components";
 import { Github, Google } from "./components/LoginSvg";
+import Lock from "../../assets/Lock.svg";
+import Person from "../../assets/Person.svg";
 
 const LoginContents = styled.div`
   display: flex;
@@ -30,8 +32,9 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
-  padding: 1.7rem 0 1.7rem 1.5rem;
-  font-size: 1rem;
+  padding: 3rem 0 3rem 5rem;
+  box-sizing: border-box;
+  font-size: 1.5rem;
   width: 42rem;
   height: 3rem;
   border: 1px solid #c4c4c4;
@@ -43,6 +46,7 @@ const Warp = styled.div`
   align-items: center;
   flex-direction: ${(props) => props.flexDirection};
   gap: ${(props) => props.gap};
+  margin: ${(props) => props.margin};
 `;
 
 const SocialLogin = styled.a`
@@ -55,22 +59,59 @@ const SocialLogin = styled.a`
   align-items: center;
   justify-content: center;
 `;
+
+const InputIconEmail = styled.div`
+  position: relative;
+
+  &::before {
+    content: "";
+    background-image: url(${Person});
+    width: 24px;
+    height: 24px;
+    display: block;
+    background-size: cover;
+    position: absolute;
+    left: 2rem;
+    top: 1.8rem;
+  }
+`;
+const InputIconPass = styled.div`
+  position: relative;
+
+  &::before {
+    content: "";
+    background-image: url(${Lock});
+    width: 24px;
+    height: 24px;
+    display: block;
+    background-size: cover;
+    position: absolute;
+    left: 2rem;
+    top: 1.8rem;
+  }
+`;
 export default function Login() {
   return (
     <LoginContents>
-      <Warp flexDirection="column" gap="2rem">
+      <Warp flexDirection="column" gap="2rem" margin="0 0 2rem 0">
         <h2 style={{ fontSize: "4.8rem", fontWeight: "700" }}>Login</h2>
         <span style={{ fontSize: "3.6rem", fontWeight: "500" }}>
           어서오세요!
         </span>
       </Warp>
       <Form action="submit">
-        <Input type="text" placeholder="E-mail" />
-        <Input type="password" placeholder="Password" />
+        <InputIconEmail>
+          <Input type="text" placeholder="E-mail" />
+        </InputIconEmail>
+        <InputIconPass>
+          <Input type="password" placeholder="Password" />
+        </InputIconPass>
       </Form>
+
       <Button width="43rem" borderRadius="10px">
         로그인
       </Button>
+
       <Button
         backgroundColor="white"
         border="1px solid #2e5dfe"
@@ -80,7 +121,8 @@ export default function Login() {
       >
         회원가입
       </Button>
-      <Warp flexDirection="row" gap="2rem">
+
+      <Warp flexDirection="row" gap="1.5rem" margin="2rem 0 2rem 0 ">
         <SocialLogin bg="black">
           <Github />
         </SocialLogin>
