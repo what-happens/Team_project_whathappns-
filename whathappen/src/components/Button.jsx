@@ -40,6 +40,8 @@ const StyledButton = styled.button`
         return "#99C84F";
       case "white":
         return "#FFFFFF";
+      case "black":
+        return "#000000";
       default:
         return "#2E5DFE";
     }
