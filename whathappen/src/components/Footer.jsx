@@ -1,6 +1,17 @@
 import React from "react";
+import { keyframes } from "styled-components";
 import styled from "styled-components";
 
+const slideUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(8rem);
+  }
+  to {
+    opacity: 2;
+    transform: translateY(0);
+  }
+`;
 const FooterContent = styled.footer`
   width: 100%;
   box-sizing: border-box;
@@ -10,6 +21,7 @@ const FooterContent = styled.footer`
   align-items: flex-end;
   justify-content: space-between;
   color: white;
+  animation: ${slideUp} 1s ease;
 `;
 export default function Footer() {
   return (
