@@ -19,16 +19,16 @@ const slideUp = keyframes`
 
 const MainBanner = styled.section`
   background-color: ${(props) => props.bg};
-  padding: 16.3rem 4.7rem 4.9rem 12rem;
-  box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+  padding: 15rem 4.7rem 8rem 12rem;
   display: flex;
+  gap: 5rem;
   justify-content: center;
   align-items: center;
 `;
 
 const SubBanner = styled.section`
   background-color: ${(props) => props.bg};
-  padding: 23.3rem 12rem 18rem 12rem;
+  padding: 23.3rem 0rem 18rem 0rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
 
@@ -52,11 +52,15 @@ const ComponentA = () => {
           gap: "3.5rem",
         }}
       >
-        <h2 style={{ fontSize: "8rem", fontWeight: "700" }}>
+        <h2 style={{ fontSize: "6rem", fontWeight: "700" }}>
           복잡한 코딩은 이제 안녕! <br /> 이게 되네??
         </h2>
         <p
-          style={{ fontSize: "3.4rem", lineHeight: "5rem", fontWeight: "300" }}
+          style={{
+            fontSize: "2.4rem",
+            lineHeight: "3.5rem",
+            fontWeight: "300",
+          }}
         >
           어려운 이론은 그만! <br />
           쉽고 간단하게 직접 만들어보는
@@ -65,9 +69,9 @@ const ComponentA = () => {
         </p>
         <Button
           borderRadius="5rem"
-          fontsize="4rem"
-          width="35rem"
-          padding="3.5rem"
+          fontsize="2rem"
+          width="25rem"
+          padding="2rem"
         >
           웹사이트 만들러가기!
         </Button>
@@ -78,8 +82,8 @@ const ComponentA = () => {
           backgroundImage: `url(${mainBannerImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          width: "792px",
-          height: "792px",
+          width: "692px",
+          height: "692px",
         }}
       ></div>
     </MainBanner>
@@ -97,13 +101,13 @@ const ComponentB = () => {
           alignItems: "center",
         }}
       >
-        <h3 style={{ fontSize: "8rem", fontWeight: "700" }}>POINT 01</h3>
+        <h3 style={{ fontSize: "6rem", fontWeight: "700" }}>POINT 01</h3>
         <p
           style={{
             textAlign: "center",
             fontWeight: "300",
-            lineHeight: "5rem",
-            fontSize: "3.4rem",
+            lineHeight: "3rem",
+            fontSize: "2.4rem",
           }}
         >
           귀여운 구황작물 친구들과 함께 HTML / CSS 로 이루어진 화면을
@@ -116,7 +120,7 @@ const ComponentB = () => {
             backgroundSize: "contain",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            width: "125.3rem",
+            width: "1050px",
             height: "61rem",
           }}
         ></div>
