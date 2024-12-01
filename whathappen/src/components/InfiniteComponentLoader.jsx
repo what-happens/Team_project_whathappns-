@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { keyframes } from "styled-components";
-import Button from "./Buttton";
+import Button from "./Button";
 import PropTypes from "prop-types";
 import mainBannerImage from "../assets/main_banner_vector.png";
 import subBannerImageOne from "../assets/sub_banner_vector1.png";

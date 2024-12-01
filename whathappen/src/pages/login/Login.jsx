@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../components/Buttton";
+import Button from "../../components/Button";
 import Logo from "../../assets/what_happns_logo_b.png";
 import styled from "styled-components";
 import { Github, Google } from "./components/LoginSvg";

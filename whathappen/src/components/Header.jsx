@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import BlackLogo from "../assets/what_happns_logo_white_blue.png";
 import { Link } from "react-router-dom";
-import Button from "./Buttton";
+import Button from "./Button";
 
 const HeaderContainer = styled.header`
   width: 100%;
