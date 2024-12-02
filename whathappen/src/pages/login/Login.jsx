@@ -7,6 +7,7 @@ import Lock from "../../assets/Lock.svg";
 import Person from "../../assets/Person.svg";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../firebase";
+import { Link } from "react-router-dom";
 
 const LoginContents = styled.div`
   display: flex;
@@ -37,7 +38,7 @@ const Input = styled.input`
   padding: 3rem 0 3rem 5rem;
   box-sizing: border-box;
   font-size: 1.5rem;
-  width: 42rem;
+  width: 43rem;
   height: 3rem;
   border: 1px solid #c4c4c4;
   border-radius: 15px;
@@ -77,7 +78,7 @@ const InputIconEmail = styled.div`
     top: 1.8rem;
   }
 `;
-const InputIconPass = styled.div`
+const InputIconPassword = styled.div`
   position: relative;
 
   &::before {
@@ -105,8 +106,47 @@ export default function Login() {
   const [idValue, setIdValue] = useState("");
   const [pwValue, setPwValue] = useState("");
 
-  const handleIdChange = (e) => setIdValue(e.target.value);
-  const handlePasswordChange = (e) => setPwValue(e.target.value);
+  const [idError, setIdError] = useState("");
+  const [pwError, setPwError] = useState("");
+
+  // e-mail 정규 표현식
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const passwordRegex =
+    /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+={}\]:;"'<>,.?/\\|`~]).{8,16}$/;
+
+  const validationLogin = () => {
+    let valid = true;
+
+    if (!emailRegex.test(idValue)) {
+      setIdError("이메일 형식이 올바르지 않습니다.");
+      valid = false;
+    } else {
+      setIdError("");
+    }
+
+    if (!passwordRegex.test(pwValue)) {
+      setPwError("패스워드가 올바르지 않습니다.");
+      valid = false;
+    } else {
+      setPwError("");
+    }
+
+    return valid;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    validationLogin();
+  };
+
+  const handleIdChange = (e) => {
+    setIdValue(e.target.value);
+    setIdError("");
+  };
+  const handlePasswordChange = (e) => {
+    setPwValue(e.target.value);
+    setPwError("");
+  };
 
   return (
     <LoginContents>
@@ -116,39 +156,61 @@ export default function Login() {
           어서오세요!
         </span>
       </Warp>
-      <Form action="submit">
-        <InputIconEmail>
-          <Input
-            type="email"
-            value={idValue}
-            onChange={handleIdChange}
-            placeholder="E-mail"
-          />
-        </InputIconEmail>
-        <InputIconPass>
-          <Input
-            type="password"
-            value={pwValue}
-            onChange={handlePasswordChange}
-            placeholder="Password"
-          />
-        </InputIconPass>
+      <Form action="submit" onSubmit={handleSubmit}>
+        <Warp flexDirection="column" gap="1rem" margin="0 0 2rem 0">
+          <InputIconEmail>
+            <Input
+              type="email"
+              value={idValue}
+              onChange={handleIdChange}
+              placeholder="E-mail"
+            />
+            <div
+              style={{
+                padding: "1rem",
+                color: "red",
+                fontSize: "1.2rem ",
+                fontWeight: "300",
+              }}
+            >
+              {idError}
+            </div>
+          </InputIconEmail>
+          <InputIconPassword>
+            <Input
+              type="password"
+              value={pwValue}
+              onChange={handlePasswordChange}
+              placeholder="Password"
+            />
+            <div
+              style={{
+                padding: "1rem",
+                color: "red",
+                fontSize: "1.2rem ",
+                fontWeight: "300",
+              }}
+            >
+              {pwError}
+            </div>
+          </InputIconPassword>
+        </Warp>
+        <Button width="43rem" borderRadius="10px" type="submit">
+          로그인
+        </Button>
       </Form>
 
-      <Button width="43rem" borderRadius="10px">
-        로그인
-      </Button>
-
-      <Button
-        backgroundColor="white"
-        border="1px solid #2e5dfe"
-        width="43rem"
-        borderRadius="10px"
-        color="blue"
-      >
-        회원가입
-      </Button>
-
+      <Link to="/join">
+        <Button
+          backgroundColor="white"
+          border="1px solid #2e5dfe"
+          width="43rem"
+          borderRadius="10px"
+          color="blue"
+        >
+          회원가입
+        </Button>
+      </Link>
       <Warp flexDirection="row" gap="1.5rem" margin="2rem 0 2rem 0 ">
         <SocialLogin bg="black">
           <Github />
