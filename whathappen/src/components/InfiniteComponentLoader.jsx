@@ -45,7 +45,7 @@ SubBanner.propTypes = {
   bg: PropTypes.string.isRequired,
 };
 
-const ComponentA = () => {
+const Mainbanner = () => {
   return (
     <MainBanner bg="white">
       <div
@@ -92,7 +92,7 @@ const ComponentA = () => {
     </MainBanner>
   );
 };
-const ComponentB = () => {
+const PointOneBanner = () => {
   return (
     <SubBanner bg="#2E5DFE" padding="23.3rem 0rem 18rem 0rem;">
       <div
@@ -132,7 +132,7 @@ const ComponentB = () => {
   );
 };
 
-const ComponentC = () => {
+const PointTwoBanner = () => {
   return (
     <SubBanner bg="white" padding="23.3rem 0rem 18rem 12rem;">
       <div
@@ -172,7 +172,7 @@ const ComponentC = () => {
   );
 };
 
-const ComponentD = () => {
+const PointThreeBanner = () => {
   return (
     <SubBanner bg="white" padding="23.3rem 0rem 18rem 0rem;">
       <div
@@ -219,10 +219,10 @@ const FooterComponent = () => {
 };
 
 const componentsList = [
-  ComponentA,
-  ComponentB,
-  ComponentC,
-  ComponentD,
+  Mainbanner,
+  PointOneBanner,
+  PointTwoBanner,
+  PointThreeBanner,
   FooterComponent,
 ];
 
