@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../components/Button";
 import Logo from "../../assets/what_happns_logo_b.png";
 import styled from "styled-components";
 import { Github, Google } from "./components/LoginSvg";
 import Lock from "../../assets/Lock.svg";
 import Person from "../../assets/Person.svg";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../../firebase";
 
 const LoginContents = styled.div`
   display: flex;
@@ -91,6 +93,21 @@ const InputIconPass = styled.div`
   }
 `;
 export default function Login() {
+  const handleGoogleSign = async () => {
+    const provider = new GoogleAuthProvider();
+    await signInWithPopup(auth, provider)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const [idValue, setIdValue] = useState("");
+  const [pwValue, setPwValue] = useState("");
+
+  const handleIdChange = (e) => setIdValue(e.target.value);
+  const handlePasswordChange = (e) => setPwValue(e.target.value);
+
   return (
     <LoginContents>
       <Warp flexDirection="column" gap="2rem" margin="0 0 2rem 0">
@@ -101,10 +118,20 @@ export default function Login() {
       </Warp>
       <Form action="submit">
         <InputIconEmail>
-          <Input type="text" placeholder="E-mail" />
+          <Input
+            type="email"
+            value={idValue}
+            onChange={handleIdChange}
+            placeholder="E-mail"
+          />
         </InputIconEmail>
         <InputIconPass>
-          <Input type="password" placeholder="Password" />
+          <Input
+            type="password"
+            value={pwValue}
+            onChange={handlePasswordChange}
+            placeholder="Password"
+          />
         </InputIconPass>
       </Form>
 
@@ -126,7 +153,11 @@ export default function Login() {
         <SocialLogin bg="black">
           <Github />
         </SocialLogin>
-        <SocialLogin bg="whte" border="1px solid #C4C4C4">
+        <SocialLogin
+          bg="whte"
+          border="1px solid #C4C4C4"
+          onClick={handleGoogleSign}
+        >
           <Google />
         </SocialLogin>
       </Warp>
