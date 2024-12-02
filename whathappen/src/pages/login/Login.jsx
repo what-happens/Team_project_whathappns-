@@ -5,7 +5,11 @@ import styled from "styled-components";
 import { Github, Google } from "./components/LoginSvg";
 import Lock from "../../assets/Lock.svg";
 import Person from "../../assets/Person.svg";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  GithubAuthProvider,
+} from "firebase/auth";
 import { auth } from "../../firebase";
 import { Link } from "react-router-dom";
 
@@ -103,6 +107,15 @@ export default function Login() {
       .catch((err) => console.log(err));
   };
 
+  const handleGitHubSign = async () => {
+    const provider = new GithubAuthProvider();
+    await signInWithPopup(auth, provider)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const [idValue, setIdValue] = useState("");
   const [pwValue, setPwValue] = useState("");
 
@@ -117,15 +130,21 @@ export default function Login() {
   const validationLogin = () => {
     let valid = true;
 
-    if (!emailRegex.test(idValue)) {
-      setIdError("이메일 형식이 올바르지 않습니다.");
+    if (idValue === "") {
+      setIdError("아이디를 입력 해주세요.");
+      valid = false;
+    } else if (!emailRegex.test(idValue)) {
+      setIdError("아이디 형식이 올바르지 않습니다.");
       valid = false;
     } else {
       setIdError("");
     }
 
-    if (!passwordRegex.test(pwValue)) {
-      setPwError("패스워드가 올바르지 않습니다.");
+    if (pwValue === "") {
+      setPwError("패스워드를 입력 해주세요.");
+      valid = false;
+    } else if (!passwordRegex.test(pwValue)) {
+      setPwError("비밀번호 형식이 올바르지 않습니다.");
       valid = false;
     } else {
       setPwError("");
@@ -213,7 +232,7 @@ export default function Login() {
       </Link>
       <Warp flexDirection="row" gap="1.5rem" margin="2rem 0 2rem 0 ">
         <SocialLogin bg="black">
-          <Github />
+          <Github onClick={handleGitHubSign} />
         </SocialLogin>
         <SocialLogin
           bg="whte"
