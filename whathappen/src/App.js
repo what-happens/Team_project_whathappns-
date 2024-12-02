@@ -9,6 +9,7 @@ import QuizLanding from "./pages/quizLanding";
 import QuizResult from "./pages/quizResult";
 // import Quiz from "./pages/quiz/Quiz";
 import Exercise from "./pages/exercise/Exercise";
+import Review from "./pages/review/Review";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/quiz-landing" element={<QuizLanding />} />
           <Route path="/quiz" element={<QuizResult />} />
           <Route path="/exercise" element={<Exercise />} />
+          <Route path="/review" element={<Review />} />
         </Routes>
       </BrowserRouter>
     </Provider>
