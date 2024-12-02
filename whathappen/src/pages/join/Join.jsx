@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../components/Button";
 import Logo from "../../assets/what_happns_logo_b.png";
 import styled from "styled-components";
@@ -66,6 +66,63 @@ const SnsWarp = styled.div`
 `;
 
 export default function Join() {
+  const [nameValue, setNameValue] = useState("");
+  const [idValue, setIdValue] = useState("");
+  const [pwValue, setPwValue] = useState("");
+
+  const [nameError, setNameError] = useState("");
+  const [idError, setIdError] = useState("");
+  const [pwError, setPwError] = useState("");
+
+  const nameRegex = /^[가-힣]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const passwordRegex =
+    /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+={}\]:;"'<>,.?/\\|`~]).{8,16}$/;
+
+  const validationJoin = () => {
+    let valid = true;
+
+    if (!emailRegex.test(idValue)) {
+      setIdError("이메일 형식이 올바르지 않습니다.");
+      valid = false;
+    } else {
+      setIdError("");
+    }
+    if (!passwordRegex.test(pwValue)) {
+      setPwError("비밀번호는 8~16자의 영문 , 숫자 , 특수기호");
+      valid = false;
+    } else {
+      setPwError("");
+    }
+
+    if (!nameRegex.test(nameValue)) {
+      setNameError("올바르지 않은 이름입니다.");
+      valid = false;
+    } else {
+      setNameError("");
+    }
+
+    return valid;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    validationJoin();
+  };
+
+  const handleIdChange = (e) => {
+    setIdValue(e.target.value);
+    setIdError("");
+  };
+  const handlePasswordChange = (e) => {
+    setPwValue(e.target.value);
+    setPwError("");
+  };
+  const handleNameChange = (e) => {
+    setNameValue(e.target.value);
+    setNameError("");
+  };
+
   return (
     <JoinContents>
       <Warp flexDirection="column" gap="2rem" margin="0 0 2rem 0">
@@ -74,24 +131,67 @@ export default function Join() {
           환영합니다!
         </span>
       </Warp>
-      <Form action="submit">
+      <Form action="submit" onSubmit={handleSubmit}>
         <InputWarp>
-          <Input type="text" placeholder="이름" />
+          <Input
+            type="text"
+            placeholder="이름"
+            value={nameValue}
+            onChange={handleNameChange}
+          />
         </InputWarp>
+        <div
+          style={{
+            color: "#eb4335",
+            fontSize: "1.2rem ",
+            fontWeight: "300",
+          }}
+        >
+          {nameError}
+        </div>
         <InputWarp>
-          <Input type="email" placeholder="이메일" />
+          <Input
+            type="email"
+            placeholder="이메일"
+            value={idValue}
+            onChange={handleIdChange}
+          />
         </InputWarp>
+        <div
+          style={{
+            color: "#eb4335",
+            fontSize: "1.2rem ",
+            fontWeight: "300",
+          }}
+        >
+          {idError}
+        </div>
         <InputWarp>
           <Input
             type="password"
             placeholder="비밀번호 ( 8~16자의 영문 , 숫자 , 특수기호 )"
+            value={pwValue}
+            onChange={handlePasswordChange}
           />
         </InputWarp>
+        <div
+          style={{
+            color: "#eb4335",
+            fontSize: "1.2rem ",
+            fontWeight: "300",
+          }}
+        >
+          {pwError}
+        </div>
+        <Button
+          width="43rem"
+          borderRadius="10px"
+          padding="1.5rem"
+          type="submit"
+        >
+          가입하기
+        </Button>
       </Form>
-
-      <Button width="43rem" borderRadius="10px" padding="1.5rem">
-        가입하기
-      </Button>
 
       <SnsWarp>
         <Button
