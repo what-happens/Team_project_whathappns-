@@ -5,8 +5,8 @@ import Login from "./pages/login/Login";
 import Join from "./pages/join/Join";
 import { Provider } from "react-redux";
 import store from "./redux/store/store";
-import QuizLanding from "./pages/quizLanding";
-import QuizResult from "./pages/quizResult";
+import QuizLanding from "./pages/quizLanding/quizLanding";
+import QuizResult from "./pages/quizResult/quizResult";
 // import Quiz from "./pages/quiz/Quiz";
 import Exercise from "./pages/exercise/Exercise";
 
