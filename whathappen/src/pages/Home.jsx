@@ -1,5 +1,14 @@
 import React from "react";
+import InfiniteComponentLoader from "../components/InfiniteComponentLoader";
+import Header from "../components/Header";
 
-export default function Home() {
-  return <div>Home</div>;
-}
+const App = () => {
+  return (
+    <>
+      <Header />
+      <InfiniteComponentLoader />
+    </>
+  );
+};
+
+export default App;
