@@ -24,12 +24,13 @@ const Logo = styled.h1`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  text-indent: -9999px;
 `;
 export default function Header() {
   return (
     <HeaderContainer>
       <Link to="/">
-        <Logo></Logo>
+        <Logo>이게되네?</Logo>
       </Link>
       <Button padding="1rem 4rem " fontSize="small" borderRadius="5rem">
         로그인
