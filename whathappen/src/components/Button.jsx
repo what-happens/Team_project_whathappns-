@@ -55,6 +55,7 @@ const StyledButton = styled.button`
         : props.$color === "white"
           ? "#FFF"
           : "none"};
+  color: ${(props) => (props.$color === "blue" ? "#2E5DFE" : "#FFF")};
   padding: ${(props) => props.$padding};
   line-height: 3rem;
   border-radius: ${(props) => props.$borderRadius};

@@ -7,6 +7,8 @@ import { Provider } from "react-redux";
 import store from "./redux/store/store";
 import QuizLanding from "./pages/quizLanding";
 import QuizResult from "./pages/quizResult";
+// import Quiz from "./pages/quiz/Quiz";
+import Exercise from "./pages/exercise/Exercise";
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
           <Route path="/join" element={<Join />}></Route>
           <Route path="/quiz-landing" element={<QuizLanding />} />
           <Route path="/quiz" element={<QuizResult />} />
+          <Route path="/exercise" element={<Exercise />} />
         </Routes>
       </BrowserRouter>
     </Provider>
