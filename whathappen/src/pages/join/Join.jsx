@@ -82,21 +82,31 @@ export default function Join() {
   const validationJoin = () => {
     let valid = true;
 
-    if (!emailRegex.test(idValue)) {
-      setIdError("이메일 형식이 올바르지 않습니다.");
+    if (idValue === "") {
+      setIdError("필수 정보입니다.");
+      valid = false;
+    } else if (!emailRegex.test(pwValue)) {
+      setIdError("아이디 형식이 올바르지 않습니다.");
       valid = false;
     } else {
       setIdError("");
     }
-    if (!passwordRegex.test(pwValue)) {
-      setPwError("비밀번호는 8~16자의 영문 , 숫자 , 특수기호");
+
+    if (pwValue === "") {
+      setPwError("필수 정보입니다.");
+      valid = false;
+    } else if (!passwordRegex.test(pwValue)) {
+      setPwError("비밀번호 형식이 올바르지 않습니다.");
       valid = false;
     } else {
       setPwError("");
     }
 
-    if (!nameRegex.test(nameValue)) {
-      setNameError("올바르지 않은 이름입니다.");
+    if (nameValue === "") {
+      setNameError("필수 정보입니다.");
+      valid = false;
+    } else if (!nameRegex.test(nameValue)) {
+      setNameError("이름 형식이 올바르지 않습니다.");
       valid = false;
     } else {
       setNameError("");
