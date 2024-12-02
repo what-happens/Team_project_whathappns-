@@ -3,6 +3,7 @@ import Button from "../../components/Button";
 import Logo from "../../assets/what_happns_logo_b.png";
 import styled from "styled-components";
 import { Github, Google } from "./components/JoinSvg";
+import { useSignup } from "./../../hooks/useSignup";
 
 const JoinContents = styled.div`
   display: flex;
@@ -74,6 +75,8 @@ export default function Join() {
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
 
+  const { signup } = useSignup();
+
   const nameRegex = /^[가-힣]+$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passwordRegex =
@@ -85,8 +88,8 @@ export default function Join() {
     if (idValue === "") {
       setIdError("필수 정보입니다.");
       valid = false;
-    } else if (!emailRegex.test(pwValue)) {
-      setIdError("아이디 형식이 올바르지 않습니다.");
+    } else if (!emailRegex.test(idValue)) {
+      setIdError("올바르지 않은 형식의 이메일 입니다.");
       valid = false;
     } else {
       setIdError("");
@@ -96,7 +99,9 @@ export default function Join() {
       setPwError("필수 정보입니다.");
       valid = false;
     } else if (!passwordRegex.test(pwValue)) {
-      setPwError("비밀번호 형식이 올바르지 않습니다.");
+      setPwError(
+        "비밀번호는 8~16자 대소문자 , 숫자, 특수기호를 포함 해야합니다."
+      );
       valid = false;
     } else {
       setPwError("");
@@ -106,7 +111,7 @@ export default function Join() {
       setNameError("필수 정보입니다.");
       valid = false;
     } else if (!nameRegex.test(nameValue)) {
-      setNameError("이름 형식이 올바르지 않습니다.");
+      setNameError("한글만 입력이 가능합니다.");
       valid = false;
     } else {
       setNameError("");
@@ -117,7 +122,9 @@ export default function Join() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    validationJoin();
+    if (validationJoin()) {
+      signup(idValue, pwValue, nameValue);
+    }
   };
 
   const handleIdChange = (e) => {
@@ -141,13 +148,14 @@ export default function Join() {
           환영합니다!
         </span>
       </Warp>
-      <Form action="submit" onSubmit={handleSubmit}>
+      <Form action="submit" onSubmit={handleSubmit} noValidate>
         <InputWarp>
           <Input
             type="text"
             placeholder="이름"
             value={nameValue}
             onChange={handleNameChange}
+            required
           />
         </InputWarp>
         <div
@@ -165,6 +173,7 @@ export default function Join() {
             placeholder="이메일"
             value={idValue}
             onChange={handleIdChange}
+            required
           />
         </InputWarp>
         <div
@@ -182,6 +191,7 @@ export default function Join() {
             placeholder="비밀번호 ( 8~16자의 영문 , 숫자 , 특수기호 )"
             value={pwValue}
             onChange={handlePasswordChange}
+            required
           />
         </InputWarp>
         <div

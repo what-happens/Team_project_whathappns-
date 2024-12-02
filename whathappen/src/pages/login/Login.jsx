@@ -65,6 +65,7 @@ const SocialLogin = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `;
 
 const InputIconEmail = styled.div`
@@ -98,7 +99,7 @@ const InputIconPassword = styled.div`
   }
 `;
 export default function Login() {
-  const handleGoogleSign = async () => {
+  const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     await signInWithPopup(auth, provider)
       .then((data) => {
@@ -107,7 +108,7 @@ export default function Login() {
       .catch((err) => console.log(err));
   };
 
-  const handleGitHubSign = async () => {
+  const handleGitHubLogin = async () => {
     const provider = new GithubAuthProvider();
     await signInWithPopup(auth, provider)
       .then((data) => {
@@ -175,7 +176,7 @@ export default function Login() {
           어서오세요!
         </span>
       </Warp>
-      <Form action="submit" onSubmit={handleSubmit}>
+      <Form action="submit" onSubmit={handleSubmit} noValidate>
         <Warp flexDirection="column" gap="1rem" margin="0 0 2rem 0">
           <InputIconEmail>
             <Input
@@ -183,6 +184,7 @@ export default function Login() {
               value={idValue}
               onChange={handleIdChange}
               placeholder="E-mail"
+              required
             />
             <div
               style={{
@@ -201,6 +203,7 @@ export default function Login() {
               value={pwValue}
               onChange={handlePasswordChange}
               placeholder="Password"
+              required
             />
             <div
               style={{
@@ -232,12 +235,12 @@ export default function Login() {
       </Link>
       <Warp flexDirection="row" gap="1.5rem" margin="2rem 0 2rem 0 ">
         <SocialLogin bg="black">
-          <Github onClick={handleGitHubSign} />
+          <Github onClick={handleGitHubLogin} />
         </SocialLogin>
         <SocialLogin
           bg="whte"
           border="1px solid #C4C4C4"
-          onClick={handleGoogleSign}
+          onClick={handleGoogleLogin}
         >
           <Google />
         </SocialLogin>
