@@ -2,13 +2,14 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
 const GlobalStyle = createGlobalStyle`
-${reset}
-@font-face {
+  ${reset}
+  @font-face {
     font-family: 'GmarketSansMedium';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-}
+  }
+
   html {
     font-size: 10px;
   }
@@ -17,6 +18,10 @@ ${reset}
     font-family: 'GmarketSansMedium';
   }
 
+  * {
+    box-sizing: border-box;
+  }
+ 
   .sr-only {
     position: absolute;
     width: 1px;
