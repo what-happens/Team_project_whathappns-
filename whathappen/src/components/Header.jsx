@@ -3,6 +3,7 @@ import styled from "styled-components";
 import BlackLogo from "../assets/what_happns_logo_white_blue.png";
 import { Link } from "react-router-dom";
 import Button from "./Button";
+import { useSelector } from "react-redux";
 
 const HeaderContainer = styled.header`
   width: 100%;
@@ -27,6 +28,8 @@ const Logo = styled.h1`
   text-indent: -9999px;
 `;
 export default function Header() {
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  // const { isAuthenticated, user } = useSelector((state) => state.auth);
   return (
     <HeaderContainer>
       <Link to="/">
@@ -34,7 +37,7 @@ export default function Header() {
       </Link>
       <Link to="/login">
         <Button padding="1rem 4rem " fontSize="small" borderRadius="5rem">
-          로그인
+          {isAuthenticated ? "로그아웃" : "로그인"}
         </Button>
       </Link>
     </HeaderContainer>
