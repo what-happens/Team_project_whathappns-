@@ -5,13 +5,14 @@ import styled from "styled-components";
 import { Github, Google } from "./components/LoginSvg";
 import Lock from "../../assets/Lock.svg";
 import Person from "../../assets/Person.svg";
+import { auth } from "../../firebase";
 import {
   GoogleAuthProvider,
   signInWithPopup,
   GithubAuthProvider,
 } from "firebase/auth";
-import { auth } from "../../firebase";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuthActions from "../../redux/useAuthActions";
 
 const LoginContents = styled.div`
   display: flex;
@@ -98,32 +99,42 @@ const InputIconPassword = styled.div`
     top: 1.8rem;
   }
 `;
+
 export default function Login() {
-  const handleGoogleLogin = async () => {
-    const provider = new GoogleAuthProvider();
-    await signInWithPopup(auth, provider)
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const handleGitHubLogin = async () => {
-    const provider = new GithubAuthProvider();
-    await signInWithPopup(auth, provider)
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => console.log(err));
-  };
-
   const [idValue, setIdValue] = useState("");
   const [pwValue, setPwValue] = useState("");
 
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
 
-  // e-mail 정규 표현식
+  const { login } = useAuthActions();
+  const navigate = useNavigate();
+  // const { pathname } = useLocation();
+
+  const handleGoogleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+
+    try {
+      const result = await signInWithPopup(auth, provider);
+      console.log("User data:", result.user);
+      navigate("/");
+    } catch (err) {
+      console.error("Error during login:", err.message);
+    }
+  };
+
+  const handleGitHubLogin = async () => {
+    const provider = new GithubAuthProvider();
+
+    try {
+      const result = await signInWithPopup(auth, provider);
+      console.log("User data:", result.user);
+      navigate("/");
+    } catch (err) {
+      console.error("Error during login:", err.message);
+    }
+  };
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passwordRegex =
     /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+={}\]:;"'<>,.?/\\|`~]).{8,16}$/;
@@ -156,7 +167,10 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    validationLogin();
+    if (validationLogin()) {
+      login(idValue, pwValue);
+      navigate("/");
+    }
   };
 
   const handleIdChange = (e) => {
