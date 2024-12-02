@@ -32,16 +32,23 @@ export default function Footer() {
         >
           이게되네?
         </h3>
-        <span style={{ fontSize: "1.4rem", fontWeight: "300" }}>
-          주식회사 오르미 <br />
-          대표 : 오르미
-          <br />
-          주소 : 서울시 강남구 강남대로 00
-          <br />
-          사업자 등록번호 : 000 0000 0000
-          <br />
-          whatehappen@gmail.com
-        </span>
+        <dl>
+          <dt>
+            <dd>주식회사 오르미</dd>
+          </dt>
+          <dt>
+            <dd> 대표 : 오르미</dd>
+          </dt>
+          <dt>
+            <dd>주소 : 서울시 강남구 강남대로 00</dd>
+          </dt>
+          <dt>
+            <dd>사업자 등록번호 : 000 0000 0000</dd>
+          </dt>
+          <dt>
+            <dd> whatehappen@gmail.com</dd>
+          </dt>
+        </dl>
       </address>
       <p>
         Copyright 2024, whats-happns Team member All pictures cannot be copied
