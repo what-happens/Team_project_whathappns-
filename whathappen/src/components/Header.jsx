@@ -32,9 +32,11 @@ export default function Header() {
       <Link to="/">
         <Logo>이게되네?</Logo>
       </Link>
-      <Button padding="1rem 4rem " fontSize="small" borderRadius="5rem">
-        로그인
-      </Button>
+      <Link to="/login">
+        <Button padding="1rem 4rem " fontSize="small" borderRadius="5rem">
+          로그인
+        </Button>
+      </Link>
     </HeaderContainer>
   );
 }
