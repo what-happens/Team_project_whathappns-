@@ -1,27 +1,23 @@
 import styled from "styled-components";
-// import React, { useEffect } from "react";
 import quizImage from "../../assets/img/quiz_logo.png";
 import backgroundImage from "../../assets/img/quiz_randing.png";
+import { Select } from "./components/SelectBox";
 
 const QuizLandingMain = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 2.4rem;
   background-image: url(${backgroundImage});
   background-size: 100% 100%;
   background-repeat: no-repeat;
 `;
 
-const QuizLandingHeader = styled.header``;
-
 const QuizLogo = styled.img`
-  width: 648px;
-  height: 582px;
-  margin-top: 65px;
+  width: 64.8rem;
+  height: 58.2rem;
+  margin-top: 6.5rem;
 `;
-
-const QuizLandingTitle = styled.h1``;
 
 const QuizOptionsSection = styled.section`
   display: flex;
@@ -30,69 +26,37 @@ const QuizOptionsSection = styled.section`
 
 const QuizControlSection = styled.section`
   display: flex;
-  gap: 22px;
+  gap: 2.2rem;
 `;
-
-const PageHeading = styled.h2`
-  /* sr-only */
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  border: 0;
-  clip: rect(0 0 0 0);
-  /* sr-only */
-`;
-
-const QuizSelectBox = styled.select`
-  width: 418px;
-  height: 101px;
-`;
-
-const Option = styled.option``;
 
 const QuizControlButton = styled.button`
-  width: 249px;
-  height: 78px;
+  width: 24.9rem;
+  height: 7.8rem;
   border-radius: 30px;
-  margin-top: 13px;
-  margin-bottom: 78px;
+  margin-top: 1.3rem;
+  margin-bottom: 7.8rem;
   border: none;
-  font-size: 40px;
+  font-size: 4rem;
   font-weight: ${(props) => props.fontWeight || "normal"};
   color: #fff;
   background-color: ${(props) => props.backgroundColor};
 `;
 
-const quizTypes = ["HTML", "CSS"];
-const questionCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
 export default function QuizLanding() {
   return (
     <QuizLandingMain>
-      <QuizLandingHeader>
-        <QuizLandingTitle>
+      <header>
+        <h1>
           <QuizLogo src={quizImage} alt="퀴즈 이미지"></QuizLogo>
-        </QuizLandingTitle>
-      </QuizLandingHeader>
+        </h1>
+      </header>
       <QuizOptionsSection>
-        <PageHeading>퀴즈 유형을 선택하세요</PageHeading>
-        <QuizSelectBox>
-          {quizTypes.map((type, index) => (
-            <Option key={index}>{type}</Option>
-          ))}
-        </QuizSelectBox>
-        <QuizSelectBox>
-          {questionCount.map((count, index) => (
-            <Option key={index}>{count}문제</Option>
-          ))}
-        </QuizSelectBox>
+        <h2 className="sr-only">퀴즈 유형을 선택하세요</h2>
+
+        <Select></Select>
       </QuizOptionsSection>
       <QuizControlSection>
-        <PageHeading>퀴즈를 풀어보세요</PageHeading>
+        <h2 className="sr-only">퀴즈를 풀어보세요</h2>
         <QuizControlButton fontWeight="600" backgroundColor="#2E5DFF;">
           퀴즈 풀기!
         </QuizControlButton>

@@ -4,23 +4,11 @@ import ConfirmExitModal from "./components/confirmModal";
 import CongratulationsModal from "./components/congratsModal";
 import { useState } from "react";
 
-const srOnly = css`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  border: 0;
-  clip: rect(0 0 0 0);
-`;
-
 const QuizResultMain = styled.main`
-  width: 747px;
-  height: 799px;
+  width: 74.7rem;
+  height: 79.9rem;
   border-radius: 50px;
-  margin: 167px auto 114px;
+  margin: 16.7rem auto 11.4rem;
   box-shadow: 2px 4px 4px 5px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -29,35 +17,31 @@ const QuizResultMain = styled.main`
 `;
 
 const Logo = styled.img`
-  width: 346px;
-  height: 85px;
-  margin-bottom: 72px;
+  width: 34.6rem;
+  height: 8.5rem;
+  margin-bottom: 7.2rem;
 `;
 
 const QuizResultSection = styled.section`
-  width: 550px;
+  width: 55rem;
   border-bottom: 0.5px solid #c4c4c4;
-  padding-bottom: 50px;
+  padding-bottom: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 17px;
+  gap: 1.7rem;
 `;
 
 const QuizResultMessage = styled.div`
-  width: 334px;
-  height: 85px;
+  width: 33.4rem;
+  height: 8.5rem;
   background-color: #2e5dff;
   border-radius: 20px;
   color: #fff;
-  font-size: 45px;
+  font-size: 4.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-const DetailHeading = styled.h2`
-  ${srOnly}
 `;
 
 const resultTitles = ["전체 문제", "맞힌 문제", "틀린 문제"];
@@ -67,8 +51,8 @@ const ResultContainer = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 57px;
-  margin-top: 26px;
+  gap: 5.7rem;
+  margin-top: 2.6rem;
 `;
 
 const ResultItem = styled.li`
@@ -78,39 +62,36 @@ const ResultItem = styled.li`
 `;
 
 const resultItemCommon = css`
-  height: 60px;
+  height: 6rem;
   display: flex;
   align-items: center;
 `;
+
 const ResultTypes = styled.div`
-  font-size: 25px;
+  font-size: 2.5rem;
   ${resultItemCommon}
 `;
 
 const ResultCount = styled.div`
-  font-size: 40px;
-  font-weight: 500;
+  font-size: 4rem;
+  font-weight: 50rem;
   ${resultItemCommon}
-  margin-bottom: 96px;
+  margin-bottom: 9.6rem;
 `;
 
 const ResultControlSection = styled.section`
   display: flex;
-  gap: 20px;
-`;
-
-const ControlHeading = styled.h2`
-  ${srOnly}
+  gap: 2rem;
 `;
 
 const ResultControlButton = styled.button`
-  width: 157px;
-  height: 46px;
+  width: 15.7rem;
+  height: 4.6rem;
   border-radius: 20px;
   border: none;
   background-color: ${(props) => props.backgroundColor};
   color: #fff;
-  font-size: 20px;
+  font-size: 2rem;
 `;
 
 export default function QuizResult() {
@@ -130,11 +111,11 @@ export default function QuizResult() {
         </h1>
       </header>
       <QuizResultSection>
-        <h2 style={{ fontSize: "50px" }}>퀴즈 결과!</h2>
+        <h2 style={{ fontSize: "5rem" }}>퀴즈 결과!</h2>
         <QuizResultMessage>8 문제 정답!</QuizResultMessage>
       </QuizResultSection>
       <section>
-        <DetailHeading>퀴즈 결과 상세보기</DetailHeading>
+        <h2 className="sr-only">퀴즈 결과 상세보기</h2>
         <ResultContainer>
           {resultTitles.map((title, index) => (
             <ResultItem key={index}>
@@ -145,24 +126,24 @@ export default function QuizResult() {
         </ResultContainer>
       </section>
       <ResultControlSection>
-        <ControlHeading>결과 처리 액션을 선택하세요</ControlHeading>
+        <h2 className="sr-only">결과 처리 액션을 선택하세요</h2>
         <ConfirmExitModal
           isOpen={isConfirmModalOpen}
-          onClose={closeConfirmModal} // 종료 모달 닫기
+          onClose={closeConfirmModal}
         />
         <CongratulationsModal
           isOpen={isCongratulationsModalOpen}
-          onClose={closeCongratulationsModal} // 축하 모달 닫기
+          onClose={closeCongratulationsModal}
         />
         <ResultControlButton
           backgroundColor="#2E5DFF"
-          onClick={() => setConfirmModalOpen(true)} // 종료 확인 모달 열기
+          onClick={() => setConfirmModalOpen(true)}
         >
           처음으로
         </ResultControlButton>
         <ResultControlButton
           backgroundColor="#FF2E62"
-          onClick={() => setCongratulationsModalOpen(true)} // 축하 모달 열기
+          onClick={() => setCongratulationsModalOpen(true)}
         >
           복습 노트 저장
         </ResultControlButton>

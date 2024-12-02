@@ -3,27 +3,26 @@ import { CommonModal, Backdrop } from "./ModalStyle";
 import PropTypes from "prop-types";
 
 const ConfirmExit = styled(CommonModal)`
-  width: 490px;
-  height: 226px;
+  width: 49rem;
+  height: 22.6rem;
   border-radius: 20px;
 `;
 
 const ConfirmExitMessage = styled.p`
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 300;
-  width: 344px;
-  margin: 24px;
+  margin: 2.4rem;
   text-align: center;
 `;
 
 const ButtonType = styled.div`
   display: flex;
-  gap: 18px;
+  gap: 1.8rem;
 `;
 
 const YesOrNo = styled.button`
-  width: 113px;
-  height: 46px;
+  width: 11.3rem;
+  height: 4.6rem;
   border-radius: 20px;
   color: #fff;
   font-weight: 400;
@@ -38,7 +37,8 @@ export default function ConfirmExitModal({ isOpen, onClose }) {
       <Backdrop onClick={onClose} /> {/* 배경 클릭 시 모달 닫기 */}
       <ConfirmExit open={isOpen}>
         <ConfirmExitMessage>
-          진행 데이터는 저장되지 않습니다. 정말로 종료하시겠습니까?
+          진행 데이터는 저장되지 않습니다. <br />
+          정말로 종료하시겠습니까?
         </ConfirmExitMessage>
         <ButtonType>
           <YesOrNo onClick={onClose}>예</YesOrNo>
