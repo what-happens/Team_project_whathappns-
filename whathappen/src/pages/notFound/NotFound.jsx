@@ -8,25 +8,42 @@ const NotFoundContents = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  text-align: center;
+  gap: 30px;
 `;
 
-const ErrorImg = styled.img`
+const NotFoundImg = styled.img`
   width: 478px;
   height: 219px;
 `;
 
-const ErrorMsg = styled.div`
-  font-size: 48px;
+const NotFoundMsg = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-contents: center;
+  align-items: center;
+
+  font-size: 24px;
+
+  color: #2e5dff;
 `;
+
 export default function NotFound() {
   return (
     <NotFoundContents>
-      <ErrorImg src={error404} alt="404 에러"></ErrorImg>
-      <ErrorMsg>
-        죄송합니다 , 찾을수 없는 페이지 입니다. 요청하신 페이지의 주소가 변경 ,
-        삭제되어 찾을 수 없습니다.
-      </ErrorMsg>
-      <Button width="36rem" height="1rem" borderRadius="0px">
+      <NotFoundImg src={error404} alt="404 에러"></NotFoundImg>
+      <NotFoundMsg>
+        <span>죄송합니다 , 찾을수 없는 페이지 입니다.</span>
+        <span>요청하신 페이지의 주소가 변경 , 삭제되어 찾을 수 없습니다.</span>
+      </NotFoundMsg>
+      <Button
+        height="9px"
+        width="24rem"
+        borderRadius="0"
+        font-family="GmarketSansMedium"
+        font-size="40px"
+      >
         메인페이지로 이동
       </Button>
     </NotFoundContents>
