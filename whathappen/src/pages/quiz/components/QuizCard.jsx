@@ -10,11 +10,12 @@ export default function QuizCard({ quizzes }) {
   const [shuffledAnswer, setShuffledAnswer] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const shuffleArray = (arr) => {
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1)); // 0부터 i까지의 랜덤 인덱스
-      [arr[i], arr[j]] = [arr[j], arr[i]]; // 배열의 두 요소를 교환
+    const newArray = [...arr];
+    for (let i = newArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
-    return arr;
+    return newArray;
   };
 
   const handlePrev = () => {
@@ -27,10 +28,11 @@ export default function QuizCard({ quizzes }) {
   const handleOnSubmit = (e) => {
     e.preventDefault();
   };
+
   useEffect(() => {
-    const shuffled = quizzes.map((quiz) => {
-      return shuffleArray([...quiz.incorrect_answer, quiz.correct_answer]);
-    });
+    const shuffled = quizzes.map((quiz) =>
+      shuffleArray([...quiz.incorrect_answer, quiz.correct_answer])
+    );
     setShuffledAnswer(shuffled);
     setIsLoading(true);
   }, []);
