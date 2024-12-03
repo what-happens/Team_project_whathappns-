@@ -4,6 +4,14 @@ import ConfirmExitModal from "./components/confirmModal";
 import CongratulationsModal from "./components/congratsModal";
 import { useState } from "react";
 
+const Background = styled.div`
+  background-color: #2e5dff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  z-index: -1;
+`;
+
 const QuizResultMain = styled.main`
   width: 74.7rem;
   height: 79.9rem;
@@ -14,6 +22,7 @@ const QuizResultMain = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #fff;
 `;
 
 const Logo = styled.img`
@@ -74,7 +83,7 @@ const ResultTypes = styled.div`
 
 const ResultCount = styled.div`
   font-size: 4rem;
-  font-weight: 50rem;
+  font-weight: 700;
   ${resultItemCommon}
   margin-bottom: 9.6rem;
 `;
@@ -95,59 +104,60 @@ const ResultControlButton = styled.button`
 `;
 
 export default function QuizResult() {
-  const [isConfirmModalOpen, setConfirmModalOpen] = useState(false); // 종료 확인 모달 상태
+  const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
   const [isCongratulationsModalOpen, setCongratulationsModalOpen] =
-    useState(false); // 축하 모달 상태
+    useState(false);
 
-  // 모달 닫는 함수들
   const closeConfirmModal = () => setConfirmModalOpen(false);
   const closeCongratulationsModal = () => setCongratulationsModalOpen(false);
 
   return (
-    <QuizResultMain>
-      <header>
-        <h1>
-          <Logo src={logoImage} alt="이게되네 로고"></Logo>
-        </h1>
-      </header>
-      <QuizResultSection>
-        <h2 style={{ fontSize: "5rem" }}>퀴즈 결과!</h2>
-        <QuizResultMessage>8 문제 정답!</QuizResultMessage>
-      </QuizResultSection>
-      <section>
-        <h2 className="sr-only">퀴즈 결과 상세보기</h2>
-        <ResultContainer>
-          {resultTitles.map((title, index) => (
-            <ResultItem key={index}>
-              <ResultTypes>{title}</ResultTypes>
-              <ResultCount>{resultData[index]} 문제</ResultCount>
-            </ResultItem>
-          ))}
-        </ResultContainer>
-      </section>
-      <ResultControlSection>
-        <h2 className="sr-only">결과 처리 액션을 선택하세요</h2>
-        <ConfirmExitModal
-          isOpen={isConfirmModalOpen}
-          onClose={closeConfirmModal}
-        />
-        <CongratulationsModal
-          isOpen={isCongratulationsModalOpen}
-          onClose={closeCongratulationsModal}
-        />
-        <ResultControlButton
-          backgroundColor="#2E5DFF"
-          onClick={() => setConfirmModalOpen(true)}
-        >
-          처음으로
-        </ResultControlButton>
-        <ResultControlButton
-          backgroundColor="#FF2E62"
-          onClick={() => setCongratulationsModalOpen(true)}
-        >
-          복습 노트 저장
-        </ResultControlButton>
-      </ResultControlSection>
-    </QuizResultMain>
+    <Background>
+      <QuizResultMain>
+        <header>
+          <h1>
+            <Logo src={logoImage} alt="이게되네 로고"></Logo>
+          </h1>
+        </header>
+        <QuizResultSection>
+          <h2 style={{ fontSize: "5rem" }}>퀴즈 결과!</h2>
+          <QuizResultMessage>8 문제 정답!</QuizResultMessage>
+        </QuizResultSection>
+        <section>
+          <h2 className="sr-only">퀴즈 결과 상세보기</h2>
+          <ResultContainer>
+            {resultTitles.map((title, index) => (
+              <ResultItem key={index}>
+                <ResultTypes>{title}</ResultTypes>
+                <ResultCount>{resultData[index]} 문제</ResultCount>
+              </ResultItem>
+            ))}
+          </ResultContainer>
+        </section>
+        <ResultControlSection>
+          <h2 className="sr-only">결과 처리 액션을 선택하세요</h2>
+          <ConfirmExitModal
+            isOpen={isConfirmModalOpen}
+            onClose={closeConfirmModal}
+          />
+          <CongratulationsModal
+            isOpen={isCongratulationsModalOpen}
+            onClose={closeCongratulationsModal}
+          />
+          <ResultControlButton
+            backgroundColor="#2E5DFF"
+            onClick={() => setConfirmModalOpen(true)}
+          >
+            처음으로
+          </ResultControlButton>
+          <ResultControlButton
+            backgroundColor="#FF2E62"
+            onClick={() => setCongratulationsModalOpen(true)}
+          >
+            복습 노트 저장
+          </ResultControlButton>
+        </ResultControlSection>
+      </QuizResultMain>
+    </Background>
   );
 }
