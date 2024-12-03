@@ -6,6 +6,7 @@ import { Github, Google } from "./components/JoinSvg";
 import { useSignup } from "./../../hooks/useSignup";
 import { useNavigate } from "react-router-dom";
 import loadingImg from "../../assets/loading.gif";
+import { Link } from "react-router-dom";
 
 const JoinContents = styled.div`
   display: flex;
@@ -280,7 +281,9 @@ export default function Join() {
           </Button>
         </SnsWarp>
 
-        <LogoContent />
+        <Link to="/">
+          <LogoContent />
+        </Link>
       </JoinContents>
       {loading && (
         <>

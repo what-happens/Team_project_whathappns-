@@ -259,7 +259,9 @@ export default function Login() {
           <Google />
         </SocialLogin>
       </Warp>
-      <LogoContent />
+      <Link to="/">
+        <LogoContent />
+      </Link>
     </LoginContents>
   );
 }
