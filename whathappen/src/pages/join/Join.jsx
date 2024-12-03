@@ -83,8 +83,8 @@ const LoadingPage = styled.div`
 
 const LoadingImg = styled.div`
   background-image: url(${loadingImg});
-  background-size: cover; // 이미지가 div에 맞게 늘어나도록 설정
-  background-repeat: no-repeat; // 이미지 반복 방지
+  background-size: cover;
+  background-repeat: no-repeat;
   position: absolute;
   width: 20rem;
   height: 20rem;
@@ -103,8 +103,8 @@ export default function Join() {
   const [pwError, setPwError] = useState("");
 
   const [loading, setLoading] = useState(false);
+  const { signup, error } = useSignup();
 
-  const { signup } = useSignup();
   const navigate = useNavigate();
 
   const nameRegex = /^[가-힣]+$/;
@@ -152,22 +152,23 @@ export default function Join() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (validationJoin()) {
       setLoading(true);
-      try {
-        await signup(idValue, pwValue, nameValue);
 
+      const signupSuccess = await signup(idValue, pwValue, nameValue);
+
+      if (signupSuccess) {
+        setLoading(false);
         setTimeout(() => {
-          setLoading(false);
           navigate("/");
         }, 1000);
-      } catch (error) {
+      } else {
         setLoading(false);
-        console.error(error);
+        setIdError(error);
       }
     }
   };
+
   const handleIdChange = (e) => {
     setIdValue(e.target.value);
     setIdError("");
