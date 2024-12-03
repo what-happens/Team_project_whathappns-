@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import congratsImg from "../../../assets/img/congratulations.png";
+import congratsImg from "../../../assets/congratulations.png";
 import { CommonModal, Backdrop } from "./ModalStyle";
 import PropTypes from "prop-types";
 

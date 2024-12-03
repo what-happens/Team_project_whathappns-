@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import logoImage from "../../assets/img/logo.png";
+import logoImage from "../../assets/logo.png";
 import ConfirmExitModal from "./components/confirmModal";
 import CongratulationsModal from "./components/congratsModal";
 import { useState } from "react";

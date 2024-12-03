@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
-import selectArrow from "../../../assets/img/selectArrow.png";
+import selectArrow from "../../../assets/selectArrow.png";
 
 const SelectBoxWrap = styled.div`
   display: flex;
