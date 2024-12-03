@@ -28,6 +28,10 @@ ${reset}
     overflow: hidden;
     white-space: nowrap;
   }
+
+  :root {
+  --main-color: #2E5DFF;
+  }
 `;
 
 export default GlobalStyle;
