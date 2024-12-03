@@ -10,6 +10,7 @@ import QuizResult from "./pages/quizResult";
 // import Quiz from "./pages/quiz/Quiz";
 import Exercise from "./pages/exercise/Exercise";
 import Review from "./pages/review/Review";
+import AuthHeader from "./components/AuthHeader";
 
 function App() {
   return (
@@ -23,7 +24,10 @@ function App() {
           <Route path="/quiz-landing" element={<QuizLanding />} />
           <Route path="/quiz" element={<QuizResult />} />
           <Route path="/exercise" element={<Exercise />} />
-          <Route path="/review" element={<Review />} />
+
+          <Route element={<AuthHeader />}>
+            <Route path="/review" element={<Review />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </Provider>
