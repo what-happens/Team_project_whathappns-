@@ -1,27 +1,33 @@
-import styled from "styled-components";
-// import selectArrow from "../../../assets/img/selectArrow.png";
+import { useState } from "react";
+import styled, { css } from "styled-components";
+import selectArrow from "../../../assets/img/selectArrow.png";
 
 const SelectBoxWrap = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const SelectBox = styled.button`
-  all: unset;
+const selectCommonStyle = css`
   width: 41.8rem;
   height: 10.1rem;
   font-size: 4rem;
   font-weight: 400;
   color: #b3b3b3;
   border: 3px solid #2e5dff;
-  border-radius: 10px;
-  margin-bottom: ${(props) => props.marginBottom};
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-// const AllowImg = styled.img``
+const SelectBox = styled.button`
+  all: unset;
+  ${selectCommonStyle};
+  border-radius: 10px;
+  margin-bottom: ${(props) => props.marginBottom};
+  background-image: url(${selectArrow});
+  background-repeat: no-repeat;
+  background-position: left 2rem center;
+`;
 
 const SelectItemWrap = styled.div`
   border: 3px solid #2e5dff;
@@ -30,40 +36,64 @@ const SelectItemWrap = styled.div`
   z-index: 999;
   margin-top: ${(props) => props.marginTop};
   background-color: #fff;
+  display: ${(props) => (props.isVisible ? "block" : "none")};
 `;
 
 const SelectItem = styled.div`
-  width: 41.8rem;
-  height: 10.1rem;
-  font-size: 4rem;
-  font-weight: 400;
-  color: #b3b3b3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${selectCommonStyle};
   border: 1px solid#2e5dff;
+  &:hover {
+    background-color: #edecec;
+  }
 `;
 
 const quizTypes = ["HTML", "CSS"];
 const questionCount = [5, 10, 15, 20];
 
 export function Select() {
+  const [isQuizTypeOpen, setQuizTypeOpen] = useState(false);
+  const [isQuestionCountOpen, setQuestionCountOpen] = useState(false);
+  const [selectedQuizType, setSelectedQuizType] = useState("HTML");
+  const [selectedQuestionCount, setSelectedQuestionCount] = useState(5);
+
   return (
     <SelectBoxWrap>
-      <SelectBox marginBottom="1.4rem">
-        <span>HTML</span>
+      {/* Quiz Type Selector */}
+      <SelectBox
+        marginBottom="1.4rem"
+        onClick={() => setQuizTypeOpen(!isQuizTypeOpen)}
+      >
+        <span>{selectedQuizType}</span>
       </SelectBox>
-      <SelectItemWrap marginTop="11rem">
+      <SelectItemWrap marginTop="11rem" isVisible={isQuizTypeOpen}>
         {quizTypes.map((type, index) => (
-          <SelectItem key={index}>{type}</SelectItem>
+          <SelectItem
+            key={index}
+            onClick={() => {
+              setSelectedQuizType(type);
+              setQuizTypeOpen(false);
+            }}
+          >
+            {type}
+          </SelectItem>
         ))}
       </SelectItemWrap>
-      <SelectBox>
-        <span>5 문제</span>
+
+      {/* Question Count Selector */}
+      <SelectBox onClick={() => setQuestionCountOpen(!isQuestionCountOpen)}>
+        <span>{selectedQuestionCount} 문제</span>
       </SelectBox>
-      <SelectItemWrap marginTop="-3rem">
+      <SelectItemWrap marginTop="-3rem" isVisible={isQuestionCountOpen}>
         {questionCount.map((count, index) => (
-          <SelectItem key={index}>{count} 문제</SelectItem>
+          <SelectItem
+            key={index}
+            onClick={() => {
+              setSelectedQuestionCount(count);
+              setQuestionCountOpen(false);
+            }}
+          >
+            {count} 문제
+          </SelectItem>
         ))}
       </SelectItemWrap>
     </SelectBoxWrap>
