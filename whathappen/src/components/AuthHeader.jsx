@@ -2,7 +2,7 @@ import React from "react";
 import AuthNav from "./AuthNav";
 import styled from "styled-components";
 import logo from "../assets/what_happns_logo_b.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import Button from "./Button";
 
 export default function AuthHeader() {
@@ -13,17 +13,20 @@ export default function AuthHeader() {
   };
 
   return (
-    <Header>
-      <Logo>
-        <Link to="/">
-          <img src={logo} alt="What Happens 로고" title="메인페이지로 이동" />
-        </Link>
-      </Logo>
-      <AuthNav />
-      <Button type="button" onClick={handleLogout}>
-        로그아웃
-      </Button>
-    </Header>
+    <>
+      <Header>
+        <Logo>
+          <Link to="/">
+            <img src={logo} alt="What Happens 로고" title="메인페이지로 이동" />
+          </Link>
+        </Logo>
+        <AuthNav />
+        <Button type="button" onClick={handleLogout}>
+          로그아웃
+        </Button>
+      </Header>
+      <Outlet />
+    </>
   );
 }
 
