@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import quizImage from "../../assets/quiz_logo.png";
-import backgroundImage from "../../assets/quiz_randing.png";
+import backgroundImage from "../../assets/quiz_landing.png";
 import { Select } from "./components/SelectBox";
 
 const QuizLandingMain = styled.main`
