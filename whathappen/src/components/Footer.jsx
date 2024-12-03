@@ -15,7 +15,7 @@ const slideUp = keyframes`
 const FooterContent = styled.footer`
   width: 100%;
   box-sizing: border-box;
-  padding: 5.7rem 29rem 2.7rem 29rem;
+  padding: 5.7rem 29rem 5.7rem 29rem;
   background-color: #2e5dfe;
   display: flex;
   align-items: flex-end;
@@ -28,11 +28,18 @@ export default function Footer() {
     <FooterContent>
       <address>
         <h3
-          style={{ fontSize: "3rem", fontWeight: "700", marginBottom: "2rem" }}
+          style={{ fontSize: "4rem", fontWeight: "700", marginBottom: "2rem" }}
         >
           이게되네?
         </h3>
-        <dl>
+        <dl
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+            fontSize: "1.2rem",
+          }}
+        >
           <dt>
             <dd>주식회사 오르미</dd>
           </dt>
