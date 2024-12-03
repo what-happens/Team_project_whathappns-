@@ -31,10 +31,10 @@ const YesOrNo = styled.button`
 `;
 
 export default function ConfirmExitModal({ isOpen, onClose }) {
-  if (!isOpen) return null; // 모달이 닫히면 아무 것도 렌더링하지 않음
+  if (!isOpen) return null;
   return (
     <>
-      <Backdrop onClick={onClose} /> {/* 배경 클릭 시 모달 닫기 */}
+      <Backdrop onClick={onClose} />
       <ConfirmExit open={isOpen}>
         <ConfirmExitMessage>
           진행 데이터는 저장되지 않습니다. <br />

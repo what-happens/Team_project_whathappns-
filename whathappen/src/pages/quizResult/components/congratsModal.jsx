@@ -41,11 +41,11 @@ const GotoMyPage = styled.button`
 `;
 
 export default function CongratulationsModal({ isOpen, onClose }) {
-  if (!isOpen) return null; // 모달이 닫히면 아무 것도 렌더링하지 않음
+  if (!isOpen) return null;
 
   return (
     <>
-      <Backdrop onClick={onClose} /> {/* 배경 클릭 시 모달 닫기 */}
+      <Backdrop onClick={onClose} />
       <Congratulations>
         <CongratsImg src={congratsImg} alt="축하 이미지" />
         <SaveMessage>
