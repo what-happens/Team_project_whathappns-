@@ -10,6 +10,7 @@ import QuizResult from "./pages/quizResult";
 // import Quiz from "./pages/quiz/Quiz";
 import Exercise from "./pages/exercise/Exercise";
 import Study from "./pages/study/Study";
+import StudyFinish from "./pages/study/StudyFinish";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/quiz" element={<QuizResult />} />
           <Route path="/exercise" element={<Exercise />} />
           <Route path="/study" element={<Study />}></Route>
+          <Route path="/study-finish" element={<StudyFinish />}></Route>
         </Routes>
       </BrowserRouter>
     </Provider>
