@@ -8,6 +8,8 @@ import subBannerImageOne from "../assets/sub_banner_vector1.png";
 import subBannerImageTwo from "../assets/sub_banner_vector2.png";
 import subBannerImageThree from "../assets/sub_banner_vector3.png";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const slideUp = keyframes`
   from {
@@ -46,6 +48,7 @@ SubBanner.propTypes = {
 };
 
 const Mainbanner = () => {
+  const { isAuthenticated } = useSelector((state) => state.auth);
   return (
     <MainBanner bg="white">
       <div
@@ -70,14 +73,29 @@ const Mainbanner = () => {
           <br />
           웹사이트!
         </p>
-        <Button
-          borderRadius="5rem"
-          fontsize="2rem"
-          width="25rem"
-          padding="2rem"
-        >
-          웹사이트 만들러가기!
-        </Button>
+        {isAuthenticated ? (
+          <Link to={"/"}>
+            <Button
+              borderRadius="5rem"
+              fontsize="2rem"
+              width="25rem"
+              padding="2rem"
+            >
+              코딩하러 가기!
+            </Button>
+          </Link>
+        ) : (
+          <Link to={"/join"}>
+            <Button
+              borderRadius="5rem"
+              fontsize="2rem"
+              width="25rem"
+              padding="2rem"
+            >
+              회원가입 하기!
+            </Button>
+          </Link>
+        )}
       </div>
 
       <div
@@ -239,7 +257,7 @@ const InfiniteComponentLoader = () => {
           loadNextComponent();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.1 }
     );
 
     if (loaderRef.current) {
