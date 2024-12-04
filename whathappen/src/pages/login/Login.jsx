@@ -165,11 +165,15 @@ export default function Login() {
     return valid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validationLogin()) {
-      login(idValue, pwValue);
-      navigate("/");
+      const isLoginSuccessful = await login(idValue, pwValue);
+      if (isLoginSuccessful) {
+        navigate("/");
+      } else {
+        setIdError("아이디 비밀번호가 일치하지 않습니다.");
+      }
     }
   };
 
