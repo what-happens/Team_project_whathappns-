@@ -4,11 +4,13 @@ import ConfirmExitModal from "./components/confirmModal";
 import CongratulationsModal from "./components/congratsModal";
 import { useState } from "react";
 
-const Background = styled.div`
+const ResultBackground = styled.div`
   background-color: #2e5dff;
-  height: 100%;
-  width: 100%;
-  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: -1;
 `;
 
@@ -112,7 +114,7 @@ export default function QuizResult() {
   const closeCongratulationsModal = () => setCongratulationsModalOpen(false);
 
   return (
-    <Background>
+    <ResultBackground>
       <QuizResultMain>
         <header>
           <h1>
@@ -158,6 +160,6 @@ export default function QuizResult() {
           </ResultControlButton>
         </ResultControlSection>
       </QuizResultMain>
-    </Background>
+    </ResultBackground>
   );
 }
