@@ -32,7 +32,7 @@ function App() {
           <Route path="/study" element={<Study />}></Route>
           <Route path="/study-finish" element={<StudyFinish />}></Route>
           <Route element={<AuthHeader />}>
-            <Route path="/my-page" element={<MyPage />} />
+            <Route path="/mypage" element={<MyPage />} />
             <Route path="/review" element={<Review />} />
           </Route>
         </Routes>
