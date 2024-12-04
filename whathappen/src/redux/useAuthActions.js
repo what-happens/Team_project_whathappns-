@@ -16,8 +16,10 @@ const useAuthActions = () => {
       const user = userCredential.user;
       dispatch(setUser({ uid: user.uid, email: user.email })); // Redux 상태 업데이트
       console.log("로그인 성공:", user);
+      return true;
     } catch (error) {
       console.error("로그인 실패:", error.message);
+      return false;
     }
   };
 
