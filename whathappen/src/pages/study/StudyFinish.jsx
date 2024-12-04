@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Icon from "../../assets/img/Icon_finish.png";
-import Logo from "../../assets/img/logo_white.png";
+import Icon from "../../assets/Icon_finish.png";
+import Logo from "../../assets/logo_white.png";
 
 const Container = styled.section`
   display: flex;

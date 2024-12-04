@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import IconStage1 from "../../assets/img/icon_stage1.png";
-import IconStage2 from "../../assets/img/icon_stage2.png";
-import IconStage3 from "../../assets/img/icon_stage3.png";
-import IconStage4 from "../../assets/img/icon_stage4.png";
-import IconStage5 from "../../assets/img/icon_stage5.png";
-import IconStage6 from "../../assets/img/icon_stage6.png";
-import IconStage7 from "../../assets/img/icon_stage7.png";
+import IconStage1 from "../../assets/icon_stage1.png";
+import IconStage2 from "../../assets/icon_stage2.png";
+import IconStage3 from "../../assets/icon_stage3.png";
+import IconStage4 from "../../assets/icon_stage4.png";
+import IconStage5 from "../../assets/icon_stage5.png";
+import IconStage6 from "../../assets/icon_stage6.png";
+import IconStage7 from "../../assets/icon_stage7.png";
 
 const Container = styled.div`
   display: flex;
