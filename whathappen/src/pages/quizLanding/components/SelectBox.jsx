@@ -8,9 +8,9 @@ const SelectBoxWrap = styled.div`
 `;
 
 const selectCommonStyle = css`
-  width: 41.8rem;
-  height: 10.1rem;
-  font-size: 4rem;
+  width: 33rem;
+  height: 7rem;
+  font-size: 3rem;
   font-weight: 400;
   color: #b3b3b3;
   border: 3px solid #2e5dff;
@@ -27,6 +27,7 @@ const SelectBox = styled.button`
   background-image: url(${selectArrow});
   background-repeat: no-repeat;
   background-position: left 2rem center;
+  background-size: 10%;
 `;
 
 const SelectItemWrap = styled.div`
@@ -65,7 +66,7 @@ export function Select() {
       >
         <span>{selectedQuizType}</span>
       </SelectBox>
-      <SelectItemWrap marginTop="11rem" isVisible={isQuizTypeOpen}>
+      <SelectItemWrap marginTop="8rem" isVisible={isQuizTypeOpen}>
         {quizTypes.map((type, index) => (
           <SelectItem
             key={index}
@@ -83,7 +84,7 @@ export function Select() {
       <SelectBox onClick={() => setQuestionCountOpen(!isQuestionCountOpen)}>
         <span>{selectedQuestionCount} 문제</span>
       </SelectBox>
-      <SelectItemWrap marginTop="-3rem" isVisible={isQuestionCountOpen}>
+      <SelectItemWrap marginTop="-2rem" isVisible={isQuestionCountOpen}>
         {questionCount.map((count, index) => (
           <SelectItem
             key={index}

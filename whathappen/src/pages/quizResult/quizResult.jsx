@@ -13,10 +13,10 @@ const Background = styled.div`
 `;
 
 const QuizResultMain = styled.main`
-  width: 74.7rem;
-  height: 79.9rem;
+  width: 63rem;
+  height: 67rem;
   border-radius: 50px;
-  margin: 16.7rem auto 11.4rem;
+  margin: 5rem auto 6rem;
   box-shadow: 2px 4px 4px 5px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -26,15 +26,15 @@ const QuizResultMain = styled.main`
 `;
 
 const Logo = styled.img`
-  width: 34.6rem;
-  height: 8.5rem;
-  margin-bottom: 7.2rem;
+  width: 30rem;
+  height: 7.2rem;
+  margin-bottom: 6rem;
 `;
 
 const QuizResultSection = styled.section`
-  width: 55rem;
+  width: 48rem;
   border-bottom: 0.5px solid #c4c4c4;
-  padding-bottom: 5rem;
+  padding-bottom: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,12 +42,12 @@ const QuizResultSection = styled.section`
 `;
 
 const QuizResultMessage = styled.div`
-  width: 33.4rem;
-  height: 8.5rem;
+  width: 28rem;
+  height: 7rem;
   background-color: #2e5dff;
   border-radius: 20px;
   color: #fff;
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,8 +60,8 @@ const ResultContainer = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5.7rem;
-  margin-top: 2.6rem;
+  gap: 4.5rem;
+  margin-top: 2rem;
 `;
 
 const ResultItem = styled.li`
@@ -71,21 +71,21 @@ const ResultItem = styled.li`
 `;
 
 const resultItemCommon = css`
-  height: 6rem;
+  height: 5rem;
   display: flex;
   align-items: center;
 `;
 
 const ResultTypes = styled.div`
-  font-size: 2.5rem;
+  font-size: 2rem;
   ${resultItemCommon}
 `;
 
 const ResultCount = styled.div`
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: 700;
   ${resultItemCommon}
-  margin-bottom: 9.6rem;
+  margin-bottom: 8rem;
 `;
 
 const ResultControlSection = styled.section`
@@ -94,13 +94,13 @@ const ResultControlSection = styled.section`
 `;
 
 const ResultControlButton = styled.button`
-  width: 15.7rem;
-  height: 4.6rem;
-  border-radius: 20px;
+  width: 14.5rem;
+  height: 3.8rem;
+  border-radius: 1.3rem;
   border: none;
   background-color: ${(props) => props.backgroundColor};
   color: #fff;
-  font-size: 2rem;
+  font-size: 1.8rem;
 `;
 
 export default function QuizResult() {
@@ -120,7 +120,7 @@ export default function QuizResult() {
           </h1>
         </header>
         <QuizResultSection>
-          <h2 style={{ fontSize: "5rem" }}>퀴즈 결과!</h2>
+          <h2 style={{ fontSize: "4.2rem" }}>퀴즈 결과!</h2>
           <QuizResultMessage>8 문제 정답!</QuizResultMessage>
         </QuizResultSection>
         <section>

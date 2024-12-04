@@ -7,16 +7,16 @@ const QuizLandingMain = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.4rem;
+  gap: 2rem;
   background-image: url(${backgroundImage});
   background-size: 100% 100%;
   background-repeat: no-repeat;
 `;
 
 const QuizLogo = styled.img`
-  width: 64.8rem;
-  height: 58.2rem;
-  margin-top: 6.5rem;
+  width: 50rem;
+  height: 40.2rem;
+  margin-top: 5rem;
 `;
 
 const QuizOptionsSection = styled.section`
@@ -30,13 +30,13 @@ const QuizControlSection = styled.section`
 `;
 
 const QuizControlButton = styled.button`
-  width: 24.9rem;
-  height: 7.8rem;
-  border-radius: 30px;
-  margin-top: 1.3rem;
-  margin-bottom: 7.8rem;
+  width: 20rem;
+  height: 6rem;
+  border-radius: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
   border: none;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: ${(props) => props.fontWeight || "normal"};
   color: #fff;
   background-color: ${(props) => props.backgroundColor};
