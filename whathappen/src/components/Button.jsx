@@ -48,13 +48,13 @@ const StyledButton = styled.button`
   }};
   font-size: ${(props) => (props.$fontSize === "small" ? "2rem" : "4rem")};
   color: ${(props) => {
-    switch (props.$backgroundColor) {
+    switch (props.$color) {
       case "blue":
-        return "#FFFFFF";
+        return "#2E5DFE";
       case "white":
-        return "#000000";
-      case "black":
         return "#FFFFFF";
+      case "black":
+        return "#000000";
       default:
         return "#2E5DFE";
     }
