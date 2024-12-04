@@ -13,6 +13,8 @@ import Study from "./pages/study/Study";
 import StudyFinish from "./pages/study/StudyFinish";
 import NotFound from "./pages/notFound/NotFound";
 import MyPage from "./pages/myPage/MyPage";
+import Review from "./pages/review/Review";
+import AuthHeader from "./components/AuthHeader";
 
 function App() {
   return (
@@ -29,7 +31,10 @@ function App() {
           <Route path="/exercise" element={<Exercise />} />
           <Route path="/study" element={<Study />}></Route>
           <Route path="/study-finish" element={<StudyFinish />}></Route>
-          <Route path="/my-page" element={<MyPage />}></Route>
+          <Route element={<AuthHeader />}>
+            <Route path="/my-page" element={<MyPage />} />
+            <Route path="/review" element={<Review />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </Provider>
