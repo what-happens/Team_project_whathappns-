@@ -10,6 +10,7 @@ import QuizResult from "./pages/quizResult";
 // import Quiz from "./pages/quiz/Quiz";
 import Exercise from "./pages/exercise/Exercise";
 import NotFound from "./pages/notFound/NotFound";
+import MyPage from "./pages/myPage/MyPage";
 
 function App() {
   return (
@@ -18,12 +19,13 @@ function App() {
         <GlobalStyle />
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/*" element={<NotFound />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/join" element={<Join />}></Route>
           <Route path="/quiz-landing" element={<QuizLanding />} />
           <Route path="/quiz" element={<QuizResult />} />
           <Route path="/exercise" element={<Exercise />} />
-          <Route path="/*" element={<NotFound />}></Route>
+          <Route path="/my-page" element={<MyPage />}></Route>
         </Routes>
       </BrowserRouter>
     </Provider>
