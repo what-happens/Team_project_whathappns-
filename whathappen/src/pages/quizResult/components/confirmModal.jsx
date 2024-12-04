@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { CommonModal, Backdrop } from "./ModalStyle";
+import { CommonModal, ModalBackdrop } from "./ModalStyle";
 import PropTypes from "prop-types";
 
 const ConfirmExit = styled(CommonModal)`
@@ -34,7 +34,7 @@ export default function ConfirmExitModal({ isOpen, onClose }) {
   if (!isOpen) return null;
   return (
     <>
-      <Backdrop onClick={onClose} />
+      <ModalBackdrop onClick={onClose} />
       <ConfirmExit open={isOpen}>
         <ConfirmExitMessage>
           진행 데이터는 저장되지 않습니다. <br />
