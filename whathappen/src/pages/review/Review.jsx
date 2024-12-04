@@ -2,6 +2,7 @@ import React from "react";
 import ReviewCard from "./components/ReviewCard";
 import styled from "styled-components";
 import Button from "../../components/Button";
+
 const reviews = [
   {
     id: 0,
@@ -124,7 +125,7 @@ export default function Review() {
       <ReviewContainer>
         <h2>
           내 복습노트
-          <data value="8"> 총 : 8개</data>
+          <data value="8"> 총 : {reviews.length}</data>
         </h2>
         <ButtonWrapper>
           <Button
@@ -173,11 +174,12 @@ export default function Review() {
 const ReviewContainer = styled.section`
   display: flex;
   flex-direction: column;
-  border: 1px solid #c4c4c4;
   border-radius: 2rem;
-  margin: 0 auto;
+  height: 80vh;
   max-width: 120rem;
+  margin: 4rem auto;
   padding: 6rem 4.8rem 6rem 4rem;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 10px 0px;
 
   h2 {
     font-size: 4rem;
@@ -195,7 +197,7 @@ const ReviewCardSection = styled.section`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  height: 60rem;
+  height: 60vh;
   overflow-y: auto;
 
   /* 웹킷 기반 브라우저 */
