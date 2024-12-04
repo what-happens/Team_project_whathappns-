@@ -55,17 +55,18 @@ export default function Exercise() {
 
     segements.forEach((segement, idx) => {
       if (!(idx % 2)) {
-        if (segement) {
+        if (segement.trim()) {
           editorFiles.push(<pre key={idx}>{segement}</pre>);
         }
       } else {
         const { tagName, attributes, content } = textToHtml(segement);
+        if (!tagName || !attributes.problem_id) return;
         const id = parseInt(attributes.problem_id);
         const problem = {
           id: id,
-          correct_answer: `<${tagName}>${content}<${tagName}/>`,
+          correct_answer: `<${tagName}>${content}</${tagName}>`,
           incorrect_answer: attributes.incorrect_answers.map(
-            (answer) => `<${answer}>${content}<${answer}/>`
+            (answer) => `<${answer}>${content}</${answer}>`
           ),
         };
 
@@ -88,7 +89,7 @@ export default function Exercise() {
     const element = doc.body.firstChild;
 
     if (!element) {
-      return null;
+      return { tagName: "", attributes: {}, content: "" }; // 빈 결과 반환
     }
 
     const tagName = element.tagName.toLowerCase();
