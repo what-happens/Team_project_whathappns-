@@ -11,6 +11,8 @@ import QuizResult from "./pages/quizResult/quizResult";
 import Exercise from "./pages/exercise/Exercise";
 import Study from "./pages/study/Study";
 import StudyFinish from "./pages/study/StudyFinish";
+import NotFound from "./pages/notFound/NotFound";
+import MyPage from "./pages/myPage/MyPage";
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
         <GlobalStyle />
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/*" element={<NotFound />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/join" element={<Join />}></Route>
           <Route path="/quiz-landing" element={<QuizLanding />} />
@@ -26,6 +29,7 @@ function App() {
           <Route path="/exercise" element={<Exercise />} />
           <Route path="/study" element={<Study />}></Route>
           <Route path="/study-finish" element={<StudyFinish />}></Route>
+          <Route path="/my-page" element={<MyPage />}></Route>
         </Routes>
       </BrowserRouter>
     </Provider>
