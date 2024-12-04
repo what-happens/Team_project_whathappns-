@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import styled, { css } from "styled-components";
 import selectArrow from "../../../assets/selectArrow.png";
 
@@ -57,6 +57,28 @@ export function Select() {
   const [selectedQuizType, setSelectedQuizType] = useState("HTML");
   const [selectedQuestionCount, setSelectedQuestionCount] = useState(5);
 
+  const quizTypeRef = useRef(null);
+  const questionCountRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = () => {
+      if (quizTypeRef.current && !quizTypeRef.current.contains(event.target)) {
+        setQuizTypeOpen(false);
+      }
+      if (
+        questionCountRef.current &&
+        !questionCountRef.current.contains(event.target)
+      ) {
+        setQuestionCountOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <SelectBoxWrap>
       {/* Quiz Type Selector */}
@@ -66,37 +88,41 @@ export function Select() {
       >
         <span>{selectedQuizType}</span>
       </SelectBox>
-      <SelectItemWrap marginTop="8rem" isVisible={isQuizTypeOpen}>
-        {quizTypes.map((type, index) => (
-          <SelectItem
-            key={index}
-            onClick={() => {
-              setSelectedQuizType(type);
-              setQuizTypeOpen(false);
-            }}
-          >
-            {type}
-          </SelectItem>
-        ))}
-      </SelectItemWrap>
+      <div ref={quizTypeRef}>
+        <SelectItemWrap marginTop="-0.9rem" isVisible={isQuizTypeOpen}>
+          {quizTypes.map((type, index) => (
+            <SelectItem
+              key={index}
+              onClick={() => {
+                setSelectedQuizType(type);
+                setQuizTypeOpen(false);
+              }}
+            >
+              {type}
+            </SelectItem>
+          ))}
+        </SelectItemWrap>
+      </div>
 
       {/* Question Count Selector */}
       <SelectBox onClick={() => setQuestionCountOpen(!isQuestionCountOpen)}>
         <span>{selectedQuestionCount} 문제</span>
       </SelectBox>
-      <SelectItemWrap marginTop="-2rem" isVisible={isQuestionCountOpen}>
-        {questionCount.map((count, index) => (
-          <SelectItem
-            key={index}
-            onClick={() => {
-              setSelectedQuestionCount(count);
-              setQuestionCountOpen(false);
-            }}
-          >
-            {count} 문제
-          </SelectItem>
-        ))}
-      </SelectItemWrap>
+      <div ref={questionCountRef}>
+        <SelectItemWrap marginTop="-18rem" isVisible={isQuestionCountOpen}>
+          {questionCount.map((count, index) => (
+            <SelectItem
+              key={index}
+              onClick={() => {
+                setSelectedQuestionCount(count);
+                setQuestionCountOpen(false);
+              }}
+            >
+              {count} 문제
+            </SelectItem>
+          ))}
+        </SelectItemWrap>
+      </div>
     </SelectBoxWrap>
   );
 }
