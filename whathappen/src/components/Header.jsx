@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import BlackLogo from "../assets/what_happns_logo_white_blue.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "./Button";
+import { useSelector, useDispatch } from "react-redux";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
+import { clearUser } from "../redux/authSlice";
 
 const HeaderContainer = styled.header`
   width: 100%;
@@ -24,16 +28,45 @@ const Logo = styled.h1`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  text-indent: -9999px;
 `;
+
 export default function Header() {
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      dispatch(clearUser());
+      navigate("/");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <HeaderContainer>
       <Link to="/">
-        <Logo></Logo>
+        <Logo>이게되네?</Logo>
       </Link>
-      <Button padding="1rem 4rem " fontSize="small" borderRadius="5rem">
-        로그인
-      </Button>
+      {isAuthenticated ? (
+        <Button
+          padding="1rem 4rem"
+          fontSize="small"
+          borderRadius="5rem"
+          onClick={handleLogout}
+        >
+          로그아웃
+        </Button>
+      ) : (
+        <Link to="/login">
+          <Button padding="1rem 4rem" fontSize="small" borderRadius="5rem">
+            로그인
+          </Button>
+        </Link>
+      )}
     </HeaderContainer>
   );
 }

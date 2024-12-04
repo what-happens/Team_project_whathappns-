@@ -47,15 +47,18 @@ const StyledButton = styled.button`
     }
   }};
   font-size: ${(props) => (props.$fontSize === "small" ? "2rem" : "4rem")};
-  color: ${(props) =>
-    props.$color === "blue"
-      ? "#2E5DFE"
-      : props.$color === "black"
-        ? "#000"
-        : props.$color === "white"
-          ? "#FFF"
-          : "none"};
-  color: ${(props) => (props.$color === "blue" ? "#2E5DFE" : "#FFF")};
+  color: ${(props) => {
+    switch (props.$backgroundColor) {
+      case "blue":
+        return "#FFFFFF";
+      case "white":
+        return "#000000";
+      case "black":
+        return "#FFFFFF";
+      default:
+        return "#2E5DFE";
+    }
+  }};
   padding: ${(props) => props.$padding};
   line-height: 3rem;
   border-radius: ${(props) => props.$borderRadius};
