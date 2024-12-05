@@ -3,96 +3,10 @@ import Button from "../../components/Button";
 import Logo from "../../assets/what_happns_logo_b.png";
 import styled from "styled-components";
 import { Github, Google } from "./components/JoinSvg";
-import { useSignup } from "./../../hooks/useSignup";
-import { useNavigate } from "react-router-dom";
+// import { useSignup } from "./../../hooks/useSignup";
+// import { useNavigate } from "react-router-dom";
 import loadingImg from "../../assets/loading.gif";
 import { Link } from "react-router-dom";
-
-const JoinContents = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  height: 100vh;
-  padding: 22rem, 74rem, 4.3rem;
-`;
-
-const LogoContent = styled.div`
-  background-image: url(${Logo});
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 150px;
-  height: 150px;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2rem;
-`;
-
-const Input = styled.input`
-  padding: 3rem 0 3rem 2rem;
-  box-sizing: border-box;
-  font-size: 1.5rem;
-  width: 42rem;
-  height: 3rem;
-  border: 1px solid #c4c4c4;
-  border-radius: 15px;
-`;
-const InputWarp = styled.div`
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  &::after {
-    content: " * ";
-    color: #ff2e62;
-    align-items: center;
-    padding-left: 1rem;
-  }
-`;
-
-const Warp = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: ${(props) => props.flexDirection};
-  gap: ${(props) => props.gap};
-  margin: ${(props) => props.margin};
-`;
-
-const SnsWarp = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const LoadingPage = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 20;
-`;
-
-const LoadingImg = styled.div`
-  background-image: url(${loadingImg});
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: absolute;
-  width: 20rem;
-  height: 20rem;
-  top: 40%;
-  left: 47%;
-  z-index: 30;
-`;
 
 export default function Join() {
   const [nameValue, setNameValue] = useState("");
@@ -104,9 +18,9 @@ export default function Join() {
   const [pwError, setPwError] = useState("");
 
   const [loading, setLoading] = useState(false);
-  const { signup, error } = useSignup();
+  // const { signup, error } = useSignup();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const nameRegex = /^[가-힣]+$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -154,21 +68,49 @@ export default function Join() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validationJoin()) {
-      setLoading(true);
+      try {
+        setLoading(true);
 
-      const signupSuccess = await signup(idValue, pwValue, nameValue);
+        const response = await fetch("http://localhost:5000/user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: idValue,
+            password: pwValue,
+            name: nameValue,
+          }),
+        });
 
-      if (signupSuccess) {
+        if (response.ok) {
+          const data = await response.json();
+          console.log("회원가입 성공!", data);
+        } else {
+          const errorData = await response.json();
+          setIdError(errorData.message || "회원가입 실패");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        setIdError("서버 통신 중 오류가 발생했습니다");
+      } finally {
         setLoading(false);
-        setTimeout(() => {
-          navigate("/");
-        }, 1000);
-      } else {
-        setLoading(false);
-        setIdError(error);
       }
     }
   };
+  //     const signupSuccess = await signup(idValue, pwValue, nameValue);
+
+  //     if (signupSuccess) {
+  //       setLoading(false);
+  //       setTimeout(() => {
+  //         navigate("/");
+  //       }, 1000);
+  //     } else {
+  //       setLoading(false);
+  //       setIdError(error);
+  //     }
+  //   }
+  // };
 
   const handleIdChange = (e) => {
     setIdValue(e.target.value);
@@ -294,3 +236,89 @@ export default function Join() {
     </>
   );
 }
+
+const JoinContents = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  height: 100vh;
+  padding: 22rem, 74rem, 4.3rem;
+`;
+
+const LogoContent = styled.div`
+  background-image: url(${Logo});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 150px;
+  height: 150px;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+`;
+
+const Input = styled.input`
+  padding: 3rem 0 3rem 2rem;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  width: 42rem;
+  height: 3rem;
+  border: 1px solid #c4c4c4;
+  border-radius: 15px;
+`;
+const InputWarp = styled.div`
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  &::after {
+    content: " * ";
+    color: #ff2e62;
+    align-items: center;
+    padding-left: 1rem;
+  }
+`;
+
+const Warp = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: ${(props) => props.flexDirection};
+  gap: ${(props) => props.gap};
+  margin: ${(props) => props.margin};
+`;
+
+const SnsWarp = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const LoadingPage = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 20;
+`;
+
+const LoadingImg = styled.div`
+  background-image: url(${loadingImg});
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 20rem;
+  height: 20rem;
+  top: 40%;
+  left: 47%;
+  z-index: 30;
+`;
