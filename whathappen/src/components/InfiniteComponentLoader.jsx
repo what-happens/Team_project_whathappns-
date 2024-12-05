@@ -40,6 +40,37 @@ const SubBanner = styled.section`
   animation: ${slideUp} 1s ease;
 `;
 
+const BannerContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${(props) => props.gap || "3.5rem"};
+  ${(props) => props.center && "align-items: center"};
+  color: ${(props) => props.color || "inherit"};
+`;
+
+const BannerTitle = styled.h2`
+  font-size: 6rem;
+  font-weight: 700;
+  color: ${(props) => props.color || "inherit"};
+`;
+
+const BannerDescription = styled.p`
+  font-size: 2.4rem;
+  line-height: 3.5rem;
+  font-weight: 300;
+  text-align: ${(props) => (props.center ? "center" : "left")};
+`;
+
+const BannerImage = styled.div`
+  background-image: url(${(props) => props.src});
+  background-size: ${(props) => props.size || "contain"};
+  background-position: center;
+  background-repeat: no-repeat;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  ${(props) => props.margin && `margin: ${props.margin}`};
+`;
+
 MainBanner.propTypes = {
   bg: PropTypes.string.isRequired,
 };
@@ -51,28 +82,16 @@ const Mainbanner = () => {
   const { isAuthenticated } = useSelector((state) => state.auth);
   return (
     <MainBanner bg="white">
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "3.5rem",
-        }}
-      >
-        <h2 style={{ fontSize: "6rem", fontWeight: "700" }}>
+      <BannerContent>
+        <BannerTitle>
           복잡한 코딩은 이제 안녕! <br /> 이게 되네??
-        </h2>
-        <p
-          style={{
-            fontSize: "2.4rem",
-            lineHeight: "3.5rem",
-            fontWeight: "300",
-          }}
-        >
+        </BannerTitle>
+        <BannerDescription>
           어려운 이론은 그만! <br />
           쉽고 간단하게 직접 만들어보는
           <br />
           웹사이트!
-        </p>
+        </BannerDescription>
         {isAuthenticated ? (
           <Link to={"/"}>
             <Button
@@ -96,57 +115,24 @@ const Mainbanner = () => {
             </Button>
           </Link>
         )}
-      </div>
-
-      <div
-        style={{
-          backgroundImage: `url(${mainBannerImage})`,
-          backgroundSize: "contain",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          width: "692px",
-          height: "692px",
-        }}
-      ></div>
+      </BannerContent>
+      <BannerImage src={mainBannerImage} width="692px" height="692px" />
     </MainBanner>
   );
 };
+
 const PointOneBanner = () => {
   return (
     <SubBanner bg="#2E5DFE" padding="23.3rem 0rem 18rem 0rem;">
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "4.2rem",
-          color: "white",
-          alignItems: "center",
-        }}
-      >
-        <h3 style={{ fontSize: "6rem", fontWeight: "700" }}>POINT 01</h3>
-        <p
-          style={{
-            textAlign: "center",
-            fontWeight: "300",
-            lineHeight: "3rem",
-            fontSize: "2.4rem",
-          }}
-        >
+      <BannerContent gap="4.2rem" center color="white">
+        <BannerTitle>POINT 01</BannerTitle>
+        <BannerDescription center>
           귀여운 구황작물 친구들과 함께 HTML / CSS 로 이루어진 화면을
           <br />
           쉽고 재미있게 만들어 보아요!!
-        </p>
-        <div
-          style={{
-            backgroundImage: `url(${subBannerImageOne})`,
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            width: "1050px",
-            height: "61rem",
-          }}
-        ></div>
-      </div>
+        </BannerDescription>
+        <BannerImage src={subBannerImageOne} width="1050px" height="61rem" />
+      </BannerContent>
     </SubBanner>
   );
 };
@@ -154,39 +140,21 @@ const PointOneBanner = () => {
 const PointTwoBanner = () => {
   return (
     <SubBanner bg="white" padding="23.3rem 0rem 18rem 12rem;">
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "4.2rem",
-        }}
-      >
-        <h3 style={{ fontSize: "6rem", fontWeight: "700", color: "#2E5DFE" }}>
-          POINT 02
-        </h3>
-        <p
-          style={{
-            fontWeight: "300",
-            lineHeight: "3rem",
-            fontSize: "2.4rem",
-          }}
-        >
+      <BannerContent gap="4.2rem">
+        <BannerTitle color="#2E5DFE">POINT 02</BannerTitle>
+        <BannerDescription>
           반복적인 퀴즈게임을 통해서
           <br />
           재미있게 지식을 습득해보세요!
-        </p>
-        <div
-          style={{
-            backgroundImage: `url(${subBannerImageTwo})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            margin: "5rem auto",
-            width: "120rem",
-            height: "97rem",
-          }}
-        ></div>
-      </div>
+        </BannerDescription>
+        <BannerImage
+          src={subBannerImageTwo}
+          size="cover"
+          width="120rem"
+          height="97rem"
+          margin="5rem auto"
+        />
+      </BannerContent>
     </SubBanner>
   );
 };
@@ -194,45 +162,23 @@ const PointTwoBanner = () => {
 const PointThreeBanner = () => {
   return (
     <SubBanner bg="white" padding="23.3rem 0rem 18rem 0rem;">
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "4.2rem",
-          alignItems: "center",
-        }}
-      >
-        <h3 style={{ fontSize: "6rem", fontWeight: "700", color: "#2E5DFE" }}>
-          POINT 03
-        </h3>
-        <p
-          style={{
-            textAlign: "center",
-            fontWeight: "300",
-            lineHeight: "3rem",
-            fontSize: "2.4rem",
-          }}
-        >
+      <BannerContent gap="4.2rem" center>
+        <BannerTitle color="#2E5DFE">POINT 03</BannerTitle>
+        <BannerDescription center>
           귀여운 구황작물 친구들과 함께 HTML / CSS 로 이루어진 화면을
           <br />
           쉽고 재미있게 만들어 보아요!!
-        </p>
-        <div
-          style={{
-            backgroundImage: `url(${subBannerImageThree})`,
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            width: "130rem",
-            height: "86.5rem",
-            marginTop: "2rem",
-          }}
-        ></div>
-      </div>
+        </BannerDescription>
+        <BannerImage
+          src={subBannerImageThree}
+          width="130rem"
+          height="86.5rem"
+          margin="2rem 0 0 0"
+        />
+      </BannerContent>
     </SubBanner>
   );
 };
-
 const FooterComponent = () => {
   return <Footer />;
 };
