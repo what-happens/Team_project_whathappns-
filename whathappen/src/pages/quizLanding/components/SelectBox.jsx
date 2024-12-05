@@ -11,9 +11,8 @@ const selectCommonStyle = css`
   width: 33rem;
   height: 7rem;
   font-size: 3rem;
-  font-weight: 400;
   color: #b3b3b3;
-  border: 3px solid #2e5dff;
+  border: 3px solid var(--main-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +30,7 @@ const SelectBox = styled.button`
 `;
 
 const SelectItemWrap = styled.div`
-  border: 3px solid #2e5dff;
+  border: 3px solid var(--main-color);
   border-radius: 10px;
   position: absolute;
   z-index: 999;
@@ -42,7 +41,7 @@ const SelectItemWrap = styled.div`
 
 const SelectItem = styled.div`
   ${selectCommonStyle};
-  border: 1px solid#2e5dff;
+  border: 1px solid var(--main-color);
   &:hover {
     background-color: #edecec;
   }
@@ -86,7 +85,9 @@ export function Select() {
         marginBottom="1.4rem"
         onClick={() => setQuizTypeOpen(!isQuizTypeOpen)}
       >
-        <span>{selectedQuizType}</span>
+        <span style={{ fontFamily: "GmarketSansMedium" }}>
+          {selectedQuizType}
+        </span>
       </SelectBox>
       <div ref={quizTypeRef}>
         <SelectItemWrap marginTop="-0.9rem" isVisible={isQuizTypeOpen}>
@@ -106,7 +107,9 @@ export function Select() {
 
       {/* Question Count Selector */}
       <SelectBox onClick={() => setQuestionCountOpen(!isQuestionCountOpen)}>
-        <span>{selectedQuestionCount} 문제</span>
+        <span style={{ fontFamily: "GmarketSansMedium" }}>
+          {selectedQuestionCount} 문제
+        </span>
       </SelectBox>
       <div ref={questionCountRef}>
         <SelectItemWrap marginTop="-18rem" isVisible={isQuestionCountOpen}>
