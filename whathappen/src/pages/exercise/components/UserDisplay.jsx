@@ -11,6 +11,8 @@ export default function UserDisplay({ height }) {
 const UserDisplayContainer = styled.section`
   width: 100%;
   height: ${(props) => props.$height}%;
+  border: 1px solid var(--main-color);
+  border-radius: 0 0 20px 0px;
 `;
 
 UserDisplay.propTypes = {

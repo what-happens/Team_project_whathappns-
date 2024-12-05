@@ -4,6 +4,7 @@ import Question from "./components/Question";
 import UserDisplay from "./components/UserDisplay";
 import styled from "styled-components";
 import DragableBar from "./components/DragableBar";
+
 /* 
 const problems = [
   {
@@ -39,11 +40,11 @@ export default function Exercise() {
   return (
     <ExerciseContainer $width={totalWidth} $height={totalHeight}>
       <Editor width={editorWidth} />
-      <DragableBar vertical={true} onDrag={handleDrag} />
+      <DragableBar vertical={true} onDrag={handleDrag}></DragableBar>
       <div style={{ width: `${renderWidth}%`, height: "100%" }}>
         <Question height={50} />
         <HorizontalDivide />
-        <UserDisplay height={50} />
+        <UserDisplay height={48.1} />
       </div>
       {/* {isShow && <BlankOption problem={selectedProblem} />} */}
     </ExerciseContainer>
@@ -55,15 +56,16 @@ const ExerciseContainer = styled.section`
   align-items: center;
   justify-content: center;
   margin: 4rem auto;
-  border-radius: 1rem;
+  border-radius: 2rem 2rem 2rem 2rem;
   width: ${(props) => props.$width}rem;
   height: ${(props) => props.$height}rem;
-  border: 1px solid #c4c4c4;
+  /* border: 1px solid #c4c4c4; */
 `;
 
 const HorizontalDivide = styled.div`
-  height: 8px;
+  height: 15px;
   width: 100%;
-  background-color: black;
+  background-color: white;
+  border: 1px solid #2e5dfe;
   cursor: pointer;
 `;

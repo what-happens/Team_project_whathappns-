@@ -56,6 +56,8 @@ export default function Editor({ width }) {
 const EditorContainer = styled.section`
   width: ${(props) => props.$width}%;
   height: 100%;
+  border: 1px solid var(--main-color);
+  border-radius: 20px 0 0 20px;
 `;
 
 Editor.propTypes = {
