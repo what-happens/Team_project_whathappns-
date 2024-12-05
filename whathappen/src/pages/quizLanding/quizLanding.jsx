@@ -67,7 +67,10 @@ export default function QuizLanding() {
         </QuizOptionsSection>
         <QuizControlSection>
           <h2 className="sr-only">퀴즈를 풀어보세요</h2>
-          <QuizControlButton fontWeight="600" backgroundColor="#2E5DFF;">
+          <QuizControlButton
+            fontWeight="600"
+            backgroundColor="var(--main-color);"
+          >
             퀴즈 풀기!
           </QuizControlButton>
           <QuizControlButton backgroundColor="#FF2E62;">

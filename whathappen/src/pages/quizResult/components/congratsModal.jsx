@@ -33,7 +33,7 @@ const GotoMyPage = styled.button`
   width: 183px;
   height: 46px;
   border-radius: 20px;
-  background-color: #2e5dff;
+  background-color: var(--main-color);
   border: none;
   color: #fff;
   font-size: 20px;
