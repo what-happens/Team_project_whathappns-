@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
 import selectArrow from "../../../assets/selectArrow.png";
+import { media } from "../../../styles/MideaQuery";
 
 const SelectBoxWrap = styled.div`
   display: flex;
@@ -8,15 +9,22 @@ const SelectBoxWrap = styled.div`
 `;
 
 const selectCommonStyle = css`
-  width: 41.8rem;
-  height: 10.1rem;
-  font-size: 4rem;
+  width: 36.8rem;
+  height: 8.1rem;
+  font-size: 3rem;
   font-weight: 400;
   color: #b3b3b3;
   border: 3px solid #2e5dff;
   display: flex;
+  font-family: "GmarketSansMedium";
   justify-content: center;
   align-items: center;
+
+  ${media.medium`
+    width: 31.8rem;
+  height: 7.1rem;
+  font-size: 2.5rem;
+`}
 `;
 
 const SelectBox = styled.button`
@@ -65,7 +73,7 @@ export function Select() {
       >
         <span>{selectedQuizType}</span>
       </SelectBox>
-      <SelectItemWrap marginTop="11rem" isVisible={isQuizTypeOpen}>
+      <SelectItemWrap marginTop="10rem" isVisible={isQuizTypeOpen}>
         {quizTypes.map((type, index) => (
           <SelectItem
             key={index}
