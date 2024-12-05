@@ -1,42 +1,56 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useRef, useCallback } from "react";
 import styled from "styled-components";
-/*
-  drag시 이벤트마다 deltaPercent가 prev + deltaPercent 돼서 중첩되는 듯 함
-  1초만에 1.2를 20번 더 해서
 
-*/
 export default function DragableBar({ vertical, onDrag }) {
-  const handleMouseDown = (event) => {
-    event.preventDefault();
-    const startX = event.clientX;
+  const startXRef = useRef(null);
+  const barRef = useRef(null);
 
-    const handleMouseMove = (moveEvent) => {
-      const delta = moveEvent.clientX - startX;
-      const deltaPercent = (delta / window.innerWidth) * 100;
-      onDrag(deltaPercent);
-    };
+  const handleMouseDown = useCallback(
+    (event) => {
+      event.preventDefault();
+      const containerWidth = barRef.current
+        ? barRef.current.parentElement.offsetWidth
+        : window.innerWidth;
 
-    const handleMouseUp = () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
-    };
+      startXRef.current = event.clientX;
 
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
-  };
+      const handleMouseMove = (moveEvent) => {
+        if (startXRef.current !== null) {
+          const delta = moveEvent.clientX - startXRef.current;
+          const deltaPercent = (delta / containerWidth) * 100;
 
-  return <Bar onMouseDown={handleMouseDown} $vertical={vertical} />;
+          onDrag(deltaPercent);
+          startXRef.current = moveEvent.clientX;
+        }
+      };
+
+      const handleMouseUp = () => {
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
+        startXRef.current = null;
+      };
+
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+    },
+    [onDrag]
+  );
+
+  return (
+    <Bar ref={barRef} onMouseDown={handleMouseDown} $vertical={vertical} />
+  );
 }
 
 const Bar = styled.div`
-  width: ${(props) => (props.$vertical ? "8px" : "100%")};
+  width: ${(props) => (props.$vertical ? "15px" : "100%")};
   height: ${(props) => (props.$vertical ? "100%" : "8px")};
-  cursor: pointer;
-  background-color: blue;
+  cursor: ${(props) => (props.$vertical ? "ew-resize" : "ns-resize")};
+  background-color: white;
+  border: 1px solid #2e5dfe;
 `;
 
 DragableBar.propTypes = {
   vertical: PropTypes.bool,
-  onDrag: PropTypes.func,
+  onDrag: PropTypes.func.isRequired,
 };
