@@ -22,12 +22,13 @@ const ButtonType = styled.div`
 
 const YesOrNo = styled.button`
   width: 11.3rem;
-  height: 4.6rem;
-  border-radius: 20px;
+  height: 4.3rem;
+  border-radius: 1.8rem;
   color: #fff;
   font-weight: 400;
-  background: #2e5dff;
+  background: var(--main-color);
   border: none;
+  font-size: 1.6rem;
 `;
 
 export default function ConfirmExitModal({ isOpen, onClose }) {
