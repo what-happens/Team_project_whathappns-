@@ -101,8 +101,9 @@ const Mainbanner = () => {
       <div
         style={{
           backgroundImage: `url(${mainBannerImage})`,
-          backgroundSize: "cover",
+          backgroundSize: "contain",
           backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
           width: "692px",
           height: "692px",
         }}
