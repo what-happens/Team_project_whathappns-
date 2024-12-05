@@ -5,7 +5,7 @@ import CongratulationsModal from "./components/congratsModal";
 import { useState } from "react";
 
 const ResultBackground = styled.div`
-  background-color: #2e5dff;
+  background-color: var(--main-color);
   position: fixed;
   top: 0;
   left: 0;
@@ -43,10 +43,12 @@ const QuizResultSection = styled.section`
   gap: 1.7rem;
 `;
 
+const correctAnswerCount = 8;
+
 const QuizResultMessage = styled.div`
   width: 28rem;
   height: 7rem;
-  background-color: #2e5dff;
+  background-color: var(--main-color);
   border-radius: 20px;
   color: #fff;
   font-size: 3.5rem;
@@ -97,12 +99,12 @@ const ResultControlSection = styled.section`
 
 const ResultControlButton = styled.button`
   width: 14.5rem;
-  height: 3.8rem;
-  border-radius: 1.3rem;
+  height: 4rem;
+  border-radius: 1.8rem;
   border: none;
   background-color: ${(props) => props.backgroundColor};
   color: #fff;
-  font-size: 1.8rem;
+  font-size: 2rem;
 `;
 
 export default function QuizResult() {
@@ -123,7 +125,10 @@ export default function QuizResult() {
         </header>
         <QuizResultSection>
           <h2 style={{ fontSize: "4.2rem" }}>퀴즈 결과!</h2>
-          <QuizResultMessage>8 문제 정답!</QuizResultMessage>
+          <QuizResultMessage>
+            {" "}
+            {correctAnswerCount} 문제 정답!
+          </QuizResultMessage>
         </QuizResultSection>
         <section>
           <h2 className="sr-only">퀴즈 결과 상세보기</h2>
@@ -147,7 +152,7 @@ export default function QuizResult() {
             onClose={closeCongratulationsModal}
           />
           <ResultControlButton
-            backgroundColor="#2E5DFF"
+            backgroundColor="var(--main-color)"
             onClick={() => setConfirmModalOpen(true)}
           >
             처음으로
