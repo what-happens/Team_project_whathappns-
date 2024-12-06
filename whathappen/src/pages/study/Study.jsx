@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import IconStage1 from "../../assets/icon_stage1.png";
 import IconStage2 from "../../assets/icon_stage2.png";
 import IconStage3 from "../../assets/icon_stage3.png";
@@ -28,7 +29,7 @@ const Header = styled.header`
   margin: 4rem;
 `;
 
-const BackLink = styled.a`
+const BackLink = styled(Link)`
   font-size: 3rem;
   color: #fff;
   display: flex;
@@ -93,7 +94,7 @@ export default function Study() {
     <Container>
       <Header>
         <h1 className="sr-only">스터디 페이지</h1>
-        <BackLink href="">메인으로</BackLink>
+        <BackLink to="/">메인으로</BackLink>
       </Header>
 
       <StudySection>

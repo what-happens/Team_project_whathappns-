@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Icon from "../../assets/Icon_finish.png";
 import Logo from "../../assets/logo_white.png";
+import { Link } from "react-router-dom";
 
 const Container = styled.section`
   display: flex;
@@ -38,7 +39,7 @@ const Subtitle = styled.p`
   font-weight: 100;
 `;
 
-const ActionLink = styled.a`
+const ActionLink = styled(Link)`
   background-color: #fff;
   color: var(--main-color);
   width: 40rem;
@@ -63,7 +64,7 @@ export default function StudyFinish() {
         <Title>학습을 완료하였습니다!!</Title>
         <Subtitle>다음 학습도 도전 해보세요!</Subtitle>
       </div>
-      <ActionLink href="#">메인페이지로 이동</ActionLink>
+      <ActionLink to="/">메인페이지로 이동</ActionLink>
     </Container>
   );
 }
