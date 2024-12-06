@@ -5,6 +5,7 @@ import UserDisplay from "./components/UserDisplay";
 import styled from "styled-components";
 import DragableBar from "./components/DragableBar";
 import BlankProblem from "./components/BlankProblem";
+import BlankOption from "./components/BlankOption";
 /* 
 const problems = [
   {
@@ -23,7 +24,7 @@ const dummyQuiz = [
   {
     stage: 1,
     question:
-      "<h1>명작 영화 소개</h1>|=<h2 problem_id='1' incorrect_answers='h1,span,div'>Psycho(1960) - 스릴러</h2>=|<img src='#' alt='싸이코 포스터'/>|=<p problem_id='2' incorrect_answers='a,header,meta'>앨프리드 히치콕의 대표작 중 하나로, 로버트 블록이 쓴 동명 소설을 바탕으로 만든 영화.</p>=|<a href='#'>출처: 네이버 영화</a>",
+      "|=<h1  problem_id='0' incorrect_answers='header,span,div'>명작 영화 소개</h1>=|<h2>Psycho(1960) - 스릴러</h2><img src='#' alt='싸이코 포스터'/>|=<p problem_id='1' incorrect_answers='a,header,meta'>앨프리드 히치콕의 대표작 중 하나로, 로버트 블록이 쓴 동명 소설을 바탕으로 만든 영화.</p>=|<a href='#'>출처: 네이버 영화</a>",
   },
 ];
 
@@ -33,25 +34,27 @@ export default function Exercise() {
   const [editorWidth, setEditorWidth] = useState(40);
   const [renderWidth, setRenderWidth] = useState(60);
   const [editorItem, setEditorItem] = useState([]);
+  const [problems, setProblems] = useState([]); //문제 관리
+  const [selectedProblemId, setSelectedProblemId] = useState(null); //id를 값으로 받음
+  const [isShow, setIsShow] = useState(false); //버튼 모달 관리
+  //const [answer, setAnswer] = useState([]);
+  console.log(setTotalWidth, setTotalHeight, isShow, selectedProblemId);
+
+  const selectedProblem = problems.find(
+    (problem) => problem.id === selectedProblemId
+  );
 
   const handleDrag = (delta) => {
     setEditorWidth((prev) => Math.max(10, Math.min(prev + delta, 90))); // 최소 10%, 최대 90%
     setRenderWidth((prev) => Math.max(10, Math.min(prev - delta, 90))); // 나머지 영역 계산
   };
 
-  console.log(setTotalWidth, setTotalHeight, isShow, selectedProblemId);
-  const [selectedProblemId, setSelectedProblemId] = useState(null); //id를 값으로 받음
-  const [isShow, setIsShow] = useState(false);
-  /*
-  const selectedProblem = problems.find(
-    (problem) => problem.id === selectedProblemId
-  );*/
-
   const paresProblem = (data) => {
     //함수 이름 변경
     const pattern = /\|=(.*?)=\|/gis;
     const segements = data.split(pattern);
     const editorFiles = [];
+    const problemArr = [];
 
     segements.forEach((segement, idx) => {
       if (!(idx % 2)) {
@@ -70,6 +73,8 @@ export default function Exercise() {
           ),
         };
 
+        problemArr.push(problem);
+
         editorFiles.push(
           <BlankProblem
             key={idx}
@@ -80,7 +85,7 @@ export default function Exercise() {
         );
       }
     });
-    return editorFiles;
+    return { editorFiles, problemArr };
   };
 
   const textToHtml = (htmlText) => {
@@ -106,21 +111,26 @@ export default function Exercise() {
   };
 
   useEffect(() => {
-    const editorFiles = paresProblem(dummyQuiz[0].question);
+    const { editorFiles, problemArr } = paresProblem(dummyQuiz[0].question);
     setEditorItem([...editorFiles]);
+    setProblems([...problemArr]);
   }, []);
 
   return (
-    <ExerciseContainer $width={totalWidth} $height={totalHeight}>
-      <Editor width={editorWidth} editorItem={editorItem} />
-      <DragableBar vertical={true} onDrag={handleDrag} />
-      <div style={{ width: `${renderWidth}%`, height: "100%" }}>
-        <Question height={50} />
-        <HorizontalDivide />
-        <UserDisplay height={50} />
-      </div>
-      {/* {isShow && <BlankOption problem={selectedProblem} />} */}
-    </ExerciseContainer>
+    <>
+      <ExerciseContainer $width={totalWidth} $height={totalHeight}>
+        <Editor width={editorWidth} editorItem={editorItem} />
+        <DragableBar vertical={true} onDrag={handleDrag} />
+        <div style={{ width: `${renderWidth}%`, height: "100%" }}>
+          <Question height={50} />
+          <HorizontalDivide />
+          <UserDisplay height={50} />
+        </div>
+      </ExerciseContainer>
+      {isShow && (
+        <BlankOption problem={selectedProblem} setIsShow={setIsShow} />
+      )}
+    </>
   );
 }
 
