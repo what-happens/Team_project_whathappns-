@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import congratsImg from "../../../assets/congratulations.png";
-import { CommonModal, Backdrop } from "./ModalStyle";
+import { CommonModal, ModalBackdrop } from "./ModalStyle";
 import PropTypes from "prop-types";
 
 const Congratulations = styled(CommonModal)`
@@ -33,7 +33,7 @@ const GotoMyPage = styled.button`
   width: 183px;
   height: 46px;
   border-radius: 20px;
-  background-color: #2e5dff;
+  background-color: var(--main-color);
   border: none;
   color: #fff;
   font-size: 20px;
@@ -45,7 +45,7 @@ export default function CongratulationsModal({ isOpen, onClose }) {
 
   return (
     <>
-      <Backdrop onClick={onClose} />
+      <ModalBackdrop onClick={onClose} />
       <Congratulations>
         <CongratsImg src={congratsImg} alt="축하 이미지" />
         <SaveMessage>

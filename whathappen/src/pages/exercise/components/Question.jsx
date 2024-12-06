@@ -8,6 +8,8 @@ export default function Question({ height }) {
 const QuestionContainer = styled.section`
   width: 100%;
   height: ${(props) => props.$height}%;
+  border: 1px solid var(--main-color);
+  border-radius: 0px 20px 0px 0px;
 `;
 
 Question.propTypes = {

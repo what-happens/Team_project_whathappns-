@@ -2,21 +2,35 @@ import styled from "styled-components";
 import quizImage from "../../assets/quiz_logo.png";
 import backgroundImage from "../../assets/quiz_landing.png";
 import { Select } from "./components/SelectBox";
+import { media } from "../../styles/MideaQuery";
+
+const LandingBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 998;
+  background-image: url(${backgroundImage});
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+  ${media.medium`
+    background-image: none;
+`}
+`;
 
 const QuizLandingMain = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.4rem;
-  background-image: url(${backgroundImage});
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  gap: 2rem;
 `;
 
 const QuizLogo = styled.img`
-  width: 64.8rem;
-  height: 58.2rem;
-  margin-top: 6.5rem;
+  width: 50rem;
+  height: 40.2rem;
+  margin-top: 5rem;
 `;
 
 const QuizOptionsSection = styled.section`
@@ -30,40 +44,53 @@ const QuizControlSection = styled.section`
 `;
 
 const QuizControlButton = styled.button`
-  width: 24.9rem;
-  height: 7.8rem;
-  border-radius: 30px;
-  margin-top: 1.3rem;
-  margin-bottom: 7.8rem;
+  width: 20rem;
+  height: 6rem;
+  border-radius: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
   border: none;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: ${(props) => props.fontWeight || "normal"};
   color: #fff;
   background-color: ${(props) => props.backgroundColor};
+
+  ${media.medium`
+
+    width: 16.9rem;
+    height: 7.8rem;
+    font-size: 2.5rem;
+
+`}
 `;
 
 export default function QuizLanding() {
   return (
-    <QuizLandingMain>
-      <header>
-        <h1>
-          <QuizLogo src={quizImage} alt="퀴즈 이미지"></QuizLogo>
-        </h1>
-      </header>
-      <QuizOptionsSection>
-        <h2 className="sr-only">퀴즈 유형을 선택하세요</h2>
+    <LandingBackground>
+      <QuizLandingMain>
+        <header>
+          <h1>
+            <QuizLogo src={quizImage} alt="퀴즈 이미지"></QuizLogo>
+          </h1>
+        </header>
+        <QuizOptionsSection>
+          <h2 className="sr-only">퀴즈 유형을 선택하세요</h2>
 
-        <Select></Select>
-      </QuizOptionsSection>
-      <QuizControlSection>
-        <h2 className="sr-only">퀴즈를 풀어보세요</h2>
-        <QuizControlButton fontWeight="600" backgroundColor="#2E5DFF;">
-          퀴즈 풀기!
-        </QuizControlButton>
-        <QuizControlButton backgroundColor="#FF2E62;">
-          뒤로가기
-        </QuizControlButton>
-      </QuizControlSection>
-    </QuizLandingMain>
+          <Select></Select>
+        </QuizOptionsSection>
+        <QuizControlSection>
+          <h2 className="sr-only">퀴즈를 풀어보세요</h2>
+          <QuizControlButton
+            fontWeight="600"
+            backgroundColor="var(--main-color);"
+          >
+            퀴즈 풀기!
+          </QuizControlButton>
+          <QuizControlButton backgroundColor="#FF2E62;">
+            뒤로가기
+          </QuizControlButton>
+        </QuizControlSection>
+      </QuizLandingMain>
+    </LandingBackground>
   );
 }

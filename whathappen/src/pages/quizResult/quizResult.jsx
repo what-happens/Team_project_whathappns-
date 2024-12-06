@@ -4,19 +4,21 @@ import ConfirmExitModal from "./components/confirmModal";
 import CongratulationsModal from "./components/congratsModal";
 import { useState } from "react";
 
-const Background = styled.div`
-  background-color: #2e5dff;
-  height: 100%;
-  width: 100%;
-  display: flex;
+const ResultBackground = styled.div`
+  background-color: var(--main-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: -1;
 `;
 
 const QuizResultMain = styled.main`
-  width: 74.7rem;
-  height: 79.9rem;
+  width: 63rem;
+  height: 67rem;
   border-radius: 50px;
-  margin: 16.7rem auto 11.4rem;
+  margin: 5rem auto 6rem;
   box-shadow: 2px 4px 4px 5px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -26,28 +28,30 @@ const QuizResultMain = styled.main`
 `;
 
 const Logo = styled.img`
-  width: 34.6rem;
-  height: 8.5rem;
-  margin-bottom: 7.2rem;
+  width: 30rem;
+  height: 7.2rem;
+  margin-bottom: 6rem;
 `;
 
 const QuizResultSection = styled.section`
-  width: 55rem;
+  width: 48rem;
   border-bottom: 0.5px solid #c4c4c4;
-  padding-bottom: 5rem;
+  padding-bottom: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.7rem;
 `;
 
+const correctAnswerCount = 8;
+
 const QuizResultMessage = styled.div`
-  width: 33.4rem;
-  height: 8.5rem;
-  background-color: #2e5dff;
+  width: 28rem;
+  height: 7rem;
+  background-color: var(--main-color);
   border-radius: 20px;
   color: #fff;
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,8 +64,8 @@ const ResultContainer = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5.7rem;
-  margin-top: 2.6rem;
+  gap: 4.5rem;
+  margin-top: 2rem;
 `;
 
 const ResultItem = styled.li`
@@ -71,21 +75,21 @@ const ResultItem = styled.li`
 `;
 
 const resultItemCommon = css`
-  height: 6rem;
+  height: 5rem;
   display: flex;
   align-items: center;
 `;
 
 const ResultTypes = styled.div`
-  font-size: 2.5rem;
+  font-size: 2rem;
   ${resultItemCommon}
 `;
 
 const ResultCount = styled.div`
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: 700;
   ${resultItemCommon}
-  margin-bottom: 9.6rem;
+  margin-bottom: 8rem;
 `;
 
 const ResultControlSection = styled.section`
@@ -94,9 +98,9 @@ const ResultControlSection = styled.section`
 `;
 
 const ResultControlButton = styled.button`
-  width: 15.7rem;
-  height: 4.6rem;
-  border-radius: 20px;
+  width: 14.5rem;
+  height: 4rem;
+  border-radius: 1.8rem;
   border: none;
   background-color: ${(props) => props.backgroundColor};
   color: #fff;
@@ -112,7 +116,7 @@ export default function QuizResult() {
   const closeCongratulationsModal = () => setCongratulationsModalOpen(false);
 
   return (
-    <Background>
+    <ResultBackground>
       <QuizResultMain>
         <header>
           <h1>
@@ -120,8 +124,11 @@ export default function QuizResult() {
           </h1>
         </header>
         <QuizResultSection>
-          <h2 style={{ fontSize: "5rem" }}>퀴즈 결과!</h2>
-          <QuizResultMessage>8 문제 정답!</QuizResultMessage>
+          <h2 style={{ fontSize: "4.2rem" }}>퀴즈 결과!</h2>
+          <QuizResultMessage>
+            {" "}
+            {correctAnswerCount} 문제 정답!
+          </QuizResultMessage>
         </QuizResultSection>
         <section>
           <h2 className="sr-only">퀴즈 결과 상세보기</h2>
@@ -145,7 +152,7 @@ export default function QuizResult() {
             onClose={closeCongratulationsModal}
           />
           <ResultControlButton
-            backgroundColor="#2E5DFF"
+            backgroundColor="var(--main-color)"
             onClick={() => setConfirmModalOpen(true)}
           >
             처음으로
@@ -158,6 +165,6 @@ export default function QuizResult() {
           </ResultControlButton>
         </ResultControlSection>
       </QuizResultMain>
-    </Background>
+    </ResultBackground>
   );
 }

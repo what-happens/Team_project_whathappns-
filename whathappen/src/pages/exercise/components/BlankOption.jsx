@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Button from "../../../components/Button";
 
-export default function BlankOption({ problem }) {
+export default function BlankOption({ problem, setIsShow }) {
   const [isLoading, setIsLoading] = useState(false);
   const [shuffledAnswer, setShuffledAnswer] = useState([]);
+
   const shuffleArray = (arr) => {
     const newArray = [...arr];
     for (let i = newArray.length - 1; i > 0; i--) {
@@ -23,12 +24,19 @@ export default function BlankOption({ problem }) {
     setIsLoading(true);
   }, [problem]);
 
+  const handleOnClick = (e) => {
+    setIsShow(false);
+    console.log(e.target.textContent);
+    console.log(shuffledAnswer);
+  };
   if (!isLoading) {
     return <div>loading</div>;
   }
 
   return shuffledAnswer.map((answer, idx) => (
-    <Button key={`${problem.id}-${idx}`}>{answer}</Button>
+    <Button key={`${problem.id}-${idx}`} onClick={handleOnClick}>
+      {answer}
+    </Button>
   ));
 }
 
@@ -38,4 +46,5 @@ BlankOption.propTypes = {
     correct_answer: PropTypes.string.isRequired,
     incorrect_answer: PropTypes.arrayOf(PropTypes.string).isRequired,
   }),
+  setIsShow: PropTypes.func,
 };

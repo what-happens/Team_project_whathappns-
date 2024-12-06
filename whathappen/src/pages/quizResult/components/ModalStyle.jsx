@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Backdrop = styled.div`
+export const ModalBackdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
