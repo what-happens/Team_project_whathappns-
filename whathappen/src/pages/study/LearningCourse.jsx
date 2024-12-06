@@ -40,7 +40,7 @@ const BackLink = styled(Link)`
 export default function LearningCourse() {
   return (
     <Container>
-      <h1 className="sr-only">학습 페이지</h1>
+      <h1 className="sr-only">학습 과정 페이지</h1>
       <Header>
         <BackLink />
         <h2>Stage 01</h2>

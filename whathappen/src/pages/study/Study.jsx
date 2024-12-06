@@ -93,7 +93,7 @@ export default function Study() {
   return (
     <Container>
       <Header>
-        <h1 className="sr-only">스터디 페이지</h1>
+        <h1 className="sr-only">학습 스테이지 페이지</h1>
         <BackLink to="/">메인으로</BackLink>
       </Header>
 
