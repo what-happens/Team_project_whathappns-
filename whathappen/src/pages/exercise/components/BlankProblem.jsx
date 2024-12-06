@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 //문제를 props로 받아온다.
 //모달은 누가 관리하는게??
 export default function BlankProblem({ problem, onSelect, setIsShow }) {
-  const [answer, setAnswer] = useState("");
-
   const handleOnClickBlank = () => {
     onSelect(problem.id);
     setIsShow(true);
   };
-  console.log(answer, setAnswer, problem);
+
   return <BlankButton type="button" onClick={handleOnClickBlank}></BlankButton>;
 }
 
