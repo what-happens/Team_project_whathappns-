@@ -10,7 +10,7 @@ export default function Button({
   borderRadius = "2rem",
   type = "button",
   border = "none",
-  fontFamily = "GmarketSansMedium",
+  fontFamily = "Gmarket Sans",
   onClick,
   children,
   width,
