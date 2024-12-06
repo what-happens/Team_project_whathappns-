@@ -13,9 +13,8 @@ const SliderWrapper = styled.div`
 `;
 
 const StyledSwiper = styled(Swiper)`
-  width: 80%;
   overflow: auto;
-  padding: 1rem;
+  padding: 3rem;
 `;
 
 const StyledButton = styled.button`
@@ -33,13 +32,21 @@ const Card = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 30rem;
   height: 50rem;
   background-color: ${(props) => props.bgColor || "#f0f0f0"};
   border-radius: 20px;
-  box-shadow: 5px 5px 1px 1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #c4c4c4;
+  box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
+
+  /* 추후 삭제 */
   font-size: 1.2rem;
   font-weight: bold;
   color: #333;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 const CardSlider = () => {
