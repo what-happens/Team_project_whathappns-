@@ -11,6 +11,7 @@ import QuizResult from "./pages/quizResult/quizResult";
 import Exercise from "./pages/exercise/Exercise";
 import Study from "./pages/study/Study";
 import StudyFinish from "./pages/study/StudyFinish";
+import LearningCourse from "./pages/study/LearningCourse";
 import NotFound from "./pages/notFound/NotFound";
 import MyPage from "./pages/myPage/MyPage";
 import Review from "./pages/review/Review";
@@ -61,6 +62,8 @@ function App() {
           <Route path="/exercise" element={<Exercise />} />
           <Route path="/study" element={<Study />}></Route>
           <Route path="/study-finish" element={<StudyFinish />}></Route>
+          <Route path="/learn-course" element={<LearningCourse />}></Route>
+
           <Route element={<AuthHeader />}>
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/review" element={<Review />} />
