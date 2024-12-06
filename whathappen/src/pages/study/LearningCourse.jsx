@@ -1,9 +1,7 @@
 import React from "react";
-// import { Link } from "react-router-dom";
-// import CardSlider from "./components/CardSlider";
+import { Link } from "react-router-dom";
 import CardSlider from "./components/CardSlider";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import back from "../../assets/back_link.png";
 
 const Container = styled.div`
