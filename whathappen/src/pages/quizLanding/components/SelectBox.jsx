@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import styled, { css } from "styled-components";
 import selectArrow from "../../../assets/selectArrow.png";
 import { media } from "../../../styles/MideaQuery";
@@ -9,12 +9,11 @@ const SelectBoxWrap = styled.div`
 `;
 
 const selectCommonStyle = css`
-  width: 36.8rem;
-  height: 8.1rem;
+  width: 33rem;
+  height: 7rem;
   font-size: 3rem;
-  font-weight: 400;
   color: #b3b3b3;
-  border: 3px solid #2e5dff;
+  border: 3px solid var(--main-color);
   display: flex;
   font-family: "GmarketSansMedium";
   justify-content: center;
@@ -35,10 +34,11 @@ const SelectBox = styled.button`
   background-image: url(${selectArrow});
   background-repeat: no-repeat;
   background-position: left 2rem center;
+  background-size: 10%;
 `;
 
 const SelectItemWrap = styled.div`
-  border: 3px solid #2e5dff;
+  border: 3px solid var(--main-color);
   border-radius: 10px;
   position: absolute;
   z-index: 999;
@@ -49,7 +49,7 @@ const SelectItemWrap = styled.div`
 
 const SelectItem = styled.div`
   ${selectCommonStyle};
-  border: 1px solid#2e5dff;
+  border: 1px solid var(--main-color);
   &:hover {
     background-color: #edecec;
   }
@@ -64,6 +64,28 @@ export function Select() {
   const [selectedQuizType, setSelectedQuizType] = useState("HTML");
   const [selectedQuestionCount, setSelectedQuestionCount] = useState(5);
 
+  const quizTypeRef = useRef(null);
+  const questionCountRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = () => {
+      if (quizTypeRef.current && !quizTypeRef.current.contains(event.target)) {
+        setQuizTypeOpen(false);
+      }
+      if (
+        questionCountRef.current &&
+        !questionCountRef.current.contains(event.target)
+      ) {
+        setQuestionCountOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <SelectBoxWrap>
       {/* Quiz Type Selector */}
@@ -71,39 +93,47 @@ export function Select() {
         marginBottom="1.4rem"
         onClick={() => setQuizTypeOpen(!isQuizTypeOpen)}
       >
-        <span>{selectedQuizType}</span>
+        <span style={{ fontFamily: "GmarketSansMedium" }}>
+          {selectedQuizType}
+        </span>
       </SelectBox>
-      <SelectItemWrap marginTop="10rem" isVisible={isQuizTypeOpen}>
-        {quizTypes.map((type, index) => (
-          <SelectItem
-            key={index}
-            onClick={() => {
-              setSelectedQuizType(type);
-              setQuizTypeOpen(false);
-            }}
-          >
-            {type}
-          </SelectItem>
-        ))}
-      </SelectItemWrap>
+      <div ref={quizTypeRef}>
+        <SelectItemWrap marginTop="-0.9rem" isVisible={isQuizTypeOpen}>
+          {quizTypes.map((type, index) => (
+            <SelectItem
+              key={index}
+              onClick={() => {
+                setSelectedQuizType(type);
+                setQuizTypeOpen(false);
+              }}
+            >
+              {type}
+            </SelectItem>
+          ))}
+        </SelectItemWrap>
+      </div>
 
       {/* Question Count Selector */}
       <SelectBox onClick={() => setQuestionCountOpen(!isQuestionCountOpen)}>
-        <span>{selectedQuestionCount} 문제</span>
+        <span style={{ fontFamily: "GmarketSansMedium" }}>
+          {selectedQuestionCount} 문제
+        </span>
       </SelectBox>
-      <SelectItemWrap marginTop="-3rem" isVisible={isQuestionCountOpen}>
-        {questionCount.map((count, index) => (
-          <SelectItem
-            key={index}
-            onClick={() => {
-              setSelectedQuestionCount(count);
-              setQuestionCountOpen(false);
-            }}
-          >
-            {count} 문제
-          </SelectItem>
-        ))}
-      </SelectItemWrap>
+      <div ref={questionCountRef}>
+        <SelectItemWrap marginTop="-18rem" isVisible={isQuestionCountOpen}>
+          {questionCount.map((count, index) => (
+            <SelectItem
+              key={index}
+              onClick={() => {
+                setSelectedQuestionCount(count);
+                setQuestionCountOpen(false);
+              }}
+            >
+              {count} 문제
+            </SelectItem>
+          ))}
+        </SelectItemWrap>
+      </div>
     </SelectBoxWrap>
   );
 }

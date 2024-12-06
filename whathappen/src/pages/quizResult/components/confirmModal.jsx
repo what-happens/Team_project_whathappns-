@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { CommonModal, Backdrop } from "./ModalStyle";
+import { CommonModal, ModalBackdrop } from "./ModalStyle";
 import PropTypes from "prop-types";
 
 const ConfirmExit = styled(CommonModal)`
@@ -22,19 +22,20 @@ const ButtonType = styled.div`
 
 const YesOrNo = styled.button`
   width: 11.3rem;
-  height: 4.6rem;
-  border-radius: 20px;
+  height: 4.3rem;
+  border-radius: 1.8rem;
   color: #fff;
   font-weight: 400;
-  background: #2e5dff;
+  background: var(--main-color);
   border: none;
+  font-size: 1.6rem;
 `;
 
 export default function ConfirmExitModal({ isOpen, onClose }) {
   if (!isOpen) return null;
   return (
     <>
-      <Backdrop onClick={onClose} />
+      <ModalBackdrop onClick={onClose} />
       <ConfirmExit open={isOpen}>
         <ConfirmExitMessage>
           진행 데이터는 저장되지 않습니다. <br />
