@@ -4,9 +4,11 @@ import { keyframes } from "styled-components";
 
 const slideUp = keyframes`
   from {
-    transform: translateY(100%);
+    opacity: 0;
+    transform: translateY(8rem);
   }
   to {
+    opacity: 2;
     transform: translateY(0);
   }
 `;
