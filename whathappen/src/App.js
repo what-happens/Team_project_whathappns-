@@ -3,6 +3,7 @@ import GlobalStyle from "./styles/GlobalStyle";
 import Home from "./pages/Home";
 import Login from "./pages/login/Login";
 import Join from "./pages/join/Join";
+import JoinSuccess from "./pages/joinSuccess/JoinSuccess";
 import { Provider, useDispatch } from "react-redux";
 import store from "./redux/store/store";
 import QuizLanding from "./pages/quizLanding/quizLanding";
@@ -56,11 +57,12 @@ function App() {
           <Route path="/*" element={<NotFound />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/join" element={<Join />}></Route>
-          <Route path="/quiz-landing" element={<QuizLanding />} />
+          <Route path="/joinsuccess" element={<JoinSuccess />}></Route>
+          <Route path="/quizlanding" element={<QuizLanding />} />
           <Route path="/quiz" element={<QuizResult />} />
           <Route path="/exercise" element={<Exercise />} />
           <Route path="/study" element={<Study />}></Route>
-          <Route path="/study-finish" element={<StudyFinish />}></Route>
+          <Route path="/studyfinish" element={<StudyFinish />}></Route>
           <Route element={<AuthHeader />}>
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/review" element={<Review />} />
