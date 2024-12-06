@@ -12,7 +12,8 @@ import {
   GithubAuthProvider,
 } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-import useAuthActions from "../../redux/useAuthActions";
+import LoadingImg from "../../assets/loading.gif";
+// import useAuthActions from "../../redux/useAuthActions";
 
 const LoginContents = styled.div`
   display: flex;
@@ -100,14 +101,27 @@ const InputIconPassword = styled.div`
   }
 `;
 
+const LoadingPage = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 20;
+`;
+
 export default function Login() {
   const [idValue, setIdValue] = useState("");
   const [pwValue, setPwValue] = useState("");
 
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
-
-  const { login } = useAuthActions();
+  const [loading, setLoading] = useState(false);
+  // const { login } = useAuthActions();
   const navigate = useNavigate();
   // const { pathname } = useLocation();
 
@@ -136,8 +150,6 @@ export default function Login() {
   };
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordRegex =
-    /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+={}\]:;"'<>,.?/\\|`~]).{8,16}$/;
 
   const validationLogin = () => {
     let valid = true;
@@ -155,9 +167,6 @@ export default function Login() {
     if (pwValue === "") {
       setPwError("패스워드를 입력 해주세요.");
       valid = false;
-    } else if (!passwordRegex.test(pwValue)) {
-      setPwError("비밀번호 형식이 올바르지 않습니다.");
-      valid = false;
     } else {
       setPwError("");
     }
@@ -168,11 +177,31 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validationLogin()) {
-      const isLoginSuccessful = await login(idValue, pwValue);
-      if (isLoginSuccessful) {
-        navigate("/");
-      } else {
-        setIdError("아이디 비밀번호가 일치하지 않습니다.");
+      try {
+        setLoading(true);
+
+        const response = await fetch("http://localhost:5000/user/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: idValue,
+            password: pwValue,
+          }),
+        });
+
+        if (response.ok) {
+          navigate("/");
+        } else {
+          const errorData = await response.json();
+          setIdError(errorData.message || "로그인 실패");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        setIdError("서버 통신 중 오류가 발생했습니다");
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -187,85 +216,93 @@ export default function Login() {
   };
 
   return (
-    <LoginContents>
-      <Warp flexDirection="column" gap="2rem" margin="0 0 2rem 0">
-        <h2 style={{ fontSize: "4.8rem", fontWeight: "700" }}>Login</h2>
-        <span style={{ fontSize: "3.6rem", fontWeight: "500" }}>
-          어서오세요!
-        </span>
-      </Warp>
-      <Form action="submit" onSubmit={handleSubmit} noValidate>
-        <Warp flexDirection="column" gap="1rem" margin="0 0 2rem 0">
-          <InputIconEmail>
-            <Input
-              type="email"
-              value={idValue}
-              onChange={handleIdChange}
-              placeholder="E-mail"
-              required
-            />
-            <div
-              style={{
-                padding: "1rem",
-                color: "red",
-                fontSize: "1.2rem ",
-                fontWeight: "300",
-              }}
-            >
-              {idError}
-            </div>
-          </InputIconEmail>
-          <InputIconPassword>
-            <Input
-              type="password"
-              value={pwValue}
-              onChange={handlePasswordChange}
-              placeholder="Password"
-              required
-            />
-            <div
-              style={{
-                padding: "1rem",
-                color: "red",
-                fontSize: "1.2rem ",
-                fontWeight: "300",
-              }}
-            >
-              {pwError}
-            </div>
-          </InputIconPassword>
+    <>
+      <LoginContents>
+        <Warp flexDirection="column" gap="2rem" margin="0 0 2rem 0">
+          <h2 style={{ fontSize: "4.8rem", fontWeight: "700" }}>Login</h2>
+          <span style={{ fontSize: "3.6rem", fontWeight: "500" }}>
+            어서오세요!
+          </span>
         </Warp>
-        <Button width="43rem" borderRadius="10px" type="submit">
-          로그인
-        </Button>
-      </Form>
+        <Form action="submit" onSubmit={handleSubmit} noValidate>
+          <Warp flexDirection="column" gap="1rem" margin="0 0 2rem 0">
+            <InputIconEmail>
+              <Input
+                type="email"
+                value={idValue}
+                onChange={handleIdChange}
+                placeholder="E-mail"
+                required
+              />
+              <div
+                style={{
+                  padding: "1rem",
+                  color: "red",
+                  fontSize: "1.2rem ",
+                  fontWeight: "300",
+                }}
+              >
+                {idError}
+              </div>
+            </InputIconEmail>
+            <InputIconPassword>
+              <Input
+                type="password"
+                value={pwValue}
+                onChange={handlePasswordChange}
+                placeholder="Password"
+                required
+              />
+              <div
+                style={{
+                  padding: "1rem",
+                  color: "red",
+                  fontSize: "1.2rem ",
+                  fontWeight: "300",
+                }}
+              >
+                {pwError}
+              </div>
+            </InputIconPassword>
+          </Warp>
+          <Button width="43rem" borderRadius="10px" type="submit">
+            로그인
+          </Button>
+        </Form>
 
-      <Link to="/join">
-        <Button
-          backgroundColor="white"
-          border="1px solid #2e5dfe"
-          width="43rem"
-          borderRadius="10px"
-          color="blue"
-        >
-          회원가입
-        </Button>
-      </Link>
-      <Warp flexDirection="row" gap="1.5rem" margin="2rem 0 2rem 0 ">
-        <SocialLogin bg="black">
-          <Github onClick={handleGitHubLogin} />
-        </SocialLogin>
-        <SocialLogin
-          bg="whte"
-          border="1px solid #C4C4C4"
-          onClick={handleGoogleLogin}
-        >
-          <Google />
-        </SocialLogin>
-      </Warp>
-      <Link to="/">
-        <LogoContent />
-      </Link>
-    </LoginContents>
+        <Link to="/join">
+          <Button
+            backgroundColor="white"
+            border="1px solid #2e5dfe"
+            width="43rem"
+            borderRadius="10px"
+            color="blue"
+          >
+            회원가입
+          </Button>
+        </Link>
+        <Warp flexDirection="row" gap="1.5rem" margin="2rem 0 2rem 0 ">
+          <SocialLogin bg="black">
+            <Github onClick={handleGitHubLogin} />
+          </SocialLogin>
+          <SocialLogin
+            bg="whte"
+            border="1px solid #C4C4C4"
+            onClick={handleGoogleLogin}
+          >
+            <Google />
+          </SocialLogin>
+        </Warp>
+        <Link to="/">
+          <LogoContent />
+        </Link>
+      </LoginContents>
+      {loading && (
+        <>
+          <LoadingImg />
+          <LoadingPage></LoadingPage>
+        </>
+      )}
+    </>
   );
 }
