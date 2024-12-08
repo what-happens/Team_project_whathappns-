@@ -70,7 +70,10 @@ export default function MyPage() {
     <MyPageContents>
       <header>
         <h1 className="sr-only">마이페이지</h1>
-        <GreetingMsg>안녕하세요, <br className="mobile-only"/>오르미 고객님</GreetingMsg>
+        <GreetingMsg>
+          안녕하세요, <br className="mobile-only" />
+          오르미 고객님
+        </GreetingMsg>
       </header>
 
       <StatusContents>
