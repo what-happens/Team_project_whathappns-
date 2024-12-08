@@ -14,21 +14,23 @@ const StampContents = styled.div`
 
   ${media.medium`
     grid-template-columns: repeat(7, 1fr);
+    
     width: 100%;
   
-    height: 11rem;
-    border-radius: 1rem
+    max-height: 11rem;
+    border-radius: 1rem;
   `}
 `;
 const StampSlot = styled.div`
   aspect-ratio: 1;
   border-radius: 1rem;
-  width: 16.2rem;
-  height: 16.2rem;
+  max-width: 16.2rem;
+  max-height: 16.2rem;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.15) 4px 4px 4px;
   ${media.medium`
-    width: 7.213rem;
-    height: 7.213rem;
+    max-width: 7.213rem;
+    max-height: 7.213rem;
     border-radius: 1rem;
   `}
 `;
