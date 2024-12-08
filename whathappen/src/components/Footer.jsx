@@ -16,26 +16,26 @@ const slideUp = keyframes`
 const FooterContent = styled.footer`
   width: 100%;
   box-sizing: border-box;
-  padding: 5.7rem 29rem;
+  padding: 5rem 0 5rem 0;
   background-color: #2e5dfe;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+  flex-direction: column;
   color: white;
   animation: ${slideUp} 1s ease;
 `;
 
 const Title = styled.h3`
-  font-size: 4rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 2rem;
 `;
 
 const DescriptionList = styled.dl`
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  font-size: 1.2rem;
+  gap: 1rem;
+  font-size: 1.6rem;
 `;
 
 const DescriptionItem = styled.div`
@@ -51,38 +51,62 @@ const DescriptionItem = styled.div`
   }
 `;
 
-const StyledAddress = styled.address`
-  font-style: normal;
+const CopyText = styled.p`
+  font-size: 1.4rem;
+  font-weight: 700;
+`;
+
+const ItemList = styled.ul`
+  display: flex;
+  gap: 3rem;
+`;
+
+const Item = styled.li`
+  font-size: 1.6rem;
+  font-weight: 700;
+`;
+
+const Line = styled.div`
+  width: 100%;
+  background-color: #7997fa;
+  height: 0.1px;
 `;
 
 export default function Footer() {
   return (
     <FooterContent>
-      <StyledAddress>
-        <Title>이게되네?</Title>
-        <DescriptionList>
-          <DescriptionItem>
-            <dt>회사명</dt>
-            <dd>주식회사 오르미</dd>
-          </DescriptionItem>
-          <DescriptionItem>
-            <dt>대표자</dt>
-            <dd>대표 : 오르미</dd>
-          </DescriptionItem>
-          <DescriptionItem>
-            <dt>주소</dt>
-            <dd>주소 : 서울시 강남구 강남대로 00</dd>
-          </DescriptionItem>
-          <DescriptionItem>
-            <dt>사업자등록번호</dt>
-            <dd>사업자 등록번호 : 000 0000 0000</dd>
-          </DescriptionItem>
-          <DescriptionItem>
-            <dt>이메일</dt>
-            <dd>whatehappen@gmail.com</dd>
-          </DescriptionItem>
-        </DescriptionList>
-      </StyledAddress>
+      <Title>이게되네?</Title>
+
+      <DescriptionList>
+        <DescriptionItem>
+          <dt>회사명 : </dt>
+          <dd>주식회사 오르미 | </dd>
+        </DescriptionItem>
+        <DescriptionItem>
+          <dt>대표 :</dt>
+          <dd> 오르미 | </dd>
+        </DescriptionItem>
+        <DescriptionItem>
+          <dt>주소 : </dt>
+          <dd>서울시 강남구 강남대로 00 | </dd>
+        </DescriptionItem>
+        <DescriptionItem>
+          <dt>사업자등록번호 : </dt>
+          <dd> 000 0000 0000 | </dd>
+        </DescriptionItem>
+        <DescriptionItem>
+          <dt>이메일 : </dt>
+          <dd>whatehappen@gmail.com</dd>
+        </DescriptionItem>
+      </DescriptionList>
+      <ItemList>
+        <Item>Home</Item>
+        <Item>News</Item>
+        <Item>About</Item>
+        <Item>ContactUs</Item>
+      </ItemList>
+      <Line />
+      <CopyText>Copyright 2020 All rights reserved</CopyText>
     </FooterContent>
   );
 }
