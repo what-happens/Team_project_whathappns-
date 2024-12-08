@@ -223,8 +223,6 @@ const InfiniteComponentLoader = () => {
 
     const NextComponent = componentsList[loadedIndexRef.current];
 
-    console.log("Loading component:", NextComponent.name);
-
     setVisibleComponents((prev) => [...prev, NextComponent]);
     loadedIndexRef.current += 1;
   };
