@@ -37,7 +37,7 @@ const Container = styled.div`
   gap: 3rem;
   align-items: center;
   justify-content: center;
-  padding: 15rem 20rem 20rem 20rem;
+  padding-top: 25rem;
 `;
 
 const Title = styled.h2`
