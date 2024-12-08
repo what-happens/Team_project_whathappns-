@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import Stamps from "./components/Stamps";
+import { media } from "../../styles/MideaQuery";
 
 const MyPageContents = styled.div`
   display: flex;
@@ -14,6 +15,8 @@ const MyPageContents = styled.div`
 const GreetingMsg = styled.div`
   font-size: 48px;
   font-weight: 400;
+  ${media.medium`
+  `}
 `;
 const StatusContents = styled.div`
   display: flex;
@@ -21,10 +24,15 @@ const StatusContents = styled.div`
   justify-content: space-around;
   align-items: center;
   background-color: #fff;
-  padding: 24px;
-  height: 215px;
+  padding: 2.4rem;
+  height: 21.5rem;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 10px 0px;
   margin: 3rem 0;
+
+  ${media.medium`
+    max-width: 66.2rem;
+    height: 21.5rem;
+`}
 `;
 const StatusBox = styled.div`
   font-size: 32px;
@@ -52,6 +60,9 @@ const CourseContents = styled.div`
   align-items: center;
   margin: 3rem 0;
   gap: 5rem;
+  ${media.medium`
+    flex-direction: column;
+  `}
 `;
 
 export default function MyPage() {
@@ -59,7 +70,7 @@ export default function MyPage() {
     <MyPageContents>
       <header>
         <h1 className="sr-only">마이페이지</h1>
-        <GreetingMsg>안녕하세요, 오르미 고객님</GreetingMsg>
+        <GreetingMsg>안녕하세요, <br className="mobile-only"/>오르미 고객님</GreetingMsg>
       </header>
 
       <StatusContents>
