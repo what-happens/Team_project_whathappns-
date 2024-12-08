@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import Button from "../../components/Button";
 import Logo from "../../assets/what_happns_logo_b.png";
 import styled from "styled-components";
-import { Github, Google } from "./components/JoinSvg";
+import { Google } from "./components/JoinSvg";
 // import { useSignup } from "./../../hooks/useSignup";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import loadingImg from "../../assets/loading.gif";
 import { Link } from "react-router-dom";
 
@@ -20,7 +20,7 @@ export default function Join() {
   const [loading, setLoading] = useState(false);
   // const { signup, error } = useSignup();
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const nameRegex = /^[가-힣]+$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -84,8 +84,7 @@ export default function Join() {
         });
 
         if (response.ok) {
-          const data = await response.json();
-          console.log("회원가입 성공!", data);
+          navigate("/joinsuccess");
         } else {
           const errorData = await response.json();
           setIdError(errorData.message || "회원가입 실패");
@@ -198,29 +197,23 @@ export default function Join() {
             가입하기
           </Button>
         </Form>
-
+        <p style={{ fontSize: "1.2rem" }}>
+          이미 계정이 있으신가요?{" "}
+          <Link to="/login">
+            <span
+              style={{
+                color: "var(--main-color)",
+                textDecoration: "underline",
+              }}
+            >
+              로그인
+            </span>
+          </Link>
+        </p>
         <SnsWarp>
-          <Button
-            backgroundColor="white"
-            border="1px solid #c4c4c4"
-            width="43rem"
-            borderRadius="10px"
-            color="black"
-            padding="1.5rem"
-          >
+          <SocialLogin bg="white" border="1px solid #C4C4C4">
             <Google />
-            Google 계정으로 회원가입
-          </Button>
-          <Button
-            backgroundColor="black"
-            width="43rem"
-            borderRadius="10px"
-            color="white"
-            padding="1.5rem"
-          >
-            <Github />
-            Github 계정으로 회원가입
-          </Button>
+          </SocialLogin>
         </SnsWarp>
 
         <Link to="/">
@@ -296,6 +289,18 @@ const SnsWarp = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+`;
+
+const SocialLogin = styled.a`
+  width: 5rem;
+  height: 5rem;
+  background-color: ${(props) => props.bg};
+  border-radius: 50px;
+  border: ${(props) => props.border};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 `;
 
 const LoadingPage = styled.div`
