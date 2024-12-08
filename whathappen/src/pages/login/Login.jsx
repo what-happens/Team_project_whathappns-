@@ -2,128 +2,14 @@ import React, { useState } from "react";
 import Button from "../../components/Button";
 import Logo from "../../assets/what_happns_logo_b.png";
 import styled from "styled-components";
-import { Github, Google } from "./components/LoginSvg";
+import { Google } from "./components/LoginSvg";
 import Lock from "../../assets/Lock.svg";
 import Person from "../../assets/Person.svg";
 import { auth } from "../../firebase";
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  GithubAuthProvider,
-} from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import loadingImg from "../../assets/loading.gif";
 // import useAuthActions from "../../redux/useAuthActions";
-
-const LoginContents = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  height: 100vh;
-  padding: 22rem, 74rem, 4.3rem;
-`;
-
-const LogoContent = styled.div`
-  background-image: url(${Logo});
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 150px;
-  height: 150px;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const Input = styled.input`
-  padding: 3rem 0 3rem 5rem;
-  box-sizing: border-box;
-  font-size: 1.5rem;
-  width: 43rem;
-  height: 3rem;
-  border: 1px solid #c4c4c4;
-  border-radius: 15px;
-`;
-
-const Warp = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: ${(props) => props.flexDirection};
-  gap: ${(props) => props.gap};
-  margin: ${(props) => props.margin};
-`;
-
-const SocialLogin = styled.a`
-  width: 5rem;
-  height: 5rem;
-  background-color: ${(props) => props.bg};
-  border-radius: 50px;
-  border: ${(props) => props.border};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-`;
-
-const InputIconEmail = styled.div`
-  position: relative;
-
-  &::before {
-    content: "";
-    background-image: url(${Person});
-    width: 24px;
-    height: 24px;
-    display: block;
-    background-size: cover;
-    position: absolute;
-    left: 2rem;
-    top: 1.8rem;
-  }
-`;
-const InputIconPassword = styled.div`
-  position: relative;
-
-  &::before {
-    content: "";
-    background-image: url(${Lock});
-    width: 24px;
-    height: 24px;
-    display: block;
-    background-size: cover;
-    position: absolute;
-    left: 2rem;
-    top: 1.8rem;
-  }
-`;
-
-const LoadingPage = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 20;
-`;
-
-const LoadingImg = styled.div`
-  background-image: url(${loadingImg});
-  position: absolute;
-  top: 30%;
-  left: 45%;
-  width: 20rem;
-  height: 20rem;
-  background-size: cover;
-  z-index: 30;
-`;
 
 export default function Login() {
   const [idValue, setIdValue] = useState("");
@@ -132,24 +18,13 @@ export default function Login() {
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
   const [loading, setLoading] = useState(false);
+
   // const { login } = useAuthActions();
-  const navigate = useNavigate();
   // const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
-
-    try {
-      const result = await signInWithPopup(auth, provider);
-      console.log("User data:", result.user);
-      navigate("/");
-    } catch (err) {
-      console.error("Error during login:", err.message);
-    }
-  };
-
-  const handleGitHubLogin = async () => {
-    const provider = new GithubAuthProvider();
 
     try {
       const result = await signInWithPopup(auth, provider);
@@ -204,6 +79,7 @@ export default function Login() {
 
         if (response.ok) {
           navigate("/");
+          console.log("로그인성공");
         } else {
           const errorData = await response.json();
           setIdError(errorData.message || "로그인 실패");
@@ -229,14 +105,19 @@ export default function Login() {
   return (
     <>
       <LoginContents>
-        <Warp flexDirection="column" gap="2rem" margin="0 0 2rem 0">
+        <Warp $flexDirection="column" $gap="2rem" $margin="0 0 2rem 0">
           <h2 style={{ fontSize: "4.8rem", fontWeight: "700" }}>Login</h2>
           <span style={{ fontSize: "3.6rem", fontWeight: "500" }}>
             어서오세요!
           </span>
         </Warp>
-        <Form action="submit" onSubmit={handleSubmit} noValidate>
-          <Warp flexDirection="column" gap="1rem" margin="0 0 2rem 0">
+        <Form
+          action="submit"
+          onSubmit={handleSubmit}
+          noValidate
+          autoComplete="on"
+        >
+          <Warp $flexDirection="column" $gap="1rem" $margin="0 0 2rem 0">
             <InputIconEmail>
               <Input
                 type="email"
@@ -244,6 +125,7 @@ export default function Login() {
                 onChange={handleIdChange}
                 placeholder="E-mail"
                 required
+                autoComplete="username"
               />
               <div
                 style={{
@@ -263,6 +145,7 @@ export default function Login() {
                 onChange={handlePasswordChange}
                 placeholder="Password"
                 required
+                autoComplete="current-password"
               />
               <div
                 style={{
@@ -292,13 +175,10 @@ export default function Login() {
             회원가입
           </Button>
         </Link>
-        <Warp flexDirection="row" gap="1.5rem" margin="2rem 0 2rem 0 ">
-          <SocialLogin bg="black">
-            <Github onClick={handleGitHubLogin} />
-          </SocialLogin>
+        <Warp $flexDirection="row" $gap="1.5rem" $margin="2rem 0 2rem 0">
           <SocialLogin
-            bg="whte"
-            border="1px solid #C4C4C4"
+            $bg="white"
+            $border="1px solid #C4C4C4"
             onClick={handleGoogleLogin}
           >
             <Google />
@@ -317,3 +197,114 @@ export default function Login() {
     </>
   );
 }
+
+const LoginContents = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  height: 100vh;
+  padding: 22rem, 74rem, 4.3rem;
+`;
+
+const LogoContent = styled.div`
+  background-image: url(${Logo});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 150px;
+  height: 150px;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const Input = styled.input`
+  padding: 3rem 0 3rem 5rem;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  width: 43rem;
+  height: 3rem;
+  border: 1px solid #c4c4c4;
+  border-radius: 15px;
+`;
+
+const Warp = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: ${(props) => props.$flexDirection};
+  gap: ${(props) => props.$gap};
+  margin: ${(props) => props.$margin};
+`;
+
+const SocialLogin = styled.a`
+  width: 5rem;
+  height: 5rem;
+  background-color: ${(props) => props.$bg};
+  border-radius: 50px;
+  border: ${(props) => props.$border};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
+
+const InputIconEmail = styled.div`
+  position: relative;
+
+  &::before {
+    content: "";
+    background-image: url(${Person});
+    width: 24px;
+    height: 24px;
+    display: block;
+    background-size: cover;
+    position: absolute;
+    left: 2rem;
+    top: 1.8rem;
+  }
+`;
+
+const InputIconPassword = styled.div`
+  position: relative;
+
+  &::before {
+    content: "";
+    background-image: url(${Lock});
+    width: 24px;
+    height: 24px;
+    display: block;
+    background-size: cover;
+    position: absolute;
+    left: 2rem;
+    top: 1.8rem;
+  }
+`;
+
+const LoadingPage = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 20;
+`;
+
+const LoadingImg = styled.div`
+  background-image: url(${loadingImg});
+  position: absolute;
+  top: 30%;
+  left: 45%;
+  width: 20rem;
+  height: 20rem;
+  background-size: cover;
+  z-index: 30;
+`;
