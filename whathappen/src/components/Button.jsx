@@ -79,7 +79,7 @@ const StyledButton = styled.button`
         case "green":
           return "#7AC800";
         case "white":
-          return "#C4C4C4";
+          return "#ececec";
         case "gray":
           return "#333333";
         default:
