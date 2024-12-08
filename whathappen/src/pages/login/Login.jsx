@@ -12,7 +12,7 @@ import {
   GithubAuthProvider,
 } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-import LoadingImg from "../../assets/loading.gif";
+import loadingImg from "../../assets/loading.gif";
 // import useAuthActions from "../../redux/useAuthActions";
 
 const LoginContents = styled.div`
@@ -112,6 +112,17 @@ const LoadingPage = styled.div`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 20;
+`;
+
+const LoadingImg = styled.div`
+  background-image: url(${loadingImg});
+  position: absolute;
+  top: 30%;
+  left: 45%;
+  width: 20rem;
+  height: 20rem;
+  background-size: cover;
+  z-index: 30;
 `;
 
 export default function Login() {
