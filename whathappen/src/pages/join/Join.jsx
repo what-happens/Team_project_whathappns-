@@ -3,7 +3,6 @@ import Button from "../../components/Button";
 import Logo from "../../assets/what_happns_logo_b.png";
 import styled from "styled-components";
 import { Google } from "./components/JoinSvg";
-// import { useSignup } from "./../../hooks/useSignup";
 import { useNavigate } from "react-router-dom";
 import loadingImg from "../../assets/loading.gif";
 import { Link } from "react-router-dom";
@@ -18,7 +17,6 @@ export default function Join() {
   const [pwError, setPwError] = useState("");
 
   const [loading, setLoading] = useState(false);
-  // const { signup, error } = useSignup();
 
   const navigate = useNavigate();
 
@@ -97,19 +95,6 @@ export default function Join() {
       }
     }
   };
-  //     const signupSuccess = await signup(idValue, pwValue, nameValue);
-
-  //     if (signupSuccess) {
-  //       setLoading(false);
-  //       setTimeout(() => {
-  //         navigate("/");
-  //       }, 1000);
-  //     } else {
-  //       setLoading(false);
-  //       setIdError(error);
-  //     }
-  //   }
-  // };
 
   const handleIdChange = (e) => {
     setIdValue(e.target.value);
@@ -127,13 +112,18 @@ export default function Join() {
   return (
     <>
       <JoinContents>
-        <Warp flexDirection="column" gap="2rem" margin="0 0 2rem 0">
+        <Warp $flexDirection="column" $gap="2rem" $margin="0 0 2rem 0">
           <h2 style={{ fontSize: "4.8rem", fontWeight: "700" }}>Join</h2>
           <span style={{ fontSize: "3.6rem", fontWeight: "500" }}>
             환영합니다!
           </span>
         </Warp>
-        <Form action="submit" onSubmit={handleSubmit} noValidate>
+        <Form
+          action="submit"
+          onSubmit={handleSubmit}
+          noValidate
+          autoComplete="on"
+        >
           <InputWarp>
             <Input
               type="text"
@@ -141,6 +131,7 @@ export default function Join() {
               value={nameValue}
               onChange={handleNameChange}
               required
+              autoComplete="name"
             />
           </InputWarp>
           <div
@@ -159,6 +150,7 @@ export default function Join() {
               value={idValue}
               onChange={handleIdChange}
               required
+              autoComplete="email"
             />
           </InputWarp>
           <div
@@ -177,6 +169,7 @@ export default function Join() {
               value={pwValue}
               onChange={handlePasswordChange}
               required
+              autoComplete="current-password"
             />
           </InputWarp>
           <div
@@ -211,7 +204,7 @@ export default function Join() {
           </Link>
         </p>
         <SnsWarp>
-          <SocialLogin bg="white" border="1px solid #C4C4C4">
+          <SocialLogin $bg="white" $border="1px solid #C4C4C4">
             <Google />
           </SocialLogin>
         </SnsWarp>
@@ -265,6 +258,7 @@ const Input = styled.input`
   border: 1px solid #c4c4c4;
   border-radius: 15px;
 `;
+
 const InputWarp = styled.div`
   display: flex;
   align-items: center;
@@ -280,9 +274,9 @@ const InputWarp = styled.div`
 const Warp = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: ${(props) => props.flexDirection};
-  gap: ${(props) => props.gap};
-  margin: ${(props) => props.margin};
+  flex-direction: ${(props) => props.$flexDirection};
+  gap: ${(props) => props.$gap};
+  margin: ${(props) => props.$margin};
 `;
 
 const SnsWarp = styled.div`
@@ -294,9 +288,9 @@ const SnsWarp = styled.div`
 const SocialLogin = styled.a`
   width: 5rem;
   height: 5rem;
-  background-color: ${(props) => props.bg};
+  background-color: ${(props) => props.$bg};
   border-radius: 50px;
-  border: ${(props) => props.border};
+  border: ${(props) => props.$border};
   display: flex;
   align-items: center;
   justify-content: center;
