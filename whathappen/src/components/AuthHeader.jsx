@@ -89,10 +89,13 @@ const Header = styled.header`
   align-items: center;
   padding: 2rem 6rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 10px;
-
+  z-index: 1000;
+  background-color: white;
   ${media.medium`
     padding: 2rem;
-    justify-content: flex-start;
+    justify-content: ;
+    box-shadow: none;
+    border: none;
   `}
 `;
 
