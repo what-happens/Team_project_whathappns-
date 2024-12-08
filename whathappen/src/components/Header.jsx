@@ -8,29 +8,6 @@ import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { clearUser } from "../redux/authSlice";
 
-const HeaderContainer = styled.header`
-  width: 100%;
-  box-sizing: border-box;
-  padding: 2.7rem 29rem 2.7rem 29rem;
-  background-color: #333333;
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.15);
-  z-index: 10;
-`;
-
-const Logo = styled.h1`
-  width: 18rem;
-  height: 5rem;
-  background-image: url(${BlackLogo});
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  text-indent: -9999px;
-`;
-
 export default function Header() {
   const { isAuthenticated } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -42,7 +19,7 @@ export default function Header() {
       dispatch(clearUser());
       navigate("/");
     } catch (err) {
-      console.error(err);
+      return;
     }
   };
 
@@ -70,3 +47,26 @@ export default function Header() {
     </HeaderContainer>
   );
 }
+
+const HeaderContainer = styled.header`
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2.7rem 29rem 2.7rem 29rem;
+  background-color: #333333;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+`;
+
+const Logo = styled.h1`
+  width: 18rem;
+  height: 5rem;
+  background-image: url(${BlackLogo});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-indent: -9999px;
+`;
