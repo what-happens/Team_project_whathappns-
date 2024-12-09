@@ -18,7 +18,7 @@ import AAA from "./pages/study/AAA";
 import LearningPage from "./pages/study/LearningPage";
 import NotFound from "./pages/notFound/NotFound";
 import MyPage from "./pages/myPage/MyPage";
-import Review from "./pages/review/Review";
+import Review from "./pages/review/ReviewFreeVersion";
 import AuthHeader from "./components/AuthHeader";
 import { useEffect } from "react";
 import { auth } from "./firebase";
@@ -65,8 +65,6 @@ function App() {
           <Route path="/quiz" element={<QuizResult />} /> */}
           <Route path="/quizpage" element={<QuizPage />} />
           <Route path="/exercise" element={<Exercise />} />
-          <Route path="/study" element={<Study />}></Route>
-          <Route path="/study-finish" element={<StudyFinish />}></Route>
           <Route path="/learn-course" element={<LearningCourse />}></Route>
           <Route path="/learn-page" element={<LearningPage />}></Route>
           <Route path="/aaa" element={<AAA />}></Route>
