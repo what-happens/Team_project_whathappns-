@@ -1,23 +1,24 @@
 import styled, { css } from "styled-components";
 import logoImage from "../../assets/logo.png";
-import ConfirmExitModal from "./components/confirmModal";
-import CongratulationsModal from "./components/congratsModal";
+import ConfirmExitModal from "./components/ConfirmModal";
+import CongratulationsModal from "./components/CongratsModal";
 import { media } from "../../styles/MideaQuery";
 import Button from "../../components/Button";
 import { useState } from "react";
 
-const Center = css`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  padding: 0;
-`;
-
 const ResultBackground = styled.div`
   background-color: var(--main-color);
-  ${Center};
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const QuizResultMain = styled.main`
@@ -29,12 +30,16 @@ const QuizResultMain = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  ${Center};
   background-color: #fff;
   ${media.medium`
     width: 52rem;
     height: 54rem;
     border-radius: 4rem;
+`}
+  ${media.small`
+    width: 38rem;
+    height: 40rem;
+    border-radius: 2.7rem;
 `}
 `;
 
@@ -45,8 +50,13 @@ const Logo = styled.img`
   ${media.medium`
     width: 25rem;
     height: 6.4rem;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 `}
+  ${media.small`
+    width: 19rem;
+    height: 5rem;
+    margin-bottom: 3rem;
+  `}
 `;
 
 const QuizResultSection = styled.section`
@@ -60,12 +70,20 @@ const QuizResultSection = styled.section`
   ${media.medium`
     width: 38rem;
 `}
+  ${media.small`
+    width: 27rem; 
+    gap: 1.2rem; 
+    padding-bottom: 2.8rem;
+  `}
 `;
 
 const QuizResultTitle = styled.h2`
   font-size: 4.2rem;
   ${media.medium`
-    font-size: 3.2rem;
+    font-size: 3.6rem;
+`}
+  ${media.small`
+    font-size: 2.8rem;
 `}
 `;
 
@@ -82,10 +100,16 @@ const QuizResultMessage = styled.div`
   align-items: center;
   justify-content: center;
   ${media.medium`
-    width: 23rem;
+    width: 23.7rem;
     height: 6rem;
     border-radius: 1.5rem;
     font-size: 3rem;
+`}
+  ${media.small`
+    width: 17rem;
+    height: 4.5rem;
+    font-size: 2.2rem;
+    border-radius: 1.2rem;
 `}
 `;
 
@@ -116,13 +140,20 @@ const resultItemCommon = css`
   ${media.medium`
     height: 4rem;
 `}
+  ${media.small`
+    height: 2.4rem;
+`}
 `;
 
 const ResultTypes = styled.div`
   font-size: 2rem;
+  font-weight: 400;
   ${resultItemCommon}
   ${media.medium`
     font-size: 1.5rem;
+`}
+  ${media.small`
+    font-size: 1rem;
 `}
 `;
 
@@ -135,11 +166,29 @@ const ResultCount = styled.div`
     font-size: 2.7rem;
     margin-bottom: 5rem;
 `}
+  ${media.small`
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+`}
 `;
 
 const ResultControlSection = styled.section`
   display: flex;
   gap: 2rem;
+
+  & > button {
+    width: 17rem;
+    ${media.medium`
+    font-size: 1.6rem;
+    padding:0.5rem 1.6rem;
+    width:14rem
+`}
+    ${media.small`
+      width: 9rem;
+    font-size: 1rem;
+    padding:0.05rem 1.2rem;
+`}
+  }
 `;
 
 export default function QuizResult() {
@@ -186,11 +235,8 @@ export default function QuizResult() {
             isOpen={isCongratulationsModalOpen}
             onClose={closeCongratulationsModal}
           />
-          <Button width="16rem" onClick={() => setConfirmModalOpen(true)}>
-            처음으로
-          </Button>
+          <Button onClick={() => setConfirmModalOpen(true)}>처음으로</Button>
           <Button
-            width="16rem"
             backgroundColor="red"
             onClick={() => setCongratulationsModalOpen(true)}
           >
