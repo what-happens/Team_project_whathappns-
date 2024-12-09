@@ -1,5 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
+import theme from "./theme";
+import media from "./media";
 import Icon from "../../assets/Icon_finish.png";
 import Logo from "../../assets/logo_white.png";
 import { Link } from "react-router-dom";
@@ -10,41 +12,66 @@ const Container = styled.section`
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 6rem;
+  gap: 3rem;
   height: 100vh;
   background-color: var(--main-color);
   color: white;
 `;
 
 const LogoImage = styled.img`
-  width: 30rem;
-  height: 8rem;
-  object-fit: contain;
+  ${({ theme }) => theme.mobile`
+    width: 23rem;
+  `};
+
+  width: 29rem;
+  height: auto;
+  object-fit: cover;
 `;
 
 const FinishIcon = styled.img`
+  ${({ theme }) => theme.mobile`
+    width: 23rem;
+    margin: 2rem 0;
+  `};
+
   width: 25rem;
-  height: 20rem;
-  object-fit: contain;
+  height: auto;
+  object-fit: cover;
+  margin: 5rem 0;
 `;
 
 const Title = styled.p`
-  font-size: 6rem;
-  font-weight: bold;
-  line-height: 10rem;
+  ${({ theme }) => theme.mobile`
+  font-size: ${({ theme }) => theme.fontSizes.md};
+  `};
+
+  font-size: 6.4rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
 `;
 
 const Subtitle = styled.p`
-  font-size: 4rem;
-  font-weight: 100;
+  ${({ theme }) => theme.mobile`
+  font-size: ${({ theme }) => theme.fontSizes.title};
+  `};
+  font-size: 4.8rem;
+  font-weight: 300;
 `;
 
 const ActionLink = styled(Link)`
+  ${({ theme }) => theme.mobile`
+  font-size: ${({ theme }) => theme.fontSizes.title};
+  width: 20rem;
+  line-height: 6rem;
+  `};
+
   background-color: #fff;
   color: var(--main-color);
   width: 40rem;
   font-size: 4rem;
-  line-height: 10rem;
+  font-weight: 500;
+  line-height: 9rem;
+  vertical-align: center;
   text-decoration: none;
   outline: none;
   transition: background-color 0.3s ease;
@@ -56,15 +83,17 @@ const ActionLink = styled(Link)`
 
 export default function StudyFinish() {
   return (
-    <Container>
-      <LogoImage src={Logo} alt="로고" />
-      <h1 className="sr-only">학습 완료 페이지</h1>
-      <FinishIcon src={Icon} alt="" />
-      <div>
-        <Title>학습을 완료하였습니다!!</Title>
-        <Subtitle>다음 학습도 도전 해보세요!</Subtitle>
-      </div>
-      <ActionLink to="/">메인페이지로 이동</ActionLink>
-    </Container>
+    <ThemeProvider theme={{ ...theme, ...media }}>
+      <Container>
+        <LogoImage src={Logo} alt="로고" />
+        <h1 className="sr-only">학습 완료 페이지</h1>
+        <FinishIcon src={Icon} alt="" />
+        <div>
+          <Title>학습을 완료하였습니다!!</Title>
+          <Subtitle>다음 학습도 도전 해보세요!</Subtitle>
+        </div>
+        <ActionLink to="/">메인페이지로 이동</ActionLink>
+      </Container>
+    </ThemeProvider>
   );
 }
