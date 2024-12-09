@@ -4,8 +4,9 @@ import styled from "styled-components";
 import QuizProgress from "./QuizProgress";
 import Button from "../../../components/Button";
 import Bookmark from "../../../components/Bookmark";
+import { media } from "../../../styles/MideaQuery";
 
-export default function QuizCard({ quizzes }) {
+export default function QuizCard({ quizzes, onNext }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [shuffledAnswer, setShuffledAnswer] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -27,6 +28,7 @@ export default function QuizCard({ quizzes }) {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    onNext(); // 제출 후 부모에게 onNext 호출하여 퀴즈 결과 페이지로 이동
   };
 
   useEffect(() => {
@@ -94,6 +96,10 @@ const QuizSection = styled.section`
   background-color: #fff;
   padding: 4.5rem 8rem;
   position: relative;
+  ${media.medium`
+    width:80%;
+    height:80%;
+`}
 `;
 
 const QuestionNumber = styled.p`
@@ -105,6 +111,9 @@ const QuestionNumber = styled.p`
     display: block;
     font-weight: bolder;
   }
+  ${media.medium`
+    font-size: 4rem;
+`}
 `;
 
 const QuizQuestion = styled.h3`
@@ -114,6 +123,9 @@ const QuizQuestion = styled.h3`
   height: 20rem;
   font-size: 4.5rem;
   line-height: 6rem;
+  ${media.medium`
+    font-size: 3.3rem;
+`}
 `;
 
 const FormWrapper = styled.form`
@@ -166,5 +178,6 @@ QuizCard.propTypes = {
       correct_answer: PropTypes.string.isRequired,
       incorrect_answer: PropTypes.arrayOf(PropTypes.string).isRequired,
     })
-  ),
+  ).isRequired,
+  onNext: PropTypes.func.isRequired, // onNext PropTypes 추가
 };

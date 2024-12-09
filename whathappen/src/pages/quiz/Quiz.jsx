@@ -3,6 +3,8 @@ import QuizCard from "./components/QuizCard";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import prevImg from "../../assets/iconLeftArrow.png";
+import PropTypes from "prop-types";
+import { media } from "../../styles/MideaQuery";
 
 const quiz = [
   {
@@ -40,7 +42,7 @@ const quiz = [
   },
 ];
 
-export default function Quiz() {
+export default function Quiz({ onNext }) {
   return (
     <>
       <QuizHeader>
@@ -53,7 +55,7 @@ export default function Quiz() {
         </nav>
       </QuizHeader>
       <QuizMain>
-        <QuizCard quizzes={quiz} />
+        <QuizCard quizzes={quiz} onNext={onNext} />
       </QuizMain>
     </>
   );
@@ -71,6 +73,9 @@ const StyledLink = styled(Link)`
   line-height: 3rem;
   color: #fff;
   text-decoration: none;
+  ${media.medium`
+    font-size: 2rem;
+`}
 `;
 
 const StyledImg = styled.img`
@@ -88,3 +93,7 @@ const QuizMain = styled.main`
   background-color: #2e5dff;
   padding-bottom: 8rem;
 `;
+
+Quiz.propTypes = {
+  onNext: PropTypes.func.isRequired,
+};
