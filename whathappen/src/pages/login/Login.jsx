@@ -8,7 +8,7 @@ import Person from "../../assets/Person.svg";
 import { auth } from "../../firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-import loadingImg from "../../assets/loading.gif";
+import loadingImg from "../../assets/loading2.gif";
 // import useAuthActions from "../../redux/useAuthActions";
 
 export default function Login() {
@@ -295,17 +295,18 @@ const LoadingPage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(255, 255, 255, 0.7);
   z-index: 20;
 `;
 
 const LoadingImg = styled.div`
   background-image: url(${loadingImg});
   position: absolute;
-  top: 30%;
-  left: 45%;
-  width: 20rem;
-  height: 20rem;
+  top: 28%;
+  left: 42%;
+  width: 30rem;
+  height: 30rem;
   background-size: cover;
+  background-position: center;
   z-index: 30;
 `;
