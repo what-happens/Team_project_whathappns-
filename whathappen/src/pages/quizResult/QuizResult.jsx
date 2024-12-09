@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import logoImage from "../../assets/logo.png";
-import ConfirmExitModal from "./components/confirmModal";
-import CongratulationsModal from "./components/congratsModal";
+import ConfirmExitModal from "./components/ConfirmModal";
+import CongratulationsModal from "./components/CongratsModal";
 import { media } from "../../styles/MideaQuery";
 import Button from "../../components/Button";
 import { useState } from "react";
