@@ -13,6 +13,7 @@ import Study from "./pages/study/Study";
 import StudyFinish from "./pages/study/StudyFinish";
 import LearningCourse from "./pages/study/LearningCourse";
 import AAA from "./pages/study/AAA";
+import LearningPage from "./pages/study/LearningPage";
 import NotFound from "./pages/notFound/NotFound";
 import MyPage from "./pages/myPage/MyPage";
 import Review from "./pages/review/Review";
@@ -64,6 +65,7 @@ function App() {
           <Route path="/study" element={<Study />}></Route>
           <Route path="/study-finish" element={<StudyFinish />}></Route>
           <Route path="/learn-course" element={<LearningCourse />}></Route>
+          <Route path="/learn-page" element={<LearningPage />}></Route>
           <Route path="/aaa" element={<AAA />}></Route>
           <Route element={<AuthHeader />}>
             <Route path="/mypage" element={<MyPage />} />
