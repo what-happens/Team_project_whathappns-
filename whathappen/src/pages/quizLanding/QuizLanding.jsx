@@ -7,16 +7,20 @@ import Button from "../../components/Button";
 import PropTypes from "prop-types";
 
 const LandingBackground = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  min-height: 100vh;
   z-index: 998;
   background-image: url(${backgroundImage});
   background-size: 100% 100%;
+  background-position: center;
   background-repeat: no-repeat;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   ${media.medium`
     position: absolute;
@@ -32,9 +36,16 @@ const QuizLandingMain = styled.main`
 `;
 
 const QuizLogo = styled.img`
-  width: 50rem;
-  height: 40.2rem;
-  margin-top: 5rem;
+  width: 58rem;
+  height: 53rem;
+  ${media.medium`
+    width: 51rem;
+    height: 46rem;
+`}
+  ${media.small`
+    width: 37rem;
+    height: 33rem;
+`}
 `;
 
 const QuizOptionsSection = styled.section`
@@ -45,6 +56,18 @@ const QuizOptionsSection = styled.section`
 const QuizControlSection = styled.section`
   display: flex;
   gap: 2.2rem;
+  & > button {
+    ${media.medium`
+    font-size: 2.5rem;
+    width:18rem
+`}
+    ${media.small`
+      width: 11rem;
+    font-size: 1.5rem;
+    padding:0.8rem 1.2rem;
+    border-radius:1.6rem
+`}
+  }
 `;
 
 export default function QuizLanding({ onNext }) {
@@ -64,7 +87,7 @@ export default function QuizLanding({ onNext }) {
         <QuizControlSection>
           <h2 className="sr-only">퀴즈를 풀어보세요</h2>
           <Button
-            fontSize="3rem"
+            fontSize="4rem"
             padding="2rem 3rem"
             borderRadius="2.5rem"
             onClick={onNext}
@@ -73,7 +96,7 @@ export default function QuizLanding({ onNext }) {
           </Button>
           <Button
             backgroundColor="red"
-            fontSize="3rem"
+            fontSize="4rem"
             padding="2rem 3rem"
             borderRadius="2.5rem"
           >
