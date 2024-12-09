@@ -10,6 +10,7 @@ export default function Button({
   borderRadius = "2rem",
   type = "button",
   border = "none",
+  fontFamily = "Gmarket Sans",
   onClick,
   children,
   width,
@@ -25,6 +26,7 @@ export default function Button({
       type={type}
       onClick={onClick}
       $width={width}
+      $fontFamily={fontFamily}
     >
       {children}
     </StyledButton>
@@ -42,6 +44,8 @@ const StyledButton = styled.button`
         return "#FFFFFF";
       case "black":
         return "#000000";
+      case "gray":
+        return "#C4C4C4";
       default:
         return "#2E5DFE";
     }
@@ -65,17 +69,44 @@ const StyledButton = styled.button`
   cursor: pointer;
   border: ${(props) => props.$border};
   width: ${(props) => props.$width};
+  font-family: ${(props) => props.$fontFamily};
+
+  &:hover {
+    background-color: ${(props) => {
+      switch (props.$backgroundColor) {
+        case "red":
+          return "#FF1751";
+        case "green":
+          return "#7AC800";
+        case "white":
+          return "#ececec";
+        case "gray":
+          return "#333333";
+        default:
+          return "#1348FF";
+      }
+    }};
+  }
 `;
 
+// Define PropTypes
 Button.propTypes = {
   fontSize: PropTypes.oneOf(["small", "large"]),
   padding: PropTypes.string,
-  width: PropTypes.string,
   color: PropTypes.string,
-  backgroundColor: PropTypes.string,
+  backgroundColor: PropTypes.oneOf([
+    "red",
+    "green",
+    "white",
+    "black",
+    "gray",
+    "blue",
+  ]),
   borderRadius: PropTypes.string,
-  type: PropTypes.oneOf(["button", "submit", "reset"]),
+  type: PropTypes.string,
+  border: PropTypes.string,
+  fontFamily: PropTypes.string,
   onClick: PropTypes.func,
-  children: PropTypes.node,
-  border: PropTypes.node,
+  children: PropTypes.node.isRequired,
+  width: PropTypes.string,
 };

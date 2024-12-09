@@ -2,20 +2,44 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
 const GlobalStyle = createGlobalStyle`
-  ${reset}
+  ${reset}  
   @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
+    font-family: 'Gmarket Sans';
+    font-weight: 300;
     font-style: normal;
-  }
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/GmarketSans/GmarketSansLight.woff2') format('woff2'), 
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/GmarketSans/GmarketSansLight.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/GmarketSans/GmarketSansLight.otf') format('opentype'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/GmarketSans/GmarketSansLight.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Gmarket Sans';
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/GmarketSans/GmarketSansMedium.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/GmarketSans/GmarketSansMedium.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/GmarketSans/GmarketSansMedium.otf') format('opentype'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/GmarketSans/GmarketSansMedium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Gmarket Sans';
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/GmarketSans/GmarketSansBold.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/GmarketSans/GmarketSansBold.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/GmarketSans/GmarketSansBold.otf') format('opentype'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/GmarketSans/GmarketSansBold.ttf') format('truetype');
+}
 
   html {
     font-size: 10px;
   }
 
   body{
-    font-family: 'GmarketSansMedium';
+    font-family: 'Gmarket Sans';
   }
 
   * {

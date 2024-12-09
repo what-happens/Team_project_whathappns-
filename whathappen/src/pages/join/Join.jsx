@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import Button from "../../components/Button";
 import Logo from "../../assets/what_happns_logo_b.png";
 import styled from "styled-components";
-import { Github, Google } from "./components/JoinSvg";
-// import { useSignup } from "./../../hooks/useSignup";
-// import { useNavigate } from "react-router-dom";
+import { Google } from "./components/JoinSvg";
+import { useNavigate } from "react-router-dom";
 import loadingImg from "../../assets/loading.gif";
 import { Link } from "react-router-dom";
 
@@ -18,9 +17,8 @@ export default function Join() {
   const [pwError, setPwError] = useState("");
 
   const [loading, setLoading] = useState(false);
-  // const { signup, error } = useSignup();
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const nameRegex = /^[가-힣]+$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -84,8 +82,7 @@ export default function Join() {
         });
 
         if (response.ok) {
-          const data = await response.json();
-          console.log("회원가입 성공!", data);
+          navigate("/joinsuccess");
         } else {
           const errorData = await response.json();
           setIdError(errorData.message || "회원가입 실패");
@@ -98,19 +95,6 @@ export default function Join() {
       }
     }
   };
-  //     const signupSuccess = await signup(idValue, pwValue, nameValue);
-
-  //     if (signupSuccess) {
-  //       setLoading(false);
-  //       setTimeout(() => {
-  //         navigate("/");
-  //       }, 1000);
-  //     } else {
-  //       setLoading(false);
-  //       setIdError(error);
-  //     }
-  //   }
-  // };
 
   const handleIdChange = (e) => {
     setIdValue(e.target.value);
@@ -128,13 +112,18 @@ export default function Join() {
   return (
     <>
       <JoinContents>
-        <Warp flexDirection="column" gap="2rem" margin="0 0 2rem 0">
+        <Warp $flexDirection="column" $gap="2rem" $margin="0 0 2rem 0">
           <h2 style={{ fontSize: "4.8rem", fontWeight: "700" }}>Join</h2>
           <span style={{ fontSize: "3.6rem", fontWeight: "500" }}>
             환영합니다!
           </span>
         </Warp>
-        <Form action="submit" onSubmit={handleSubmit} noValidate>
+        <Form
+          action="submit"
+          onSubmit={handleSubmit}
+          noValidate
+          autoComplete="on"
+        >
           <InputWarp>
             <Input
               type="text"
@@ -142,6 +131,7 @@ export default function Join() {
               value={nameValue}
               onChange={handleNameChange}
               required
+              autoComplete="name"
             />
           </InputWarp>
           <div
@@ -160,6 +150,7 @@ export default function Join() {
               value={idValue}
               onChange={handleIdChange}
               required
+              autoComplete="email"
             />
           </InputWarp>
           <div
@@ -178,6 +169,7 @@ export default function Join() {
               value={pwValue}
               onChange={handlePasswordChange}
               required
+              autoComplete="current-password"
             />
           </InputWarp>
           <div
@@ -198,29 +190,23 @@ export default function Join() {
             가입하기
           </Button>
         </Form>
-
+        <p style={{ fontSize: "1.2rem" }}>
+          이미 계정이 있으신가요?{" "}
+          <Link to="/login">
+            <span
+              style={{
+                color: "var(--main-color)",
+                textDecoration: "underline",
+              }}
+            >
+              로그인
+            </span>
+          </Link>
+        </p>
         <SnsWarp>
-          <Button
-            backgroundColor="white"
-            border="1px solid #c4c4c4"
-            width="43rem"
-            borderRadius="10px"
-            color="black"
-            padding="1.5rem"
-          >
+          <SocialLogin $bg="white" $border="1px solid #C4C4C4">
             <Google />
-            Google 계정으로 회원가입
-          </Button>
-          <Button
-            backgroundColor="black"
-            width="43rem"
-            borderRadius="10px"
-            color="white"
-            padding="1.5rem"
-          >
-            <Github />
-            Github 계정으로 회원가입
-          </Button>
+          </SocialLogin>
         </SnsWarp>
 
         <Link to="/">
@@ -272,6 +258,7 @@ const Input = styled.input`
   border: 1px solid #c4c4c4;
   border-radius: 15px;
 `;
+
 const InputWarp = styled.div`
   display: flex;
   align-items: center;
@@ -287,15 +274,27 @@ const InputWarp = styled.div`
 const Warp = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: ${(props) => props.flexDirection};
-  gap: ${(props) => props.gap};
-  margin: ${(props) => props.margin};
+  flex-direction: ${(props) => props.$flexDirection};
+  gap: ${(props) => props.$gap};
+  margin: ${(props) => props.$margin};
 `;
 
 const SnsWarp = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+`;
+
+const SocialLogin = styled.a`
+  width: 5rem;
+  height: 5rem;
+  background-color: ${(props) => props.$bg};
+  border-radius: 50px;
+  border: ${(props) => props.$border};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 `;
 
 const LoadingPage = styled.div`
