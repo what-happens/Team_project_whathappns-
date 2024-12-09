@@ -4,7 +4,7 @@ import QuizCard from "./components/ReviewFreeVersionCard";
 
 const quiz = [
   {
-    id: 0,
+    id: 8,
     category: "HTTP",
     question: "HTML은 무엇의 약자일까요?",
     correct_answer: "Hypertext Markup Language",
@@ -13,9 +13,10 @@ const quiz = [
       "Hypermeida Text Language",
       "High-text Markup Language",
     ],
+    type: "bookmark",
   },
   {
-    id: 1,
+    id: 11,
     category: "HTTP",
     question: "HTML은 무엇의 약자일까요?",
     correct_answer: "Hypertext Markup Language",
@@ -24,9 +25,10 @@ const quiz = [
       "Hypermeida Text Language",
       "High-text Markup Language",
     ],
+    type: "bookmark",
   },
   {
-    id: 2,
+    id: 3,
     category: "HTTP",
     question: "HTML은 무엇의 약자일까요?",
     correct_answer: "Hypertext Markup Language",
@@ -35,6 +37,43 @@ const quiz = [
       "Hypermeida Text Language",
       "High-text Markup Language",
     ],
+    type: "wrong",
+  },
+  {
+    id: 5,
+    category: "CSS",
+    question: "HTML은 무엇의 약자일까요?",
+    correct_answer: "Hypertext Markup Language",
+    incorrect_answer: [
+      "Hyperlink and Text Markup Language",
+      "Hypermeida Text Language",
+      "High-text Markup Language",
+    ],
+    type: "wrong",
+  },
+  {
+    id: 12,
+    category: "HTTP",
+    question: "HTML은 무엇의 약자일까요?",
+    correct_answer: "Hypertext Markup Language",
+    incorrect_answer: [
+      "Hyperlink and Text Markup Language",
+      "Hypermeida Text Language",
+      "High-text Markup Language",
+    ],
+    type: "wrong",
+  },
+  {
+    id: 23,
+    category: "CSS",
+    question: "HTML은 무엇의 약자일까요?",
+    correct_answer: "Hypertext Markup Language",
+    incorrect_answer: [
+      "Hyperlink and Text Markup Language",
+      "Hypermeida Text Language",
+      "High-text Markup Language",
+    ],
+    type: "wrong",
   },
 ];
 
@@ -79,14 +118,16 @@ export default function ReviewFreeVersion() {
         </TapWarp>
         <QuestionContainer>
           <Scrollbar>
-            {quiz.map((item) => (
-              <Question
-                key={item.id}
-                onClick={() => handleQuestionClick(item.id)}
-              >
-                {item.category} 문제 {item.id + 1}
-              </Question>
-            ))}
+            {quiz
+              .filter((item) => item.type === activeTab)
+              .map((item) => (
+                <Question
+                  key={item.id}
+                  onClick={() => handleQuestionClick(item.id)}
+                >
+                  {item.category} 문제 {item.id + 1}
+                </Question>
+              ))}
           </Scrollbar>
         </QuestionContainer>
       </Container>
