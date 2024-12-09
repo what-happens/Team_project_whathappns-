@@ -64,7 +64,6 @@ export default function QuizLanding({ onNext }) {
         <QuizControlSection>
           <h2 className="sr-only">퀴즈를 풀어보세요</h2>
           <Button
-            width="24.9rem"
             fontSize="3rem"
             padding="2rem 3rem"
             borderRadius="2.5rem"
@@ -73,7 +72,6 @@ export default function QuizLanding({ onNext }) {
             퀴즈 풀기!
           </Button>
           <Button
-            width="24.9rem"
             backgroundColor="red"
             fontSize="3rem"
             padding="2rem 3rem"

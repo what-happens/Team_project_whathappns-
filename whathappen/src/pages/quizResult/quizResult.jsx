@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components";
 import logoImage from "../../assets/logo.png";
-import ConfirmExitModal from "./components/ConfirmModal";
-import CongratulationsModal from "./components/CongratsModal";
+import ConfirmExitModal from "./components/confirmModal";
+import CongratulationsModal from "./components/congratsModal";
 import { media } from "../../styles/MideaQuery";
 import Button from "../../components/Button";
 import { useState } from "react";
 
-const Center = styled.css`
+const Center = css`
   position: fixed;
   top: 50%;
   left: 50%;
