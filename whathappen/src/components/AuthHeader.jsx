@@ -3,6 +3,7 @@ import AuthNav from "./AuthNav";
 import styled from "styled-components";
 import logo from "../assets/what_happns_logo_b.png";
 import menu from "../assets/header_menu_icon.svg";
+import logout from "../assets/header_logoutbtn_icon.svg";
 import exit from "../assets/exit_btn.svg";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import Button from "./Button";
@@ -55,9 +56,10 @@ export default function AuthHeader() {
                 </Link>
               </Logo>
               <AuthNav />
-              <Button type="button" onClick={handleLogout}>
+              <MobileLogoutBtn type="button" onClick={handleLogout}>
+                <img src={logout} alt="로그아웃" />
                 로그아웃
-              </Button>
+              </MobileLogoutBtn>
             </MobileMenu>
             <Overlay isOpen={isMenuOpen} onClick={toggleMenu} />
           </>
@@ -106,14 +108,19 @@ const Logo = styled.h1`
     height: 100%;
   }
   ${media.medium`
-    
+    position: absolute;
+    top: 9rem;
   `}
 `;
 
 const MobileMenuBtn = styled.button`
-  position: absolute;
+  /* position: absolute; */
+  margin-top: 3rem;
+  margin-left: 1rem;
   border: none;
   background: none;
+  padding: 0;
+  cursor: pointer;
   img {
     width: 5rem;
     height: 5rem;
@@ -124,8 +131,7 @@ const MobileMenu = styled.div`
   position: fixed;
   top: 0;
   left: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
-  width: 40%;
-  max-width: 32rem;
+  width: 32rem;
   height: 100vh;
   background: white;
   border: none;
@@ -137,10 +143,6 @@ const MobileMenu = styled.div`
 `;
 
 const CloseBtn = styled.button`
-  img {
-    width: 5rem;
-    height: 5rem;
-  }
   position: absolute;
   top: 2rem;
   right: 2rem;
@@ -148,6 +150,28 @@ const CloseBtn = styled.button`
   border: none;
   cursor: pointer;
   padding: 0;
+  img {
+    width: 5rem;
+    height: 5rem;
+  }
+`;
+
+const MobileLogoutBtn = styled.button`
+  margin-top: auto;
+  margin-bottom: 2rem;
+  border: none;
+  font-family: "Gmarket Sans";
+  font-size: 2.4rem;
+  font-weight: 500;
+  background: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  img {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-right: 0.8rem;
+  }
 `;
 
 const Overlay = styled.div`
