@@ -7,35 +7,56 @@ const Content = styled.section`
   gap: 3rem;
   grid-template-rows: 3rem 2fr 3fr;
 
-  h2 {
+  h3 {
     font-size: 3.6rem;
     font-weight: 700;
     color: var(--main-color);
   }
 
-  .pp {
+  p.content_item {
     font-size: 2rme;
     width: 100%;
-    background-color: black;
+    font-size: 2rem;
+    line-height: 3rem;
+    font-weight: normal;
   }
 
   div {
     width: 100%;
-    background-color: pink;
+    background-color: #f1f4ff;
+    border-radius: 20px;
+
+    padding: 3rem;
+    font-size: 2rem;
+    line-height: 3rem;
   }
 `;
 export default function LearnSection() {
   return (
     <Content>
-      <h2>1. HTML 이란?</h2>
-      <p className="pp">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure id
-        voluptatum illum adipisci doloribus nihil in excepturi placeat ratione.
-        Accusantium nobis, facilis necessitatibus cupiditate iste illo. Ipsa
-        facilis labore at!
+      <h3>1. HTML 이란?</h3>
+      <p className="content_item">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, culpa
+        odio! Atque labore sit molestiae soluta perspiciatis dolorem?
+        Reiciendis, dicta a culpa labore unde necessitatibus. Quae sunt dolores
+        optio labore. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        Harum, aut dolorem. Corrupti nostrum ullam sapiente non, odio
+        exercitationem facere expedita dolores commodi blanditiis qui! Molestiae
+        expedita sint iste tenetur dolore. Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Voluptatem quia aperiam totam amet nobis?
+        Esse architecto quia, adipisci rem blanditiis possimus sit recusandae
+        id! Dolor quasi labore vitae facere inventore. Lorem ipsum dolor sit
+        amet, consectetur adipisicing elit. Esse molestias totam laboriosam,
+        fugiat, magni accusamus pariatur nam tempore, earum placeat sequi.
+        Sapiente quia recusandae quas? Architecto facilis maxime vitae quia.
       </p>
       <div>
-        <p>예시 code</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
+          soluta dolorem omnis aliquid sint quo sunt culpa aliquam quos
+          temporibus esse, ipsa voluptatibus, aspernatur eius quae, blanditiis
+          harum facilis dignissimos?
+        </p>
       </div>
     </Content>
   );

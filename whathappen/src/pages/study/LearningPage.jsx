@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
-import Contents from "./components/Contents";
+import ToggleMenu from "./components/ToggleMenu";
 import LearnSection from "./components/LearnSection";
 import back from "../../assets/back_link.png";
 
@@ -43,12 +43,28 @@ const NextLink = styled(Link)`
   }
 `;
 
-const Main = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: row;
   gap: 6rem;
   height: 100%;
   padding: 12rem 3rem;
+`;
+
+const NavContent = styled.div`
+  width: 30rem;
+  height: 100%;
+  border: 1px solid var(--main-color);
+  border-radius: 2rem;
+  padding: 5rem 2rem;
+
+  h2 {
+    color: var(--main-color);
+    font-size: 3.2rem;
+    font-weight: bold;
+    line-height: 3.5rem;
+    margin-bottom: 3rem;
+  }
 `;
 
 export default function LearningPage() {
@@ -58,10 +74,13 @@ export default function LearningPage() {
         <h1 className="sr-only">학습 페이지</h1>
         <BackLink />
       </header>
-      <Main>
-        <Contents></Contents>
+      <Container>
+        <NavContent>
+          <h2>Level 01</h2>
+          <ToggleMenu></ToggleMenu>
+        </NavContent>
         <LearnSection></LearnSection>
-      </Main>
+      </Container>
       <NextLink>
         다음으로 <span>&gt;</span>
       </NextLink>
