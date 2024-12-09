@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Button from "../../../components/Button";
-// import { media } from "../../../styles/MideaQuery";
+import { media } from "../../../styles/MideaQuery";
 
 export default function QuizCard({ quizzes }) {
   const [currentQuestion] = useState(0);
@@ -60,22 +60,40 @@ const QuizSection = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  border-radius: 0 2rem 2rem 0;
+  border-radius: 2rem;
   position: relative;
-  padding: 5rem 20rem 10rem 20rem;
+  padding: 5rem;
   border: 1px solid var(--main-color);
-  height: 57rem;
+  height: 60rem;
+  width: 100%;
+  max-width: 65rem;
+
+  ${media.large`
+   height: auto;
+   min-height: 50rem;
+   padding: 3rem 2rem;
+   border-radius: 1rem;
+   max-width: 100%;
+   margin: 0 auto;
+ `}
 `;
 
 const QuizQuestion = styled.h3`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 0 2rem 0;
+  margin: 0 0 4rem 0;
   font-size: 3.5rem;
-  line-height: 5rem;
+  line-height: 1.4;
   text-align: center;
-  padding: 0 2rem;
+  width: 100%;
+  word-break: keep-all;
+
+  ${media.large`
+   font-size: 2.4rem;
+   margin: 0 0 3rem 0;
+   padding: 0 1rem;
+ `}
 `;
 
 const FormWrapper = styled.form`
@@ -85,10 +103,18 @@ const FormWrapper = styled.form`
   justify-content: center;
   font-size: 2rem;
   line-height: 3rem;
+  gap: 1rem;
+  padding: 0 2rem;
+
+  ${media.large`
+   padding: 0 1rem;
+   width: 100%;
+ `}
 `;
 
 const QuizInputWrapper = styled.div`
   width: 100%;
+
   input[type="radio"] {
     display: none;
   }
@@ -97,10 +123,12 @@ const QuizInputWrapper = styled.div`
     text-align: center;
     display: block;
     width: 100%;
-    padding: 2.4rem 0;
+    padding: 2rem;
     border-radius: 2rem;
     border: 1px solid #2e5dff;
     cursor: pointer;
+    word-break: keep-all;
+    line-height: 1.4;
   }
 
   input[type="radio"]:checked + label {
@@ -108,9 +136,13 @@ const QuizInputWrapper = styled.div`
     color: white;
   }
 
-  &:not(:last-of-type) {
-    margin-bottom: 0.8rem;
-  }
+  ${media.large`
+    label {
+      font-size: 1.6rem;
+      padding: 1.5rem;
+      border-radius: 1rem;
+    }
+  `}
 `;
 
 const ButtonWrapper = styled.div`
@@ -118,7 +150,11 @@ const ButtonWrapper = styled.div`
   justify-content: ${(props) =>
     props.$buttonCount === "one" ? "flex-end" : "space-between"};
   width: 100%;
-  margin-top: 1.75rem;
+  margin-top: 2rem;
+
+  ${media.large`
+    margin-top: 3rem;
+  `}
 `;
 
 QuizCard.propTypes = {
