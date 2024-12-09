@@ -114,6 +114,9 @@ const QuestionNumber = styled.p`
   ${media.medium`
     font-size: 4rem;
 `}
+  ${media.small`
+    font-size: 3rem;
+`}
 `;
 
 const QuizQuestion = styled.h3`
@@ -125,6 +128,10 @@ const QuizQuestion = styled.h3`
   line-height: 6rem;
   ${media.medium`
     font-size: 3.3rem;
+`}
+
+  ${media.small`
+    font-size: 2.2rem;
 `}
 `;
 
