@@ -6,7 +6,7 @@ import { media } from "../../styles/MideaQuery";
 import Button from "../../components/Button";
 import { useState } from "react";
 
-const Center = styled.css`
+const Center = css`
   position: fixed;
   top: 50%;
   left: 50%;
