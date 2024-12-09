@@ -9,9 +9,9 @@ const SelectBoxWrap = styled.div`
 `;
 
 const selectCommonStyle = css`
-  width: 33rem;
-  height: 7rem;
-  font-size: 3rem;
+  width: 35rem;
+  height: 7.6rem;
+  font-size: 3.6rem;
   color: #b3b3b3;
   border: 3px solid var(--main-color);
   display: flex;
@@ -20,9 +20,15 @@ const selectCommonStyle = css`
   align-items: center;
 
   ${media.medium`
-    width: 31.8rem;
+    width: 32.5rem;
   height: 7.1rem;
-  font-size: 2.5rem;
+  font-size: 3.3rem;
+`}
+
+  ${media.small`
+    width: 23rem;
+  height: 6rem;
+  font-size: 2.7rem;
 `}
 `;
 
