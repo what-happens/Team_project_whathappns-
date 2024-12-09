@@ -1,11 +1,18 @@
 import styled from "styled-components";
 import { CommonModal, ModalBackdrop } from "./ModalStyle";
 import PropTypes from "prop-types";
+import Button from "../../../components/Button";
+import { media } from "../../../styles/MideaQuery";
 
 const ConfirmExit = styled(CommonModal)`
   width: 49rem;
   height: 22.6rem;
-  border-radius: 20px;
+  border-radius: 2rem;
+  ${media.medium`
+    width: 35rem;
+  height: 16rem;
+  border-radius: 1.8rem;
+`}
 `;
 
 const ConfirmExitMessage = styled.p`
@@ -13,22 +20,14 @@ const ConfirmExitMessage = styled.p`
   font-weight: 300;
   margin: 2.4rem;
   text-align: center;
+  ${media.medium`
+    font-size: 1.8rem;
+`}
 `;
 
 const ButtonType = styled.div`
   display: flex;
   gap: 1.8rem;
-`;
-
-const YesOrNo = styled.button`
-  width: 11.3rem;
-  height: 4.3rem;
-  border-radius: 1.8rem;
-  color: #fff;
-  font-weight: 400;
-  background: var(--main-color);
-  border: none;
-  font-size: 1.6rem;
 `;
 
 export default function ConfirmExitModal({ isOpen, onClose }) {
@@ -42,8 +41,12 @@ export default function ConfirmExitModal({ isOpen, onClose }) {
           정말로 종료하시겠습니까?
         </ConfirmExitMessage>
         <ButtonType>
-          <YesOrNo onClick={onClose}>예</YesOrNo>
-          <YesOrNo onClick={onClose}>아니요</YesOrNo>
+          <Button width="11.3rem" onClick={onClose}>
+            예
+          </Button>
+          <Button width="11.3rem" onClick={onClose}>
+            아니요
+          </Button>
         </ButtonType>
       </ConfirmExit>
     </>

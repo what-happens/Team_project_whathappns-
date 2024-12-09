@@ -2,42 +2,50 @@ import styled from "styled-components";
 import congratsImg from "../../../assets/congratulations.png";
 import { CommonModal, ModalBackdrop } from "./ModalStyle";
 import PropTypes from "prop-types";
+import Button from "../../../components/Button";
+import { media } from "../../../styles/MideaQuery";
 
 const Congratulations = styled(CommonModal)`
-  width: 490px;
-  height: 376px;
-  border-radius: 20px;
+  width: 49rem;
+  height: 37.6rem;
+  border-radius: 2rem;
+  ${media.medium`
+    width: 35rem;
+  height: 27rem;
+  border-radius: 1.8rem;
+`}
 `;
 
 const CongratsImg = styled.img`
-  margin-bottom: 39px;
+  margin-bottom: 3.9rem;
+  ${media.medium`
+    width: 24rem;
+`}
 `;
 
 const SaveMessage = styled.p`
-  font-size: 26px;
+  font-size: 2.6rem;
   font-weight: 500;
-  width: 315px;
+  width: 31.5rem;
   text-align: center;
-  margin-bottom: 19px;
+  margin-bottom: 1.9rem;
+  ${media.medium`
+    font-size: 1.8rem;
+    width: 65%;
+`}
 `;
 
 const MyPageMessage = styled.p`
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 300;
-  width: 275px;
+  width: 27.5rem;
   text-align: center;
-  margin-bottom: 57px;
-`;
-
-const GotoMyPage = styled.button`
-  width: 183px;
-  height: 46px;
-  border-radius: 20px;
-  background-color: var(--main-color);
-  border: none;
-  color: #fff;
-  font-size: 20px;
-  font-weight: 400;
+  margin-bottom: 5.7rem;
+  ${media.medium`
+    font-size: 1.4rem;
+    width: 60%;
+    margin-bottom: 4rem;
+`}
 `;
 
 export default function CongratulationsModal({ isOpen, onClose }) {
@@ -54,7 +62,9 @@ export default function CongratulationsModal({ isOpen, onClose }) {
         <MyPageMessage>
           마이페이지에서 복습 노트에 저장된 문제들을 복습해보아요!!
         </MyPageMessage>
-        <GotoMyPage onClick={onClose}>마이페이지로 이동</GotoMyPage>
+        <Button width="20rem" onClick={onClose}>
+          마이페이지로 이동
+        </Button>
       </Congratulations>
     </>
   );

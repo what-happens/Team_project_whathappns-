@@ -3,6 +3,8 @@ import quizImage from "../../assets/quiz_logo.png";
 import backgroundImage from "../../assets/quiz_landing.png";
 import { Select } from "./components/SelectBox";
 import { media } from "../../styles/MideaQuery";
+import Button from "../../components/Button";
+import PropTypes from "prop-types";
 
 const LandingBackground = styled.div`
   position: fixed;
@@ -14,8 +16,10 @@ const LandingBackground = styled.div`
   background-image: url(${backgroundImage});
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  height: 100%;
 
   ${media.medium`
+    position: absolute;
     background-image: none;
 `}
 `;
@@ -43,28 +47,7 @@ const QuizControlSection = styled.section`
   gap: 2.2rem;
 `;
 
-const QuizControlButton = styled.button`
-  width: 20rem;
-  height: 6rem;
-  border-radius: 2rem;
-  margin-top: 1rem;
-  margin-bottom: 5rem;
-  border: none;
-  font-size: 3rem;
-  font-weight: ${(props) => props.fontWeight || "normal"};
-  color: #fff;
-  background-color: ${(props) => props.backgroundColor};
-
-  ${media.medium`
-
-    width: 16.9rem;
-    height: 7.8rem;
-    font-size: 2.5rem;
-
-`}
-`;
-
-export default function QuizLanding() {
+export default function QuizLanding({ onNext }) {
   return (
     <LandingBackground>
       <QuizLandingMain>
@@ -80,17 +63,30 @@ export default function QuizLanding() {
         </QuizOptionsSection>
         <QuizControlSection>
           <h2 className="sr-only">퀴즈를 풀어보세요</h2>
-          <QuizControlButton
-            fontWeight="600"
-            backgroundColor="var(--main-color);"
+          <Button
+            width="24.9rem"
+            fontSize="3rem"
+            padding="2rem 3rem"
+            borderRadius="2.5rem"
+            onClick={onNext}
           >
             퀴즈 풀기!
-          </QuizControlButton>
-          <QuizControlButton backgroundColor="#FF2E62;">
+          </Button>
+          <Button
+            width="24.9rem"
+            backgroundColor="red"
+            fontSize="3rem"
+            padding="2rem 3rem"
+            borderRadius="2.5rem"
+          >
             뒤로가기
-          </QuizControlButton>
+          </Button>
         </QuizControlSection>
       </QuizLandingMain>
     </LandingBackground>
   );
 }
+
+QuizLanding.propTypes = {
+  onNext: PropTypes.func.isRequired,
+};
