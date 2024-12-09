@@ -13,7 +13,6 @@ const SliderWrapper = styled.div`
 `;
 
 const StyledSwiper = styled(Swiper)`
-  overflow: auto;
   padding: 3rem;
 `;
 
