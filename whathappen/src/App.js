@@ -3,12 +3,7 @@ import GlobalStyle from "./styles/GlobalStyle";
 import Home from "./pages/Home";
 import Login from "./pages/login/Login";
 import Join from "./pages/join/Join";
-import JoinSuccess from "./pages/joinSuccess/JoinSuccess";
-import { Provider, useDispatch } from "react-redux";
-import store from "./redux/store/store";
-// import QuizLanding from "./pages/quizLanding/QuizLanding";
-// import QuizResult from "./pages/quizResult/QuizResult";
-// import Quiz from "./pages/quiz/Quiz";
+// import JoinSuccess from "./pages/joinSuccess/JoinSuccess";
 import QuizPage from "./pages/quiz/QuizPage";
 import Exercise from "./pages/exercise/Exercise";
 import Study from "./pages/study/Study";
@@ -20,64 +15,112 @@ import NotFound from "./pages/notFound/NotFound";
 import MyPage from "./pages/myPage/MyPage";
 import Review from "./pages/review/ReviewFreeVersion";
 import AuthHeader from "./components/AuthHeader";
+import ProtectedRoute from "./components/PrortectedRoute";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { auth } from "./firebase";
-import { onAuthStateChanged } from "firebase/auth";
-import { setUser, clearUser } from "./redux/authSlice";
+import { login, logout } from "./redux/authSlice";
 
-function AuthSync() {
+// import QuizLanding from "./pages/quizLanding/QuizLanding";
+// import QuizResult from "./pages/quizResult/QuizResult";
+// import Quiz from "./pages/quiz/Quiz";
+
+function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         dispatch(
-          setUser({
-            uid: user.uid,
-            email: user.email,
-            displayName: user.displayName,
-            photoURL: user.photoURL,
+          login({
+            user: {
+              email: user.email,
+              displayName: user.displayName,
+            },
           })
         );
       } else {
-        dispatch(clearUser());
+        dispatch(logout());
       }
     });
 
     return () => unsubscribe();
   }, [dispatch]);
 
-  return null; // 렌더링 필요 없음
-}
-
-function App() {
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <AuthSync />
-        <GlobalStyle />
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/*" element={<NotFound />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/join" element={<Join />}></Route>
-          {/* <Route path="/quiz-landing" element={<QuizLanding />} />
-          <Route path="/quiz" element={<QuizResult />} /> */}
-          <Route path="/quizpage" element={<QuizPage />} />
-          <Route path="/exercise" element={<Exercise />} />
-          <Route path="/learn-course" element={<LearningCourse />}></Route>
-          <Route path="/learn-page" element={<LearningPage />}></Route>
-          <Route path="/aaa" element={<AAA />}></Route>
-          <Route path="/joinsuccess" element={<JoinSuccess />}></Route>
-          <Route path="/study" element={<Study />}></Route>
-          <Route path="/studyfinish" element={<StudyFinish />}></Route>
-          <Route element={<AuthHeader />}>
-            <Route path="/mypage" element={<MyPage />} />
-            <Route path="/review" element={<Review />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+    <BrowserRouter>
+      <GlobalStyle />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/*" element={<NotFound />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/join" element={<Join />} />
+        <Route path="/quizpage" element={<QuizPage />} />
+        <Route path="/exercise" element={<Exercise />} />
+
+        {/* 보호된 라우트 */}
+        <Route
+          path="/learn-course"
+          element={
+            <ProtectedRoute>
+              <LearningCourse />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/learn-page"
+          element={
+            <ProtectedRoute>
+              <LearningPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/aaa"
+          element={
+            <ProtectedRoute>
+              <AAA />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/study"
+          element={
+            <ProtectedRoute>
+              <Study />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/studyfinish"
+          element={
+            <ProtectedRoute>
+              <StudyFinish />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* AuthHeader와 함께 보호된 라우트 */}
+        <Route element={<AuthHeader />}>
+          <Route
+            path="/mypage"
+            element={
+              <ProtectedRoute>
+                <MyPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/review"
+            element={
+              <ProtectedRoute>
+                <Review />
+              </ProtectedRoute>
+            }
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
