@@ -16,10 +16,10 @@ const authSlice = createSlice({
     logout: (state) => {
       state.isLoggedIn = false;
       state.user = null;
+      localStorage.removeItem("persist:root");
     },
   },
 });
 
 export const { login, logout } = authSlice.actions;
-export const selectAuth = (state) => state.auth;
 export default authSlice.reducer;
