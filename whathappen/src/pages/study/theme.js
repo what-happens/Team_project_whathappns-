@@ -4,6 +4,7 @@ const colors = {
 };
 
 const fontSizes = {
+  xl: "5.2rem",
   lg: "4.8rem",
   md: "3.2rem",
   title: "2.4rem",

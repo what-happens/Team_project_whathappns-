@@ -19,8 +19,11 @@ const Container = styled.section`
 `;
 
 const LogoImage = styled.img`
+  ${({ theme }) => theme.tablet`
+    width: 25rem;
+  `};
   ${({ theme }) => theme.mobile`
-    width: 23rem;
+    width: 20rem;
   `};
 
   width: 29rem;
@@ -29,8 +32,11 @@ const LogoImage = styled.img`
 `;
 
 const FinishIcon = styled.img`
+  ${({ theme }) => theme.tablet`
+    width: 22rem;
+  `};
   ${({ theme }) => theme.mobile`
-    width: 23rem;
+    width: 20rem;
     margin: 2rem 0;
   `};
 
@@ -41,8 +47,11 @@ const FinishIcon = styled.img`
 `;
 
 const Title = styled.p`
-  ${({ theme }) => theme.mobile`
+  ${({ theme }) => theme.tablet`
   font-size: ${({ theme }) => theme.fontSizes.md};
+  `};
+  ${({ theme }) => theme.mobile`
+  font-size: ${({ theme }) => theme.fontSizes.title};
   `};
 
   font-size: 6.4rem;
@@ -51,18 +60,26 @@ const Title = styled.p`
 `;
 
 const Subtitle = styled.p`
-  ${({ theme }) => theme.mobile`
+  ${({ theme }) => theme.tablet`
   font-size: ${({ theme }) => theme.fontSizes.title};
+  `};
+  ${({ theme }) => theme.mobile`
+  font-size: ${({ theme }) => theme.fontSizes.subTitle};
   `};
   font-size: 4.8rem;
   font-weight: 300;
 `;
 
 const ActionLink = styled(Link)`
-  ${({ theme }) => theme.mobile`
+  ${({ theme }) => theme.tablet`
   font-size: ${({ theme }) => theme.fontSizes.title};
-  width: 20rem;
+  width: 22rem;
   line-height: 6rem;
+  `};
+  ${({ theme }) => theme.mobile`
+  font-size: ${({ theme }) => theme.fontSizes.subTitle};
+  width: 18rem;
+  line-height: 5rem;
   `};
 
   background-color: #fff;
