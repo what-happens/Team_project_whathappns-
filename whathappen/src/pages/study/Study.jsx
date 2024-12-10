@@ -1,45 +1,72 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
+import theme from "./theme";
+import media from "./media";
+
 import { Link } from "react-router-dom";
-import IconStage1 from "../../assets/icon_stage1.png";
-import IconStage2 from "../../assets/icon_stage2.png";
-import IconStage3 from "../../assets/icon_stage3.png";
-import IconStage4 from "../../assets/icon_stage4.png";
-import IconStage5 from "../../assets/icon_stage5.png";
-import IconStage6 from "../../assets/icon_stage6.png";
-import IconStage7 from "../../assets/icon_stage7.png";
+import StageContainer from "./components/StageContainer";
 
 const Container = styled.div`
+  ${({ theme }) => theme.tablet`
+      padding: 0.3rem;
+  `};
+  height: 100vh;
+  background-color: var(--main-color);
+
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  gap: 4rem;
-  height: 100vh;
-
-  position: relative;
-  background-color: var(--main-color);
 `;
 
 const Header = styled.header`
-  position: absolute;
+  ${({ theme }) => theme.mobile`
+    margin: 2rem;
+  `};
+  position: fixed;
   top: 0;
   left: 0;
   margin: 4rem;
 `;
 
 const BackLink = styled(Link)`
-  font-size: 3rem;
-  color: #fff;
+  ${({ theme }) => theme.laptop`
+    font-size: ${({ theme }) => theme.fontSizes.title};
+    padding-left: 2.3rem;
+  `};
+  ${({ theme }) => theme.tablet`
+    font-size: ${({ theme }) => theme.fontSizes.subTitle};
+    padding-left: 2rem;
+  `};
+  ${({ theme }) => theme.mobile`
+    font-size: ${({ theme }) => theme.fontSizes.base};
+    padding-left: 1.5rem;
+  `};
   display: flex;
   align-items: center;
   position: relative;
   padding-left: 2.5rem;
+
+  font-size: 3rem;
+  line-height: 4rem;
+  color: #fff;
   text-decoration: none;
   outline: none;
 
   &::before {
+    ${({ theme }) => theme.laptop`
+      width: 1.3rem;
+      height: 1.3rem;
+    `};
+    ${({ theme }) => theme.tablet`
+      width: 0.9rem;
+      height: 0.9rem;
+      border-width: 0.4rem 0.4rem 0 0;
+    `};
+    ${({ theme }) => theme.mobile`
+      width: 0.6rem;
+      height: 0.6rem;
+      border-width: 0.3rem 0.3rem 0 0;
+    `};
     position: absolute;
     content: "";
     display: block;
@@ -60,68 +87,45 @@ const StudySection = styled.section`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 5rem;
+  ${({ theme }) => theme.laptop`
+      font-size: ${({ theme }) => theme.fontSizes.lg};
+      line-height: 6rem;
+      margin-bottom: 1rem;
+  `};
+  ${({ theme }) => theme.tablet`
+      font-size: ${({ theme }) => theme.fontSizes.md};
+      line-height: 4.2rem;
+      margin-bottom: 1rem;
+  `};
+  ${({ theme }) => theme.mobile`
+    font-size: ${({ theme }) => theme.fontSizes.title};
+    line-height: 3.5rem;
+    margin-bottom: 1rem;
+  `};
+  text-align: center;
   color: #fff;
+  font-size: 6rem;
+  font-weight: 700;
+  line-height: 7rem;
   margin-bottom: 5rem;
 `;
 
-const StageContainer = styled.div`
-  display: flex;
-  gap: 4rem;
-  justify-content: center;
-`;
-
-const StageLink = styled.a`
-  width: 200px;
-  height: 200px;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-`;
-
-const stageIcons = [
-  IconStage1,
-  IconStage2,
-  IconStage3,
-  IconStage4,
-  IconStage5,
-  IconStage6,
-  IconStage7,
-];
-
 export default function Study() {
   return (
-    <Container>
-      <Header>
-        <h1 className="sr-only">학습 스테이지 페이지</h1>
-        <BackLink to="/">메인으로</BackLink>
-      </Header>
+    <ThemeProvider theme={{ ...theme, ...media }}>
+      <Container>
+        <Header>
+          <h1 className="sr-only">학습 스테이지 페이지</h1>
+          <BackLink to="/">메인으로</BackLink>
+        </Header>
 
-      <StudySection>
-        <SectionTitle>
-          간단하고 쉽게! <br /> 다양한 기능을 함께 만들어요!
-        </SectionTitle>
-
-        <StageContainer>
-          {stageIcons.slice(0, 4).map((icon, index) => (
-            <StageLink
-              key={index}
-              href="#"
-              style={{ backgroundImage: `url(${icon})` }}
-            />
-          ))}
-        </StageContainer>
-
-        <StageContainer>
-          {stageIcons.slice(4).map((icon, index) => (
-            <StageLink
-              key={index + 4}
-              href="#"
-              style={{ backgroundImage: `url(${icon})` }}
-            />
-          ))}
-        </StageContainer>
-      </StudySection>
-    </Container>
+        <StudySection>
+          <SectionTitle>
+            간단하고 쉽게! <br /> 다양한 기능을 함께 만들어요!
+          </SectionTitle>
+          <StageContainer></StageContainer>
+        </StudySection>
+      </Container>
+    </ThemeProvider>
   );
 }
