@@ -11,75 +11,8 @@ import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const slideUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(8rem);
-  }
-  to {
-    opacity: 2;
-    transform: translateY(0);
-  }
-`;
-
-const MainBanner = styled.section`
-  background-color: ${(props) => props.bg};
-  padding: 15rem 4.7rem 8rem 12rem;
-  display: flex;
-  gap: 5rem;
-  justify-content: center;
-  align-items: center;
-`;
-
-const SubBanner = styled.section`
-  background-color: ${(props) => props.bg};
-  padding: ${(props) => props.padding};
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-
-  animation: ${slideUp} 1s ease;
-`;
-
-const BannerContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${(props) => props.gap || "3.5rem"};
-  ${(props) => props.center && "align-items: center"};
-  color: ${(props) => props.color || "inherit"};
-`;
-
-const BannerTitle = styled.h2`
-  font-size: 6rem;
-  font-weight: 700;
-  color: ${(props) => props.color || "inherit"};
-`;
-
-const BannerDescription = styled.p`
-  font-size: 2.4rem;
-  line-height: 3.5rem;
-  font-weight: 300;
-  text-align: ${(props) => (props.center ? "center" : "left")};
-`;
-
-const BannerImage = styled.div`
-  background-image: url(${(props) => props.src});
-  background-size: ${(props) => props.size || "contain"};
-  background-position: center;
-  background-repeat: no-repeat;
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  ${(props) => props.margin && `margin: ${props.margin}`};
-`;
-
-MainBanner.propTypes = {
-  bg: PropTypes.string.isRequired,
-};
-SubBanner.propTypes = {
-  bg: PropTypes.string.isRequired,
-};
-
 const Mainbanner = () => {
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isLoggedIn } = useSelector((state) => state.auth);
   return (
     <MainBanner bg="white">
       <BannerContent>
@@ -92,8 +25,8 @@ const Mainbanner = () => {
           <br />
           웹사이트!
         </BannerDescription>
-        {isAuthenticated ? (
-          <Link to={"/"}>
+        {isLoggedIn ? (
+          <Link to={"/mypage"}>
             <Button
               borderRadius="5rem"
               fontsize="2rem"
@@ -241,3 +174,70 @@ const InfiniteComponentLoader = () => {
 };
 
 export default InfiniteComponentLoader;
+
+const slideUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(8rem);
+  }
+  to {
+    opacity: 2;
+    transform: translateY(0);
+  }
+`;
+
+const MainBanner = styled.section`
+  background-color: ${(props) => props.bg};
+  padding: 15rem 4.7rem 8rem 12rem;
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SubBanner = styled.section`
+  background-color: ${(props) => props.bg};
+  padding: ${(props) => props.padding};
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+
+  animation: ${slideUp} 1s ease;
+`;
+
+const BannerContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${(props) => props.gap || "3.5rem"};
+  ${(props) => props.center && "align-items: center"};
+  color: ${(props) => props.color || "inherit"};
+`;
+
+const BannerTitle = styled.h2`
+  font-size: 6rem;
+  font-weight: 700;
+  color: ${(props) => props.color || "inherit"};
+`;
+
+const BannerDescription = styled.p`
+  font-size: 2.4rem;
+  line-height: 3.5rem;
+  font-weight: 300;
+  text-align: ${(props) => (props.center ? "center" : "left")};
+`;
+
+const BannerImage = styled.div`
+  background-image: url(${(props) => props.src});
+  background-size: ${(props) => props.size || "contain"};
+  background-position: center;
+  background-repeat: no-repeat;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  ${(props) => props.margin && `margin: ${props.margin}`};
+`;
+
+MainBanner.propTypes = {
+  bg: PropTypes.string.isRequired,
+};
+SubBanner.propTypes = {
+  bg: PropTypes.string.isRequired,
+};
