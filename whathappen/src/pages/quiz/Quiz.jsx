@@ -5,6 +5,8 @@ import styled from "styled-components";
 import prevImg from "../../assets/iconLeftArrow.png";
 import PropTypes from "prop-types";
 import { media } from "../../styles/MideaQuery";
+import { useState } from "react";
+import ConfirmExitModal from "../quizResult/components/ConfirmModal";
 
 const quiz = [
   {
@@ -43,12 +45,18 @@ const quiz = [
 ];
 
 export default function Quiz({ onNext }) {
+  const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
+  const closeConfirmModal = () => setConfirmModalOpen(false);
   return (
     <>
       <QuizHeader>
         <h2 className="sr-only">퀴즈 페이지</h2>
         <nav>
-          <StyledLink to="/">
+          <ConfirmExitModal
+            isOpen={isConfirmModalOpen}
+            onClose={closeConfirmModal}
+          />
+          <StyledLink onClick={() => setConfirmModalOpen(true)}>
             <StyledImg src={prevImg} alt="" />
             메인으로
           </StyledLink>
