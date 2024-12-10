@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
 import logoImage from "../../assets/logo.png";
-import ConfirmExitModal from "./components/ConfirmModal";
 import CongratulationsModal from "./components/CongratsModal";
 import { media } from "../../styles/MideaQuery";
 import Button from "../../components/Button";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ResultBackground = styled.div`
   background-color: var(--main-color);
@@ -176,7 +176,8 @@ const ResultControlSection = styled.section`
   display: flex;
   gap: 2rem;
 
-  & > button {
+  & > button,
+  & > a > button {
     width: 17rem;
     ${media.medium`
     font-size: 1.6rem;
@@ -192,11 +193,8 @@ const ResultControlSection = styled.section`
 `;
 
 export default function QuizResult() {
-  const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
   const [isCongratulationsModalOpen, setCongratulationsModalOpen] =
     useState(false);
-
-  const closeConfirmModal = () => setConfirmModalOpen(false);
   const closeCongratulationsModal = () => setCongratulationsModalOpen(false);
 
   return (
@@ -227,15 +225,13 @@ export default function QuizResult() {
         </section>
         <ResultControlSection>
           <h2 className="sr-only">결과 처리 액션을 선택하세요</h2>
-          <ConfirmExitModal
-            isOpen={isConfirmModalOpen}
-            onClose={closeConfirmModal}
-          />
           <CongratulationsModal
             isOpen={isCongratulationsModalOpen}
             onClose={closeCongratulationsModal}
           />
-          <Button onClick={() => setConfirmModalOpen(true)}>처음으로</Button>
+          <Link to="/">
+            <Button>처음으로</Button>
+          </Link>
           <Button
             backgroundColor="red"
             onClick={() => setCongratulationsModalOpen(true)}
