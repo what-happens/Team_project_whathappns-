@@ -1,7 +1,7 @@
 import { useState } from "react";
-import QuizLanding from "../quizLanding/quizLanding";
+import QuizLanding from "../quizLanding/QuizLanding";
+import QuizResult from "../quizResult/QuizResult";
 import Quiz from "./Quiz";
-import QuizResult from "../quizResult/quizResult";
 
 function QuizPage() {
   const [step, setStep] = useState(1);
