@@ -41,7 +41,7 @@ const ButtonType = styled.div`
   ${media.small`
     gap: 0.8rem;
 `}
-  & > button {
+  & > button, & > a > button {
     ${media.medium`
     font-size: 1.6rem;
     padding:0.5rem 1.6rem;
