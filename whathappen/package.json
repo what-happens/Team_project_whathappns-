@@ -16,6 +16,7 @@
     "react-router-dom": "^7.0.1",
     "react-scripts": "5.0.1",
     "redux": "^5.0.1",
+    "redux-persist": "^6.0.0",
     "styled-components": "^6.1.13",
     "styled-reset": "^4.5.2",
     "swiper": "^11.1.15",
