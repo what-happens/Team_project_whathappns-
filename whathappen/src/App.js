@@ -3,7 +3,6 @@ import GlobalStyle from "./styles/GlobalStyle";
 import Home from "./pages/Home";
 import Login from "./pages/login/Login";
 import Join from "./pages/join/Join";
-// import JoinSuccess from "./pages/joinSuccess/JoinSuccess";
 import QuizPage from "./pages/quiz/QuizPage";
 import Exercise from "./pages/exercise/Exercise";
 import Study from "./pages/study/Study";
@@ -15,18 +14,15 @@ import NotFound from "./pages/notFound/NotFound";
 import MyPage from "./pages/myPage/MyPage";
 import Review from "./pages/review/ReviewFreeVersion";
 import AuthHeader from "./components/AuthHeader";
-import ProtectedRoute from "./components/PrortectedRoute";
+import ProtectedRoute from "./components/ProtectedRoute";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { auth } from "./firebase";
 import { login, logout } from "./redux/authSlice";
 
-// import QuizLanding from "./pages/quizLanding/QuizLanding";
-// import QuizResult from "./pages/quizResult/QuizResult";
-// import Quiz from "./pages/quiz/Quiz";
-
 function App() {
   const dispatch = useDispatch();
+  const authState = useSelector((state) => state.auth);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -40,12 +36,16 @@ function App() {
           })
         );
       } else {
-        dispatch(logout());
+        if (!authState.isLoggedIn) {
+          dispatch(logout());
+        }
       }
     });
 
+    console.log("Current auth state:", authState);
+
     return () => unsubscribe();
-  }, [dispatch]);
+  }, [dispatch, authState.isLoggedIn]);
 
   return (
     <BrowserRouter>
