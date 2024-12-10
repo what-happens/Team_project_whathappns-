@@ -3,10 +3,12 @@ import { Navigate, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function ProtectedRoute({ children }) {
-  const { isLoggedIn } = useSelector((state) => state.auth);
+  const auth = useSelector((state) => state.auth);
   const location = useLocation();
 
-  if (!isLoggedIn) {
+  console.log("Protected Route Auth State:", auth);
+
+  if (!auth || !auth.isLoggedIn) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
