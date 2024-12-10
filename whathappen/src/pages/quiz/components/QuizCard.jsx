@@ -9,7 +9,8 @@ import { media } from "../../../styles/MideaQuery";
 export default function QuizCard({ quizzes, onNext }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [shuffledAnswer, setShuffledAnswer] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
   const shuffleArray = (arr) => {
     const newArray = [...arr];
     for (let i = newArray.length - 1; i > 0; i--) {
@@ -20,28 +21,43 @@ export default function QuizCard({ quizzes, onNext }) {
   };
 
   const handlePrev = () => {
-    setCurrentQuestion((prev) => prev - 1);
-  };
-  const handleNext = () => {
-    setCurrentQuestion((prev) => prev + 1);
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+    }
   };
 
-  const handleOnSubmit = (e) => {
+  const handleNext = (e) => {
     e.preventDefault();
-    onNext(); // 제출 후 부모에게 onNext 호출하여 퀴즈 결과 페이지로 이동
+    if (currentQuestion < quizzes.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (currentQuestion === quizzes.length - 1) {
+      onNext();
+    }
   };
 
   useEffect(() => {
-    const shuffled = quizzes.map((quiz) =>
-      shuffleArray([...quiz.incorrect_answer, quiz.correct_answer])
-    );
-    setShuffledAnswer(shuffled);
-    setIsLoading(true);
-  }, []);
+    try {
+      const shuffled = quizzes.map((quiz) =>
+        shuffleArray([...quiz.incorrect_answer, quiz.correct_answer])
+      );
+      setShuffledAnswer(shuffled);
+    } catch (error) {
+      console.error("Error shuffling answers:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [quizzes]);
 
-  if (!isLoading) {
+  if (isLoading || !shuffledAnswer.length) {
     return <div>loading</div>;
   }
+
+  const isLastQuestion = currentQuestion === quizzes.length - 1;
 
   return (
     <QuizSection>
@@ -57,30 +73,25 @@ export default function QuizCard({ quizzes, onNext }) {
         totalQuestionNumber={quizzes.length}
       />
       <QuizQuestion>{quizzes[currentQuestion].question}</QuizQuestion>
-      <FormWrapper onSubmit={handleOnSubmit}>
-        {shuffledAnswer[currentQuestion].map((answer, idx) => {
-          return (
-            <QuizInputWrapper key={idx}>
-              <input type="radio" name="answer" id={`answer-${idx}`} />
-              <label htmlFor={`answer-${idx}`}>{answer}</label>
-            </QuizInputWrapper>
-          );
-        })}
-        <ButtonWrapper $buttonCount={currentQuestion == 0 ? "one" : "many"}>
+      <FormWrapper onSubmit={isLastQuestion ? handleSubmit : handleNext}>
+        {shuffledAnswer[currentQuestion].map((answer, idx) => (
+          <QuizInputWrapper key={idx}>
+            <input type="radio" name="answer" id={`answer-${idx}`} required />
+            <label htmlFor={`answer-${idx}`}>{answer}</label>
+          </QuizInputWrapper>
+        ))}
+        <ButtonWrapper $buttonCount={currentQuestion === 0 ? "one" : "many"}>
           {currentQuestion !== 0 && (
             <Button type="button" onClick={handlePrev}>
               이전문제
             </Button>
           )}
-          {currentQuestion === quizzes.length - 1 ? (
-            <Button type="submit" backgroundColor={"green"}>
-              제출하기
-            </Button>
-          ) : (
-            <Button type="button" onClick={handleNext}>
-              다음문제
-            </Button>
-          )}
+          <Button
+            type="submit"
+            backgroundColor={isLastQuestion ? "green" : undefined}
+          >
+            {isLastQuestion ? "제출하기" : "다음문제"}
+          </Button>
         </ButtonWrapper>
       </FormWrapper>
     </QuizSection>
@@ -99,7 +110,7 @@ const QuizSection = styled.section`
   ${media.medium`
     width:80%;
     height:80%;
-`}
+  `}
 `;
 
 const QuestionNumber = styled.p`
@@ -113,10 +124,7 @@ const QuestionNumber = styled.p`
   }
   ${media.medium`
     font-size: 4rem;
-`}
-  ${media.small`
-    font-size: 3rem;
-`}
+  `}
 `;
 
 const QuizQuestion = styled.h3`
@@ -128,11 +136,10 @@ const QuizQuestion = styled.h3`
   line-height: 6rem;
   ${media.medium`
     font-size: 3.3rem;
-`}
-
+  `}
   ${media.small`
-    font-size: 2.2rem;
-`}
+    font-size: 2.7rem;
+  `}
 `;
 
 const FormWrapper = styled.form`
@@ -176,7 +183,9 @@ const ButtonWrapper = styled.div`
     props.$buttonCount === "one" ? "flex-end" : "space-between"};
   width: 100%;
   margin-top: 3.75rem;
+  gap: 1.5rem;
 `;
+
 QuizCard.propTypes = {
   quizzes: PropTypes.arrayOf(
     PropTypes.shape({
@@ -186,5 +195,5 @@ QuizCard.propTypes = {
       incorrect_answer: PropTypes.arrayOf(PropTypes.string).isRequired,
     })
   ).isRequired,
-  onNext: PropTypes.func.isRequired, // onNext PropTypes 추가
+  onNext: PropTypes.func.isRequired,
 };
