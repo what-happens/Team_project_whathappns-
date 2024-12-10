@@ -1,15 +1,14 @@
-// MobileHeader.jsx
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import AuthNav from "./AuthNav";
 import menu from "../assets/header_menu_icon.svg";
-import logout from "../assets/header_logoutbtn_icon.svg";
 import exit from "../assets/exit_btn.svg";
 import logo from "../assets/what_happns_logo_b.png";
 import { media } from "../styles/MideaQuery";
+import PropTypes from "prop-types";
 
-export default function MobileHeader({ toggleMenu, isMenuOpen, handleLogout }) {
+export default function MobileHeader({ toggleMenu, isMenuOpen }) {
   return (
     <>
       <MobileMenuBtn onClick={toggleMenu}>
@@ -25,15 +24,16 @@ export default function MobileHeader({ toggleMenu, isMenuOpen, handleLogout }) {
           </Link>
         </Logo>
         <AuthNav />
-        <MobileLogoutBtn type="button" onClick={handleLogout}>
-          <img src={logout} alt="로그아웃" />
-          로그아웃
-        </MobileLogoutBtn>
       </MobileMenu>
       <Overlay isOpen={isMenuOpen} onClick={toggleMenu} />
     </>
   );
 }
+
+MobileHeader.propTypes = {
+  toggleMenu: PropTypes.func.isRequired,
+  isMenuOpen: PropTypes.bool.isRequired,
+};
 
 const Logo = styled.h1`
   width: 18rem;
@@ -86,24 +86,6 @@ const CloseBtn = styled.button`
   img {
     width: 5rem;
     height: 5rem;
-  }
-`;
-
-const MobileLogoutBtn = styled.button`
-  margin-top: auto;
-  margin-bottom: 2rem;
-  border: none;
-  font-family: "Gmarket Sans";
-  font-size: 2.4rem;
-  font-weight: 500;
-  background: none;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  img {
-    width: 2.4rem;
-    height: 2.4rem;
-    margin-right: 0.8rem;
   }
 `;
 
