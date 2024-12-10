@@ -6,20 +6,20 @@ import Button from "./Button";
 import { useSelector, useDispatch } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
-import { clearUser } from "../redux/authSlice";
+import { logout } from "../redux/authSlice";
 
 export default function Header() {
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isLoggedIn } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      dispatch(clearUser());
+      dispatch(logout());
       navigate("/");
     } catch (err) {
-      return;
+      console.error("Logout error:", err);
     }
   };
 
@@ -28,15 +28,33 @@ export default function Header() {
       <Link to="/">
         <Logo>이게되네?</Logo>
       </Link>
-      {isAuthenticated ? (
-        <Button
-          padding="1rem 4rem"
-          fontSize="small"
-          borderRadius="5rem"
-          onClick={handleLogout}
-        >
-          로그아웃
-        </Button>
+      {isLoggedIn ? (
+        <nav>
+          <NavContainer>
+            <Link to="/mypage">
+              <NavItem>마이페이지</NavItem>
+            </Link>
+            <Link to="/quizpage">
+              <NavItem>퀴즈풀기</NavItem>
+            </Link>
+            <Link to="learn-course">
+              <NavItem>학습하기</NavItem>
+            </Link>
+            <Link to="/review">
+              <NavItem>복습노트</NavItem>
+            </Link>
+            <li>
+              <Button
+                padding="1rem 4rem"
+                fontSize="small"
+                borderRadius="5rem"
+                onClick={handleLogout}
+              >
+                로그아웃
+              </Button>
+            </li>
+          </NavContainer>
+        </nav>
       ) : (
         <Link to="/login">
           <Button padding="1rem 4rem" fontSize="small" borderRadius="5rem">
@@ -69,4 +87,15 @@ const Logo = styled.h1`
   background-repeat: no-repeat;
   background-position: center;
   text-indent: -9999px;
+`;
+
+const NavItem = styled.li`
+  font-size: 1.8rem;
+  color: white;
+`;
+
+const NavContainer = styled.ul`
+  display: flex;
+  gap: 5rem;
+  align-items: center;
 `;
