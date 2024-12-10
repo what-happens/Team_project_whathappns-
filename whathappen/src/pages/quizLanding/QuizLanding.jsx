@@ -5,6 +5,7 @@ import { Select } from "./components/SelectBox";
 import { media } from "../../styles/MideaQuery";
 import Button from "../../components/Button";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const LandingBackground = styled.div`
   position: absolute;
@@ -56,7 +57,8 @@ const QuizOptionsSection = styled.section`
 const QuizControlSection = styled.section`
   display: flex;
   gap: 2.2rem;
-  & > button {
+  & > button,
+  & > a > button {
     ${media.medium`
     font-size: 2.5rem;
     width:18rem
@@ -94,14 +96,16 @@ export default function QuizLanding({ onNext }) {
           >
             퀴즈 풀기!
           </Button>
-          <Button
-            backgroundColor="red"
-            fontSize="4rem"
-            padding="2rem 3rem"
-            borderRadius="2.5rem"
-          >
-            뒤로가기
-          </Button>
+          <Link to="/">
+            <Button
+              backgroundColor="red"
+              fontSize="4rem"
+              padding="2rem 3rem"
+              borderRadius="2.5rem"
+            >
+              뒤로가기
+            </Button>
+          </Link>
         </QuizControlSection>
       </QuizLandingMain>
     </LandingBackground>
