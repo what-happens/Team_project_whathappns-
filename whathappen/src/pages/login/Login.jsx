@@ -9,18 +9,17 @@ import { auth } from "../../firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import loadingImg from "../../assets/loading2.gif";
-// import useAuthActions from "../../redux/useAuthActions";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/authSlice";
 
-export default function Login() {
+function Login() {
   const [idValue, setIdValue] = useState("");
   const [pwValue, setPwValue] = useState("");
-
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // const { login } = useAuthActions();
-  // const { pathname } = useLocation();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleGoogleLogin = async () => {
@@ -28,6 +27,14 @@ export default function Login() {
 
     try {
       const result = await signInWithPopup(auth, provider);
+      dispatch(
+        login({
+          user: {
+            email: result.user.email,
+            displayName: result.user.displayName,
+          },
+        })
+      );
       console.log("User data:", result.user);
       navigate("/");
     } catch (err) {
@@ -79,6 +86,15 @@ export default function Login() {
         });
 
         if (response.ok) {
+          const userData = await response.json();
+          dispatch(
+            login({
+              user: {
+                email: idValue,
+                ...userData,
+              },
+            })
+          );
           navigate("/");
           console.log("로그인성공");
         } else {
@@ -98,6 +114,7 @@ export default function Login() {
     setIdValue(e.target.value);
     setIdError("");
   };
+
   const handlePasswordChange = (e) => {
     setPwValue(e.target.value);
     setPwError("");
@@ -310,3 +327,5 @@ const LoadingImg = styled.div`
   background-position: center;
   z-index: 30;
 `;
+
+export default Login;
