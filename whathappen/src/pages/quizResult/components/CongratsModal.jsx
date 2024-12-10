@@ -20,7 +20,7 @@ const Congratulations = styled(CommonModal)`
   height: 20.3rem;
   border-radius: 1.4rem;
 `}
-  & > button {
+  & > a > button {
     ${media.medium`
     font-size: 1.6rem;
     padding:0.5rem 1.6rem;
@@ -73,7 +73,7 @@ const MyPageMessage = styled.p`
     width: 60%;
     margin-bottom: 2rem;
 `}
-  ${media.medium`
+  ${media.small`
     font-size: 1.2rem;
     width: 70%;
     margin-bottom: 1.5rem;
