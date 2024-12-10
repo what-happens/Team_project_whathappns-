@@ -15,7 +15,6 @@ const selectCommonStyle = css`
   color: #b3b3b3;
   border: 3px solid var(--main-color);
   display: flex;
-  font-family: "GmarketSansMedium";
   justify-content: center;
   align-items: center;
 
@@ -51,6 +50,13 @@ const SelectItemWrap = styled.div`
   margin-top: ${(props) => props.marginTop};
   background-color: #fff;
   display: ${(props) => (props.isVisible ? "block" : "none")};
+  ${media.medium`
+    margin-top: ${(props) => props.mediumMarginTop || props.marginTop};
+  `}
+
+  ${media.small`
+    margin-top: ${(props) => props.smallMarginTop || props.marginTop};
+  `}
 `;
 
 const SelectItem = styled.div`
@@ -74,7 +80,7 @@ export function Select() {
   const questionCountRef = useRef(null);
 
   useEffect(() => {
-    const handleClickOutside = () => {
+    const handleClickOutside = (event) => {
       if (quizTypeRef.current && !quizTypeRef.current.contains(event.target)) {
         setQuizTypeOpen(false);
       }
@@ -94,14 +100,11 @@ export function Select() {
 
   return (
     <SelectBoxWrap>
-      {/* Quiz Type Selector */}
       <SelectBox
         marginBottom="1.4rem"
         onClick={() => setQuizTypeOpen(!isQuizTypeOpen)}
       >
-        <span style={{ fontFamily: "GmarketSansMedium" }}>
-          {selectedQuizType}
-        </span>
+        <span>{selectedQuizType}</span>
       </SelectBox>
       <div ref={quizTypeRef}>
         <SelectItemWrap marginTop="-0.9rem" isVisible={isQuizTypeOpen}>
@@ -118,15 +121,16 @@ export function Select() {
           ))}
         </SelectItemWrap>
       </div>
-
-      {/* Question Count Selector */}
       <SelectBox onClick={() => setQuestionCountOpen(!isQuestionCountOpen)}>
-        <span style={{ fontFamily: "GmarketSansMedium" }}>
-          {selectedQuestionCount} 문제
-        </span>
+        <span>{selectedQuestionCount} 문제</span>
       </SelectBox>
       <div ref={questionCountRef}>
-        <SelectItemWrap marginTop="-18rem" isVisible={isQuestionCountOpen}>
+        <SelectItemWrap
+          marginTop="-22rem"
+          mediumMarginTop="-20rem"
+          smallMarginTop="-16rem"
+          isVisible={isQuestionCountOpen}
+        >
           {questionCount.map((count, index) => (
             <SelectItem
               key={index}
