@@ -4,7 +4,7 @@ import Logo from "../../assets/what_happns_logo_b.png";
 import styled from "styled-components";
 import { Google } from "./components/JoinSvg";
 import { useNavigate } from "react-router-dom";
-import loadingImg from "../../assets/loading.gif";
+import loadingImg from "../../assets/loading2.gif";
 import { Link } from "react-router-dom";
 
 export default function Join() {
@@ -306,18 +306,18 @@ const LoadingPage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(255, 255, 255, 0.7);
   z-index: 20;
 `;
 
 const LoadingImg = styled.div`
   background-image: url(${loadingImg});
-  background-size: cover;
-  background-repeat: no-repeat;
   position: absolute;
-  width: 20rem;
-  height: 20rem;
-  top: 40%;
-  left: 47%;
+  top: 28%;
+  left: 42%;
+  width: 30rem;
+  height: 30rem;
+  background-size: cover;
+  background-position: center;
   z-index: 30;
 `;

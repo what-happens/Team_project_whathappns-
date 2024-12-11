@@ -17,7 +17,7 @@ const FooterContent = styled.footer`
   width: 100%;
   box-sizing: border-box;
   padding: 5rem 0 5rem 0;
-  background-color: #2e5dfe;
+  background-color: #333333;
   display: flex;
   gap: 2rem;
   align-items: center;
@@ -68,7 +68,7 @@ const Item = styled.li`
 
 const Line = styled.div`
   width: 100%;
-  background-color: #7997fa;
+  background-color: #4e4e4e;
   height: 0.1px;
 `;
 

@@ -8,19 +8,18 @@ import Person from "../../assets/Person.svg";
 import { auth } from "../../firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-import loadingImg from "../../assets/loading.gif";
-// import useAuthActions from "../../redux/useAuthActions";
+import loadingImg from "../../assets/loading2.gif";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/authSlice";
 
-export default function Login() {
+function Login() {
   const [idValue, setIdValue] = useState("");
   const [pwValue, setPwValue] = useState("");
-
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // const { login } = useAuthActions();
-  // const { pathname } = useLocation();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleGoogleLogin = async () => {
@@ -28,6 +27,14 @@ export default function Login() {
 
     try {
       const result = await signInWithPopup(auth, provider);
+      dispatch(
+        login({
+          user: {
+            email: result.user.email,
+            displayName: result.user.displayName,
+          },
+        })
+      );
       console.log("User data:", result.user);
       navigate("/");
     } catch (err) {
@@ -79,6 +86,15 @@ export default function Login() {
         });
 
         if (response.ok) {
+          const userData = await response.json();
+          dispatch(
+            login({
+              user: {
+                email: idValue,
+                ...userData,
+              },
+            })
+          );
           navigate("/");
           console.log("로그인성공");
         } else {
@@ -98,6 +114,7 @@ export default function Login() {
     setIdValue(e.target.value);
     setIdError("");
   };
+
   const handlePasswordChange = (e) => {
     setPwValue(e.target.value);
     setPwError("");
@@ -295,17 +312,20 @@ const LoadingPage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(255, 255, 255, 0.7);
   z-index: 20;
 `;
 
 const LoadingImg = styled.div`
   background-image: url(${loadingImg});
   position: absolute;
-  top: 30%;
-  left: 45%;
-  width: 20rem;
-  height: 20rem;
+  top: 28%;
+  left: 42%;
+  width: 30rem;
+  height: 30rem;
   background-size: cover;
+  background-position: center;
   z-index: 30;
 `;
+
+export default Login;

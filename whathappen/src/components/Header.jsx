@@ -6,12 +6,12 @@ import Button from "./Button";
 import { useSelector, useDispatch } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
-import { clearUser } from "../redux/authSlice";
+import { logout } from "../redux/authSlice";
 import { media } from "../styles/MideaQuery";
 import MobileHeader from "./MobileHeader";
 
 export default function Header() {
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isLoggedIn } = useSelector((state) => state.auth);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -36,7 +36,7 @@ export default function Header() {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      dispatch(clearUser());
+      dispatch(logout());
       navigate("/");
     } catch (err) {
       return;
@@ -45,7 +45,7 @@ export default function Header() {
 
   return (
     <HeaderContainer>
-      {isAuthenticated ? (
+      {isLoggedIn ? (
         isMobile ? (
           <>
             <MobileHeader toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
