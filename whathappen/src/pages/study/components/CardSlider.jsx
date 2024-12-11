@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import styled, { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider, keyframes } from "styled-components";
 import theme from "../theme";
 import media from "../media";
 import icon from "../../../assets/icon_level.png";
@@ -44,13 +44,23 @@ const StyledButton = styled.button`
     height: 3.5rem;
     font-size: 2.5rem;
   `};
-  background-color: #d9d9d9;
-  width: 4.5rem;
+  background-color: #2e5dff;
+  width: 5.5rem;
   height: 5.5rem;
+  border-radius: 50rem;
   border: none;
   font-size: 4rem;
   font-weight: bold;
-  color: #ffff;
+  color: white;
+  box-shadow:
+    rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+    rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
   cursor: pointer;
 `;
 
@@ -64,12 +74,46 @@ const CardWrapper = styled.div`
   justify-content: center;
   gap: 1.5rem;
   height: 50vh;
+  background-color: white;
   border-radius: 20px;
+  transition: all 0.5s ease;
   border: 1px solid #c4c4c4;
-  box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
+  /* box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38); */
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 
   &:hover {
     transform: scale(1.05);
+  }
+`;
+
+const jello = keyframes`
+    0% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+            transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+            transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+            transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+            transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+            transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
   }
 `;
 
@@ -105,6 +149,10 @@ const CardImg = styled.div`
     height: 15rem;
     object-fit: contain;
     margin-bottom: 2rem;
+
+    &:hover {
+      animation: ${jello} 1.1s both;
+    }
   }
 `;
 
