@@ -3,10 +3,42 @@ import styled from "styled-components";
 import QuizCard from "./components/ReviewFreeVersionCard";
 import { media } from "../../styles/MideaQuery";
 
+const reviewNote = [
+  {
+    qid: 10,
+    updateAt: {
+      _seconds: 1733831880,
+      _nanoseconds: 101000000,
+    },
+    isBookmark: false,
+    isWrong: true,
+    category: "HTML",
+  },
+  {
+    qid: 12,
+    updateAt: {
+      _seconds: 1733821132,
+      _nanoseconds: 385000000,
+    },
+    isBookmark: true,
+    isWrong: true,
+    category: "HTML",
+  },
+  {
+    qid: 1,
+    updateAt: {
+      _seconds: 1733821132,
+      _nanoseconds: 385000000,
+    },
+    isBookmark: true,
+    isWrong: true,
+    category: "HTML",
+  },
+];
+
 const quiz = [
   {
-    id: 8,
-    category: "HTTP",
+    category: "HTML",
     question: "HTML은 무엇의 약자일까요?",
     correct_answer: "Hypertext Markup Language",
     incorrect_answer: [
@@ -14,48 +46,21 @@ const quiz = [
       "Hypermeida Text Language",
       "High-text Markup Language",
     ],
-    type: "bookmark",
+    id: 10,
   },
   {
-    id: 11,
-    category: "HTTP",
-    question: "순서가 있는 목록을 만드는 태그는 무엇인가요?",
-    correct_answer: "ol",
-    incorrect_answer: ["ul", "li", "list"],
-    type: "bookmark",
-  },
-  {
-    id: 3,
-    category: "HTTP",
-    question: "표를 만들 때 사용하는 기본 태그는 무엇인가요?",
-    correct_answer: "table",
-    incorrect_answer: ["tab", "grid", "tr"],
-    type: "wrong",
-  },
-  {
-    id: 5,
     category: "CSS",
     question: "요소를 화면에서 숨기는 display 속성값은 무엇인가요?",
     correct_answer: "none",
     incorrect_answer: ["hidden", "invisible", "hide"],
-    type: "wrong",
-  },
-  {
     id: 12,
-    category: "HTTP",
-    question: "HTML에서 입력 양식을 만드는 태그는 무엇인가요?",
-    correct_answer: "form",
-    incorrect_answer: ["input", "entry", "submit"],
-    type: "wrong",
   },
   {
-    id: 23,
-    category: "CSS",
-    question:
-      "CSS에서 요소를 가운데 정렬할 때 사용하는 margin 속성값은 무엇인가요?",
-    correct_answer: "auto",
-    incorrect_answer: ["center", "middle", "align"],
-    type: "wrong",
+    category: "HTML",
+    question: "표를 만들 때 사용하는 기본 태그는 무엇인가요?",
+    correct_answer: "table",
+    incorrect_answer: ["tab", "grid", "tr"],
+    id: 1,
   },
 ];
 
@@ -65,11 +70,15 @@ export default function ReviewFreeVersion() {
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
+    setSelectedQuiz(null);
   };
 
   const handleQuestionClick = (quizId) => {
-    const selected = quiz.find((q) => q.id === quizId);
-    setSelectedQuiz([selected]);
+    const matchedQuiz = quiz.find((q) => q.id === quizId);
+
+    if (matchedQuiz) {
+      setSelectedQuiz([matchedQuiz]);
+    }
   };
 
   return (
@@ -92,14 +101,16 @@ export default function ReviewFreeVersion() {
         </TapWarp>
         <QuestionContainer>
           <Scrollbar>
-            {quiz
-              .filter((item) => item.type === activeTab)
+            {reviewNote
+              .filter((item) =>
+                activeTab === "bookmark" ? item.isBookmark : item.isWrong
+              )
               .map((item) => (
                 <Question
-                  key={item.id}
-                  onClick={() => handleQuestionClick(item.id)}
+                  key={item.qid}
+                  onClick={() => handleQuestionClick(item.qid)}
                 >
-                  {item.category} 문제 {item.id + 1}
+                  {item.category} 문제 {item.qid}
                 </Question>
               ))}
           </Scrollbar>
