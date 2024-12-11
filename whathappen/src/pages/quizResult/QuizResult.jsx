@@ -5,22 +5,36 @@ import { media } from "../../styles/MideaQuery";
 import Button from "../../components/Button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import backGround from "../../assets/quiz-result_background.svg";
 
 const ResultBackground = styled.div`
-  background-color: var(--main-color);
-  height: 100vh;
-  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  z-index: 999;
+  background-image: url(${backGround});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
 
+  ${media.medium`
+    background-size: cover; 
+    height: 100%; 
+  `}
+
+  ${media.small`
+    background-size: cover; 
+    height: 100%; 
+  `}
+`;
 const QuizResultMain = styled.main`
   width: 63rem;
   height: 67rem;
@@ -67,6 +81,7 @@ const QuizResultSection = styled.section`
   flex-direction: column;
   align-items: center;
   gap: 1.7rem;
+
   ${media.medium`
     width: 38rem;
 `}
@@ -137,6 +152,7 @@ const resultItemCommon = css`
   height: 5rem;
   display: flex;
   align-items: center;
+
   ${media.medium`
     height: 4rem;
 `}
