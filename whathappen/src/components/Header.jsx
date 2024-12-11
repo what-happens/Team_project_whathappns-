@@ -42,27 +42,26 @@ export default function Header() {
       return;
     }
   };
-
-  return (
-    <HeaderContainer>
-      {isLoggedIn ? (
-        isMobile ? (
-          <>
-            <MobileHeader toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
-            <Button
-              padding="1rem 3rem"
-              fontSize="small"
-              borderRadius="5rem"
-              onClick={handleLogout}
-            >
-              로그아웃
-            </Button>
-          </>
-        ) : (
-          <>
-            <Link to="/">
-              <Logo>이게되네?</Logo>
-            </Link>
+  const renderDesktopLoggedIn = () => (
+    <>
+      <Link to="/">
+        <Logo>이게되네?</Logo>
+      </Link>
+      <nav>
+        <NavContainer>
+          <Link to="/mypage">
+            <NavItem>마이페이지</NavItem>
+          </Link>
+          <Link to="/quizpage">
+            <NavItem>퀴즈풀기</NavItem>
+          </Link>
+          <Link to="learncourse">
+            <NavItem>학습하기</NavItem>
+          </Link>
+          <Link to="/review">
+            <NavItem>복습노트</NavItem>
+          </Link>
+          <li>
             <Button
               padding="1rem 4rem"
               fontSize="small"
@@ -71,20 +70,43 @@ export default function Header() {
             >
               로그아웃
             </Button>
-          </>
-        )
-      ) : (
-        <>
-          <Link to="/">
-            <Logo>이게되네?</Logo>
-          </Link>
-          <Link to="/login">
-            <Button padding="1rem 3rem" fontSize="small" borderRadius="5rem">
-              로그인
-            </Button>
-          </Link>
-        </>
-      )}
+          </li>
+        </NavContainer>
+      </nav>
+    </>
+  );
+
+  const renderMobileLoggedIn = () => (
+    <>
+      <MobileHeader toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
+      <Button
+        padding="1rem 3rem"
+        fontSize="small"
+        borderRadius="5rem"
+        onClick={handleLogout}
+      >
+        로그아웃
+      </Button>
+    </>
+  );
+
+  const renderLoggedOut = () => (
+    <>
+      <Link to="/">
+        <Logo>이게되네?</Logo>
+      </Link>
+      <Link to="/login">
+        <Button padding="1rem 3rem" fontSize="small" borderRadius="5rem">
+          로그인
+        </Button>
+      </Link>
+    </>
+  );
+  return (
+    <HeaderContainer>
+      {!isLoggedIn && renderLoggedOut()}
+      {isLoggedIn && isMobile && renderMobileLoggedIn()}
+      {isLoggedIn && !isMobile && renderDesktopLoggedIn()}
     </HeaderContainer>
   );
 }
@@ -118,4 +140,16 @@ const Logo = styled.h1`
   ${media.medium`
     display: none;
   `}
+`;
+
+const NavContainer = styled.ul`
+  display: flex;
+  gap: 5rem;
+  align-items: center;
+`;
+
+const NavItem = styled.li`
+  font-size: 1.8rem;
+  color: white;
+  text-decoration: none;
 `;
