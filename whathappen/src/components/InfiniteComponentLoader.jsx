@@ -162,7 +162,7 @@ SubBanner.propTypes = {
 };
 
 const Mainbanner = () => {
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isLoggedIn } = useSelector((state) => state.auth);
   return (
     <MainBanner bg="white">
       <BannerContent>
@@ -175,8 +175,8 @@ const Mainbanner = () => {
           <br />
           웹사이트!
         </BannerDescription>
-        {isAuthenticated ? (
-          <Link to={"/"}>
+        {isLoggedIn ? (
+          <Link to={"/mypage"}>
             <Button
               borderRadius="5rem"
               fontsize="2rem"
