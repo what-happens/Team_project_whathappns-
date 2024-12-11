@@ -166,7 +166,7 @@ const Mainbanner = () => {
   return (
     <MainBanner bg="white">
       <BannerContent>
-        <BannerTitle style={{ fontWeight: "500" }}>
+        <BannerTitle style={{ fontWeight: "700" }}>
           복잡한 코딩은 이제 안녕! <br /> 이게 되네??
         </BannerTitle>
         <BannerDescription>
