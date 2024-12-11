@@ -52,7 +52,7 @@ export default function Header() {
           <Link to="/quizpage">
             <NavItem>퀴즈풀기</NavItem>
           </Link>
-          <Link to="learncourse">
+          <Link to="study">
             <NavItem>학습하기</NavItem>
           </Link>
           <Link to="/review">
