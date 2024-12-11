@@ -9,11 +9,12 @@ const SelectBoxWrap = styled.div`
 `;
 
 const selectCommonStyle = css`
-  width: 35rem;
-  height: 7.6rem;
-  font-size: 3.6rem;
-  color: #b3b3b3;
-  border: 3px solid var(--main-color);
+  width: 30rem;
+  height: 7rem;
+  font-size: 2.5rem;
+  background-color: white;
+  color: var(--main-color);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,20 +22,20 @@ const selectCommonStyle = css`
   ${media.medium`
     width: 32.5rem;
   height: 7.1rem;
-  font-size: 3.3rem;
+  font-size: 2.7rem;
 `}
 
   ${media.small`
     width: 23rem;
   height: 6rem;
-  font-size: 2.7rem;
+  font-size: 2.4rem;
 `}
 `;
 
 const SelectBox = styled.button`
   all: unset;
   ${selectCommonStyle};
-  border-radius: 10px;
+  border-radius: 15px;
   margin-bottom: ${(props) => props.marginBottom};
   background-image: url(${selectArrow});
   background-repeat: no-repeat;
@@ -61,9 +62,11 @@ const SelectItemWrap = styled.div`
 
 const SelectItem = styled.div`
   ${selectCommonStyle};
-  border: 1px solid var(--main-color);
+  border-radius: 20px;
   &:hover {
-    background-color: #edecec;
+    background-color: var(--main-color);
+    color: white;
+    border-radius: 0;
   }
 `;
 
