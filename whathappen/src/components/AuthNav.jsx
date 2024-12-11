@@ -12,13 +12,13 @@ export default function AuthNav() {
     <Nav>
       <ul>
         <li>
-          <StyledLink to="/quiz">
+          <StyledLink to="/quizpage">
             <img src={quiz} alt="퀴즈풀기" />
             퀴즈풀기
           </StyledLink>
         </li>
         <li>
-          <StyledLink to="/exercise">
+          <StyledLink to="/study">
             <img src={exercise} alt="학습하기" />
             학습하기
           </StyledLink>
