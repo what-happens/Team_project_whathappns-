@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Button from "../../../components/Button";
 import { media } from "../../../styles/MideaQuery";
+import Bookmark from "../../../components/Bookmark";
 
 export default function QuizCard({ quizzes }) {
   const [currentQuestion] = useState(0);
@@ -37,6 +38,7 @@ export default function QuizCard({ quizzes }) {
 
   return (
     <QuizSection>
+      <Bookmark top={"-1.4rem"} right={"3.3rem"} size={"small"} />
       <QuizQuestion>{quizzes[currentQuestion].question}</QuizQuestion>
       <FormWrapper onSubmit={handleOnSubmit}>
         {shuffledAnswer[currentQuestion]?.map((answer, idx) => (
