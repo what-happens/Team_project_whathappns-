@@ -8,7 +8,6 @@ import Exercise from "./pages/exercise/Exercise";
 import Study from "./pages/study/Study";
 import StudyFinish from "./pages/study/StudyFinish";
 import LearningCourse from "./pages/study/LearningCourse";
-import AAA from "./pages/study/AAA";
 import LearningPage from "./pages/study/LearningPage";
 import NotFound from "./pages/notFound/NotFound";
 import MyPage from "./pages/myPage/MyPage";
@@ -75,14 +74,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
+        {/* <Route
           path="/aaa"
           element={
             <ProtectedRoute>
               <AAA />
             </ProtectedRoute>
           }
-        />
+        /> */}
         <Route
           path="/study"
           element={
