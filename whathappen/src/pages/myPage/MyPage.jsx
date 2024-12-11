@@ -12,6 +12,9 @@ const MyPageContents = styled.div`
   width: 90vw;
   margin: 4rem auto;
   padding: 3rem 1rem 3rem 1rem;
+  ${media.medium`
+    margin-top: 1rem;
+  `}
 `;
 const GreetingMsg = styled.div`
   font-size: 4.8rem;

@@ -6,10 +6,12 @@ import PropTypes from "prop-types";
 import mainBannerImage from "../assets/main_banner_vector.png";
 import subBannerImageOne from "../assets/sub_banner_vector1.png";
 import subBannerImageTwo from "../assets/sub_banner_vector2.png";
+import subBannerImageTwoMobile from "../assets/sub_banner_mobile2.png";
 import subBannerImageThree from "../assets/sub_banner_vector3.png";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { media } from "../styles/MideaQuery";
 
 const slideUp = keyframes`
   from {
@@ -29,6 +31,12 @@ const MainBanner = styled.section`
   gap: 5rem;
   justify-content: center;
   align-items: center;
+
+  ${media.medium`
+    padding: 12rem 2rem 6rem;
+    flex-direction: column;
+    justify-contents: center;
+  `}
 `;
 
 const SubBanner = styled.section`
@@ -38,6 +46,19 @@ const SubBanner = styled.section`
   width: 100%;
 
   animation: ${slideUp} 1s ease;
+  ${media.medium`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  `}
+`;
+
+const PointTwoSubBanner = styled(SubBanner)`
+  ${media.medium`
+    padding: 12rem 0rem 6rem 0rem;
+  
+  `}
 `;
 
 const BannerContent = styled.div`
@@ -46,12 +67,20 @@ const BannerContent = styled.div`
   gap: ${(props) => props.gap || "3.5rem"};
   ${(props) => props.center && "align-items: center"};
   color: ${(props) => props.color || "inherit"};
+  ${media.medium`
+    text-align: center;
+    gap: 2rem;
+  `}
 `;
 
 const BannerTitle = styled.h2`
   font-size: 6rem;
   font-weight: 700;
   color: ${(props) => props.color || "inherit"};
+  ${media.medium`
+  font-size: 5rem;
+  text-align: center;
+  `}
 `;
 
 const BannerDescription = styled.p`
@@ -59,6 +88,10 @@ const BannerDescription = styled.p`
   line-height: 3.5rem;
   font-weight: 300;
   text-align: ${(props) => (props.center ? "center" : "left")};
+  ${media.medium`
+  font-size: 2rem;
+    text-align: center;
+  `}
 `;
 
 const BannerImage = styled.div`
@@ -66,9 +99,59 @@ const BannerImage = styled.div`
   background-size: ${(props) => props.size || "contain"};
   background-position: center;
   background-repeat: no-repeat;
+  min-width: 1000px;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   ${(props) => props.margin && `margin: ${props.margin}`};
+  ${media.medium`
+    width: 90vw;
+    min-width: 48rem;
+  `}
+`;
+
+const MainBannerImage = styled(BannerImage)`
+  background-image: url(${mainBannerImage});
+  width: 69.2rem;
+  height: 69.2rem;
+  ${media.medium`
+    display: none;
+  `}
+`;
+const PointOneBannerImage = styled(BannerImage)`
+  background-image: url(${subBannerImageOne});
+  width: 90vw;
+  max-width: 105rem;
+  height: 61rem;
+  ${media.medium`
+    max-width: 50rem;
+    max-height: 24.6rem;
+  `}
+`;
+
+const PointTwoBannerImage = styled(BannerImage)`
+  background-image: url(${subBannerImageTwo});
+  width: 90vw;
+  max-width: 120rem;
+  height: 60vh;
+  max-height: 97rem;
+  margin: 2rem auto;
+  ${media.medium`
+    background-image: url(${subBannerImageTwoMobile});
+    max-width: 60rem;
+    max-height: 68rem;
+  `}
+`;
+
+const PointThreeBannerImage = styled(BannerImage)`
+  background-image: url(${subBannerImageThree});
+  width: 90vw;
+  max-width: 130rem;
+  height: 86.5rem;
+  margin: 2rem 0 0 0;
+  ${media.medium`
+    max-width: 60rem;
+    max-height: 68rem;
+  `}
 `;
 
 MainBanner.propTypes = {
@@ -83,7 +166,7 @@ const Mainbanner = () => {
   return (
     <MainBanner bg="white">
       <BannerContent>
-        <BannerTitle>
+        <BannerTitle style={{ fontWeight: "500" }}>
           복잡한 코딩은 이제 안녕! <br /> 이게 되네??
         </BannerTitle>
         <BannerDescription>
@@ -111,12 +194,12 @@ const Mainbanner = () => {
               width="25rem"
               padding="2rem"
             >
-              회원가입 하기!
+              웹사이트 만들러 가기!
             </Button>
           </Link>
         )}
       </BannerContent>
-      <BannerImage src={mainBannerImage} width="692px" height="692px" />
+      <MainBannerImage />
     </MainBanner>
   );
 };
@@ -131,7 +214,7 @@ const PointOneBanner = () => {
           <br />
           쉽고 재미있게 만들어 보아요!!
         </BannerDescription>
-        <BannerImage src={subBannerImageOne} width="1050px" height="61rem" />
+        <PointOneBannerImage />
       </BannerContent>
     </SubBanner>
   );
@@ -139,7 +222,7 @@ const PointOneBanner = () => {
 
 const PointTwoBanner = () => {
   return (
-    <SubBanner bg="white" padding="23.3rem 0rem 18rem 12rem;">
+    <PointTwoSubBanner bg="white" padding="23.3rem 0rem 18rem 12rem;">
       <BannerContent gap="4.2rem">
         <BannerTitle color="#2E5DFE">POINT 02</BannerTitle>
         <BannerDescription>
@@ -147,34 +230,23 @@ const PointTwoBanner = () => {
           <br />
           재미있게 지식을 습득해보세요!
         </BannerDescription>
-        <BannerImage
-          src={subBannerImageTwo}
-          size="cover"
-          width="120rem"
-          height="97rem"
-          margin="5rem auto"
-        />
+        <PointTwoBannerImage />
       </BannerContent>
-    </SubBanner>
+    </PointTwoSubBanner>
   );
 };
 
 const PointThreeBanner = () => {
   return (
     <SubBanner bg="white" padding="23.3rem 0rem 18rem 0rem;">
-      <BannerContent gap="4.2rem" center>
+      <BannerContent center>
         <BannerTitle color="#2E5DFE">POINT 03</BannerTitle>
         <BannerDescription center>
-          귀여운 구황작물 친구들과 함께 HTML / CSS 로 이루어진 화면을
+          퀴즈에서 틀린 문제나 어려웠던 문제를 한눈에 보고
           <br />
-          쉽고 재미있게 만들어 보아요!!
+          씹고 뜯고 맛볼 수 있습니다!!
         </BannerDescription>
-        <BannerImage
-          src={subBannerImageThree}
-          width="130rem"
-          height="86.5rem"
-          margin="2rem 0 0 0"
-        />
+        <PointThreeBannerImage />
       </BannerContent>
     </SubBanner>
   );
