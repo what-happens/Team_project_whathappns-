@@ -66,7 +66,7 @@ const QuizSection = styled.section`
   border: 1px solid var(--main-color);
   height: 60rem;
   width: 100%;
-  max-width: 65rem;
+  max-width: 120rem;
 
   ${media.large`
    height: auto;
@@ -83,11 +83,12 @@ const QuizQuestion = styled.h3`
   justify-content: center;
   align-items: center;
   margin: 0 0 4rem 0;
-  font-size: 3.5rem;
+  font-size: 3rem;
   line-height: 1.4;
   text-align: center;
   width: 100%;
   word-break: keep-all;
+  line-height: 3.5rem;
 
   ${media.large`
    font-size: 2.4rem;
