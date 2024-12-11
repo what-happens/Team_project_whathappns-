@@ -57,9 +57,8 @@ function App() {
         <Route path="/quizpage" element={<QuizPage />} />
         <Route path="/exercise" element={<Exercise />} />
 
-        {/* 보호된 라우트 */}
         <Route
-          path="/learn-course"
+          path="/learncourse"
           element={
             <ProtectedRoute>
               <LearningCourse />
@@ -67,21 +66,13 @@ function App() {
           }
         />
         <Route
-          path="/learn-page"
+          path="/learnpage"
           element={
             <ProtectedRoute>
               <LearningPage />
             </ProtectedRoute>
           }
         />
-        {/* <Route
-          path="/aaa"
-          element={
-            <ProtectedRoute>
-              <AAA />
-            </ProtectedRoute>
-          }
-        /> */}
         <Route
           path="/study"
           element={
@@ -99,7 +90,6 @@ function App() {
           }
         />
 
-        {/* AuthHeader와 함께 보호된 라우트 */}
         <Route element={<AuthHeader />}>
           <Route
             path="/mypage"
