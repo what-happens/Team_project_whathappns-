@@ -96,16 +96,16 @@ const ContainerWithToggle = () => {
 
   const menuItems = [
     {
-      title: "Menu Item 1",
-      children: ["Submenu 1-1", "Submenu 1-2", "Submenu 1-3"],
+      title: "1. Title",
+      children: ["1) SubTitle", "2) SubTitle", "3) SubTitle"],
     },
     {
-      title: "Menu Item 2",
-      children: ["Submenu 2-1", "Submenu 2-2", "Submenu 2-3"],
+      title: "1. Title",
+      children: ["1) SubTitle", "2) SubTitle", "3) SubTitle"],
     },
     {
-      title: "Menu Item 3",
-      children: ["Submenu 3-1", "Submenu 3-2", "Submenu 3-3"],
+      title: "1. Title",
+      children: ["1) SubTitle", "2) SubTitle", "3) SubTitle"],
     },
   ];
 

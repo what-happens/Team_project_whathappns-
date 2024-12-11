@@ -45,7 +45,7 @@ const menuData = [
   },
   {
     id: 7,
-    title: "Master",
+    title: "Stage 07",
     image: IconStage7,
   },
 ];

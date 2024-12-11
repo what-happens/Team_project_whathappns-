@@ -51,12 +51,7 @@ export default function LearnSection() {
         Sapiente quia recusandae quas? Architecto facilis maxime vitae quia.
       </p>
       <div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
-          soluta dolorem omnis aliquid sint quo sunt culpa aliquam quos
-          temporibus esse, ipsa voluptatibus, aspernatur eius quae, blanditiis
-          harum facilis dignissimos?
-        </p>
+        <p>Lorem</p>
       </div>
     </Content>
   );

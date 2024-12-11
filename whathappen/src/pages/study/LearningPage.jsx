@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled, { ThemeProvider } from "styled-components";
+import theme from "./theme";
+import media from "./media";
 
-import styled from "styled-components";
 import ToggleMenu from "./components/ToggleMenu";
 import LearnSection from "./components/LearnSection";
 import back from "../../assets/back_link.png";
@@ -16,6 +18,9 @@ const Wrap = styled.div`
 `;
 
 const BackLink = styled(Link)`
+  ${({ theme }) => theme.mobile`
+    font-size: ${({ theme }) => theme.fontSizes.base};
+  `};
   position: fixed;
   top: 2rem;
   left: 2rem;
@@ -69,21 +74,23 @@ const NavContent = styled.div`
 
 export default function LearningPage() {
   return (
-    <Wrap>
-      <header>
-        <h1 className="sr-only">학습 페이지</h1>
-        <BackLink />
-      </header>
-      <Container>
-        <NavContent>
-          <h2>Level 01</h2>
-          <ToggleMenu></ToggleMenu>
-        </NavContent>
-        <LearnSection></LearnSection>
-      </Container>
-      <NextLink>
-        다음으로 <span>&gt;</span>
-      </NextLink>
-    </Wrap>
+    <ThemeProvider theme={{ ...theme, ...media }}>
+      <Wrap>
+        <header>
+          <h1 className="sr-only">학습 페이지</h1>
+          <BackLink />
+        </header>
+        <Container>
+          <NavContent>
+            <h2>Level 01</h2>
+            <ToggleMenu></ToggleMenu>
+          </NavContent>
+          <LearnSection></LearnSection>
+        </Container>
+        <NextLink>
+          다음으로 <span>&gt;</span>
+        </NextLink>
+      </Wrap>
+    </ThemeProvider>
   );
 }
