@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import QuizProgress from "./QuizProgress";
 import Button from "../../../components/Button";
 import Bookmark from "../../../components/Bookmark";
@@ -98,6 +98,59 @@ export default function QuizCard({ quizzes, onNext }) {
   );
 }
 
+const bounce = keyframes`
+   0% {
+    -webkit-transform: translateY(-500px);
+            transform: translateY(-500px);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  38% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+    opacity: 1;
+  }
+  55% {
+    -webkit-transform: translateY(-65px);
+            transform: translateY(-65px);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  72% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  81% {
+    -webkit-transform: translateY(-28px);
+            transform: translateY(-28px);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  90% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  95% {
+    -webkit-transform: translateY(-8px);
+            transform: translateY(-8px);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+`;
+
 const QuizSection = styled.section`
   display: flex;
   flex-direction: column;
@@ -105,8 +158,9 @@ const QuizSection = styled.section`
   justify-content: center;
   border-radius: 5rem;
   background-color: #fff;
-  padding: 4.5rem 8rem;
+  padding: 3.5rem 8rem;
   position: relative;
+  animation: ${bounce} 1.11s both;
   ${media.medium`
     width:80%;
     height:80%;
@@ -114,8 +168,8 @@ const QuizSection = styled.section`
 `;
 
 const QuestionNumber = styled.p`
-  font-size: 5rem;
-  line-height: 6rem;
+  font-size: 4rem;
+  line-height: 5rem;
   text-align: center;
   margin-bottom: 2rem;
   span {
@@ -123,7 +177,7 @@ const QuestionNumber = styled.p`
     font-weight: bolder;
   }
   ${media.medium`
-    font-size: 4rem;
+    font-size: 3rem;
   `}
 `;
 
@@ -131,14 +185,14 @@ const QuizQuestion = styled.h3`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20rem;
-  font-size: 4.5rem;
-  line-height: 6rem;
+  height: 18rem;
+  font-size: 4rem;
+  line-height: 5rem;
   ${media.medium`
-    font-size: 3.3rem;
+    font-size: 3rem;
   `}
   ${media.small`
-    font-size: 2.7rem;
+    font-size: 2.3rem;
   `}
 `;
 
@@ -161,7 +215,7 @@ const QuizInputWrapper = styled.div`
     text-align: center;
     display: block;
     width: 100%;
-    padding: 3.2rem 0;
+    padding: 2.8rem 0;
     border-radius: 2rem;
     border: 1px solid #2e5dff;
     cursor: pointer;
@@ -182,7 +236,7 @@ const ButtonWrapper = styled.div`
   justify-content: ${(props) =>
     props.$buttonCount === "one" ? "flex-end" : "space-between"};
   width: 100%;
-  margin-top: 3.75rem;
+  margin-top: 2.75rem;
   gap: 1.5rem;
 `;
 
