@@ -28,6 +28,7 @@ const StyledBookmark = styled(BookmarkIcon)`
   width: ${(props) => (props.$size === "small" ? "3rem" : "4.5rem")};
   height: ${(props) => (props.$size === "small" ? "6.5em" : "10rem")};
   cursor: pointer;
+  transition: all 0.5s;
 `;
 
 Bookmark.propTypes = {
