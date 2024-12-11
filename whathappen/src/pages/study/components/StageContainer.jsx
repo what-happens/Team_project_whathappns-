@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider, keyframes } from "styled-components";
 import theme from "../theme";
 import media from "../media";
 
@@ -61,8 +61,8 @@ const MenuContainer = styled.div`
   ${({ theme }) => theme.mobile`
     width: 30rem;
   `};
-  width: 80rem;
-  margin: 0;
+  width: 100rem;
+  margin-right: 1rem;
   padding: 0;
 `;
 
@@ -77,22 +77,48 @@ const MenuList = styled.ul`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 3rem;
+  gap: 6rem;
   justify-content: center;
   list-style-type: none;
   padding: 0;
 `;
 
+const jello = keyframes`
+    0% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+            transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+            transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+            transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+            transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+            transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+`;
 const MenuItem = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
   transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.05);
-  }
 `;
 
 const MenuLink = styled.a`
@@ -116,6 +142,9 @@ const MenuImage = styled.img`
   object-fit: contain;
   border-radius: 10px;
   margin-bottom: 10px;
+  &:hover {
+    animation: ${jello} 1.1s both;
+  }
 `;
 
 const MenuTitle = styled.p`
