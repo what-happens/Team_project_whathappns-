@@ -2,16 +2,16 @@ import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import media from "./media";
-
 import { Link } from "react-router-dom";
 import StageContainer from "./components/StageContainer";
+import backGround from "../../assets/quiz-page-background.svg";
 
 const Container = styled.div`
   ${({ theme }) => theme.tablet`
       padding: 0.3rem;
   `};
   height: 100vh;
-  background-color: var(--main-color);
+  background-image: url(${backGround});
 
   display: flex;
   justify-content: center;
@@ -45,8 +45,7 @@ const BackLink = styled(Link)`
   align-items: center;
   position: relative;
   padding-left: 2.5rem;
-
-  font-size: 3rem;
+  font-size: 2rem;
   line-height: 4rem;
   color: #fff;
   text-decoration: none;
@@ -70,12 +69,12 @@ const BackLink = styled(Link)`
     position: absolute;
     content: "";
     display: block;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1rem;
+    height: 1rem;
     left: 0;
     top: 50%;
     border: solid #fff;
-    border-width: 0.5rem 0.5rem 0 0;
+    border-width: 0.3rem 0.3rem 0 0;
     transform: translateY(-50%) rotate(225deg);
   }
 `;
