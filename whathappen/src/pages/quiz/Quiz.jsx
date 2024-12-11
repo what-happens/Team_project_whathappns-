@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import { media } from "../../styles/MideaQuery";
 import { useState } from "react";
 import ConfirmExitModal from "../quizResult/components/ConfirmModal";
+import backGround from "../../assets/quiz-page-background.svg";
 
 const quiz = [
   {
@@ -72,25 +73,27 @@ export default function Quiz({ onNext }) {
 const QuizHeader = styled.header`
   width: 100%;
   padding: 2.4rem 0;
-  background-color: #2e5dff;
+  background-color: #3184ce;
 `;
 
 const StyledLink = styled(Link)`
-  display: inline-block;
-  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
   line-height: 3rem;
   color: #fff;
   text-decoration: none;
   ${media.medium`
     font-size: 2rem;
-`}
+  `}
 `;
 
 const StyledImg = styled.img`
   width: 3.6rem;
-  height: 3.6rem;
+  height: auto;
   object-fit: contain;
   vertical-align: top;
+  margin: 0 0.8rem 0 1rem;
 `;
 
 const QuizMain = styled.main`
@@ -98,7 +101,7 @@ const QuizMain = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2e5dff;
+  background-image: url(${backGround});
   padding-bottom: 8rem;
 `;
 
