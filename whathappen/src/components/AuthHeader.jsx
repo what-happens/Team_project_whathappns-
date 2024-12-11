@@ -52,15 +52,15 @@ export default function AuthHeader() {
           </>
         ) : (
           <>
-            <Logo>
-              <Link to="/">
+            <Link to="/">
+              <Logo>
                 <img
                   src={logo}
                   alt="What Happens 로고"
                   title="메인페이지로 이동"
                 />
-              </Link>
-            </Logo>
+              </Logo>
+            </Link>
             <AuthNav />
             <Button
               type="button"
