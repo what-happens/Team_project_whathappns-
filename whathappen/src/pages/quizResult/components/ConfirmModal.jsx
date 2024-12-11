@@ -66,7 +66,7 @@ export default function ConfirmExitModal({ isOpen, onClose }) {
           정말로 종료하시겠습니까?
         </ConfirmExitMessage>
         <ButtonType>
-          <Link to="/">
+          <Link to="/mypage">
             <Button width="11.3rem" onClick={onClose}>
               예
             </Button>

@@ -229,7 +229,7 @@ export default function QuizResult() {
             isOpen={isCongratulationsModalOpen}
             onClose={closeCongratulationsModal}
           />
-          <Link to="/">
+          <Link to="/myPage">
             <Button>처음으로</Button>
           </Link>
           <Button
