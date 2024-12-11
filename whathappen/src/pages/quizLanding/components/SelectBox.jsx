@@ -20,8 +20,8 @@ const selectCommonStyle = css`
   align-items: center;
 
   ${media.medium`
-    width: 32.5rem;
-  height: 7.1rem;
+    width: 28.5rem;
+  height: 6.5rem;
   font-size: 2.7rem;
 `}
 
