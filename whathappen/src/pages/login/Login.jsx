@@ -36,7 +36,7 @@ function Login() {
         })
       );
       console.log("User data:", result.user);
-      navigate("/");
+      navigate(-1);
     } catch (err) {
       console.error("Error during login:", err.message);
     }
@@ -206,6 +206,7 @@ function Login() {
           <LogoContent />
         </Link>
       </LoginContents>
+
       {loading && (
         <>
           <LoadingImg />
@@ -217,13 +218,13 @@ function Login() {
 }
 
 const LoginContents = styled.div`
+  margin-top: 20rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  height: 100vh;
-  padding: 22rem, 74rem, 4.3rem;
+  padding: 30rem, 74rem, 4.3rem;
 `;
 
 const LogoContent = styled.div`
