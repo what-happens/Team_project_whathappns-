@@ -5,6 +5,7 @@ import theme from "./theme";
 import media from "./media";
 import CardSlider from "./components/CardSlider";
 import back from "../../assets/back_link.png";
+import filed from "../../assets/study-state-background.svg";
 
 const Container = styled.div`
   ${({ theme }) => theme.laptop`
@@ -16,7 +17,7 @@ const Container = styled.div`
   ${({ theme }) => theme.mobile`
     gap: 2rem;
   `};
-
+  background-image: url(${filed});
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -32,9 +33,8 @@ const BackLink = styled(Link)`
     height: 4.2rem;
     margin: 3rem;
     `};
-
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
   margin: 3rem;
   position: absolute;
   top: 0;
@@ -62,6 +62,12 @@ const Header = styled.header`
   }
 `;
 
+const Title = styled.h2`
+  font-size: 2rem;
+  color: white;
+  font-weight: 700;
+`;
+
 export default function LearningCourse() {
   return (
     <ThemeProvider theme={{ ...theme, ...media }}>
@@ -69,7 +75,7 @@ export default function LearningCourse() {
         <h1 className="sr-only">학습 과정 페이지</h1>
         <Header>
           <BackLink />
-          <h2>Stage 01</h2>
+          <Title>STAGE 01</Title>
         </Header>
         <CardSlider></CardSlider>
       </Container>
