@@ -49,9 +49,6 @@ export default function Header() {
       </Link>
       <nav>
         <NavContainer>
-          <Link to="/mypage">
-            <NavItem>마이페이지</NavItem>
-          </Link>
           <Link to="/quizpage">
             <NavItem>퀴즈풀기</NavItem>
           </Link>
@@ -60,6 +57,9 @@ export default function Header() {
           </Link>
           <Link to="/review">
             <NavItem>복습노트</NavItem>
+          </Link>
+          <Link to="/mypage">
+            <NavItem>마이페이지</NavItem>
           </Link>
           <li>
             <Button

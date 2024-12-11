@@ -43,11 +43,11 @@ export default function AuthNav() {
 const Nav = styled.nav`
   margin-left: auto;
   margin-right: 6rem;
-  font-size: 2.4rem;
+  font-size: 1.8rem;
 
   ul {
     display: flex;
-    gap: 4rem;
+    gap: 5rem;
   }
   ${media.medium`
     margin-left: 0;

@@ -2,15 +2,19 @@ import React, { useState, useEffect } from "react";
 import AuthNav from "./AuthNav";
 import styled from "styled-components";
 import logo from "../assets/what_happns_logo_b.png";
-// import menu from "../assets/header_menu_icon.svg";
-// import logout from "../assets/header_logoutbtn_icon.svg";
-// import exit from "../assets/exit_btn.svg";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { media } from "../styles/MideaQuery";
 import MobileHeader from "./MobileHeader";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
+import { logout } from "../redux/authSlice";
+import { useDispatch } from "react-redux";
+
 export default function AuthHeader() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   useEffect(() => {
@@ -25,8 +29,14 @@ export default function AuthHeader() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleLogout = () => {
-    navigate("/");
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      dispatch(logout());
+      navigate("/");
+    } catch (err) {
+      return;
+    }
   };
 
   const toggleMenu = () => {
@@ -52,7 +62,13 @@ export default function AuthHeader() {
               </Link>
             </Logo>
             <AuthNav />
-            <Button type="button" onClick={handleLogout}>
+            <Button
+              type="button"
+              onClick={handleLogout}
+              padding="1rem 3rem"
+              fontSize="small"
+              borderRadius="5rem"
+            >
               로그아웃
             </Button>
           </>
@@ -64,12 +80,15 @@ export default function AuthHeader() {
 }
 
 const Header = styled.header`
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2rem 6rem 2rem 13rem;
+  background-color: white;
   display: flex;
   align-items: center;
-  padding: 2rem 6rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 10px;
-  z-index: 1000;
-  background-color: white;
+  justify-content: space-between;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.15);
+  z-index: 10;
   ${media.medium`
     padding: 2rem;
     justify-content: ;
@@ -80,12 +99,13 @@ const Header = styled.header`
 
 const Logo = styled.h1`
   width: 18rem;
-  img {
-    width: 100%;
-    height: 100%;
-  }
+  height: 6rem;
+  background-image: url(${logo});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-indent: -9999px;
   ${media.medium`
-    position: absolute;
-    top: 9rem;
+    display: none;
   `}
 `;
