@@ -7,11 +7,10 @@ import { Link } from "react-router-dom";
 
 export default function ReviewFreeVersion() {
   const [activeTab, setActiveTab] = useState("wrong");
-  const [selectedQuiz, setSelectedQuiz] = useState(null);
+  const [selectedQuizId, setSelectedQuizId] = useState(null);
   const [, setIsLoading] = useState(false);
   const [, setError] = useState(null);
   const [reviewData, setReviewData] = useState([]);
-  // const [quizData, setQuizData] = useState(null);
 
   useEffect(() => {
     const fetchReviewData = async () => {
@@ -47,34 +46,11 @@ export default function ReviewFreeVersion() {
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-    setSelectedQuiz(null);
+    setSelectedQuizId(null);
   };
 
-  const handleQuestionClick = async (quizId) => {
-    setIsLoading(true);
-    try {
-      const response = await fetch(`http://localhost:5000/quiz/${quizId}`, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setSelectedQuiz(data.quiz); // data.quiz로 수정
-      } else {
-        const errorData = await response.json();
-        setError("퀴즈 데이터를 불러오는데 실패했습니다");
-        console.error("Error:", errorData);
-      }
-    } catch (error) {
-      setError("서버 통신 중 오류가 발생했습니다");
-      console.error("Error:", error);
-    } finally {
-      setIsLoading(false);
-    }
+  const handleQuestionClick = (quizId) => {
+    setSelectedQuizId(quizId);
   };
 
   return (
@@ -111,7 +87,6 @@ export default function ReviewFreeVersion() {
                   .filter((item) => {
                     const filtered =
                       activeTab === "bookmark" ? item.isBookmark : item.isWrong;
-
                     return filtered;
                   })
                   .map((item) => {
@@ -129,7 +104,7 @@ export default function ReviewFreeVersion() {
           </Scrollbar>
         </QuestionContainer>
       </Warp>
-      {selectedQuiz && <QuizCard quizzes={selectedQuiz} />}
+      {selectedQuizId && <QuizCard quizId={selectedQuizId} />}
     </Container>
   );
 }
