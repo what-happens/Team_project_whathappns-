@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import BlackLogo from "../assets/what_happns_logo_white_blue.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "./Button";
-import { useSelector, useDispatch } from "react-redux";
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase";
-import { logout } from "../redux/authSlice";
+import { useSelector } from "react-redux";
+// import { signOut } from "firebase/auth";
+// import { auth } from "../firebase";
+import useLogout from "../hooks/useLogout";
 import { media } from "../styles/MideaQuery";
 import MobileHeader from "./MobileHeader";
 
@@ -14,6 +14,7 @@ export default function Header() {
   const { isLoggedIn } = useSelector((state) => state.auth);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { logout } = useLogout();
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,18 +31,7 @@ export default function Header() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      dispatch(logout());
-      navigate("/");
-    } catch (err) {
-      return;
-    }
-  };
   const renderDesktopLoggedIn = () => (
     <>
       <Link to="/">
@@ -49,24 +39,24 @@ export default function Header() {
       </Link>
       <nav>
         <NavContainer>
-          <Link to="/quizpage">
+          <StyledLink to="/quizpage">
             <NavItem>퀴즈풀기</NavItem>
-          </Link>
-          <Link to="study">
+          </StyledLink>
+          <StyledLink to="study">
             <NavItem>학습하기</NavItem>
-          </Link>
-          <Link to="/review">
+          </StyledLink>
+          <StyledLink to="/review">
             <NavItem>복습노트</NavItem>
-          </Link>
-          <Link to="/mypage">
+          </StyledLink>
+          <StyledLink to="/mypage">
             <NavItem>마이페이지</NavItem>
-          </Link>
+          </StyledLink>
           <li>
             <Button
               padding="1rem 4rem"
               fontSize="small"
               borderRadius="5rem"
-              onClick={handleLogout}
+              onClick={logout}
             >
               로그아웃
             </Button>
@@ -83,7 +73,7 @@ export default function Header() {
         padding="1rem 3rem"
         fontSize="small"
         borderRadius="5rem"
-        onClick={handleLogout}
+        onClick={logout}
       >
         로그아웃
       </Button>
@@ -111,6 +101,9 @@ export default function Header() {
   );
 }
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
 const HeaderContainer = styled.header`
   width: 100%;
   box-sizing: border-box;

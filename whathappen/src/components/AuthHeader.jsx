@@ -2,18 +2,15 @@ import React, { useState, useEffect } from "react";
 import AuthNav from "./AuthNav";
 import styled from "styled-components";
 import logo from "../assets/what_happns_logo_b.png";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Button from "./Button";
 import { media } from "../styles/MideaQuery";
 import MobileHeader from "./MobileHeader";
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase";
-import { logout } from "../redux/authSlice";
-import { useDispatch } from "react-redux";
+
+import useLogout from "../hooks/useLogout";
 
 export default function AuthHeader() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { logout } = useLogout();
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,16 +25,6 @@ export default function AuthHeader() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      dispatch(logout());
-      navigate("/");
-    } catch (err) {
-      return;
-    }
-  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -64,7 +51,7 @@ export default function AuthHeader() {
             <AuthNav />
             <Button
               type="button"
-              onClick={handleLogout}
+              onClick={logout}
               padding="1rem 3rem"
               fontSize="small"
               borderRadius="5rem"
