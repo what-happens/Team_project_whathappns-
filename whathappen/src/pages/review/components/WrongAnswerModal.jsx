@@ -1,6 +1,7 @@
 import React from "react";
 import xImg from "../../../assets/x.png";
 import styled, { keyframes } from "styled-components";
+import { media } from "../../../styles/MideaQuery";
 
 export default function WrongAnswerModal() {
   return (
@@ -60,4 +61,16 @@ const XImg = styled.div`
   left: 22%;
   top: 20%;
   z-index: 999;
+  ${media.large`
+    left: 35%;
+    top: -50%;
+  `}
+  ${media.medium`
+    left: 25%;
+    top: -50%;
+  `}
+  ${media.small`
+    left: 15%;
+    top: -50%;
+  `}
 `;

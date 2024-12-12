@@ -4,6 +4,7 @@ import styled, { keyframes } from "styled-components";
 import congratulations from "../../../assets/congratulations.png";
 import background from "../../../assets/quiz-result_background.svg";
 import Button from "../../../components/Button";
+import { media } from "../../../styles/MideaQuery";
 
 export default function CheckAnswerModal({ setIsCorrect }) {
   const handleClose = () => {
@@ -36,33 +37,15 @@ CheckAnswerModal.propTypes = {
 };
 
 const jello = keyframes`
-  0% {
-    -webkit-transform: skew(0deg 0deg);
-            transform: skew(0deg 0deg);
-  }
-  30% {
-    -webkit-transform: skew(25deg 25deg);
-            transform: skew(25deg 25deg);
-  }
-  40% {
-    -webkit-transform: skew(-15deg, -15deg);
-            transform: skew(-15deg, -15deg);
-  }
-  50% {
-    -webkit-transform: skew(15deg, 15deg);
-            transform: skew(15deg, 15deg);
-  }
-  65% {
-    -webkit-transform: skew(-5deg, -5deg);
-            transform: skew(-5deg, -5deg);
-  }
-  75% {
-    -webkit-transform: skew(5deg, 5deg);
-            transform: skew(5deg, 5deg);
+   0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
   }
   100% {
-    -webkit-transform: skew(0deg 0deg);
-            transform: skew(0deg 0deg);
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
   }
 `;
 
@@ -103,7 +86,20 @@ const CorrectBox = styled.div`
   height: 30rem;
   background-color: white;
   z-index: 999;
-  animation: ${jello} 0.8s both;
+  animation: ${jello} 0.5s both;
+
+  ${media.large`
+    left: 30%;
+    top: 40%;
+  `}
+  ${media.medium`
+    left: 15%;
+    top: 40%;
+  `}
+  ${media.small`
+    left: 5%;
+    top: 40%;
+  `}
 `;
 
 const LoadingPage = styled.div`
