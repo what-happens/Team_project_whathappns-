@@ -6,8 +6,6 @@ function ProtectedRoute({ children }) {
   const auth = useSelector((state) => state.auth);
   const location = useLocation();
 
-  console.log("Protected Route Auth State:", auth);
-
   if (!auth || !auth.isLoggedIn) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }

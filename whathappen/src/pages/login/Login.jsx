@@ -35,7 +35,6 @@ function Login() {
           },
         })
       );
-      console.log("User data:", result.user);
       navigate(-1);
     } catch (err) {
       console.error("Error during login:", err.message);
