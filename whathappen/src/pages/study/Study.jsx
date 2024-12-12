@@ -10,9 +10,10 @@ const Container = styled.div`
   ${({ theme }) => theme.tablet`
       padding: 0.3rem;
   `};
+  width: 100vw;
   height: 100vh;
   background-image: url(${backGround});
-
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
