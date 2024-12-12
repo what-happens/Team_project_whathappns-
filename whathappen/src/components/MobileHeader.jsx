@@ -7,8 +7,10 @@ import exit from "../assets/exit_btn.svg";
 import logo from "../assets/what_happns_logo_b.png";
 import { media } from "../styles/MideaQuery";
 import PropTypes from "prop-types";
-
+import Button from "./Button";
+import useLogout from "../hooks/useLogout";
 export default function MobileHeader({ toggleMenu, isMenuOpen }) {
+  const { logout } = useLogout();
   return (
     <>
       <MobileMenuBtn onClick={toggleMenu}>
@@ -24,6 +26,7 @@ export default function MobileHeader({ toggleMenu, isMenuOpen }) {
           </Link>
         </Logo>
         <AuthNav />
+        <Button onClick={logout}>로그아웃</Button>
       </MobileMenu>
       <Overlay isOpen={isMenuOpen} onClick={toggleMenu} />
     </>
@@ -73,6 +76,7 @@ const MobileMenu = styled.div`
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  gap: 5rem;
 `;
 
 const CloseBtn = styled.button`
