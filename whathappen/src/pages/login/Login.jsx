@@ -96,7 +96,6 @@ function Login() {
             })
           );
           navigate("/");
-          console.log("로그인성공");
         } else {
           const errorData = await response.json();
           setIdError(errorData.message || "로그인 실패");
