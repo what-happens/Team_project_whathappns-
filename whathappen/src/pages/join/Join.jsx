@@ -69,7 +69,7 @@ export default function Join() {
       try {
         setLoading(true);
 
-        const response = await fetch("http://localhost:5000/user", {
+        const response = await fetch("http://localhost:5000/user/signin", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
