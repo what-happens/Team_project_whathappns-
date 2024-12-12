@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import Button from "../../components/Button";
 import Logo from "../../assets/what_happns_logo_b.png";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Google } from "./components/LoginSvg";
 import Lock from "../../assets/Lock.svg";
 import Person from "../../assets/Person.svg";
 import { auth } from "../../firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-import loadingImg from "../../assets/loading2.gif";
+import loadingImg from "../../assets/potato.png";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/authSlice";
 
@@ -317,15 +317,31 @@ const LoadingPage = styled.div`
   z-index: 20;
 `;
 
+const roll = keyframes`
+  0% {
+          transform: translateX(0) rotate(0deg);
+          opacity: 1;
+        }
+        80%{
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(50rem) rotate(360deg);
+          opacity: 0;
+        }
+`;
 const LoadingImg = styled.div`
   background-image: url(${loadingImg});
   position: absolute;
-  top: 28%;
-  left: 42%;
-  width: 30rem;
-  height: 30rem;
-  background-size: cover;
+  top: 30%;
+  left: 30%;
+  width: 20rem;
+  height: 20rem;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
+  transform-origin: center center;
+  animation: ${roll} 0.5s linear infinite;
   z-index: 30;
 `;
 
