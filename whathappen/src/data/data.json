@@ -1,18 +1,18 @@
 {
   "stage": [
     {
-      "stage_id": "S1",
+      "stage_id": "0",
       "done": false,
       "stage_name": "",
       "level": [
         {
-          "level_id": "S1_L1",
-          "done": true,
+          "level_id": "L1",
+          "done": false,
           "level_name": "",
           "title": "",
           "subtitles": [
             {
-              "subtitle_id": "S1_L1_T1_01",
+              "subtitle_id": "S1",
               "sub_name": "",
               "contents": [
                 {
@@ -25,18 +25,20 @@
           ],
           "task": [
             {
-              "task_id": "S1_L1_TA",
-              "done": true,
+              "task_id": "0",
+              "done": false,
               "questions": [
                 {
-                  "id": "S1_L1_TA_Q1",
-                  "choices": ["HTML", "CSS", "JavaScript"],
-                  "answer": "HTML"
+                  "id": "0",
+                  "question_title": "",
+                  "choices": [],
+                  "answer": ""
                 },
                 {
-                  "id": "S1_L1_TA_Q2",
-                  "choices": ["True", "False"],
-                  "answer": "True"
+                  "id": "1",
+                  "question_title": "",
+                  "choices": [],
+                  "answer": ""
                 }
               ]
             }
