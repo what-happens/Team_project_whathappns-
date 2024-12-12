@@ -4,7 +4,7 @@ import theme from "./theme";
 import media from "./media";
 import { Link } from "react-router-dom";
 import StageContainer from "./components/StageContainer";
-import backGround from "../../assets/quiz-page-background.svg";
+import backGround from "../../assets/quiz-page-background3.svg";
 
 const Container = styled.div`
   ${({ theme }) => theme.tablet`
