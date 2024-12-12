@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import { media } from "../../styles/MideaQuery";
 import { useState } from "react";
 import ConfirmExitModal from "../quizResult/components/ConfirmModal";
-import backGround from "../../assets/quiz-page-background.svg";
+import backGround from "../../assets/quiz-page-background3.svg";
 
 const quiz = [
   {
@@ -73,7 +73,7 @@ export default function Quiz({ onNext }) {
 const QuizHeader = styled.header`
   width: 100%;
   padding: 2.4rem 0;
-  background-color: #3184ce;
+  background-color: var(--main-color);
 `;
 
 const StyledLink = styled(Link)`
