@@ -72,7 +72,7 @@ export default function Quiz({ onNext }) {
 
 const QuizHeader = styled.header`
   width: 100%;
-  padding: 2.4rem 0;
+  padding: 5rem 0;
   background-color: var(--main-color);
 `;
 
