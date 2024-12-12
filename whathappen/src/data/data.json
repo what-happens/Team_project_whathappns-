@@ -1,0 +1,48 @@
+{
+  "stage": [
+    {
+      "stage_id": "S1",
+      "done": false,
+      "stage_name": "",
+      "level": [
+        {
+          "level_id": "S1_L1",
+          "done": true,
+          "level_name": "",
+          "title": "",
+          "subtitles": [
+            {
+              "subtitle_id": "S1_L1_T1_01",
+              "sub_name": "",
+              "contents": [
+                {
+                  "explan": "",
+                  "code": "",
+                  "img": ""
+                }
+              ]
+            }
+          ],
+          "task": [
+            {
+              "task_id": "S1_L1_TA",
+              "done": true,
+              "questions": [
+                {
+                  "id": "S1_L1_TA_Q1",
+                  "choices": ["HTML", "CSS", "JavaScript"],
+                  "answer": "HTML"
+                },
+                {
+                  "id": "S1_L1_TA_Q2",
+                  "choices": ["True", "False"],
+                  "answer": "True"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

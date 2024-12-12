@@ -1,0 +1,37 @@
+[
+  {
+    "stage_id": "S1",
+    "done": false,
+    "stage_name": "stage 01"
+  },
+  {
+    "stage_id": "S2",
+    "done": false,
+    "stage_name": "stage 02"
+  },
+  {
+    "stage_id": "S3",
+    "done": false,
+    "stage_name": "stage 03"
+  },
+  {
+    "stage_id": "S4",
+    "done": false,
+    "stage_name": "stage 04"
+  },
+  {
+    "stage_id": "S5",
+    "done": false,
+    "stage_name": "stage 05"
+  },
+  {
+    "stage_id": "S6",
+    "done": false,
+    "stage_name": "stage 06"
+  },
+  {
+    "stage_id": "S7",
+    "done": false,
+    "stage_name": "stage 07"
+  }
+]

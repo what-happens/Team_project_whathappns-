@@ -9,6 +9,7 @@ import Study from "./pages/study/Study";
 import StudyFinish from "./pages/study/StudyFinish";
 import LearningCourse from "./pages/study/LearningCourse";
 import LearningPage from "./pages/study/LearningPage";
+import AAA from "./pages/study/AAA";
 import NotFound from "./pages/notFound/NotFound";
 import MyPage from "./pages/myPage/MyPage";
 import Review from "./pages/review/ReviewFreeVersion";
@@ -87,6 +88,8 @@ function App() {
             </ProtectedRoute>
           }
         />
+        {/* test 페이지 입니다...(예진) */}
+        <Route path="/aaa" element={<AAA />} />
         <Route
           path="/study"
           element={
