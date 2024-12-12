@@ -7,7 +7,7 @@ import Bookmark from "../../../components/Bookmark";
 import CheckAnswerModal from "./CheckAnswerModal";
 import WrongAnswerModal from "./WrongAnswerModal";
 
-export default function QuizCard({ quizId }) {
+export default function QuizCard({ quizId, activeTab }) {
   const [quiz, setQuiz] = useState(null);
   const [shuffledAnswer, setShuffledAnswer] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -110,17 +110,27 @@ export default function QuizCard({ quizId }) {
         </ButtonWrapper>
       </FormWrapper>
 
-      {isSubmitted && isCorrect === true && (
+      {isSubmitted && isCorrect === true && activeTab === "wrong" && (
         <CheckAnswerModal setIsCorrect={setIsCorrect} quiz={quiz} />
       )}
 
-      {isSubmitted && isCorrect === false && <WrongAnswerModal />}
+      {isSubmitted && isCorrect === false && activeTab === "wrong" && (
+        <WrongAnswerModal />
+      )}
+      {isSubmitted && isCorrect === true && activeTab === "bookmark" && (
+        <CheckAnswerModal setIsCorrect={setIsCorrect} quiz={quiz} />
+      )}
+
+      {isSubmitted && isCorrect === false && activeTab === "bookmark" && (
+        <WrongAnswerModal />
+      )}
     </QuizSection>
   );
 }
 
 QuizCard.propTypes = {
   quizId: PropTypes.number.isRequired,
+  activeTab: PropTypes.string,
 };
 
 const QuizSection = styled.section`

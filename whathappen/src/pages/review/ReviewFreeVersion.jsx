@@ -104,7 +104,9 @@ export default function ReviewFreeVersion() {
           </Scrollbar>
         </QuestionContainer>
       </Warp>
-      {selectedQuizId && <QuizCard quizId={selectedQuizId} />}
+      {selectedQuizId && (
+        <QuizCard quizId={selectedQuizId} activeTab={activeTab} />
+      )}
     </Container>
   );
 }
