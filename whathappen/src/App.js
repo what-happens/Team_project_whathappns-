@@ -15,6 +15,7 @@ import MyPage from "./pages/myPage/MyPage";
 import Review from "./pages/review/ReviewFreeVersion";
 import AuthHeader from "./components/AuthHeader";
 import ProtectedRoute from "./components/ProtectedRoute";
+import JoinSuccess from "./pages/joinSuccess/JoinSuccess";
 // import { useEffect } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import { auth } from "./firebase";
@@ -55,6 +56,7 @@ function App() {
         <Route path="/*" element={<NotFound />} />
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />
+        <Route path="/Joinsuccess" element={<JoinSuccess />} />
         <Route
           path="/quizpage"
           element={
