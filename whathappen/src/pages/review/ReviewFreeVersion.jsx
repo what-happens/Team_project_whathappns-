@@ -1,83 +1,79 @@
-import { useState } from "react";
-import styled from "styled-components";
+import { useEffect, useState } from "react";
+import styled, { keyframes } from "styled-components";
 import QuizCard from "./components/ReviewFreeVersionCard";
 import { media } from "../../styles/MideaQuery";
-
-const reviewNote = [
-  {
-    qid: 10,
-    updateAt: {
-      _seconds: 1733831880,
-      _nanoseconds: 101000000,
-    },
-    isBookmark: false,
-    isWrong: true,
-    category: "HTML",
-  },
-  {
-    qid: 12,
-    updateAt: {
-      _seconds: 1733821132,
-      _nanoseconds: 385000000,
-    },
-    isBookmark: true,
-    isWrong: true,
-    category: "HTML",
-  },
-  {
-    qid: 1,
-    updateAt: {
-      _seconds: 1733821132,
-      _nanoseconds: 385000000,
-    },
-    isBookmark: true,
-    isWrong: true,
-    category: "HTML",
-  },
-];
-
-const quiz = [
-  {
-    category: "HTML",
-    question: "HTML은 무엇의 약자일까요?",
-    correct_answer: "Hypertext Markup Language",
-    incorrect_answer: [
-      "Hyperlink and Text Markup Language",
-      "Hypermeida Text Language",
-      "High-text Markup Language",
-    ],
-    id: 10,
-  },
-  {
-    category: "CSS",
-    question: "요소를 화면에서 숨기는 display 속성값은 무엇인가요?",
-    correct_answer: "none",
-    incorrect_answer: ["hidden", "invisible", "hide"],
-    id: 12,
-  },
-  {
-    category: "HTML",
-    question: "표를 만들 때 사용하는 기본 태그는 무엇인가요?",
-    correct_answer: "table",
-    incorrect_answer: ["tab", "grid", "tr"],
-    id: 1,
-  },
-];
+import potato from "../../assets/hat-potato-img.svg";
+import { Link } from "react-router-dom";
 
 export default function ReviewFreeVersion() {
   const [activeTab, setActiveTab] = useState("wrong");
   const [selectedQuiz, setSelectedQuiz] = useState(null);
+  const [, setIsLoading] = useState(false);
+  const [, setError] = useState(null);
+  const [reviewData, setReviewData] = useState([]);
+  // const [quizData, setQuizData] = useState(null);
+
+  useEffect(() => {
+    const fetchReviewData = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch("http://localhost:5000/review", {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setReviewData(data.reviewNote);
+          console.log("받아온 데이터:", data);
+        } else {
+          const errorData = await response.json();
+          setError("복습노트를 불러오는데 실패했습니다");
+          console.error("Error:", errorData);
+        }
+      } catch (error) {
+        setError("서버 통신 중 오류가 발생했습니다");
+        console.error("Error:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchReviewData();
+  }, []);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
     setSelectedQuiz(null);
   };
 
-  const handleQuestionClick = (quizId) => {
-    const matchedQuiz = quiz.find((q) => q.id === quizId);
+  const handleQuestionClick = async (quizId) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(`http://localhost:5000/quiz/${quizId}`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    if (matchedQuiz) {
-      setSelectedQuiz([matchedQuiz]);
+      if (response.ok) {
+        const data = await response.json();
+        setSelectedQuiz(data.quiz); // data.quiz로 수정
+      } else {
+        const errorData = await response.json();
+        setError("퀴즈 데이터를 불러오는데 실패했습니다");
+        console.error("Error:", errorData);
+      }
+    } catch (error) {
+      setError("서버 통신 중 오류가 발생했습니다");
+      console.error("Error:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -101,18 +97,35 @@ export default function ReviewFreeVersion() {
         </TapWarp>
         <QuestionContainer>
           <Scrollbar>
-            {reviewNote
-              .filter((item) =>
-                activeTab === "bookmark" ? item.isBookmark : item.isWrong
-              )
-              .map((item) => (
-                <Question
-                  key={item.qid}
-                  onClick={() => handleQuestionClick(item.qid)}
-                >
-                  {item.category} 문제 {item.qid}
-                </Question>
-              ))}
+            {!reviewData || reviewData.length === 0 ? (
+              <NullData>
+                <Potato />
+                복습노트가 비어있습니다 ㅠㅠ
+                <StyledLink to="/quizpage">
+                  <GoQuiz>퀴즈 풀러가기!</GoQuiz>
+                </StyledLink>
+              </NullData>
+            ) : (
+              <>
+                {reviewData
+                  .filter((item) => {
+                    const filtered =
+                      activeTab === "bookmark" ? item.isBookmark : item.isWrong;
+
+                    return filtered;
+                  })
+                  .map((item) => {
+                    return (
+                      <Question
+                        key={item.qid}
+                        onClick={() => handleQuestionClick(item.qid)}
+                      >
+                        {item.category} 문제 {item.qid}
+                      </Question>
+                    );
+                  })}
+              </>
+            )}
           </Scrollbar>
         </QuestionContainer>
       </Warp>
@@ -120,6 +133,64 @@ export default function ReviewFreeVersion() {
     </Container>
   );
 }
+
+const vibrate = keyframes`
+  0% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  20% {
+    -webkit-transform: translate(-2px, 2px);
+            transform: translate(-2px, 2px);
+  }
+  40% {
+    -webkit-transform: translate(-2px, -2px);
+            transform: translate(-2px, -2px);
+  }
+  60% {
+    -webkit-transform: translate(2px, 2px);
+            transform: translate(2px, 2px);
+  }
+  80% {
+    -webkit-transform: translate(2px, -2px);
+            transform: translate(2px, -2px);
+  }
+  100% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
+const GoQuiz = styled.div`
+  padding: 2rem;
+  color: white;
+  background-color: var(--main-color);
+  text-decoration: none;
+`;
+
+const Potato = styled.div`
+  margin-top: 1rem;
+  width: 19rem;
+  height: 15rem;
+  background-image: url(${potato});
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: ${vibrate} 0.3s linear infinite both;
+`;
+
+const NullData = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: var(--main-color);
+  gap: 5rem;
+`;
 
 const Container = styled.div`
   display: flex;
@@ -132,11 +203,11 @@ const Container = styled.div`
   margin: 0 auto;
 
   ${media.large`
-   flex-direction: column;
-   align-items: center;
-   padding: 5rem 2rem 0;
-   max-width: 100%;
- `}
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem 2rem 0;
+    max-width: 100%;
+  `}
 `;
 
 const Warp = styled.div`
@@ -144,9 +215,9 @@ const Warp = styled.div`
   max-width: 45rem;
 
   ${media.large`
-   width: 100%;
-   max-width: 100%;
- `}
+    width: 100%;
+    max-width: 100%;
+  `}
 `;
 
 const TapWarp = styled.ul`
@@ -169,9 +240,9 @@ const TapItem = styled.li`
   cursor: pointer;
 
   ${media.large`
-   padding: 2rem 0;
-   font-size: 1.6rem;
- `}
+    padding: 2rem 0;
+    font-size: 1.6rem;
+  `}
 `;
 
 const WiteBox = styled.div`
@@ -197,9 +268,9 @@ const QuestionContainer = styled.ul`
   align-items: center;
 
   ${media.large`
-   height: 33rem;
-   width: 100%;
- `}
+    height: 33rem;
+    width: 100%;
+  `}
 `;
 
 const Scrollbar = styled.div`
@@ -213,8 +284,8 @@ const Scrollbar = styled.div`
   width: 100%;
 
   ${media.large`
-   padding: 2rem 1.5rem;
- `}
+    padding: 2rem 1.5rem;
+  `}
 
   > * {
     direction: ltr;
@@ -265,9 +336,9 @@ const Question = styled.li`
   cursor: pointer;
 
   ${media.large`
-   font-size: 2.4rem;
-   padding: 1.5rem;
- `}
+    font-size: 2.4rem;
+    padding: 1.5rem;
+  `}
 
   &:hover {
     background-color: var(--main-color);

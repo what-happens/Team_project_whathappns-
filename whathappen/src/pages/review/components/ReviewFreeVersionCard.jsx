@@ -6,7 +6,6 @@ import { media } from "../../../styles/MideaQuery";
 import Bookmark from "../../../components/Bookmark";
 
 export default function QuizCard({ quizzes }) {
-  const [currentQuestion] = useState(0);
   const [shuffledAnswer, setShuffledAnswer] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -24,30 +23,34 @@ export default function QuizCard({ quizzes }) {
   };
 
   useEffect(() => {
+    if (!quizzes) return;
+
+    console.log("현재 quizzes:", quizzes);
+
     const shuffled = shuffleArray([
-      ...quizzes[currentQuestion].incorrect_answer,
-      quizzes[currentQuestion].correct_answer,
+      ...quizzes.incorrect_answers,
+      quizzes.correct_answer,
     ]);
-    setShuffledAnswer([shuffled]);
+    setShuffledAnswer(shuffled);
     setIsLoading(true);
   }, [quizzes]);
 
-  if (!isLoading) {
+  if (!isLoading || !quizzes) {
     return <div>loading</div>;
   }
 
   return (
     <QuizSection>
       <Bookmark top={"-1.4rem"} right={"3.3rem"} size={"small"} />
-      <QuizQuestion>{quizzes[currentQuestion].question}</QuizQuestion>
+      <QuizQuestion>{quizzes.question}</QuizQuestion>
       <FormWrapper onSubmit={handleOnSubmit}>
-        {shuffledAnswer[currentQuestion]?.map((answer, idx) => (
+        {shuffledAnswer.map((answer, idx) => (
           <QuizInputWrapper key={idx}>
             <input type="radio" name="answer" id={`answer-${idx}`} />
             <label htmlFor={`answer-${idx}`}>{answer}</label>
           </QuizInputWrapper>
         ))}
-        <ButtonWrapper $buttonCount={currentQuestion == 0 ? "one" : "many"}>
+        <ButtonWrapper $buttonCount="one">
           <Button type="submit" backgroundColor={"green"}>
             제출하기
           </Button>
@@ -166,7 +169,7 @@ QuizCard.propTypes = {
       id: PropTypes.number.isRequired,
       question: PropTypes.string.isRequired,
       correct_answer: PropTypes.string.isRequired,
-      incorrect_answer: PropTypes.arrayOf(PropTypes.string).isRequired,
+      incorrect_answers: PropTypes.arrayOf(PropTypes.string).isRequired, // 수정된 부분
     })
   ).isRequired,
 };
