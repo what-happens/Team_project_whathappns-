@@ -72,17 +72,20 @@ function Login() {
       try {
         setLoading(true);
 
-        const response = await fetch("http://localhost:5000/user/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify({
-            email: idValue,
-            password: pwValue,
-          }),
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/user/login`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify({
+              email: idValue,
+              password: pwValue,
+            }),
+          }
+        );
 
         if (response.ok) {
           const userData = await response.json();
