@@ -17,18 +17,20 @@ export default function ReviewFreeVersion() {
     const fetchReviewData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch("http://localhost:5000/review", {
-          method: "GET",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/review`,
+          {
+            method: "GET",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         if (response.ok) {
           const data = await response.json();
           setReviewData(data.reviewNote);
-          console.log("받아온 데이터:", data);
         } else {
           const errorData = await response.json();
           setError("복습노트를 불러오는데 실패했습니다");
@@ -113,7 +115,11 @@ export default function ReviewFreeVersion() {
         </QuestionContainer>
       </Warp>
       {selectedQuizId && (
-        <QuizCard quizId={selectedQuizId} activeTab={activeTab} />
+        <QuizCard
+          quizId={selectedQuizId}
+          activeTab={activeTab}
+          reviewData={reviewData}
+        />
       )}
     </Container>
   );
