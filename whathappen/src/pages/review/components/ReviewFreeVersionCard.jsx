@@ -6,6 +6,7 @@ import { media } from "../../../styles/MideaQuery";
 import Bookmark from "../../../components/Bookmark";
 import CheckAnswerModal from "./CheckAnswerModal";
 import WrongAnswerModal from "./WrongAnswerModal";
+import CorrectAnswerModal from "./CorrectAnswerModal";
 
 export default function QuizCard({ quizId, activeTab }) {
   const [quiz, setQuiz] = useState(null);
@@ -60,6 +61,13 @@ export default function QuizCard({ quizId, activeTab }) {
   }, [quizId]);
 
   useEffect(() => {
+    if (isCorrect === true && activeTab === "bookmark") {
+      const timer = setTimeout(() => {
+        setIsCorrect(null);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
     if (isCorrect === false) {
       const timer = setTimeout(() => {
         setIsCorrect(null);
@@ -118,7 +126,7 @@ export default function QuizCard({ quizId, activeTab }) {
         <WrongAnswerModal />
       )}
       {isSubmitted && isCorrect === true && activeTab === "bookmark" && (
-        <CheckAnswerModal setIsCorrect={setIsCorrect} quiz={quiz} />
+        <CorrectAnswerModal />
       )}
 
       {isSubmitted && isCorrect === false && activeTab === "bookmark" && (
