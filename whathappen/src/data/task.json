@@ -2,17 +2,18 @@
   {
     "task_id": "S1_L1_TA",
     "level_id": "S1_L1",
-    "done": true,
+    "done": false,
     "questions": [
       {
         "id": "S1_L1_TA_Q1",
-        "choices": ["HTML", "CSS", "JavaScript"],
-        "answer": "HTML"
+        "question_title": "",
+        "choices": [],
+        "answer": ""
       },
       {
         "id": "S1_L1_TA_Q2",
-        "choices": ["True", "False"],
-        "answer": "True"
+        "choices": [],
+        "answer": ""
       }
     ]
   }

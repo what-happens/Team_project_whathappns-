@@ -7,17 +7,17 @@ const levelData = [
     title: "Title 01",
     subtitles: [
       {
-        id: 1,
+        id: 11,
         title: "HTML/CSS 기초",
         content: "시맨틱 태그와 레이아웃 기본기 다지기",
       },
       {
-        id: 2,
+        id: 12,
         title: "반응형 웹 디자인",
         content: "미디어 쿼리와 플렉스박스로 반응형 레이아웃 구현",
       },
       {
-        id: 3,
+        id: 13,
         title: "JavaScript 기초",
         content: "DOM 조작과 이벤트 핸들링 학습",
       },
@@ -28,12 +28,12 @@ const levelData = [
     title: "Title 02",
     subtitles: [
       {
-        id: 1,
+        id: 21,
         title: "React 기초",
         content: "컴포넌트와 상태 관리 기본 개념 이해",
       },
       {
-        id: 2,
+        id: 22,
         title: "styled-components",
         content: "CSS-in-JS 스타일링 기법 학습",
       },
@@ -44,12 +44,12 @@ const levelData = [
     title: "Title 03",
     subtitles: [
       {
-        id: 1,
+        id: 31,
         title: "상태 관리",
         content: "Redux 또는 Context API를 이용한 상태 관리",
       },
       {
-        id: 2,
+        id: 32,
         title: "라우팅",
         content: "React Router를 이용한 페이지 네비게이션",
       },
@@ -60,12 +60,12 @@ const levelData = [
     title: "Title 04",
     subtitles: [
       {
-        id: 1,
+        id: 41,
         title: "API 통신",
         content: "Axios로 백엔드와 데이터 통신",
       },
       {
-        id: 2,
+        id: 42,
         title: "비동기 처리",
         content: "Promise와 async/await 심화 학습",
       },
@@ -76,12 +76,12 @@ const levelData = [
     title: "Title 05",
     subtitles: [
       {
-        id: 1,
+        id: 51,
         title: "성능 최적화",
         content: "React.memo, useMemo, useCallback 활용",
       },
       {
-        id: 2,
+        id: 52,
         title: "테스트",
         content: "Jest와 React Testing Library로 컴포넌트 테스트",
       },
@@ -92,12 +92,12 @@ const levelData = [
     title: "Title 06",
     subtitles: [
       {
-        id: 1,
+        id: 61,
         title: "서버사이드 렌더링",
         content: "Next.js를 이용한 SSR 구현",
       },
       {
-        id: 2,
+        id: 62,
         title: "배포",
         content: "Vercel, Netlify 등을 통한 웹사이트 배포",
       },
