@@ -118,7 +118,9 @@ const HeaderContainer = styled.header`
   ${media.medium`
     box-shadow: none;
     background-color: #fff;
-    padding: 2rem;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
   `}
 `;
 
