@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>간단한 HTML 레이아웃</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+      header {
+        background: #333;
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+      }
+      nav {
+        background: #555;
+        color: #fff;
+        padding: 0.5rem;
+        text-align: center;
+      }
+      nav a {
+        color: #fff;
+        margin: 0 0.5rem;
+        text-decoration: none;
+      }
+      main {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 1rem;
+      }
+      section {
+        flex: 2;
+        padding: 1rem;
+        background: #f4f4f4;
+        margin: 0.5rem;
+        border: 1px solid #ddd;
+      }
+      aside {
+        flex: 1;
+        padding: 1rem;
+        background: #e4e4e4;
+        margin: 0.5rem;
+        border: 1px solid #ddd;
+      }
+      article {
+        margin-bottom: 1rem;
+      }
+      footer {
+        background: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>My page</h1>
+    </header>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <main>
+      <section>
+        <h2>스크랩한 기사</h2>
+        <article>
+          <h3>첫 번째 기사</h3>
+          <p>
+            이곳은 최신 소식과 관련된 첫 번째 기사입니다. 여기에는 관련된 정보를
+            자세히 설명하고 있습니다.
+          </p>
+        </article>
+        <article>
+          <h3>두 번째 기사</h3>
+          <p>
+            이곳은 두 번째 기사입니다. 최신 트렌드와 뉴스에 대해 깊이 있는
+            내용을 제공합니다.
+          </p>
+        </article>
+      </section>
+      <aside>
+        <h2>관련 링크</h2>
+        <ul>
+          <li><a href="#">첫 번째 기사</a></li>
+          <li><a href="#">두 번째 기사</a></li>
+        </ul>
+      </aside>
+    </main>
+    <footer>
+      <p>&copy; 2024 My page</p>
+    </footer>
+  </body>
+</html>

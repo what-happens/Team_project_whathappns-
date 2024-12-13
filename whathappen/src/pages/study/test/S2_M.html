@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form 태그 실습</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      h1 {
+        text-align: center;
+        margin: 3rem 0;
+        color: #2c3e50;
+      }
+
+      form {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      fieldset {
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      legend {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #34495e;
+        padding: 0 0.5rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        color: #34495e;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        box-sizing: border-box;
+      }
+
+      input:focus {
+        border-color: #3498db;
+        outline: none;
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+        color: #fff;
+        background-color: #3498db;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      button:hover {
+        background-color: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>설문조사</h1>
+    </header>
+    <main>
+      <form>
+        <fieldset>
+          <legend>개인 정보</legend>
+          <div class="form-group">
+            <label for="fullname">이름</label>
+            <input
+              type="text"
+              id="fullname"
+              name="fullname"
+              placeholder="이름을 입력하세요"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">이메일</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="이메일을 입력하세요"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">전화번호</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="전화번호를 입력하세요 (예: 010-1234-5678)"
+            />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>설문 내용</legend>
+          <div class="form-group">
+            <label for="age">나이</label>
+            <input
+              type="number"
+              id="age"
+              name="age"
+              placeholder="나이를 입력하세요"
+              min="10"
+              max="100"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="feedback">피드백</label>
+            <input
+              type="text"
+              id="feedback"
+              name="feedback"
+              placeholder="설문조사에 대한 의견을 적어주세요"
+            />
+          </div>
+        </fieldset>
+
+        <button type="submit">제출하기</button>
+      </form>
+    </main>
+  </body>
+</html>

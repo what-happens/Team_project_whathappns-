@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table Practice</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 2rem;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+        font-size: 1rem;
+      }
+      th,
+      td {
+        border: 0.1rem solid #ccc;
+        text-align: center;
+        padding: 0.8rem;
+      }
+      th {
+        background-color: #007bff;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      caption {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="/login" method="POST">
+      <label for="username">아이디:</label>
+      <input type="text" id="username" name="username" />
+
+      <label for="password">비밀번호:</label>
+      <input type="password" id="password" name="password" />
+    </form>
+  </body>
+</html>
