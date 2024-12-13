@@ -3,8 +3,8 @@
     "level_id": 0,
     "stage_id": 0,
     "done": false,
-    "level_name": "",
-    "theme": "",
+    "level_name": "Level 01",
+    "theme": "HTML 기본 구조",
     "questions": [
       {
         "q_id": 0,
@@ -34,7 +34,7 @@
         "choices": [
           "<body>Hellow world!</body>",
           "<section>Hellow world!</section>",
-          "<area>Hellow world!</ㅁ>"
+          "<area>Hellow world!</area>"
         ],
         "answer": "<body>Hellow world!</body>"
       }
@@ -44,14 +44,81 @@
     "level_id": 1,
     "stage_id": 0,
     "done": false,
-    "level_name": "",
-    "theme": "",
+    "level_name": "Level 02",
+    "theme": "글을 적어보자",
     "questions": [
       {
         "q_id": 0,
-        "q_title": "Q1. 이 태그는?",
-        "choices": ["<header>", "<title>", "<head>"],
-        "answer": "<head>"
+        "q_title": "Q1. 이 태그는 제목을 입력할 때 사용하는 태그입니다. 올바른 순서는 무엇일까요?",
+        "choices": [
+          "<h>이게 되네?</h>",
+          "<h0>이게 되네?</h0>",
+          "<h1>이게 되네?</h1>"
+        ],
+        "answer": "<h1>이게 되네?</h1>"
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2. 이 태그는 다른 페이지나 같은 페이지 내 이동 등 다양한 하이퍼 링크를 만듭니다. 이 태그는 무엇일까요?",
+        "choices": [
+          "<a href='https://www.books.weniv.co.kr/essentials-html-css'>HTML/CSS 에센셜</a>",
+          "<p href='https://www.books.weniv.co.kr/essentials-html-css'>HTML/CSS 에센셜</p>",
+          "<link href='https://www.books.weniv.co.kr/essentials-html-css'>HTML/CSS 에센셜</link>"
+        ],
+        "answer": "<a href='https://www.books.weniv.co.kr/essentials-html-css'>HTML/CSS 에센셜</a>"
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3. 이 태그는 수평선을 그립니다. 이 태그는 무엇일까요?",
+        "choices": ["<hr />", "<br />", "<line />"],
+        "answer": "<hr />"
+      },
+      {
+        "q_id": 3,
+        "q_title": "Q4. 이 태그는 문단 내에서 줄 바꿈을 생성합니다. 이 태그는 무엇일까요?",
+        "choices": ["<hr />", "<br />", "<line />"],
+        "answer": "<br />"
+      }
+    ]
+  },
+  {
+    "level_id": 2,
+    "stage_id": 0,
+    "done": false,
+    "level_name": "Level 03",
+    "theme": "공간을 나누는 태그",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1. 이 태그는 블록 요소로 개행이 되며 여러 태그들을 그룹핑하기 위한 용도로 사용합니다. 이 태그는 무엇일까요?",
+        "choices": ["<section>", "<span>", "<div>"],
+        "answer": "<div>"
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2. 이 태그는 이미지를 삽입하는데 사용합니다. 이 태그는 무엇일까요?",
+        "choices": [
+          "<img src='#' alt='싸이코 포스터' />",
+          "<picture src='#' alt='싸이코 포스터' />",
+          "<image src='#' alt='싸이코 포스터' />"
+        ],
+        "answer": "<img src='#' alt='싸이코 포스터' />"
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3. 이 태그는 중대하거나 긴급한 콘텐츠를 나타냅니다. 이 태그는 무엇일까요?",
+        "choices": [
+          "<span>경고! 이 영화는 무섭습니다!</span>",
+          "<strong>경고! 이 영화는 무섭습니다!</strong>",
+          "<warn>경고! 이 영화는 무섭습니다!</warn>"
+        ],
+        "answer": "<strong>경고! 이 영화는 무섭습니다!</strong>"
+      },
+      {
+        "q_id": 3,
+        "q_title": "Q4. 다음중 Q2의 닫는 태그로 알맞은 것은 무엇일까요?",
+        "choices": ["</section>", "</span>", "</div>"],
+        "answer": "</div>"
       }
     ]
   }
