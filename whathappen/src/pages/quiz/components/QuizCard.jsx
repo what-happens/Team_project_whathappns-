@@ -161,6 +161,7 @@ const QuizSection = styled.section`
   padding: 3.5rem 8rem;
   position: relative;
   animation: ${bounce} 1.11s both;
+  background-color: white;
   ${media.medium`
     width:80%;
     height:80%;
