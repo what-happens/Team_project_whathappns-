@@ -74,7 +74,7 @@ export default function LearningCourse() {
       <Container>
         <h1 className="sr-only">학습 과정 페이지</h1>
         <Header>
-          <BackLink />
+          <BackLink to="/study" />
           <Title>STAGE 01</Title>
         </Header>
         <CardSlider></CardSlider>

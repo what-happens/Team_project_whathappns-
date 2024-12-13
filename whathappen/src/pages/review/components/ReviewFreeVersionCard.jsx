@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Button from "../../../components/Button";
 import { media } from "../../../styles/MideaQuery";
-import Bookmark from "../../../components/Bookmark";
 import CheckAnswerModal from "./CheckAnswerModal";
 import WrongAnswerModal from "./WrongAnswerModal";
+import CorrectAnswerModal from "./CorrectAnswerModal";
+import Bookmark from "./Bookmark";
 
-export default function QuizCard({ quizId, activeTab }) {
+export default function QuizCard({ quizId, activeTab, reviewData }) {
   const [quiz, setQuiz] = useState(null);
   const [shuffledAnswer, setShuffledAnswer] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -29,13 +30,16 @@ export default function QuizCard({ quizId, activeTab }) {
       if (!quizId) return;
 
       try {
-        const response = await fetch(`http://localhost:5000/quiz/${quizId}`, {
-          method: "GET",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/quiz/${quizId}`,
+          {
+            method: "GET",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         if (response.ok) {
           const data = await response.json();
@@ -60,6 +64,13 @@ export default function QuizCard({ quizId, activeTab }) {
   }, [quizId]);
 
   useEffect(() => {
+    if (isCorrect === true && activeTab === "bookmark") {
+      const timer = setTimeout(() => {
+        setIsCorrect(null);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
     if (isCorrect === false) {
       const timer = setTimeout(() => {
         setIsCorrect(null);
@@ -85,10 +96,8 @@ export default function QuizCard({ quizId, activeTab }) {
   if (!quiz) {
     return null;
   }
-
   return (
     <QuizSection>
-      <Bookmark top={"-1.4rem"} right={"3.3rem"} size={"small"} />
       <QuizQuestion>{quiz.question}</QuizQuestion>
       <FormWrapper onSubmit={handleSubmit}>
         {shuffledAnswer.map((answer, idx) => (
@@ -104,21 +113,42 @@ export default function QuizCard({ quizId, activeTab }) {
           </QuizInputWrapper>
         ))}
         <ButtonWrapper $buttonCount="one">
-          <Button type="submit" backgroundColor={"green"}>
-            제출하기
-          </Button>
+          {activeTab === "wrong" && (
+            <Button type="submit" backgroundColor={"green"}>
+              제출하기
+            </Button>
+          )}
+          {activeTab === "bookmark" && (
+            <>
+              <div style={{ display: "flex", gap: "1rem" }}>
+                <Bookmark
+                  top={"-5rem"}
+                  right={"3.3rem"}
+                  size={"small"}
+                  quizId={quizId}
+                  isBookmarked={
+                    reviewData.find((item) => item.qid === quizId)
+                      ?.isBookmark || false
+                  }
+                />
+                <Button type="submit" backgroundColor={"green"}>
+                  제출하기
+                </Button>
+              </div>
+            </>
+          )}
         </ButtonWrapper>
       </FormWrapper>
 
       {isSubmitted && isCorrect === true && activeTab === "wrong" && (
-        <CheckAnswerModal setIsCorrect={setIsCorrect} quiz={quiz} />
+        <CheckAnswerModal setIsCorrect={setIsCorrect} quizId={quizId} />
       )}
 
       {isSubmitted && isCorrect === false && activeTab === "wrong" && (
         <WrongAnswerModal />
       )}
       {isSubmitted && isCorrect === true && activeTab === "bookmark" && (
-        <CheckAnswerModal setIsCorrect={setIsCorrect} quiz={quiz} />
+        <CorrectAnswerModal />
       )}
 
       {isSubmitted && isCorrect === false && activeTab === "bookmark" && (
@@ -127,11 +157,6 @@ export default function QuizCard({ quizId, activeTab }) {
     </QuizSection>
   );
 }
-
-QuizCard.propTypes = {
-  quizId: PropTypes.number.isRequired,
-  activeTab: PropTypes.string,
-};
 
 const QuizSection = styled.section`
   display: flex;
@@ -145,6 +170,7 @@ const QuizSection = styled.section`
   height: 60rem;
   width: 100%;
   max-width: 120rem;
+  background-color: white;
 
   ${media.large`
    height: auto;
@@ -237,6 +263,17 @@ const ButtonWrapper = styled.div`
 `;
 
 QuizCard.propTypes = {
+  quizId: PropTypes.number.isRequired,
+  activeTab: PropTypes.string,
+  reviewData: PropTypes.arrayOf(
+    PropTypes.shape({
+      isBookmark: PropTypes.bool,
+      isWrong: PropTypes.bool,
+      qid: PropTypes.number,
+      category: PropTypes.string,
+      updateAt: PropTypes.object,
+    })
+  ).isRequired,
   quizzes: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

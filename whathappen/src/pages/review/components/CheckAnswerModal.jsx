@@ -6,7 +6,28 @@ import background from "../../../assets/quiz-result_background.svg";
 import Button from "../../../components/Button";
 import { media } from "../../../styles/MideaQuery";
 
-export default function CheckAnswerModal({ setIsCorrect }) {
+export default function CheckAnswerModal({ setIsCorrect, quizId }) {
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/review`, {
+        method: "DELETE",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify([{ qid: quizId }]),
+      });
+
+      if (response.ok) {
+        setIsCorrect(null);
+      } else {
+        console.log(quizId);
+        console.error("퀴즈삭제실패");
+      }
+    } catch (error) {
+      console.error("Error deleting quiz:", error);
+    }
+  };
   const handleClose = () => {
     setIsCorrect(null);
   };
@@ -20,7 +41,7 @@ export default function CheckAnswerModal({ setIsCorrect }) {
         </Success>
         <Text>복습노트 에서 해당 문제를 삭제할까요??</Text>
         <ButtonWarp>
-          <Button onClick={handleClose}>예</Button>
+          <Button onClick={handleDelete}>예</Button>
           <Button backgroundColor="red" onClick={handleClose}>
             아니오
           </Button>
@@ -34,6 +55,7 @@ export default function CheckAnswerModal({ setIsCorrect }) {
 
 CheckAnswerModal.propTypes = {
   setIsCorrect: PropTypes.func.isRequired,
+  quizId: PropTypes.number.isRequired,
 };
 
 const jello = keyframes`
@@ -86,7 +108,7 @@ const CorrectBox = styled.div`
   height: 30rem;
   background-color: white;
   z-index: 999;
-  animation: ${jello} 0.5s both;
+  animation: ${jello} 0.1s both;
 
   ${media.large`
     left: 30%;

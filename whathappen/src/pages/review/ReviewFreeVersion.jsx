@@ -4,11 +4,13 @@ import QuizCard from "./components/ReviewFreeVersionCard";
 import { media } from "../../styles/MideaQuery";
 import potato from "../../assets/hat-potato-img.svg";
 import { Link } from "react-router-dom";
+import loadingImg from "../../assets/loading_Img.svg";
+import backGround from "../../assets/review-background-2.svg";
 
 export default function ReviewFreeVersion() {
   const [activeTab, setActiveTab] = useState("wrong");
   const [selectedQuizId, setSelectedQuizId] = useState(null);
-  const [, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [, setError] = useState(null);
   const [reviewData, setReviewData] = useState([]);
 
@@ -16,18 +18,20 @@ export default function ReviewFreeVersion() {
     const fetchReviewData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch("http://localhost:5000/review", {
-          method: "GET",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/review`,
+          {
+            method: "GET",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         if (response.ok) {
           const data = await response.json();
           setReviewData(data.reviewNote);
-          console.log("받아온 데이터:", data);
         } else {
           const errorData = await response.json();
           setError("복습노트를 불러오는데 실패했습니다");
@@ -54,62 +58,151 @@ export default function ReviewFreeVersion() {
   };
 
   return (
-    <Container>
-      <Warp>
-        <TapWarp>
-          <TapItem
-            onClick={() => handleTabClick("wrong")}
-            $isActive={activeTab === "wrong"}
-          >
-            틀린문제
-          </TapItem>
-          <TapItem
-            onClick={() => handleTabClick("bookmark")}
-            $isActive={activeTab === "bookmark"}
-          >
-            북마크
-          </TapItem>
-          <WiteBox $isActive={activeTab === "wrong"} />
-        </TapWarp>
-        <QuestionContainer>
-          <Scrollbar>
-            {!reviewData || reviewData.length === 0 ? (
-              <NullData>
-                <Potato />
-                복습노트가 비어있습니다 ㅠㅠ
-                <StyledLink to="/quizpage">
-                  <GoQuiz>퀴즈 풀러가기!</GoQuiz>
-                </StyledLink>
-              </NullData>
-            ) : (
-              <>
-                {reviewData
-                  .filter((item) => {
-                    const filtered =
-                      activeTab === "bookmark" ? item.isBookmark : item.isWrong;
-                    return filtered;
-                  })
-                  .map((item) => {
-                    return (
-                      <Question
-                        key={item.qid}
-                        onClick={() => handleQuestionClick(item.qid)}
-                      >
-                        {item.category} 문제 {item.qid}
-                      </Question>
-                    );
-                  })}
-              </>
-            )}
-          </Scrollbar>
-        </QuestionContainer>
-      </Warp>
-      {selectedQuizId && (
-        <QuizCard quizId={selectedQuizId} activeTab={activeTab} />
-      )}
-    </Container>
+    <>
+      <Container>
+        {isLoading && (
+          <>
+            <LoadingImg />
+            <LoadingText>Loading....</LoadingText>
+            <LoadingPage></LoadingPage>
+          </>
+        )}
+        <Warp>
+          <TapWarp>
+            <TapItem
+              onClick={() => handleTabClick("wrong")}
+              $isActive={activeTab === "wrong"}
+            >
+              틀린문제
+            </TapItem>
+            <TapItem
+              onClick={() => handleTabClick("bookmark")}
+              $isActive={activeTab === "bookmark"}
+            >
+              북마크
+            </TapItem>
+            <WiteBox $isActive={activeTab === "wrong"} />
+          </TapWarp>
+          <QuestionContainer>
+            <Scrollbar>
+              {!reviewData || reviewData.length === 0 ? (
+                <NullData>
+                  <Potato />
+                  복습노트가 비어있습니다 ㅠㅠ
+                  <StyledLink to="/quizpage">
+                    <GoQuiz>퀴즈 풀러가기!</GoQuiz>
+                  </StyledLink>
+                </NullData>
+              ) : (
+                <>
+                  {reviewData
+                    .filter((item) => {
+                      const filtered =
+                        activeTab === "bookmark"
+                          ? item.isBookmark
+                          : item.isWrong;
+                      return filtered;
+                    })
+                    .map((item) => {
+                      return (
+                        <Question
+                          key={item.qid}
+                          onClick={() => handleQuestionClick(item.qid)}
+                        >
+                          {item.category} 문제 {item.qid}
+                        </Question>
+                      );
+                    })}
+                </>
+              )}
+            </Scrollbar>
+          </QuestionContainer>
+        </Warp>
+        {selectedQuizId && (
+          <QuizCard
+            quizId={selectedQuizId}
+            activeTab={activeTab}
+            reviewData={reviewData}
+          />
+        )}
+      </Container>
+      <Background />
+    </>
   );
 }
+
+const Background = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  z-index: -999;
+  background-image: url(${backGround});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  ${media.medium`
+    background-size: cover; 
+    height: 100%; 
+  `}
+
+  ${media.small`
+    background-size: cover; 
+    height: 100%; 
+  `}
+`;
+const LoadingPage = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 20;
+`;
+
+const roll = keyframes`
+  0% {
+
+            transform: rotate(0);
+  }
+  100% {
+            transform: rotate(360deg);
+  }
+`;
+const LoadingImg = styled.div`
+  background-image: url(${loadingImg});
+  position: absolute;
+  top: 33%;
+  left: 45%;
+  width: 15rem;
+  height: 15rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform-origin: center center;
+  animation: ${roll} 0.8s linear infinite;
+  z-index: 30;
+`;
+const LoadingText = styled.p`
+  position: absolute;
+  top: 52%;
+  left: 43%;
+  font-weight: 700;
+  font-size: 5rem;
+  z-index: 30;
+`;
 
 const vibrate = keyframes`
   0% {
@@ -229,7 +322,7 @@ const WiteBox = styled.div`
   position: absolute;
   bottom: -1px;
   left: ${(props) => (props.$isActive ? "0.05rem" : "50%")};
-  z-index: 20;
+  z-index: 15;
 `;
 
 const QuestionContainer = styled.ul`
