@@ -5,6 +5,7 @@ import { media } from "../../styles/MideaQuery";
 import potato from "../../assets/hat-potato-img.svg";
 import { Link } from "react-router-dom";
 import loadingImg from "../../assets/loading_Img.svg";
+import backGround from "../../assets/review-background-2.svg";
 
 export default function ReviewFreeVersion() {
   const [activeTab, setActiveTab] = useState("wrong");
@@ -57,74 +58,107 @@ export default function ReviewFreeVersion() {
   };
 
   return (
-    <Container>
-      {isLoading && (
-        <>
-          <LoadingImg />
-          <LoadingText>Loading....</LoadingText>
-          <LoadingPage></LoadingPage>
-        </>
-      )}
-      <Warp>
-        <TapWarp>
-          <TapItem
-            onClick={() => handleTabClick("wrong")}
-            $isActive={activeTab === "wrong"}
-          >
-            틀린문제
-          </TapItem>
-          <TapItem
-            onClick={() => handleTabClick("bookmark")}
-            $isActive={activeTab === "bookmark"}
-          >
-            북마크
-          </TapItem>
-          <WiteBox $isActive={activeTab === "wrong"} />
-        </TapWarp>
-        <QuestionContainer>
-          <Scrollbar>
-            {!reviewData || reviewData.length === 0 ? (
-              <NullData>
-                <Potato />
-                복습노트가 비어있습니다 ㅠㅠ
-                <StyledLink to="/quizpage">
-                  <GoQuiz>퀴즈 풀러가기!</GoQuiz>
-                </StyledLink>
-              </NullData>
-            ) : (
-              <>
-                {reviewData
-                  .filter((item) => {
-                    const filtered =
-                      activeTab === "bookmark" ? item.isBookmark : item.isWrong;
-                    return filtered;
-                  })
-                  .map((item) => {
-                    return (
-                      <Question
-                        key={item.qid}
-                        onClick={() => handleQuestionClick(item.qid)}
-                      >
-                        {item.category} 문제 {item.qid}
-                      </Question>
-                    );
-                  })}
-              </>
-            )}
-          </Scrollbar>
-        </QuestionContainer>
-      </Warp>
-      {selectedQuizId && (
-        <QuizCard
-          quizId={selectedQuizId}
-          activeTab={activeTab}
-          reviewData={reviewData}
-        />
-      )}
-    </Container>
+    <>
+      <Container>
+        {isLoading && (
+          <>
+            <LoadingImg />
+            <LoadingText>Loading....</LoadingText>
+            <LoadingPage></LoadingPage>
+          </>
+        )}
+        <Warp>
+          <TapWarp>
+            <TapItem
+              onClick={() => handleTabClick("wrong")}
+              $isActive={activeTab === "wrong"}
+            >
+              틀린문제
+            </TapItem>
+            <TapItem
+              onClick={() => handleTabClick("bookmark")}
+              $isActive={activeTab === "bookmark"}
+            >
+              북마크
+            </TapItem>
+            <WiteBox $isActive={activeTab === "wrong"} />
+          </TapWarp>
+          <QuestionContainer>
+            <Scrollbar>
+              {!reviewData || reviewData.length === 0 ? (
+                <NullData>
+                  <Potato />
+                  복습노트가 비어있습니다 ㅠㅠ
+                  <StyledLink to="/quizpage">
+                    <GoQuiz>퀴즈 풀러가기!</GoQuiz>
+                  </StyledLink>
+                </NullData>
+              ) : (
+                <>
+                  {reviewData
+                    .filter((item) => {
+                      const filtered =
+                        activeTab === "bookmark"
+                          ? item.isBookmark
+                          : item.isWrong;
+                      return filtered;
+                    })
+                    .map((item) => {
+                      return (
+                        <Question
+                          key={item.qid}
+                          onClick={() => handleQuestionClick(item.qid)}
+                        >
+                          {item.category} 문제 {item.qid}
+                        </Question>
+                      );
+                    })}
+                </>
+              )}
+            </Scrollbar>
+          </QuestionContainer>
+        </Warp>
+        {selectedQuizId && (
+          <QuizCard
+            quizId={selectedQuizId}
+            activeTab={activeTab}
+            reviewData={reviewData}
+          />
+        )}
+      </Container>
+      <Background />
+    </>
   );
 }
 
+const Background = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  z-index: -999;
+  background-image: url(${backGround});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  ${media.medium`
+    background-size: cover; 
+    height: 100%; 
+  `}
+
+  ${media.small`
+    background-size: cover; 
+    height: 100%; 
+  `}
+`;
 const LoadingPage = styled.div`
   position: fixed;
   top: 0;

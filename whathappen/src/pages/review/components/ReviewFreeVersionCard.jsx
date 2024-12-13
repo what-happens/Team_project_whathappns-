@@ -170,6 +170,7 @@ const QuizSection = styled.section`
   height: 60rem;
   width: 100%;
   max-width: 120rem;
+  background-color: white;
 
   ${media.large`
    height: auto;
