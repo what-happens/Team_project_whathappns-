@@ -1,5 +1,5 @@
 import React from "react";
-import xImg from "../../../assets/x.png";
+import xImg from "../../../assets/wrong_answer.png";
 import styled, { keyframes } from "styled-components";
 import { media } from "../../../styles/MideaQuery";
 
@@ -53,9 +53,9 @@ const shake = keyframes`
 `;
 const XImg = styled.div`
   width: 40rem;
-  height: 40rem;
+  height: 36rem;
   animation: ${shake} 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
-  background-size: contain;
+  background-size: cover;
   background-image: url(${xImg});
   position: absolute;
   left: 22%;
