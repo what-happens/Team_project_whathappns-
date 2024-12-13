@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import logoImage from "../../assets/logo.png";
 import CongratulationsModal from "./components/CongratsModal";
 import { media } from "../../styles/MideaQuery";
@@ -6,7 +6,34 @@ import Button from "../../components/Button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import backGround from "../../assets/quiz-result_background.svg";
-
+const scaleIn = keyframes`
+   0%,
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    -webkit-transform: translateY(-8px);
+            transform: translateY(-8px);
+  }
+  20%,
+  40%,
+  60% {
+    -webkit-transform: translateY(8px);
+            transform: translateY(8px);
+  }
+  80% {
+    -webkit-transform: translateY(6.4px);
+            transform: translateY(6.4px);
+  }
+  90% {
+    -webkit-transform: translateY(-6.4px);
+            transform: translateY(-6.4px);
+  }
+`;
 const ResultBackground = styled.div`
   position: absolute;
   top: 0;
@@ -44,6 +71,7 @@ const QuizResultMain = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  animation: ${scaleIn} 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
   background-color: #fff;
   ${media.medium`
     width: 52rem;
