@@ -1,11 +1,11 @@
 import styled, { keyframes } from "styled-components";
 import quizImage from "../../assets/quiz-main-logo.png";
-import backgroundImage from "../../assets/Clouds.svg";
+import backgroundImage from "../../assets/quiz-page-background3.svg";
 import { Select } from "./components/SelectBox";
 import { media } from "../../styles/MideaQuery";
 import Button from "../../components/Button";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const bounceImg = keyframes`
   0% {
@@ -46,15 +46,13 @@ const bounceImg = keyframes`
 `;
 
 const LandingBackground = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  min-height: 100vh;
-  z-index: 998;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url(${backgroundImage});
-  background-size: 100% 100%;
-  background-position: center;
+  padding-bottom: 8rem;
 
   display: flex;
   flex-direction: column;
@@ -114,6 +112,8 @@ const QuizControlSection = styled.section`
 `;
 
 export default function QuizLanding({ onNext }) {
+  const navigate = useNavigate();
+
   return (
     <LandingBackground>
       <QuizLandingMain>
@@ -137,15 +137,15 @@ export default function QuizLanding({ onNext }) {
           >
             퀴즈 풀기!
           </Button>
-          <Link to="/">
-            <Button
-              backgroundColor="red"
-              padding="2rem 5rem"
-              borderRadius="2.5rem"
-            >
-              뒤로가기
-            </Button>
-          </Link>
+
+          <Button
+            onClick={() => navigate(-1)}
+            backgroundColor="red"
+            padding="2rem 5rem"
+            borderRadius="2.5rem"
+          >
+            뒤로가기
+          </Button>
         </QuizControlSection>
       </QuizLandingMain>
     </LandingBackground>
