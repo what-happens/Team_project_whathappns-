@@ -58,34 +58,34 @@ function App() {
         <Route
           path="/quizpage"
           element={
-            <ProtectedRoute>
-              <QuizPage />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <QuizPage />
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/exercise"
           element={
-            <ProtectedRoute>
-              <Exercise />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <Exercise />
+            // </ProtectedRoute>
           }
         />
 
         <Route
           path="/learncourse"
           element={
-            <ProtectedRoute>
-              <LearningCourse />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <LearningCourse />
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/learnpage"
           element={
-            <ProtectedRoute>
-              <LearningPage />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <LearningPage />
+            // </ProtectedRoute>
           }
         />
         {/* test 페이지 입니다...(예진) */}
@@ -93,17 +93,17 @@ function App() {
         <Route
           path="/study"
           element={
-            <ProtectedRoute>
-              <Study />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <Study />
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/studyfinish"
           element={
-            <ProtectedRoute>
-              <StudyFinish />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <StudyFinish />
+            // </ProtectedRoute>
           }
         />
 
@@ -111,9 +111,9 @@ function App() {
           <Route
             path="/mypage"
             element={
-              <ProtectedRoute>
-                <MyPage />
-              </ProtectedRoute>
+              // <ProtectedRoute>
+              <MyPage />
+              // </ProtectedRoute>
             }
           />
           <Route
