@@ -2,11 +2,11 @@
   {
     "stage_id": 0,
     "title_id": 0,
-    "level_id": "S1_L1",
+    "level_id": 0,
     "title": "",
     "subtitles": [
       {
-        "sub_id": "S1_L1_T1_01",
+        "sub_id": 0,
         "sub_name": "",
         "contents": [
           {
@@ -17,7 +17,7 @@
         ]
       },
       {
-        "sub_id": "S1_L1_T1_02",
+        "sub_id": 1,
         "sub_name": "",
         "contents": [
           {

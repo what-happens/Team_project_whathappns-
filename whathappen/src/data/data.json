@@ -1,18 +1,18 @@
 {
   "stage": [
     {
-      "stage_id": "0",
+      "stage_id": 0,
       "done": false,
       "stage_name": "",
       "level": [
         {
-          "level_id": "L1",
+          "level_id": 0,
           "done": false,
           "level_name": "",
           "title": "",
           "subtitles": [
             {
-              "subtitle_id": "S1",
+              "subtitle_id": 0,
               "sub_name": "",
               "contents": [
                 {
@@ -25,17 +25,17 @@
           ],
           "task": [
             {
-              "task_id": "0",
+              "task_id": 0,
               "done": false,
               "questions": [
                 {
-                  "id": "0",
+                  "id": 0,
                   "question_title": "",
                   "choices": [],
                   "answer": ""
                 },
                 {
-                  "id": "1",
+                  "id": 1,
                   "question_title": "",
                   "choices": [],
                   "answer": ""
