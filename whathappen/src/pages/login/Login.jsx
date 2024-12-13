@@ -8,7 +8,7 @@ import Person from "../../assets/Person.svg";
 import { auth } from "../../firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-import loadingImg from "../../assets/potato.png";
+import loadingImg from "../../assets/loading_Img.svg";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/authSlice";
 
@@ -208,6 +208,7 @@ function Login() {
       {loading && (
         <>
           <LoadingImg />
+          <LoadingText>Loading...</LoadingText>
           <LoadingPage></LoadingPage>
         </>
       )}
@@ -311,35 +312,39 @@ const LoadingPage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.9);
   z-index: 20;
 `;
 
 const roll = keyframes`
   0% {
-          transform: translateX(0) rotate(0deg);
-          opacity: 1;
-        }
-        80%{
-          opacity: 1;
-        }
-        100% {
-          transform: translateX(50rem) rotate(360deg);
-          opacity: 0;
-        }
+
+            transform: rotate(0);
+  }
+  100% {
+            transform: rotate(360deg);
+  }
 `;
 const LoadingImg = styled.div`
   background-image: url(${loadingImg});
   position: absolute;
-  top: 30%;
-  left: 30%;
-  width: 20rem;
-  height: 20rem;
+  top: 33%;
+  left: 45%;
+  width: 15rem;
+  height: 15rem;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   transform-origin: center center;
-  animation: ${roll} 0.5s linear infinite;
+  animation: ${roll} 0.8s linear infinite;
+  z-index: 30;
+`;
+const LoadingText = styled.p`
+  position: absolute;
+  top: 52%;
+  left: 43%;
+  font-weight: 700;
+  font-size: 5rem;
   z-index: 30;
 `;
 

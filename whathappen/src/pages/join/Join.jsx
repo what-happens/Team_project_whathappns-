@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Button from "../../components/Button";
 import Logo from "../../assets/what_happns_logo_b.png";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Google } from "./components/JoinSvg";
 import { useNavigate } from "react-router-dom";
-import loadingImg from "../../assets/loading2.gif";
+import loadingImg from "../../assets/loading_Img.svg";
 import { Link } from "react-router-dom";
 
 export default function Join() {
@@ -216,6 +216,7 @@ export default function Join() {
       {loading && (
         <>
           <LoadingImg />
+          <LoadingText>Loading...</LoadingText>
           <LoadingPage></LoadingPage>
         </>
       )}
@@ -306,18 +307,38 @@ const LoadingPage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.9);
   z-index: 20;
 `;
 
+const roll = keyframes`
+  0% {
+
+            transform: rotate(0);
+  }
+  100% {
+            transform: rotate(360deg);
+  }
+`;
 const LoadingImg = styled.div`
   background-image: url(${loadingImg});
   position: absolute;
-  top: 28%;
-  left: 42%;
-  width: 30rem;
-  height: 30rem;
-  background-size: cover;
+  top: 33%;
+  left: 45%;
+  width: 15rem;
+  height: 15rem;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
+  transform-origin: center center;
+  animation: ${roll} 0.8s linear infinite;
+  z-index: 30;
+`;
+const LoadingText = styled.p`
+  position: absolute;
+  top: 52%;
+  left: 43%;
+  font-weight: 700;
+  font-size: 5rem;
   z-index: 30;
 `;
