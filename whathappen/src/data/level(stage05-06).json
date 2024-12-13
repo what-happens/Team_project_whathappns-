@@ -1,0 +1,238 @@
+[
+  {
+    "level_id": 0,
+    "stage_id": 4,
+    "done": false,
+    "level_name": "Level 01",
+    "theme": "transform 효과",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1. 박스를 수직 방향 위로 이동시켜보세요",
+        "choices": ["translate", "translateX", "transform"],
+        "answer": "translateY"
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2. 박스 크기가 2배로 확대되도록 설정하세요",
+        "choices": ["translate", "translateX", "scaleY"],
+        "answer": "scale"
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3. 박스에 X축 방향으로 40도 기울어지는 효과를 적용해보세요 ",
+        "choices": ["rotateX", "skew", "translate"],
+        "answer": "skewX"
+      },
+      {
+        "q_id": 3,
+        "q_title": " Q4. 박스에 90도 반시계 방향으로 회전하는 효과를 적용해보세요 ",
+        "choices": ["rotate(90deg)", "skew(-90deg)", "scale(90deg)"],
+        "answer": "rotate(-90deg)"
+      }
+    ]
+  },
+  {
+    "level_id": 1,
+    "stage_id": 4,
+    "done": false,
+    "level_name": "Level 02",
+    "theme": "transition 효과",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1. 박스에 트랜지션을 적용할 속성을 설정해보세요",
+        "choices": ["transform", "transition-delay"],
+        "answer": "transition-property"
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2. 박스에 효과가 0.5초 후에 시작되도록 설정해보세요",
+        "choices": ["transition-property", "transition-duration"],
+        "answer": "transition-delay"
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3. 박스가 2초 동안 확장되도록 트랜지션 시간을 설정해보세요 ",
+        "choices": ["transition-property", "transition-delay"],
+        "answer": "transition-duration"
+      }
+    ]
+  },
+  {
+    "level_id": 2,
+    "stage_id": 4,
+    "done": false,
+    "level_name": "Level 03",
+    "theme": "transform-3D효과",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1. 박스의 3D 변형에 깊이를 추가하여,3D 공간에서 돌출된 것처럼 설정해보세요",
+        "choices": ["transform", "rotateY", "scaleZ"],
+        "answer": "perspective"
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2. 박스에 3D 회전을 적용해보세요",
+        "choices": ["skewZ", "rotateX", "scaleZ"],
+        "answer": "rotateY"
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3. 3D 변형의 깊이를 조정해보세요",
+        "choices": ["scaleY", "rotateX", "transition"],
+        "answer": "scaleZ "
+      }
+    ]
+  },
+  {
+    "level_id": 3,
+    "stage_id": 4,
+    "done": false,
+    "level_name": "Master",
+    "theme": "카드 만들기",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1. 카드의 트랜지션이 1초동안 지속되도록 효과를 설정해보세요.",
+        "choices": [
+          "transition-property",
+          "transition-timing-function",
+          "transition-delay"
+        ],
+        "answer": "transition-duration"
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2. 트랜지션의 진행 속도의 곡선을 적용하기 위해 속성을 설정해보세요",
+        "choices": [
+          "transition-property",
+          "transition-duration",
+          "transition-delay"
+        ],
+        "answer": "transition-timing-function "
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3. 요소를 Y축을 기준으로 180도 회전되도록 설정해보세요.",
+        "choices": ["translateY", "scaleY", "skewY"],
+        "answer": "rotateY"
+      },
+      {
+        "q_id": 3,
+        "q_title": "Q4. 요소의 크기를 1.5배로 조정하는 효과를 설정해보세요.",
+        "choices": ["translate", "translateZ", "rotateX"],
+        "answer": "scale"
+      }
+    ]
+  },
+  {
+    "level_id": 0,
+    "stage_id": 5,
+    "done": false,
+    "level_name": "Level 01",
+    "theme": "반응형 단위 설정하기",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1. 박스의 너비를 컨테이너(부모)너비에 상대적인 단위로 설정해보세요.",
+        "choices": ["px", "em", "rem"],
+        "answer": "%"
+      },
+      {
+        "q_id": 1,
+        "q_title": " Q2. 박스의 너비를 글꼴 크기에 상대적인 단위로 설정해보세요 ",
+        "choices": ["px", "%", "rem"],
+        "answer": "em"
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3. 박스의 너비를 루트 글꼴 크기에 상대적인 단위로 설정해보세요",
+        "choices": ["%", "em", "px"],
+        "answer": "rem"
+      }
+    ]
+  },
+  {
+    "level_id": 1,
+    "stage_id": 5,
+    "done": false,
+    "level_name": "Level 02",
+    "theme": "반응형 속성 적용하기",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1. 0px과 min 값 중 더 큰 값이 border-radius에 적용되도록 해보세요.",
+        "choices": ["width", "rem", "clamp"],
+        "answer": "max"
+      },
+      {
+        "q_id": 1,
+        "q_title": " Q2. border-radius 속성에서 수학적 연산을 수행하는 함수를 적용해보세요 ",
+        "choices": ["function", "max", "clamp"],
+        "answer": "calc"
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3. 16px과 4vw 중 더 작은 값이 글자 크기에 적용되도록 해보세요",
+        "choices": ["calc", "max", "clamp"],
+        "answer": "min"
+      }
+    ]
+  },
+  {
+    "level_id": 2,
+    "stage_id": 5,
+    "done": false,
+    "level_name": "Level 03",
+    "theme": "반응형 조건 설정하기",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1. 화면 크기가 최대 768px일 때 요소의 스타일이 변경되도록 설정해보세요.",
+        "choices": ["min-width", "min", "max"],
+        "answer": "max-width"
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2. 화면 크기가 최대 480px일 때 요소의 스타일이 변경되도록 설정해보세요",
+        "choices": ["min", "max", "min-width"],
+        "answer": "max-width "
+      }
+    ]
+  },
+  {
+    "level_id": 3,
+    "stage_id": 5,
+    "done": false,
+    "level_name": "Master",
+    "theme": "반응형 웹 구현하기",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1. padding에 수학적 연산을 수행하는 함수를 적용해보세요",
+        "choices": ["min", "steps", "clamp"],
+        "answer": "calc"
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2. 800px과 90% 중 더 작은 값이 글자 크기에 적용되도록 해보세요",
+        "choices": ["calc", "max", "min-width"],
+        "answer": "min"
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3. 0.8rem과 1vw 중 더 큰 값이 글자 크기에 적용되도록 해보세요",
+        "choices": ["clamp", "min-width", "max-height"],
+        "answer": "max"
+      },
+      {
+        "q_id": 3,
+        "q_title": "Q4. 화면 크기가 최대 600px일 때 요소의 스타일이 변경되도록 설정해보세요",
+        "choices": ["max", "max-height", "min-width"],
+        "answer": "max-width "
+      }
+    ]
+  }
+]
