@@ -4,11 +4,12 @@ import QuizCard from "./components/ReviewFreeVersionCard";
 import { media } from "../../styles/MideaQuery";
 import potato from "../../assets/hat-potato-img.svg";
 import { Link } from "react-router-dom";
+import loadingImg from "../../assets/loading_Img.svg";
 
 export default function ReviewFreeVersion() {
   const [activeTab, setActiveTab] = useState("wrong");
   const [selectedQuizId, setSelectedQuizId] = useState(null);
-  const [, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [, setError] = useState(null);
   const [reviewData, setReviewData] = useState([]);
 
@@ -55,6 +56,13 @@ export default function ReviewFreeVersion() {
 
   return (
     <Container>
+      {isLoading && (
+        <>
+          <LoadingImg />
+          <LoadingText>Loading....</LoadingText>
+          <LoadingPage></LoadingPage>
+        </>
+      )}
       <Warp>
         <TapWarp>
           <TapItem
@@ -110,6 +118,51 @@ export default function ReviewFreeVersion() {
     </Container>
   );
 }
+
+const LoadingPage = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 20;
+`;
+
+const roll = keyframes`
+  0% {
+
+            transform: rotate(0);
+  }
+  100% {
+            transform: rotate(360deg);
+  }
+`;
+const LoadingImg = styled.div`
+  background-image: url(${loadingImg});
+  position: absolute;
+  top: 33%;
+  left: 45%;
+  width: 15rem;
+  height: 15rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform-origin: center center;
+  animation: ${roll} 0.8s linear infinite;
+  z-index: 30;
+`;
+const LoadingText = styled.p`
+  position: absolute;
+  top: 52%;
+  left: 43%;
+  font-weight: 700;
+  font-size: 5rem;
+  z-index: 30;
+`;
 
 const vibrate = keyframes`
   0% {
@@ -229,7 +282,7 @@ const WiteBox = styled.div`
   position: absolute;
   bottom: -1px;
   left: ${(props) => (props.$isActive ? "0.05rem" : "50%")};
-  z-index: 20;
+  z-index: 15;
 `;
 
 const QuestionContainer = styled.ul`
