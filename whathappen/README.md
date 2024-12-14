@@ -22,23 +22,23 @@
   <tr>
     <td align="center">
       <img src="../whathappen/src/assets/siwoon.jfif" width="120"><br>
-      <a href="https://github.com/yewon-Noh">윤시운</a>
+      <a href="https://github.com/siwoon1602">윤시운</a>
     </td>
     <td align="center">
       <img src="../whathappen/src/assets/hwigyoung.png" width="120"><br>
-      <a href="https://github.com/SeongHo-C">이휘경</a>
+      <a href="https://github.com/LeeHwiGyoung">이휘경</a>
     </td>
     <td align="center">
       <img src="../whathappen/src/assets/yejin.png" width="120"><br>
-      <a href="#">박예진</a>
+      <a href="https://github.com/yejin5128">박예진</a>
     </td>
     <td align="center">
       <img src="../whathappen/src/assets/yewon.jfif" width="120"><br>
-      <a href="#">김예원</a>
+      <a href="https://github.com/ddhsl">김예원</a>
     </td>
     <td align="center">
       <img src="../whathappen/src/assets/dahyung.jfif" width="120"><br>
-      <a href="#">유다형</a>
+      <a href="https://github.com/dahyungryu">유다형</a>
     </td>
   </tr>
 </table>
