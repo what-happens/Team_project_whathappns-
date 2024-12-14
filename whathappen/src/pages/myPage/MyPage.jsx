@@ -1,80 +1,175 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
+import styled, { keyframes } from "styled-components";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import Stamps from "./components/Stamps";
 import { media } from "../../styles/MideaQuery";
 import backGround from "../../assets/review-background-2.svg";
+import loadingImg from "../../assets/loading_Img.svg";
 
 export default function MyPage() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/mypage`,
+          {
+            method: "GET",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.ok) {
+          console.log("유저 정보를 불러오는데 성공하였습니다!");
+          const data = await response.json();
+          setUserData(data.user);
+          console.log(data.user);
+        } else {
+          const errorData = await response.json();
+          console.error("Error:", errorData);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, []);
   return (
     <Background>
-      <MyPageContents>
-        <header>
-          <h1 className="sr-only">마이페이지</h1>
-          <GreetingMsg>
-            <span className="greetings">안녕하세요, 오르미</span>
-            <span style={{ color: "white" }}> 고객님!</span>
-          </GreetingMsg>
-        </header>
+      {isLoading && (
+        <>
+          <LoadingImg />
+          <LoadingText>Loading....</LoadingText>
+          <LoadingPage></LoadingPage>
+        </>
+      )}
+      {!isLoading && userData && (
+        <MyPageContents>
+          <header>
+            <h1 className="sr-only">마이페이지</h1>
+            <GreetingMsg>
+              <span className="greetings">안녕하세요, {userData.name}</span>
+              <span style={{ color: "white" }}> 고객님!</span>
+            </GreetingMsg>
+          </header>
 
-        <StatusContents>
-          <h2 className="sr-only">학습 현황</h2>
-          <StatusBox>
-            <StatusVal>1 stage</StatusVal>
-            <StatusLabel>기초학습</StatusLabel>
-          </StatusBox>
-          <Division />
-          <StatusBox>
-            <StatusVal>10회</StatusVal>
-            <StatusLabel>퀴즈풀이</StatusLabel>
-          </StatusBox>
-          <Division />
-          <StatusBox>
-            <StatusVal>29개</StatusVal>
-            <StatusLabel>저장된 퀴즈</StatusLabel>
-          </StatusBox>
-        </StatusContents>
+          <StatusContents>
+            <h2 className="sr-only">학습 현황</h2>
+            <StatusBox>
+              <StatusVal>
+                {userData.clearStates && userData.clearStates.length > 0
+                  ? `${userData.clearStates[0].stage_id} stage`
+                  : "0 stage"}
+              </StatusVal>
+              <StatusLabel>기초학습</StatusLabel>
+            </StatusBox>
+            <Division />
+            <StatusBox>
+              <StatusVal> {userData.quizTime}회</StatusVal>
+              <StatusLabel>퀴즈풀이</StatusLabel>
+            </StatusBox>
+            <Division />
+            <StatusBox>
+              <StatusVal>{userData.bookmarkNum}개</StatusVal>
+              <StatusLabel>저장된 북마크</StatusLabel>
+            </StatusBox>
+          </StatusContents>
 
-        <CourseContents>
-          <StampContents>
-            <h2>Stamp</h2>
-            <h2 className="sr-only">스탬프 북</h2>
-            <Stamps />
-          </StampContents>
+          <CourseContents>
+            <StampContents>
+              <h2>Stamp</h2>
+              <h2 className="sr-only">스탬프 북</h2>
+              <Stamps />
+            </StampContents>
 
-          <ProgressContents>
-            <h2 style={{ color: "var(--main-color)" }}>기초학습 진척도</h2>
-            <CircularProgressbar
-              value={20}
-              text={`20%`}
-              background={true}
-              styles={{
-                root: {
-                  maxHeight: "300px",
-                  maxWidth: "300px",
-                  minHeight: "220px",
-                  minWidth: "220px",
-                },
-                path: {
-                  stroke: `var(--main-color)`,
-                },
-                text: {
-                  fontSize: "1.5rem",
-                  fontWeight: 700,
-                  fill: "var(--main-color)",
-                },
-                background: {
-                  fill: "white",
-                },
-              }}
-            />
-          </ProgressContents>
-        </CourseContents>
-      </MyPageContents>
+            <ProgressContents>
+              <h2 style={{ color: "var(--main-color)" }}>기초학습 진척도</h2>
+              <CircularProgressbar
+                value={20}
+                text={`20%`}
+                background={true}
+                styles={{
+                  root: {
+                    maxHeight: "300px",
+                    maxWidth: "300px",
+                    minHeight: "220px",
+                    minWidth: "220px",
+                  },
+                  path: {
+                    stroke: `var(--main-color)`,
+                  },
+                  text: {
+                    fontSize: "1.5rem",
+                    fontWeight: 700,
+                    fill: "var(--main-color)",
+                  },
+                  background: {
+                    fill: "white",
+                  },
+                }}
+              />
+            </ProgressContents>
+          </CourseContents>
+        </MyPageContents>
+      )}
     </Background>
   );
 }
+
+const LoadingPage = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 20;
+`;
+
+const roll = keyframes`
+  0% {
+
+            transform: rotate(0);
+  }
+  100% {
+            transform: rotate(360deg);
+  }
+`;
+const LoadingImg = styled.div`
+  background-image: url(${loadingImg});
+  position: absolute;
+  top: 33%;
+  left: 45%;
+  width: 15rem;
+  height: 15rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform-origin: center center;
+  animation: ${roll} 0.8s linear infinite;
+  z-index: 30;
+`;
+const LoadingText = styled.p`
+  position: absolute;
+  top: 52%;
+  left: 43%;
+  font-weight: 700;
+  font-size: 5rem;
+  z-index: 30;
+`;
 
 const Background = styled.div`
   position: absolute;
