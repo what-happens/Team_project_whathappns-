@@ -12,12 +12,12 @@ import useLogout from "../hooks/useLogout";
 export default function AuthHeader() {
   const { logout } = useLogout();
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 867);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-      if (window.innerWidth > 768) {
+      setIsMobile(window.innerWidth <= 867);
+      if (window.innerWidth > 867) {
         setIsMenuOpen(false);
       }
     };
@@ -76,7 +76,8 @@ const Header = styled.header`
   justify-content: space-between;
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.15);
   z-index: 10;
-  ${media.medium`
+
+  ${media.mediumlarge`
     padding: 2rem;
     justify-content: ;
     box-shadow: none;
@@ -92,7 +93,11 @@ const Logo = styled.h1`
   background-repeat: no-repeat;
   background-position: center;
   text-indent: -9999px;
-  ${media.medium`
+  ${media.large`
+    width: 16rem;
+   height: 4rem;
+   `}
+  ${media.mediumlarge`
     display: none;
   `}
 `;
