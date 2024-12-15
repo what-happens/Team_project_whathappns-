@@ -6,6 +6,53 @@ import { media } from "../../styles/MideaQuery";
 import Button from "../../components/Button";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import useQuizStep from "../../hooks/useQuizStep";
+
+export default function QuizLanding() {
+  const { moveNext } = useQuizStep();
+  const navigate = useNavigate();
+
+  return (
+    <LandingBackground>
+      <QuizLandingMain>
+        <header>
+          <h1>
+            <QuizLogo src={quizImage} alt="퀴즈 이미지"></QuizLogo>
+          </h1>
+        </header>
+        <QuizOptionsSection>
+          <h2 className="sr-only">퀴즈 유형을 선택하세요</h2>
+          <Select></Select>
+        </QuizOptionsSection>
+        <QuizControlSection>
+          <h2 className="sr-only">퀴즈를 풀어보세요</h2>
+          <Button
+            backgroundColor="white"
+            color="green"
+            padding="2rem 5rem"
+            borderRadius="2.5rem"
+            onClick={moveNext}
+          >
+            퀴즈 풀기!
+          </Button>
+
+          <Button
+            onClick={() => navigate(-1)}
+            backgroundColor="red"
+            padding="2rem 5rem"
+            borderRadius="2.5rem"
+          >
+            뒤로가기
+          </Button>
+        </QuizControlSection>
+      </QuizLandingMain>
+    </LandingBackground>
+  );
+}
+
+QuizLanding.propTypes = {
+  onNext: PropTypes.func.isRequired,
+};
 
 const bounceImg = keyframes`
   0% {
@@ -110,48 +157,3 @@ const QuizControlSection = styled.section`
     `}
   }
 `;
-
-export default function QuizLanding({ onNext }) {
-  const navigate = useNavigate();
-
-  return (
-    <LandingBackground>
-      <QuizLandingMain>
-        <header>
-          <h1>
-            <QuizLogo src={quizImage} alt="퀴즈 이미지"></QuizLogo>
-          </h1>
-        </header>
-        <QuizOptionsSection>
-          <h2 className="sr-only">퀴즈 유형을 선택하세요</h2>
-          <Select></Select>
-        </QuizOptionsSection>
-        <QuizControlSection>
-          <h2 className="sr-only">퀴즈를 풀어보세요</h2>
-          <Button
-            backgroundColor="white"
-            color="green"
-            padding="2rem 5rem"
-            borderRadius="2.5rem"
-            onClick={onNext}
-          >
-            퀴즈 풀기!
-          </Button>
-
-          <Button
-            onClick={() => navigate(-1)}
-            backgroundColor="red"
-            padding="2rem 5rem"
-            borderRadius="2.5rem"
-          >
-            뒤로가기
-          </Button>
-        </QuizControlSection>
-      </QuizLandingMain>
-    </LandingBackground>
-  );
-}
-
-QuizLanding.propTypes = {
-  onNext: PropTypes.func.isRequired,
-};

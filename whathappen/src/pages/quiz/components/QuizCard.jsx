@@ -5,12 +5,13 @@ import QuizProgress from "./QuizProgress";
 import Button from "../../../components/Button";
 import Bookmark from "../../../components/Bookmark";
 import { media } from "../../../styles/MideaQuery";
+import useQuizStep from "../../../hooks/useQuizStep";
 
-export default function QuizCard({ quizzes, onNext }) {
+export default function QuizCard({ quizzes }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [shuffledAnswer, setShuffledAnswer] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  const { moveNext } = useQuizStep();
   const shuffleArray = (arr) => {
     const newArray = [...arr];
     for (let i = newArray.length - 1; i > 0; i--) {
@@ -36,7 +37,7 @@ export default function QuizCard({ quizzes, onNext }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (currentQuestion === quizzes.length - 1) {
-      onNext();
+      moveNext();
     }
   };
 
@@ -250,5 +251,4 @@ QuizCard.propTypes = {
       incorrect_answer: PropTypes.arrayOf(PropTypes.string).isRequired,
     })
   ).isRequired,
-  onNext: PropTypes.func.isRequired,
 };
