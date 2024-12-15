@@ -44,14 +44,14 @@ const Logo = styled.h1`
     width: 100%;
     height: 100%;
   }
-  ${media.medium`
+
+  ${media.mediumlarge`
     position: absolute;
     top: 9rem;
   `}
 `;
 
 const MobileMenuBtn = styled.button`
-  margin-top: 3rem;
   margin-left: 1rem;
   border: none;
   background: none;
