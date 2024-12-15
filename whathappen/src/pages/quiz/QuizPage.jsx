@@ -1,21 +1,17 @@
-import { useState } from "react";
 import QuizLanding from "../quizLanding/QuizLanding";
 import Quiz from "./Quiz";
 import QuizResult from "../quizResult/QuizResult";
+import useQuizStep from "../../hooks/useQuizStep";
 
 function QuizPage() {
-  const [step, setStep] = useState(1);
-
-  const handleNext = () => {
-    setStep((prev) => prev + 1);
-  };
+  const { step, QuizStep } = useQuizStep();
 
   return (
-    <div>
-      {step === 1 && <QuizLanding onNext={handleNext} />}
-      {step === 2 && <Quiz onNext={handleNext} />}{" "}
-      {step === 3 && <QuizResult />}
-    </div>
+    <>
+      {step === QuizStep.LANDING && <QuizLanding />}
+      {step === QuizStep.PLAYING && <Quiz />}
+      {step === QuizStep.RESULT && <QuizResult />}
+    </>
   );
 }
 
