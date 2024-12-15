@@ -42,19 +42,25 @@ export default function AuthNav() {
 
 const Nav = styled.nav`
   margin-left: auto;
-  margin-right: 6rem;
+  margin-right: 3rem;
   font-size: 1.8rem;
 
   ul {
     display: flex;
     gap: 5rem;
   }
-  ${media.medium`
+  ${media.large`
+    ul {
+      gap: 3rem;
+    }
+    li{
+      font-size:1.6rem
+    }
+  `}
+  ${media.mediumlarge`
     margin-left: 0;
     padding-top: 18rem;
     ul {
-
-      /* position:relative; */
       flex-direction: column;
       gap: 3rem;
     }
@@ -67,7 +73,7 @@ const StyledLink = styled(Link)`
   img {
     display: none;
   }
-  ${media.medium`
+  ${media.mediumlarge`
     display: flex;
     align-items: center;
     img {
