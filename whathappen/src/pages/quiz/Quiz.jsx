@@ -1,62 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import QuizCard from "./components/QuizCard";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import prevImg from "../../assets/iconLeftArrow.png";
-import PropTypes from "prop-types";
 import { media } from "../../styles/MideaQuery";
-import { useState } from "react";
 import ConfirmExitModal from "../quizResult/components/ConfirmModal";
 import backGround from "../../assets/quiz-page-background3.svg";
+import useQuizStep from "../../hooks/useQuizStep";
+import { useDispatch, useSelector } from "react-redux";
+import { setIncorrectQuizIds } from "../../redux/quizSlice";
 
-const quiz = [
-  {
-    id: 0,
-    category: "HTTP",
-    question: "HTML은 무엇의 약자일까요?",
-    correct_answer: "Hypertext Markup Language",
-    incorrect_answer: [
-      "Hyperlink and Text Markup Language",
-      "Hypermeida Text Language",
-      "High-text Markup Language",
-    ],
-  },
-  {
-    id: 1,
-    category: "HTTP",
-    question: "HTML은 무엇의 약자일까요?",
-    correct_answer: "Hypertext Markup Language",
-    incorrect_answer: [
-      "Hyperlink and Text Markup Language",
-      "Hypermeida Text Language",
-      "High-text Markup Language",
-    ],
-  },
-  {
-    id: 2,
-    category: "HTTP",
-    question: "HTML은 무엇의 약자일까요?",
-    correct_answer: "Hypertext Markup Language",
-    incorrect_answer: [
-      "Hyperlink and Text Markup Language",
-      "Hypermeida Text Language",
-      "High-text Markup Language",
-    ],
-  },
-];
-
-export default function Quiz({ onNext }) {
+export default function Quiz() {
   const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
+  const [answers, setAnswers] = useState([]);
+  const { resetQuiz } = useQuizStep();
+  const { quiz } = useSelector((state) => state.quiz);
+  const { moveNext } = useQuizStep();
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const incorrectIds = [];
+    answers.forEach((answer, idx) => {
+      if (answer !== quiz[idx].correct_answer) {
+        incorrectIds.push(quiz[idx].id);
+      }
+    });
+    dispatch(setIncorrectQuizIds(incorrectIds));
+    moveNext();
+  };
+
+  const handleAnswerSelect = (answer, currentQuestion) => {
+    const myAnswers = [...answers];
+    myAnswers[currentQuestion] = answer;
+    setAnswers(myAnswers);
+  };
+
   const closeConfirmModal = () => setConfirmModalOpen(false);
+
   return (
     <>
       <QuizHeader>
         <h2 className="sr-only">퀴즈 페이지</h2>
         <nav>
-          <ConfirmExitModal
-            isOpen={isConfirmModalOpen}
-            onClose={closeConfirmModal}
-          />
           <StyledLink onClick={() => setConfirmModalOpen(true)}>
             <StyledImg src={prevImg} alt="" />
             메인으로
@@ -64,8 +50,19 @@ export default function Quiz({ onNext }) {
         </nav>
       </QuizHeader>
       <QuizMain>
-        <QuizCard quizzes={quiz} onNext={onNext} />
+        <QuizCard
+          quiz={quiz}
+          handleSubmit={handleSubmit}
+          handleAnswerSelect={handleAnswerSelect}
+        />
       </QuizMain>
+      {isConfirmModalOpen && (
+        <ConfirmExitModal
+          isOpen={isConfirmModalOpen}
+          onConfirm={resetQuiz}
+          onClose={closeConfirmModal}
+        />
+      )}
     </>
   );
 }
@@ -104,7 +101,3 @@ const QuizMain = styled.main`
   background-image: url(${backGround});
   padding-bottom: 8rem;
 `;
-
-Quiz.propTypes = {
-  onNext: PropTypes.func.isRequired,
-};
