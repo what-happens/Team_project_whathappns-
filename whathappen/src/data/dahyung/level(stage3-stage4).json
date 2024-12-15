@@ -1,0 +1,389 @@
+[
+  {
+    "level_id": 1,
+    "stage_id": 2,
+    "done": false,
+    "level_name": "선택자",
+    "theme": "선택자를 사용해 스타일 적용하기!",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1. 이 선택자는 HTML 내 모든 태그에 스타일을 적용합니다.",
+        "choices": ["*", "%", "$", "#"],
+        "answer": "*"
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2. HTML 문서 내에서 한 번만 사용될 수 있는 고유한 식별자는?",
+        "choices": ["$", ".", "#", "+"],
+        "answer": "#"
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3. 특정 요소를 선택해 스타일을 적용시키고, 재사용성이 높아 많이 사용됩니다.",
+        "choices": ["#", "!", "%", "."],
+        "answer": "."
+      },
+      {
+        "q_id": 3,
+        "q_title": "Q4. 특정 HTML 태그를 선택해 스타일을 적용합니다. 제목1의 배경색을 토마토로 바꿔보세요. ",
+        "choices": ["input", "*", "h1", "p"],
+        "answer": "h1"
+      },
+      {
+        "q_id": 4,
+        "q_title": "Q5. 여러 개의 선택자를 한 번에 동일한 스타일을 적용할 수 있어 코드의 중복을 줄입니다.",
+        "choices": ["&", ",", "<", "+"],
+        "answer": ","
+      },
+      {
+        "q_id": 5,
+        "q_title": "Q6. 특정 요소의 모든 하위 요소를 선택합니다. div의 자손을 선택해 보세요.",
+        "choices": [" p", "+p", ".p", "!p"],
+        "answer": " p"
+      },
+      {
+        "q_id": 6,
+        "q_title": "Q7. 특정 요소의 직계 자식만 선택합니다.",
+        "choices": ["<", ">", "=", "@"],
+        "answer": ">"
+      },
+      {
+        "q_id": 7,
+        "q_title": "Q8. 특정 요소의 뒤에 나오는 형제 요소들을 모두 선택합니다. ",
+        "choices": ["+", "~", "!", "-"],
+        "answer": "~"
+      },
+      {
+        "q_id": 7,
+        "q_title": "Q8. 특정 요소의 바로 뒤에 나오는 형제 요소민 선택합니다.",
+        "choices": ["+", "~", "!", "-"],
+        "answer": "+"
+      }
+    ]
+  },
+  {
+    "level_id": 2,
+    "stage_id": 2,
+    "done": false,
+    "level_name": "텍스트 꾸미기",
+    "theme": "텍스트를 다채롭게!",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1. 텍스트의 색상을 설정해 보세요.",
+        "choices": ["font-color", "color", "text-color"],
+        "answer": "color"
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2. 텍스트의 크기를 설정해 보세요.",
+        "choices": ["font-extent", "size", "font-size"],
+        "answer": "font-size"
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3. 텍스트의 굵기를 설정해 보세요.",
+        "choices": ["weight", "bold", "font-weight"],
+        "answer": "font-weight"
+      },
+      {
+        "q_id": 3,
+        "q_title": "Q4. 텍스트를 장식하는 속성은 무엇인가요?",
+        "choices": ["text-design", "text-decoration", "text-line"],
+        "answer": "text-decoration"
+      },
+      {
+        "q_id": 4,
+        "q_title": "Q5. 텍스트를 정렬하는 속성은 무엇인가요?",
+        "choices": ["text-align", "text-justify", "justify-item"],
+        "answer": "text-align"
+      },
+      {
+        "q_id": 5,
+        "q_title": "Q6. 텍스트를 행간을 조정하는 속성은 무엇인가요?",
+        "choices": ["font-height", "line-gap", "line-height"],
+        "answer": "line-height"
+      }
+    ]
+  },
+  {
+    "level_id": 3,
+    "stage_id": 2,
+    "done": false,
+    "level_name": "가상클래스와 가상요소 기초",
+    "theme": "세밀하고 동적인 스타일을 적용해보자!",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1. 아직 방문하지 않은 링크를 선택해보세요.",
+        "choices": [":link", ":connect", ":unvisited"],
+        "answer": ":link"
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2. 이미 방문한 링크를 선택해보세요.",
+        "choices": [":link", ":used", ":visited"],
+        "answer": ":visited"
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3. 마우스 포인터를 가져다 댔을 때 링크 색상이 바뀌도록 해보세요.",
+        "choices": [":active", ":hover", ":point"],
+        "answer": ":hover"
+      },
+      {
+        "q_id": 3,
+        "q_title": "Q4. 현재 마우스로 클릭하고 있는 요소를 오렌지색으로 보이게 해주세요.",
+        "choices": [":focus", ":active", ":hover"],
+        "answer": ":active"
+      },
+      {
+        "q_id": 4,
+        "q_title": "Q5. 현재 초점을 가지고 있는 요소를 감싸는 테두리를 초록색으로 보이게 해주세요.",
+        "choices": [":focus", ":active", ":hover"],
+        "answer": ":focus"
+      },
+      {
+        "q_id": 5,
+        "q_title": "Q6. header의 앞에 콘텐츠를 추가해 주세요.",
+        "choices": ["::before", "::front", "::ahead"],
+        "answer": "::before"
+      },
+      {
+        "q_id": 6,
+        "q_title": "Q7. header의 뒷부분에 콘텐츠를 추가해 주세요.",
+        "choices": ["::back", "::after", "::end"],
+        "answer": "::after"
+      },
+      {
+        "q_id": 7,
+        "q_title": "Q8. 입력란 내부에 스타일을 주는 방법은 무엇인가요?",
+        "choices": ["::blank", ":placeholder", "::placeholder"],
+        "answer": "::placeholder"
+      }
+    ]
+  },
+  {
+    "level_id": 4,
+    "stage_id": 2,
+    "done": false,
+    "level_name": "Master",
+    "theme": "명함 만들기",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1.",
+        "choices": [],
+        "answer": ""
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2.",
+        "choices": [],
+        "answer": ""
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3.",
+        "choices": [],
+        "answer": ""
+      },
+      {
+        "q_id": 3,
+        "q_title": "Q4.",
+        "choices": [],
+        "answer": ""
+      }
+    ]
+  },
+  {
+    "level_id": 0,
+    "stage_id": 3,
+    "done": false,
+    "level_name": "display 속성",
+    "theme": "요소를 베치해봅시다!",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1. 이 요소를 가능한 전체 너비를 차지하게 하고, weight, height, margin, padding속성을 모두 사용할 수 있게 만들어 보세요.",
+        "choices": ["block", "inline", "inline-block"],
+        "answer": "block"
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2. 이 요소를 줄 바꿈 없이 다른 요소와 같은 줄에 배치되게끔 해 주세요. width, height 속성을 사용할 수 없고 좌우의 margin만 설정이 가능합니다.",
+        "choices": ["block", "inline", "inline-block"],
+        "answer": "inline"
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3. 이 요소를 텍스트 흐름에 따라 배치되지만 width, height, margin, padding값을 모두 사용할 수 있게 해주세요.",
+        "choices": ["block", "inline", "inline-block"],
+        "answer": "inline-block"
+      },
+      {
+        "q_id": 3,
+        "q_title": "Q4. container1 안의 요소를 1차원으로 배치되게 해주세요.",
+        "choices": ["grid", "flex", "inline"],
+        "answer": "flex"
+      },
+      {
+        "q_id": 4,
+        "q_title": "Q5. container2의 요소가 2차원 격자 형태로 배치되게 해주세요.",
+        "choices": ["table", "grid", "flex"],
+        "answer": "grid"
+      },
+      {
+        "q_id": 5,
+        "q_title": "Q6. container3가 렌더링되지 않도록 해주세요.",
+        "choices": ["hidden", "none", "disappear"],
+        "answer": "none"
+      }
+    ]
+  },
+  {
+    "level_id": 1,
+    "stage_id": 3,
+    "done": false,
+    "level_name": "이미지 비율 유지하기",
+    "theme": "이미지를 원하는 비율로!",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1. 이미지의 가로세로 바율을 맞추는 속성은?",
+        "choices": ["aspect-ratio", "ratio"],
+        "answer": "aspect-ratio"
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2. 이미지의 비율을 가로 2, 세로 1 비율로 맞춰주세요.",
+        "choices": ["1 / 2", "2 / 1", "1 : 2"],
+        "answer": "2 / 1"
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3. img2 컨테이너의 높이를 너비의 50%로 설정되게끔 해주세요.",
+        "choices": ["paddingTop", "padding-top", "padding-t"],
+        "answer": "padding-top"
+      },
+      {
+        "q_id": 3,
+        "q_title": "Q4. 이미지 왜곡을 방지하기 위한 속성은 무엇인가요?",
+        "choices": ["image-fit", "fit", "object-fit"],
+        "answer": "object-fit"
+      }
+    ]
+  },
+  {
+    "level_id": 2,
+    "stage_id": 3,
+    "done": false,
+    "level_name": "position 속성",
+    "theme": "다양한 positiond을 알아보자",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1. 이 요소를 position의 기본값으로 설정해 줍니다.",
+        "choices": ["default", "static", "normal"],
+        "answer": "static"
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2. 이 요소를 상대적으로 배치해 주세요.",
+        "choices": ["absolute", "relatively", "relative"],
+        "answer": "relative"
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3. 이 요소를 절대적인 위치에 배치되게 해주세요.",
+        "choices": ["absolute", "fixed", "relative"],
+        "answer": "absolute"
+      },
+      {
+        "q_id": 3,
+        "q_title": "Q4. 요소가 고정되도록 설정해 보세요.",
+        "choices": ["fixed", "stabled", "sticked"],
+        "answer": "fixed"
+      },
+      {
+        "q_id": 4,
+        "q_title": "Q5. 요소가 위치에 따라 고정되거나 상대적인 위치에 놓이게 설정해 보세요.",
+        "choices": ["relative", "sticky", "block"],
+        "answer": "sticky"
+      }
+    ]
+  },
+  {
+    "level_id": 3,
+    "stage_id": 3,
+    "done": false,
+    "level_name": "레이아웃",
+    "theme": "float, flex, grid에 대해 알아보자!",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1. 박스가 왼쪽에 뜨도록 설정해보세요.",
+        "choices": ["flex", "flexable", "float"],
+        "answer": "flex"
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2. 주축을 기준으로 아이템을 정렬하도록 설정해 보세요.",
+        "choices": ["justify-item", "justify-content", "justify-items"],
+        "answer": "justify-content"
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3. 요소를 2차원 레이아웃으로 보이게 만들어 주세요",
+        "choices": ["grid", "table", "griddle"],
+        "answer": "grid"
+      },
+      {
+        "q_id": 3,
+        "q_title": "Q4. 주축을 기준으로 아이템을 정렬하도록 설정해 보세요.",
+        "choices": ["justify-item", "justify-content", "justify-items"],
+        "answer": "justify-content"
+      },
+      {
+        "q_id": 4,
+        "q_title": "Q5. 그리드 아이템의 위치와 크기를 지정하는 단축 속성입니다.",
+        "choices": [["grid-areas", "grid-template", "grid-area"]],
+        "answer": "grid-area"
+      }
+    ]
+  },
+  {
+    "level_id": 4,
+    "stage_id": 3,
+    "done": false,
+    "level_name": "Master",
+    "theme": "사진첩 만들기",
+    "questions": [
+      {
+        "q_id": 0,
+        "q_title": "Q1.",
+        "choices": [],
+        "answer": ""
+      },
+      {
+        "q_id": 1,
+        "q_title": "Q2.",
+        "choices": [],
+        "answer": ""
+      },
+      {
+        "q_id": 2,
+        "q_title": "Q3.",
+        "choices": [],
+        "answer": ""
+      },
+      {
+        "q_id": 3,
+        "q_title": "Q4.",
+        "choices": [],
+        "answer": ""
+      }
+    ]
+  }
+]
