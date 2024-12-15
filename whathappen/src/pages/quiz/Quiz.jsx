@@ -1,50 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import QuizCard from "./components/QuizCard";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import prevImg from "../../assets/iconLeftArrow.png";
-import PropTypes from "prop-types";
 import { media } from "../../styles/MideaQuery";
-import { useState } from "react";
 import ConfirmExitModal from "../quizResult/components/ConfirmModal";
 import backGround from "../../assets/quiz-page-background3.svg";
 import useQuizStep from "../../hooks/useQuizStep";
-
-const quiz = [
-  {
-    id: 0,
-    category: "HTTP",
-    question: "HTML은 무엇의 약자일까요?",
-    correct_answer: "Hypertext Markup Language",
-    incorrect_answer: [
-      "Hyperlink and Text Markup Language",
-      "Hypermeida Text Language",
-      "High-text Markup Language",
-    ],
-  },
-  {
-    id: 1,
-    category: "HTTP",
-    question: "HTML은 무엇의 약자일까요?",
-    correct_answer: "Hypertext Markup Language",
-    incorrect_answer: [
-      "Hyperlink and Text Markup Language",
-      "Hypermeida Text Language",
-      "High-text Markup Language",
-    ],
-  },
-  {
-    id: 2,
-    category: "HTTP",
-    question: "HTML은 무엇의 약자일까요?",
-    correct_answer: "Hypertext Markup Language",
-    incorrect_answer: [
-      "Hyperlink and Text Markup Language",
-      "Hypermeida Text Language",
-      "High-text Markup Language",
-    ],
-  },
-];
 
 export default function Quiz() {
   const { resetQuiz } = useQuizStep();
@@ -64,7 +26,7 @@ export default function Quiz() {
         </nav>
       </QuizHeader>
       <QuizMain>
-        <QuizCard quizzes={quiz} />
+        <QuizCard />
       </QuizMain>
       {isConfirmModalOpen && (
         <ConfirmExitModal
@@ -111,7 +73,3 @@ const QuizMain = styled.main`
   background-image: url(${backGround});
   padding-bottom: 8rem;
 `;
-
-Quiz.propTypes = {
-  onNext: PropTypes.func.isRequired,
-};
