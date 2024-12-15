@@ -24,14 +24,19 @@ export default function Bookmark({
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            qid: quizId,
-            action: "add",
+            bookmark: [
+              {
+                qid: quizId,
+                action: "add",
+              },
+            ],
           }),
         }
       );
 
       if (response.ok) {
         setClicked(true);
+        console.log("북마크 추가 성공!");
       } else {
         console.error("북마크 추가 실패");
       }
@@ -51,14 +56,19 @@ export default function Bookmark({
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            qid: quizId,
-            action: "delete",
+            bookmark: [
+              {
+                qid: quizId,
+                action: "delete",
+              },
+            ],
           }),
         }
       );
 
       if (response.ok) {
         setClicked(false);
+        window.location.reload();
       } else {
         console.error("북마크 삭제 실패");
       }
