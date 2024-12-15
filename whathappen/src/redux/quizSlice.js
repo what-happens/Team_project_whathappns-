@@ -1,11 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Category, Limits, QuizStep } from "../constants/quizConstants";
+import { processQuizData } from "../utils/quizUtils";
 
 const initialState = {
   step: QuizStep.LANDING,
   QuizStep,
   category: Category.HTML,
   limit: 5,
+  isLoading: false,
+  quiz: [],
+  userAnswers: [],
 };
 
 const quizSlice = createSlice({
@@ -36,9 +40,22 @@ const quizSlice = createSlice({
         state.limit = action.payload;
       }
     },
+    setLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
+    setQuizData: (state, action) => {
+      state.quiz = processQuizData(action.payload);
+    },
   },
 });
 
-export const { nextStep, prevStep, resetStep, setCategory, setLimit } =
-  quizSlice.actions;
+export const {
+  nextStep,
+  prevStep,
+  resetStep,
+  setCategory,
+  setLimit,
+  setLoading,
+  setQuizData,
+} = quizSlice.actions;
 export default quizSlice.reducer;
