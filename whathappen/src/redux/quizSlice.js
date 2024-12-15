@@ -1,22 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-const QuizStep = {
-  LANDING: 0,
-  PLAYING: 1,
-  RESULT: 2,
-};
-
-const Category = {
-  HTML: "HTML",
-  CSS: "CSS",
-};
-
-const Limits = {
-  5: true,
-  10: true,
-  15: true,
-  20: true,
-};
+import { Category, Limits, QuizStep } from "../constants/quizConstants";
 
 const initialState = {
   step: QuizStep.LANDING,
