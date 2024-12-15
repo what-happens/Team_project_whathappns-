@@ -45,18 +45,16 @@ const quiz = [
   },
 ];
 
-export default function Quiz({ onNext }) {
+export default function Quiz() {
   const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
+
   const closeConfirmModal = () => setConfirmModalOpen(false);
+
   return (
     <>
       <QuizHeader>
         <h2 className="sr-only">퀴즈 페이지</h2>
         <nav>
-          <ConfirmExitModal
-            isOpen={isConfirmModalOpen}
-            onClose={closeConfirmModal}
-          />
           <StyledLink onClick={() => setConfirmModalOpen(true)}>
             <StyledImg src={prevImg} alt="" />
             메인으로
@@ -64,8 +62,14 @@ export default function Quiz({ onNext }) {
         </nav>
       </QuizHeader>
       <QuizMain>
-        <QuizCard quizzes={quiz} onNext={onNext} />
+        <QuizCard quizzes={quiz} />
       </QuizMain>
+      {isConfirmModalOpen && (
+        <ConfirmExitModal
+          isOpen={isConfirmModalOpen}
+          onClose={closeConfirmModal}
+        />
+      )}
     </>
   );
 }
