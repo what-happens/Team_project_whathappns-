@@ -8,6 +8,7 @@ import { media } from "../../styles/MideaQuery";
 import { useState } from "react";
 import ConfirmExitModal from "../quizResult/components/ConfirmModal";
 import backGround from "../../assets/quiz-page-background3.svg";
+import useQuizStep from "../../hooks/useQuizStep";
 
 const quiz = [
   {
@@ -46,6 +47,7 @@ const quiz = [
 ];
 
 export default function Quiz() {
+  const { resetQuiz } = useQuizStep();
   const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
 
   const closeConfirmModal = () => setConfirmModalOpen(false);
@@ -67,6 +69,7 @@ export default function Quiz() {
       {isConfirmModalOpen && (
         <ConfirmExitModal
           isOpen={isConfirmModalOpen}
+          onConfirm={resetQuiz}
           onClose={closeConfirmModal}
         />
       )}
