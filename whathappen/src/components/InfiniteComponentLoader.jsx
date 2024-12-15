@@ -13,154 +13,6 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { media } from "../styles/MideaQuery";
 
-const slideUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(8rem);
-  }
-  to {
-    opacity: 2;
-    transform: translateY(0);
-  }
-`;
-
-const MainBanner = styled.section`
-  background-color: ${(props) => props.bg};
-  padding: 15rem 4.7rem 8rem 12rem;
-  display: flex;
-  gap: 5rem;
-  justify-content: center;
-  align-items: center;
-
-  ${media.medium`
-    padding: 12rem 2rem 6rem;
-    flex-direction: column;
-    justify-contents: center;
-  `}
-`;
-
-const SubBanner = styled.section`
-  background-color: ${(props) => props.bg};
-  padding: ${(props) => props.padding};
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-
-  animation: ${slideUp} 1s ease;
-  ${media.medium`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-  `}
-`;
-
-const PointTwoSubBanner = styled(SubBanner)`
-  ${media.medium`
-    padding: 12rem 0rem 6rem 0rem;
-  
-  `}
-`;
-
-const BannerContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${(props) => props.gap || "3.5rem"};
-  ${(props) => props.center && "align-items: center"};
-  color: ${(props) => props.color || "inherit"};
-  ${media.medium`
-    text-align: center;
-    gap: 2rem;
-  `}
-`;
-
-const BannerTitle = styled.h2`
-  font-size: 6rem;
-  font-weight: 700;
-  color: ${(props) => props.color || "inherit"};
-  ${media.medium`
-  font-size: 5rem;
-  text-align: center;
-  `}
-`;
-
-const BannerDescription = styled.p`
-  font-size: 2.4rem;
-  line-height: 3.5rem;
-  font-weight: 300;
-  text-align: ${(props) => (props.center ? "center" : "left")};
-  ${media.medium`
-  font-size: 2rem;
-    text-align: center;
-  `}
-`;
-
-const BannerImage = styled.div`
-  background-image: url(${(props) => props.src});
-  background-size: ${(props) => props.size || "contain"};
-  background-position: center;
-  background-repeat: no-repeat;
-  min-width: 1000px;
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  ${(props) => props.margin && `margin: ${props.margin}`};
-  ${media.medium`
-    width: 90vw;
-    min-width: 48rem;
-  `}
-`;
-
-const MainBannerImage = styled(BannerImage)`
-  background-image: url(${mainBannerImage});
-  width: 69.2rem;
-  height: 69.2rem;
-  ${media.medium`
-    display: none;
-  `}
-`;
-const PointOneBannerImage = styled(BannerImage)`
-  background-image: url(${subBannerImageOne});
-  width: 90vw;
-  max-width: 105rem;
-  height: 61rem;
-  ${media.medium`
-    max-width: 50rem;
-    max-height: 24.6rem;
-  `}
-`;
-
-const PointTwoBannerImage = styled(BannerImage)`
-  background-image: url(${subBannerImageTwo});
-  width: 90vw;
-  max-width: 120rem;
-  height: 60vh;
-  max-height: 97rem;
-  margin: 2rem auto;
-  ${media.medium`
-    background-image: url(${subBannerImageTwoMobile});
-    max-width: 60rem;
-    max-height: 68rem;
-  `}
-`;
-
-const PointThreeBannerImage = styled(BannerImage)`
-  background-image: url(${subBannerImageThree});
-  width: 90vw;
-  max-width: 130rem;
-  height: 86.5rem;
-  margin: 2rem 0 0 0;
-  ${media.medium`
-    max-width: 60rem;
-    max-height: 68rem;
-  `}
-`;
-
-MainBanner.propTypes = {
-  bg: PropTypes.string.isRequired,
-};
-SubBanner.propTypes = {
-  bg: PropTypes.string.isRequired,
-};
-
 const Mainbanner = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);
   return (
@@ -251,6 +103,7 @@ const PointThreeBanner = () => {
     </SubBanner>
   );
 };
+
 const FooterComponent = () => {
   return <Footer />;
 };
@@ -266,10 +119,22 @@ const componentsList = [
 const InfiniteComponentLoader = () => {
   const [visibleComponents, setVisibleComponents] = useState([]);
   const loaderRef = useRef(null);
+  const observerRef = useRef(null);
   const loadedIndexRef = useRef(0);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    loadedIndexRef.current = 0;
+    setVisibleComponents([]);
+
+    const loadNextComponent = () => {
+      if (loadedIndexRef.current >= componentsList.length) return;
+
+      const NextComponent = componentsList[loadedIndexRef.current];
+      setVisibleComponents((prev) => [...prev, NextComponent]);
+      loadedIndexRef.current += 1;
+    };
+
+    observerRef.current = new IntersectionObserver(
       (entries) => {
         const target = entries[0];
         if (target.isIntersecting) {
@@ -280,36 +145,186 @@ const InfiniteComponentLoader = () => {
     );
 
     if (loaderRef.current) {
-      observer.observe(loaderRef.current);
+      observerRef.current.observe(loaderRef.current);
     }
 
+    loadNextComponent();
+
     return () => {
-      if (loaderRef.current) {
-        observer.unobserve(loaderRef.current);
+      if (observerRef.current) {
+        observerRef.current.disconnect();
       }
+      loadedIndexRef.current = 0;
     };
   }, []);
 
-  const loadNextComponent = () => {
-    if (loadedIndexRef.current >= componentsList.length) return;
-
-    const NextComponent = componentsList[loadedIndexRef.current];
-
-    setVisibleComponents((prev) => [...prev, NextComponent]);
-    loadedIndexRef.current += 1;
-  };
+  useEffect(() => {
+    if (loaderRef.current && observerRef.current) {
+      observerRef.current.disconnect();
+      observerRef.current.observe(loaderRef.current);
+    }
+  }, [visibleComponents]);
 
   return (
     <div>
       {visibleComponents.map((Component, index) => (
-        <Component key={index} />
+        <Component key={`component-${index}`} />
       ))}
 
       {loadedIndexRef.current < componentsList.length && (
-        <div ref={loaderRef} style={{ width: "100%", height: "200px" }}></div>
+        <div ref={loaderRef} style={{ width: "100%", height: "200px" }} />
       )}
     </div>
   );
 };
 
 export default InfiniteComponentLoader;
+
+const slideUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(8rem);
+  }
+  to {
+    opacity: 2;
+    transform: translateY(0);
+  }
+`;
+
+const MainBanner = styled.section`
+  background-color: ${(props) => props.bg};
+  padding: 15rem 4.7rem 8rem 12rem;
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  align-items: center;
+
+  ${media.mediumlarge`
+    padding: 12rem 2rem 6rem;
+    flex-direction: column;
+    justify-contents: center;
+  `}
+`;
+
+const SubBanner = styled.section`
+  background-color: ${(props) => props.bg};
+  padding: ${(props) => props.padding};
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+
+  animation: ${slideUp} 1s ease;
+  ${media.mediumlarge`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  `}
+`;
+
+const PointTwoSubBanner = styled(SubBanner)`
+  ${media.mediumlarge`
+    padding: 12rem 0rem 6rem 0rem;
+  `}
+`;
+
+const BannerContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${(props) => props.gap || "3.5rem"};
+  ${(props) => props.center && "align-items: center"};
+  color: ${(props) => props.color || "inherit"};
+  ${media.mediumlarge`
+    text-align: center;
+    gap: 2rem;
+  `}
+`;
+
+const BannerTitle = styled.h2`
+  font-size: 6rem;
+  font-weight: 700;
+  color: ${(props) => props.color || "inherit"};
+  ${media.mediumlarge`
+    font-size: 5rem;
+    text-align: center;
+  `}
+`;
+
+const BannerDescription = styled.p`
+  font-size: 2.4rem;
+  line-height: 3.5rem;
+  font-weight: 300;
+  text-align: ${(props) => (props.center ? "center" : "left")};
+  ${media.mediumlarge`
+    font-size: 2rem;
+    text-align: center;
+  `}
+`;
+
+const BannerImage = styled.div`
+  background-image: url(${(props) => props.src});
+  background-size: ${(props) => props.size || "contain"};
+  background-position: center;
+  background-repeat: no-repeat;
+  min-width: 1000px;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  ${(props) => props.margin && `margin: ${props.margin}`};
+  ${media.mediumlarge`
+    width: 90vw;
+    min-width: 48rem;
+  `}
+`;
+
+const MainBannerImage = styled(BannerImage)`
+  background-image: url(${mainBannerImage});
+  width: 69.2rem;
+  height: 69.2rem;
+  ${media.mediumlarge`
+    display: none;
+  `}
+`;
+
+const PointOneBannerImage = styled(BannerImage)`
+  background-image: url(${subBannerImageOne});
+  width: 90vw;
+  max-width: 105rem;
+  height: 61rem;
+  ${media.mediumlarge`
+    max-width: 50rem;
+    max-height: 24.6rem;
+  `}
+`;
+
+const PointTwoBannerImage = styled(BannerImage)`
+  background-image: url(${subBannerImageTwo});
+  width: 90vw;
+  max-width: 120rem;
+  height: 60vh;
+  max-height: 97rem;
+  margin: 2rem auto;
+  ${media.mediumlarge`
+    background-image: url(${subBannerImageTwoMobile});
+    max-width: 60rem;
+    max-height: 68rem;
+  `}
+`;
+
+const PointThreeBannerImage = styled(BannerImage)`
+  background-image: url(${subBannerImageThree});
+  width: 90vw;
+  max-width: 130rem;
+  height: 86.5rem;
+  margin: 2rem 0 0 0;
+  ${media.mediumlarge`
+    max-width: 60rem;
+    max-height: 68rem;
+  `}
+`;
+
+MainBanner.propTypes = {
+  bg: PropTypes.string.isRequired,
+};
+
+SubBanner.propTypes = {
+  bg: PropTypes.string.isRequired,
+};
