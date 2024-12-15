@@ -12,6 +12,13 @@ export default function QuizCard() {
   const { moveNext } = useQuizStep();
   const { quiz } = useSelector((state) => state.quiz);
   const isLastQuestion = currentQuestion === quiz.length - 1;
+  const [answers, setAnswers] = useState([]);
+
+  const handleAnswerSelect = (answer) => {
+    const myAnswers = [...answers];
+    myAnswers[currentQuestion] = answer;
+    setAnswers(myAnswers);
+  };
 
   const handlePrev = () => {
     if (currentQuestion > 0) {
@@ -54,6 +61,8 @@ export default function QuizCard() {
               type="radio"
               name="answer"
               id={`${quiz[currentQuestion].id}-${idx}`}
+              onChange={() => handleAnswerSelect(answer)}
+              value={answer}
               required
             />
             <label htmlFor={`${quiz[currentQuestion].id}-${idx}`}>
