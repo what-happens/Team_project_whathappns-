@@ -15,11 +15,14 @@ export default function CheckAnswerModal({ setIsCorrect, quizId }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify([{ qid: quizId }]),
+        body: JSON.stringify({
+          review: [{ qid: quizId }],
+        }),
       });
 
       if (response.ok) {
         setIsCorrect(null);
+        window.location.reload();
       } else {
         console.log(quizId);
         console.error("퀴즈삭제실패");
