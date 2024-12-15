@@ -173,27 +173,44 @@
     "questions": [
       {
         "q_id": 0,
-        "q_title": "Q1.",
-        "choices": [],
-        "answer": ""
+        "q_title": "Q1. 버튼에 마우스를 가져다 댔을 때 버튼의 색상이 변경되도록 해보세요.",
+        "choices": [[":mouse", ":over", ":hover", ":on"]],
+        "answer": ":hover"
       },
       {
         "q_id": 1,
-        "q_title": "Q2.",
-        "choices": [],
-        "answer": ""
+        "q_title": "Q2. 버튼을 클릭했을 때 버튼의 사이즈가 커지도록 해보세요.",
+        "choices": [":click", ":active", ":pressed", ":down"],
+        "answer": ":active"
       },
       {
         "q_id": 2,
-        "q_title": "Q3.",
-        "choices": [],
-        "answer": ""
+        "q_title": "Q3. 한 번만 사용할 수 있는 고유한 식별자로 카드 컨테이너에 스타일을 적용해 주세요.",
+        "choices": ["@", "#", ".", "$"],
+        "answer": "#"
       },
       {
         "q_id": 3,
-        "q_title": "Q4.",
-        "choices": [],
-        "answer": ""
+        "q_title": "Q4. 카드의 앞면과 뒷면에 같은 스타일을 추가하도록 주세요.",
+        "choices": [".", ",", ":", "@"],
+        "answer": ","
+      },
+      {
+        "q_id": 4,
+        "q_title": "Q5. 글꼴 색상을 설정해 주세요.",
+        "choices": ["text-color", "font-color", "color", "text"],
+        "answer": "color"
+      },
+      {
+        "q_id": 5,
+        "q_title": "Q6. .social-link에 해당하는 요소들에 밑줄을 쳐주세요.",
+        "choices": [
+          "font-decoration",
+          "text-decoration",
+          "underline",
+          "text-line"
+        ],
+        "answer": "text-decoration"
       }
     ]
   },
@@ -362,27 +379,32 @@
     "questions": [
       {
         "q_id": 0,
-        "q_title": "Q1.",
-        "choices": [],
-        "answer": ""
+        "q_title": "Q1. 스크롤 시 상단에 고정되도록 하는 position 값은?",
+        "choices": ["fixed", "absolute", "sticky", "relative"],
+        "answer": "sticky"
       },
       {
         "q_id": 1,
-        "q_title": "Q2.",
-        "choices": [],
-        "answer": ""
+        "q_title": "Q2. header가 다른 요소들보다 앞에 보이도록 설정하는 속성과 값은?",
+        "choices": ["layer", "stack", "z-index", "order"],
+        "answer": "z-index"
       },
       {
         "q_id": 2,
-        "q_title": "Q3.",
-        "choices": [],
-        "answer": ""
+        "q_title": "Q3. 반응형 그리드를 구현하기 위한 grid-template-columns 값은?",
+        "choices": [
+          "repeat(4, 250px)",
+          "repeat(auto-fill, minmax(250px, 1fr))",
+          "repeat(auto-fit, 250px)",
+          "minmax(250px, 1fr)"
+        ],
+        "answer": "repeat(auto-fill, minmax(250px, 1fr))"
       },
       {
         "q_id": 3,
-        "q_title": "Q4.",
-        "choices": [],
-        "answer": ""
+        "q_title": "Q4. 이미지의 가로 세로 비율을 1:1로 설정하는 속성과 값은?",
+        "choices": ["ratio: 1/1", "aspect: 1", "aspect-ratio: 1", "scale: 1"],
+        "answer": "aspect-ratio: 1"
       }
     ]
   }
