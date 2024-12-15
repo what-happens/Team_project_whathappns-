@@ -12,14 +12,14 @@ import MobileHeader from "./MobileHeader";
 
 export default function Header() {
   const { isLoggedIn } = useSelector((state) => state.auth);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 867);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { logout } = useLogout();
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-      if (window.innerWidth > 768) {
+      setIsMobile(window.innerWidth <= 867);
+      if (window.innerWidth > 867) {
         setIsMenuOpen(false);
       }
     };
@@ -115,7 +115,8 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.15);
   z-index: 10;
-  ${media.medium`
+
+  ${media.mediumlarge`
     box-shadow: none;
     background-color: #fff;
     padding: 1rem;
@@ -132,7 +133,11 @@ const Logo = styled.h1`
   background-repeat: no-repeat;
   background-position: center;
   text-indent: -9999px;
-  ${media.medium`
+  ${media.large`
+    width: 16rem;
+    height: 4rem;
+  `}
+  ${media.mediumlarge`
     display: none;
   `}
 `;
@@ -141,10 +146,19 @@ const NavContainer = styled.ul`
   display: flex;
   gap: 5rem;
   align-items: center;
+  ${media.large`
+      gap: 2rem;
+`}
 `;
 
 const NavItem = styled.li`
   font-size: 1.8rem;
   color: white;
   text-decoration: none;
+  ${media.mediumlarge`
+    font-size: 1.4rem;
+`}
+  ${media.large`
+    font-size: 1.6rem;
+`}
 `;
