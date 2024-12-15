@@ -9,7 +9,7 @@ const initialState = {
   limit: 5,
   isLoading: false,
   quiz: [],
-  userAnswers: [],
+  incorrectQuizIds: [],
 };
 
 const quizSlice = createSlice({
@@ -28,6 +28,7 @@ const quizSlice = createSlice({
     },
     resetStep(state) {
       state.step = QuizStep.LANDING;
+      state.incorrectQuizIds = [];
     },
     setCategory(state, action) {
       if (Category[action.payload]) {
@@ -40,11 +41,15 @@ const quizSlice = createSlice({
         state.limit = action.payload;
       }
     },
-    setLoading: (state, action) => {
+    setLoading(state, action) {
       state.isLoading = action.payload;
     },
-    setQuizData: (state, action) => {
+    setQuizData(state, action) {
       state.quiz = processQuizData(action.payload);
+    },
+
+    setIncorrectQuizIds(state, action) {
+      state.incorrectQuizIds = action.payload;
     },
   },
 });
@@ -57,5 +62,6 @@ export const {
   setLimit,
   setLoading,
   setQuizData,
+  setIncorrectQuizIds,
 } = quizSlice.actions;
 export default quizSlice.reducer;
