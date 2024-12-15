@@ -3,8 +3,8 @@ import { nextStep, prevStep, resetStep } from "../redux/quizSlice";
 
 const useQuizStep = () => {
   const dispatch = useDispatch();
-  const step = useSelector((state) => state.quiz.step); // quiz 슬라이스에서 step 상태를 가져옵니다.
-  const QuizStep = useSelector((state) => state.quiz.QuizStep);
+
+  const { step, QuizStep } = useSelector((state) => state.quiz);
 
   const moveNext = () => {
     dispatch(nextStep()); // 다음 단계로 이동
@@ -17,6 +17,7 @@ const useQuizStep = () => {
   const resetQuiz = () => {
     dispatch(resetStep()); // 퀴즈 단계 초기화
   };
+
   return {
     step,
     moveNext,
