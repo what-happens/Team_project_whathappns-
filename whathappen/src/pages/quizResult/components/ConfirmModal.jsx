@@ -3,7 +3,28 @@ import { CommonModal, ModalBackdrop } from "./ModalStyle";
 import PropTypes from "prop-types";
 import Button from "../../../components/Button";
 import { media } from "../../../styles/MideaQuery";
-import { Link } from "react-router-dom";
+
+export default function ConfirmExitModal({ isOpen, onConfirm, onClose }) {
+  return (
+    <>
+      <ModalBackdrop onClick={onClose} />
+      <ConfirmExit open={isOpen}>
+        <ConfirmExitMessage>
+          진행 데이터는 저장되지 않습니다. <br />
+          정말로 종료하시겠습니까?
+        </ConfirmExitMessage>
+        <ButtonType>
+          <Button width="11.3rem" onClick={onConfirm}>
+            예
+          </Button>
+          <Button width="11.3rem" onClick={onClose}>
+            아니요
+          </Button>
+        </ButtonType>
+      </ConfirmExit>
+    </>
+  );
+}
 
 const ConfirmExit = styled(CommonModal)`
   width: 49rem;
@@ -55,32 +76,8 @@ const ButtonType = styled.div`
   }
 `;
 
-export default function ConfirmExitModal({ isOpen, onClose }) {
-  if (!isOpen) return null;
-  return (
-    <>
-      <ModalBackdrop onClick={onClose} />
-      <ConfirmExit open={isOpen}>
-        <ConfirmExitMessage>
-          진행 데이터는 저장되지 않습니다. <br />
-          정말로 종료하시겠습니까?
-        </ConfirmExitMessage>
-        <ButtonType>
-          <Link to="/mypage">
-            <Button width="11.3rem" onClick={onClose}>
-              예
-            </Button>
-          </Link>
-          <Button width="11.3rem" onClick={onClose}>
-            아니요
-          </Button>
-        </ButtonType>
-      </ConfirmExit>
-    </>
-  );
-}
-
 ConfirmExitModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func.isRequired,
 };
