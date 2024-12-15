@@ -7,10 +7,34 @@ import { media } from "../../styles/MideaQuery";
 import ConfirmExitModal from "../quizResult/components/ConfirmModal";
 import backGround from "../../assets/quiz-page-background3.svg";
 import useQuizStep from "../../hooks/useQuizStep";
+import { useDispatch, useSelector } from "react-redux";
+import { setIncorrectQuizIds } from "../../redux/quizSlice";
 
 export default function Quiz() {
-  const { resetQuiz } = useQuizStep();
   const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
+  const [answers, setAnswers] = useState([]);
+  const { resetQuiz } = useQuizStep();
+  const { quiz } = useSelector((state) => state.quiz);
+  const { moveNext } = useQuizStep();
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const incorrectIds = [];
+    answers.forEach((answer, idx) => {
+      if (answer !== quiz[idx].correct_answer) {
+        incorrectIds.push(quiz[idx].id);
+      }
+    });
+    dispatch(setIncorrectQuizIds(incorrectIds));
+    moveNext();
+  };
+
+  const handleAnswerSelect = (answer, currentQuestion) => {
+    const myAnswers = [...answers];
+    myAnswers[currentQuestion] = answer;
+    setAnswers(myAnswers);
+  };
 
   const closeConfirmModal = () => setConfirmModalOpen(false);
 
@@ -26,7 +50,11 @@ export default function Quiz() {
         </nav>
       </QuizHeader>
       <QuizMain>
-        <QuizCard />
+        <QuizCard
+          quiz={quiz}
+          handleSubmit={handleSubmit}
+          handleAnswerSelect={handleAnswerSelect}
+        />
       </QuizMain>
       {isConfirmModalOpen && (
         <ConfirmExitModal

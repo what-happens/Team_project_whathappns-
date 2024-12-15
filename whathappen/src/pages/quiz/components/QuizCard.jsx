@@ -4,21 +4,11 @@ import QuizProgress from "./QuizProgress";
 import Button from "../../../components/Button";
 import Bookmark from "../../../components/Bookmark";
 import { media } from "../../../styles/MideaQuery";
-import useQuizStep from "../../../hooks/useQuizStep";
-import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
-export default function QuizCard() {
+export default function QuizCard({ quiz, handleSubmit, handleAnswerSelect }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const { moveNext } = useQuizStep();
-  const { quiz } = useSelector((state) => state.quiz);
   const isLastQuestion = currentQuestion === quiz.length - 1;
-  const [answers, setAnswers] = useState([]);
-
-  const handleAnswerSelect = (answer) => {
-    const myAnswers = [...answers];
-    myAnswers[currentQuestion] = answer;
-    setAnswers(myAnswers);
-  };
 
   const handlePrev = () => {
     if (currentQuestion > 0) {
@@ -30,13 +20,6 @@ export default function QuizCard() {
     e.preventDefault();
     if (currentQuestion < quiz.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (currentQuestion === quiz.length - 1) {
-      moveNext();
     }
   };
 
@@ -61,7 +44,7 @@ export default function QuizCard() {
               type="radio"
               name="answer"
               id={`${quiz[currentQuestion].id}-${idx}`}
-              onChange={() => handleAnswerSelect(answer)}
+              onChange={() => handleAnswerSelect(answer, currentQuestion)}
               value={answer}
               required
             />
@@ -234,13 +217,16 @@ const ButtonWrapper = styled.div`
   gap: 1.5rem;
 `;
 
-/* QuizCard.propTypes = {
-  quizzes: PropTypes.arrayOf(
+QuizCard.propTypes = {
+  quiz: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       question: PropTypes.string.isRequired,
       correct_answer: PropTypes.string.isRequired,
       incorrect_answers: PropTypes.arrayOf(PropTypes.string).isRequired,
+      answers: PropTypes.arrayOf(PropTypes.string).isRequired,
     })
   ).isRequired,
-}; */
+  handleSubmit: PropTypes.func.isRequired,
+  handleAnswerSelect: PropTypes.func.isRequired,
+};
