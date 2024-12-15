@@ -5,17 +5,24 @@ import { Select } from "./components/Select";
 import { media } from "../../styles/MideaQuery";
 import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
-import useQuizStep from "../../hooks/useQuizStep";
-import useQuizOptions from "../../hooks/useQuizOptions";
 import { Category as Categories, Limits } from "../../constants/quizConstants";
 import { useState } from "react";
+import useFetchQuiz from "../../hooks/useFetchQuiz";
+import useQuizOptions from "../../hooks/useQuizOptions";
+import useQuizStep from "../../hooks/useQuizStep";
 
 export default function QuizLanding() {
-  const { moveNext } = useQuizStep();
-  const { selectCategory, selectLimit } = useQuizOptions();
   const [openSelectIndex, setOpenSelectIndex] = useState(null); // 열린 Select의 인덱스를 저장
+  const { moveNext } = useQuizStep();
+  const { fetchQuiz } = useFetchQuiz();
+  const { selectCategory, selectLimit } = useQuizOptions();
   const categoryEntries = Object.entries(Categories);
   const limitEntries = Object.entries(Limits);
+
+  const onClickQuizStart = async () => {
+    await fetchQuiz();
+    moveNext();
+  };
 
   const handleSelectOpen = (index) => {
     if (openSelectIndex === index) {
@@ -58,7 +65,7 @@ export default function QuizLanding() {
             color="green"
             padding="2rem 5rem"
             borderRadius="2.5rem"
-            onClick={moveNext}
+            onClick={onClickQuizStart}
           >
             퀴즈 풀기!
           </Button>

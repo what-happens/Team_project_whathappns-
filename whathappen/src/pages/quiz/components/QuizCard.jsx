@@ -1,25 +1,17 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import QuizProgress from "./QuizProgress";
 import Button from "../../../components/Button";
 import Bookmark from "../../../components/Bookmark";
 import { media } from "../../../styles/MideaQuery";
 import useQuizStep from "../../../hooks/useQuizStep";
+import { useSelector } from "react-redux";
 
-export default function QuizCard({ quizzes }) {
+export default function QuizCard() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [shuffledAnswer, setShuffledAnswer] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const { moveNext } = useQuizStep();
-  const shuffleArray = (arr) => {
-    const newArray = [...arr];
-    for (let i = newArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-    }
-    return newArray;
-  };
+  const { quiz } = useSelector((state) => state.quiz);
+  const isLastQuestion = currentQuestion === quiz.length - 1;
 
   const handlePrev = () => {
     if (currentQuestion > 0) {
@@ -29,36 +21,17 @@ export default function QuizCard({ quizzes }) {
 
   const handleNext = (e) => {
     e.preventDefault();
-    if (currentQuestion < quizzes.length - 1) {
+    if (currentQuestion < quiz.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (currentQuestion === quizzes.length - 1) {
+    if (currentQuestion === quiz.length - 1) {
       moveNext();
     }
   };
-
-  useEffect(() => {
-    try {
-      const shuffled = quizzes.map((quiz) =>
-        shuffleArray([...quiz.incorrect_answer, quiz.correct_answer])
-      );
-      setShuffledAnswer(shuffled);
-    } catch (error) {
-      console.error("Error shuffling answers:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [quizzes]);
-
-  if (isLoading || !shuffledAnswer.length) {
-    return <div>loading</div>;
-  }
-
-  const isLastQuestion = currentQuestion === quizzes.length - 1;
 
   return (
     <QuizSection>
@@ -66,19 +39,26 @@ export default function QuizCard({ quizzes }) {
       <QuestionNumber>
         문제
         <span>
-          {currentQuestion + 1} / {quizzes.length}
+          {currentQuestion + 1} / {quiz.length}
         </span>
       </QuestionNumber>
       <QuizProgress
         currentQuestionNumber={currentQuestion + 1}
-        totalQuestionNumber={quizzes.length}
+        totalQuestionNumber={quiz.length}
       />
-      <QuizQuestion>{quizzes[currentQuestion].question}</QuizQuestion>
-      <FormWrapper onSubmit={isLastQuestion ? handleSubmit : handleNext}>
-        {shuffledAnswer[currentQuestion].map((answer, idx) => (
-          <QuizInputWrapper key={idx}>
-            <input type="radio" name="answer" id={`answer-${idx}`} required />
-            <label htmlFor={`answer-${idx}`}>{answer}</label>
+      <QuizQuestion>{quiz[currentQuestion].question}</QuizQuestion>
+      <FormWrapper onSubmit={handleSubmit}>
+        {quiz[currentQuestion].answers.map((answer, idx) => (
+          <QuizInputWrapper key={`${quiz[currentQuestion].id}-${idx}`}>
+            <input
+              type="radio"
+              name="answer"
+              id={`${quiz[currentQuestion].id}-${idx}`}
+              required
+            />
+            <label htmlFor={`${quiz[currentQuestion].id}-${idx}`}>
+              {answer}
+            </label>
           </QuizInputWrapper>
         ))}
         <ButtonWrapper $buttonCount={currentQuestion === 0 ? "one" : "many"}>
@@ -87,12 +67,15 @@ export default function QuizCard({ quizzes }) {
               이전문제
             </Button>
           )}
-          <Button
-            type="submit"
-            backgroundColor={isLastQuestion ? "green" : undefined}
-          >
-            {isLastQuestion ? "제출하기" : "다음문제"}
-          </Button>
+          {isLastQuestion ? (
+            <Button type="submit" backgroundColor={"green"}>
+              제출하기
+            </Button>
+          ) : (
+            <Button type="button" onClick={handleNext}>
+              다음문제
+            </Button>
+          )}
         </ButtonWrapper>
       </FormWrapper>
     </QuizSection>
@@ -242,13 +225,13 @@ const ButtonWrapper = styled.div`
   gap: 1.5rem;
 `;
 
-QuizCard.propTypes = {
+/* QuizCard.propTypes = {
   quizzes: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       question: PropTypes.string.isRequired,
       correct_answer: PropTypes.string.isRequired,
-      incorrect_answer: PropTypes.arrayOf(PropTypes.string).isRequired,
+      incorrect_answers: PropTypes.arrayOf(PropTypes.string).isRequired,
     })
   ).isRequired,
-};
+}; */
