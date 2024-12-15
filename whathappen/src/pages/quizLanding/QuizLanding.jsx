@@ -1,15 +1,29 @@
 import styled, { keyframes } from "styled-components";
 import quizImage from "../../assets/quiz-main-logo.png";
 import backgroundImage from "../../assets/quiz-page-background3.svg";
-import { Select } from "./components/SelectBox";
+import { Select } from "./components/Select";
 import { media } from "../../styles/MideaQuery";
 import Button from "../../components/Button";
-import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import useQuizStep from "../../hooks/useQuizStep";
+import useQuizOptions from "../../hooks/useQuizOptions";
+import { Category as Categories, Limits } from "../../constants/quizConstants";
+import { useState } from "react";
 
 export default function QuizLanding() {
   const { moveNext } = useQuizStep();
+  const { selectCategory, selectLimit } = useQuizOptions();
+  const [openSelectIndex, setOpenSelectIndex] = useState(null); // 열린 Select의 인덱스를 저장
+  const categoryEntries = Object.entries(Categories);
+  const limitEntries = Object.entries(Limits);
+
+  const handleSelectOpen = (index) => {
+    if (openSelectIndex === index) {
+      setOpenSelectIndex(null);
+    } else {
+      setOpenSelectIndex(index);
+    }
+  };
   const navigate = useNavigate();
 
   return (
@@ -22,7 +36,20 @@ export default function QuizLanding() {
         </header>
         <QuizOptionsSection>
           <h2 className="sr-only">퀴즈 유형을 선택하세요</h2>
-          <Select></Select>
+          <Select
+            index={0}
+            options={categoryEntries}
+            onSelectOption={selectCategory}
+            isOpen={openSelectIndex === 0}
+            onSelectOpen={handleSelectOpen}
+          />
+          <Select
+            index={1}
+            options={limitEntries}
+            onSelectOption={selectLimit}
+            isOpen={openSelectIndex === 1}
+            onSelectOpen={handleSelectOpen}
+          />
         </QuizOptionsSection>
         <QuizControlSection>
           <h2 className="sr-only">퀴즈를 풀어보세요</h2>
@@ -49,10 +76,6 @@ export default function QuizLanding() {
     </LandingBackground>
   );
 }
-
-QuizLanding.propTypes = {
-  onNext: PropTypes.func.isRequired,
-};
 
 const bounceImg = keyframes`
   0% {
