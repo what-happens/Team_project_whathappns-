@@ -18,21 +18,29 @@ export const useChat = () => {
     setMessages((prev) => [...prev, { type: "user", text: userMessage }]);
 
     try {
+      const params = new URLSearchParams({
+        content: userMessage,
+        client_id: process.env.REACT_APP_CLIENT_ID,
+      }).toString();
+
+      console.log(
+        "API Request URL:",
+        `${process.env.REACT_APP_ALAN_API}/api/v1/question/sse-streaming?${params}`
+      );
+
       const response = await fetch(
-        `${process.env.REACT_APP_ALAN_API}/api/v1/question`,
+        `${process.env.REACT_APP_ALAN_API}/api/v1/question/sse-streaming?${params}`,
         {
           method: "GET",
           headers: {
-            "Content-Type": "application/json",
+            AccessControlAllowOrigin: "*",
+            "Cache-Control": "no-cache",
           },
-          body: JSON.stringify({
-            content: userMessage,
-            client_id: process.env.REACT_APP_CLIENT_ID,
-          }),
         }
       );
 
-      const data = await response.json();
+      const data = await response.text();
+      console.log("API Response:", data);
 
       if (!response.ok) {
         throw new Error(data.detail || "API 요청에 실패했습니다.");
@@ -40,6 +48,7 @@ export const useChat = () => {
 
       setMessages((prev) => [...prev, { type: "bot", text: data.content }]);
     } catch (err) {
+      console.error("Error:", err);
       setError(err.message);
       setMessages((prev) => [
         ...prev,
