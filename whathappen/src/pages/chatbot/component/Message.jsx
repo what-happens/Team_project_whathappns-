@@ -12,9 +12,9 @@ Message.propTypes = {
 
 const MessageBubble = styled.p`
   border-radius: 2rem;
-  max-width: 21.4rem;
+  max-width: 25.4rem;
   padding: 1rem;
-  font-size: 1rem;
+  font-size: 1.4rem;
   line-height: 1.5rem;
   position: relative;
   word-break: break-word;
