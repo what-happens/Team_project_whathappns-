@@ -77,9 +77,8 @@ ChatbotMessages.propTypes = {
 
 const MessagesWrap = styled.div`
   padding: 2.6rem 2.3rem;
-  border: 1px solid #2e5dff;
-  width: 30.4rem;
-  height: 44.5rem;
+  width: 38 0.4rem;
+  height: 47.5rem;
   border-radius: 2rem;
   box-shadow: 0.1rem 0.1rem 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
   background-color: white;
@@ -105,7 +104,7 @@ const LeftArrow = styled.img`
 
 const MsgContent = styled.div`
   width: 100%;
-  height: 27rem;
+  height: 30rem;
   margin: 3.7rem auto 1.5rem;
   display: flex;
   flex-direction: column;
@@ -128,14 +127,14 @@ const StyledForm = styled.form`
 
 const MsgInput = styled.input`
   border: none;
-  width: 20.3rem;
-  height: 3.1rem;
+  width: 27.3rem;
+  height: 4.1rem;
   border-radius: 1.5rem;
   background-color: #f6f6f6;
   padding-left: 2rem;
 
   &::placeholder {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-family: "Gmarket Sans";
     font-weight: 300;
     color: #000;
@@ -145,7 +144,7 @@ const MsgInput = styled.input`
 const SendButton = styled.button`
   border: none;
   min-width: 5.3rem;
-  height: 3.1rem;
+  height: 4.1rem;
   border-radius: 1.5rem;
   background-color: #1a3bad;
   background-image: url(${sendImg});
