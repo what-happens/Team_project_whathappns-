@@ -9,6 +9,38 @@ export const useChat = () => {
 
   const clearError = () => setError(null);
 
+  const BASE_URL = process.env.REACT_APP_ALAN_API;
+  const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+
+  async function askQuestion(content) {
+    try {
+      const url = new URL(`${BASE_URL}/api/v1/question  `);
+      url.searchParams.append("content", content);
+      url.searchParams.append("client_id", CLIENT_ID);
+
+      const proxyUrl = "https://api.allorigins.win/raw?url=";
+      const response = await fetch(
+        proxyUrl + encodeURIComponent(url.toString()),
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error:", error);
+      throw error;
+    }
+  }
+
   const sendMessage = async (userMessage) => {
     if (!userMessage.trim() || isLoading) return;
 
@@ -18,39 +50,12 @@ export const useChat = () => {
     setMessages((prev) => [...prev, { type: "user", text: userMessage }]);
 
     try {
-      const params = new URLSearchParams({
-        content: userMessage.toString(),
-        client_id: process.env.REACT_APP_CLIENT_ID,
-      }).toString();
-
-      console.log(
-        "API Request URL:",
-        `${process.env.REACT_APP_ALAN_API}/api/v1/question?${params}`
-      );
-
-      const response = await fetch(
-        `${process.env.REACT_APP_ALAN_API}/api/v1/question?${params}`,
-        {
-          method: "GET",
-          headers: {
-            Accept: "text/event-streaming",
-            "Cache-Control": "no-cache",
-          },
-          mode: "no-cors",
-        }
-      );
-
-      console.log(response);
-      const data = await response.text();
-      console.log("API Response:", data);
-
-      if (!response.ok) {
-        throw new Error(data.detail || "API 요청에 실패했습니다.");
-      }
+      const data = await askQuestion(userMessage.toString());
+      console.log("응답:", data);
 
       setMessages((prev) => [...prev, { type: "bot", text: data.content }]);
     } catch (err) {
-      console.error("Error:", err);
+      console.error("에러:", err);
       setError(err.message);
       setMessages((prev) => [
         ...prev,
