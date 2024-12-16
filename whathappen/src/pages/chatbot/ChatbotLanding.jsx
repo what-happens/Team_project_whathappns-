@@ -10,7 +10,7 @@ export default function ChatbotLanding({ onNext }) {
       <ChatbotPotatoImg src={chatbotPotato} alt=""></ChatbotPotatoImg>
       <p
         style={{
-          fontSize: "1.4rem",
+          fontSize: "1.8rem",
           fontFamily: "Gmarket Sans",
           fontWeight: "300",
           color: "white",
@@ -34,8 +34,8 @@ const ChatbotWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 30.4rem;
-  height: 44.5rem;
+  width: 35.4rem;
+  height: 46.5rem;
   border-radius: 2rem;
   box-shadow: 0.1rem 0.1rem 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
 `;
@@ -56,7 +56,7 @@ const ChatButton = styled.button`
   height: 5.7rem;
   border-radius: 1.5rem;
   background-color: #f6f6f6;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-family: "Gmarket Sans";
   font-weight: 300;
 `;
