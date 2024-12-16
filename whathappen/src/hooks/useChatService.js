@@ -19,26 +19,28 @@ export const useChat = () => {
 
     try {
       const params = new URLSearchParams({
-        content: userMessage,
+        content: userMessage.toString(),
         client_id: process.env.REACT_APP_CLIENT_ID,
       }).toString();
 
       console.log(
         "API Request URL:",
-        `${process.env.REACT_APP_ALAN_API}/api/v1/question/sse-streaming?${params}`
+        `${process.env.REACT_APP_ALAN_API}/api/v1/question?${params}`
       );
 
       const response = await fetch(
-        `${process.env.REACT_APP_ALAN_API}/api/v1/question/sse-streaming?${params}`,
+        `${process.env.REACT_APP_ALAN_API}/api/v1/question?${params}`,
         {
           method: "GET",
           headers: {
-            AccessControlAllowOrigin: "*",
+            Accept: "text/event-streaming",
             "Cache-Control": "no-cache",
           },
+          mode: "no-cors",
         }
       );
 
+      console.log(response);
       const data = await response.text();
       console.log("API Response:", data);
 
