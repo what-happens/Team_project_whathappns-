@@ -14,13 +14,13 @@ import useQuizStep from "../../hooks/useQuizStep";
 export default function QuizLanding() {
   const [openSelectIndex, setOpenSelectIndex] = useState(null); // 열린 Select의 인덱스를 저장
   const { moveNext } = useQuizStep();
-  const { fetchQuiz } = useFetchQuiz();
+  const { getQuiz } = useFetchQuiz();
   const { selectCategory, selectLimit } = useQuizOptions();
   const categoryEntries = Object.entries(Categories);
   const limitEntries = Object.entries(Limits);
 
   const onClickQuizStart = async () => {
-    await fetchQuiz();
+    await getQuiz();
     moveNext();
   };
 
