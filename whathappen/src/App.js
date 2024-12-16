@@ -16,7 +16,6 @@ import Review from "./pages/review/ReviewFreeVersion";
 import AuthHeader from "./components/AuthHeader";
 import ProtectedRoute from "./components/ProtectedRoute";
 import JoinSuccess from "./pages/joinSuccess/JoinSuccess";
-import ChatbotTest from "./pages/chatbot/ChatbotTest";
 // import { useEffect } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import { auth } from "./firebase";
@@ -58,7 +57,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />
         <Route path="/Joinsuccess" element={<JoinSuccess />} />
-        <Route path="/chat-test" element={<ChatbotTest />} />
         <Route
           path="/quizpage"
           element={
