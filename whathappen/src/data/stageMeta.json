@@ -1,0 +1,30 @@
+{
+  "stages": {
+    "stage1": {
+      "staged_id": 0,
+      "level_num": 4
+    },
+    "stage2": {
+      "staged_id": 1,
+      "level_num": 3
+    },
+    "stage3": {
+      "staged_id": 2,
+      "level_num": 5
+    },
+    "stage4": {
+      "staged_id": 3,
+      "level_num": 5
+    },
+    "stage5": {
+      "staged_id": 4,
+      "level_num": 4
+    },
+    "stage6": {
+      "staged_id": 5,
+      "level_num": 4
+    }
+  },
+  "total_stagenum": 6,
+  "total_levelnum": 25
+}

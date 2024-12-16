@@ -4,8 +4,79 @@ import CongratulationsModal from "./components/CongratsModal";
 import { media } from "../../styles/MideaQuery";
 import Button from "../../components/Button";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import backGround from "../../assets/quiz-result_background.svg";
+import useQuizStep from "../../hooks/useQuizStep";
+import { useSelector } from "react-redux";
+import useFetchQuiz from "../../hooks/useFetchQuiz";
+
+export default function QuizResult() {
+  const [isCongratulationsModalOpen, setCongratulationsModalOpen] =
+    useState(false);
+  const { resetQuiz } = useQuizStep();
+  const { postQuizResult } = useFetchQuiz();
+
+  const { limit, incorrectQuiz, correctAnswerCount } = useSelector(
+    (state) => state.quiz
+  );
+
+  const closeCongratulationsModal = () => {
+    setCongratulationsModalOpen(false);
+  };
+
+  const openCongratulationsModal = () => {
+    setCongratulationsModalOpen(true);
+  };
+
+  const handleStoreReview = async () => {
+    await postQuizResult();
+    openCongratulationsModal();
+  };
+
+  return (
+    <ResultBackground>
+      <QuizResultMain>
+        <header>
+          <h1>
+            <Logo src={logoImage} alt="이게되네 로고"></Logo>
+          </h1>
+        </header>
+        <QuizResultSection>
+          <QuizResultTitle>퀴즈 결과!</QuizResultTitle>
+          <QuizResultMessage>{correctAnswerCount} 문제 정답!</QuizResultMessage>
+        </QuizResultSection>
+        <section>
+          <h2 className="sr-only">퀴즈 결과 상세보기</h2>
+          <ResultContainer>
+            <ResultItem>
+              <ResultTypes>전체 문제</ResultTypes>
+              <ResultCount>{limit}</ResultCount>
+            </ResultItem>
+            <ResultItem>
+              <ResultTypes>맞힌 문제</ResultTypes>
+              <ResultCount>{correctAnswerCount}</ResultCount>
+            </ResultItem>
+            <ResultItem>
+              <ResultTypes>틀린 문제</ResultTypes>
+              <ResultCount>{incorrectQuiz.length}</ResultCount>
+            </ResultItem>
+          </ResultContainer>
+        </section>
+        <ResultControlSection>
+          <h2 className="sr-only">결과 처리 액션을 선택하세요</h2>
+          <Button onClick={resetQuiz}>처음으로</Button>
+          <Button backgroundColor="red" onClick={handleStoreReview}>
+            복습 노트 저장
+          </Button>
+        </ResultControlSection>
+      </QuizResultMain>
+      <CongratulationsModal
+        isOpen={isCongratulationsModalOpen}
+        onClose={closeCongratulationsModal}
+      />
+    </ResultBackground>
+  );
+}
+
 const scaleIn = keyframes`
    0%,
   100% {
@@ -130,8 +201,6 @@ const QuizResultTitle = styled.h2`
 `}
 `;
 
-const correctAnswerCount = 8;
-
 const QuizResultMessage = styled.div`
   width: 28rem;
   height: 7rem;
@@ -156,9 +225,6 @@ const QuizResultMessage = styled.div`
 `}
 `;
 
-const resultTitles = ["전체 문제", "맞힌 문제", "틀린 문제"];
-const resultData = [10, 8, 2];
-
 const ResultContainer = styled.ul`
   display: flex;
   justify-content: center;
@@ -167,7 +233,7 @@ const ResultContainer = styled.ul`
   margin-top: 2rem;
   ${media.medium`
     gap: 3rem;
-`}
+    `}
 `;
 
 const ResultItem = styled.li`
@@ -183,10 +249,10 @@ const resultItemCommon = css`
 
   ${media.medium`
     height: 4rem;
-`}
+    `}
   ${media.small`
-    height: 2.4rem;
-`}
+      height: 2.4rem;
+      `}
 `;
 
 const ResultTypes = styled.div`
@@ -195,10 +261,10 @@ const ResultTypes = styled.div`
   ${resultItemCommon}
   ${media.medium`
     font-size: 1.5rem;
-`}
-  ${media.small`
-    font-size: 1rem;
-`}
+    `}
+    ${media.small`
+      font-size: 1rem;
+      `}
 `;
 
 const ResultCount = styled.div`
@@ -209,11 +275,11 @@ const ResultCount = styled.div`
   ${media.medium`
     font-size: 2.7rem;
     margin-bottom: 5rem;
-`}
+    `}
   ${media.small`
-    font-size: 1.8rem;
-    margin-bottom: 3rem;
-`}
+      font-size: 1.8rem;
+      margin-bottom: 3rem;
+      `}
 `;
 
 const ResultControlSection = styled.section`
@@ -224,66 +290,14 @@ const ResultControlSection = styled.section`
   & > a > button {
     width: 17rem;
     ${media.medium`
-    font-size: 1.6rem;
-    padding:0.5rem 1.6rem;
-    width:14rem
-`}
+      font-size: 1.6rem;
+      padding:0.5rem 1.6rem;
+      width:14rem
+      `}
     ${media.small`
-      width: 9rem;
-    font-size: 1rem;
-    padding:0.05rem 1.2rem;
-`}
+        width: 9rem;
+        font-size: 1rem;
+        padding:0.05rem 1.2rem;
+        `}
   }
 `;
-
-export default function QuizResult() {
-  const [isCongratulationsModalOpen, setCongratulationsModalOpen] =
-    useState(false);
-  const closeCongratulationsModal = () => setCongratulationsModalOpen(false);
-
-  return (
-    <ResultBackground>
-      <QuizResultMain>
-        <header>
-          <h1>
-            <Logo src={logoImage} alt="이게되네 로고"></Logo>
-          </h1>
-        </header>
-        <QuizResultSection>
-          <QuizResultTitle>퀴즈 결과!</QuizResultTitle>
-          <QuizResultMessage>
-            {" "}
-            {correctAnswerCount} 문제 정답!
-          </QuizResultMessage>
-        </QuizResultSection>
-        <section>
-          <h2 className="sr-only">퀴즈 결과 상세보기</h2>
-          <ResultContainer>
-            {resultTitles.map((title, index) => (
-              <ResultItem key={index}>
-                <ResultTypes>{title}</ResultTypes>
-                <ResultCount>{resultData[index]} 문제</ResultCount>
-              </ResultItem>
-            ))}
-          </ResultContainer>
-        </section>
-        <ResultControlSection>
-          <h2 className="sr-only">결과 처리 액션을 선택하세요</h2>
-          <CongratulationsModal
-            isOpen={isCongratulationsModalOpen}
-            onClose={closeCongratulationsModal}
-          />
-          <Link to="/myPage">
-            <Button>처음으로</Button>
-          </Link>
-          <Button
-            backgroundColor="red"
-            onClick={() => setCongratulationsModalOpen(true)}
-          >
-            복습 노트 저장
-          </Button>
-        </ResultControlSection>
-      </QuizResultMain>
-    </ResultBackground>
-  );
-}
