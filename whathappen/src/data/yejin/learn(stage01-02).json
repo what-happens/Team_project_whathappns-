@@ -3,18 +3,18 @@
     "stage_id": 0,
     "title_id": 0,
     "level_id": 0,
-    "title": "WEB? HTML?",
+    "title": "1. WEB? HTML?",
     "subtitles": [
       {
         "sub_id": 0,
-        "sub_name": "1. WEB",
+        "sub_name": "1) WEB",
         "desc": "  웹은 World Wide Web(WWW)의 줄임말로, 전 세계적으로 분산된 수많은 문서와 기타 리소스들이 서로 연결되어 있는 거대한 정보의 네트워크를 의미합니다.\n 일반적으로 웹 페이지라고 불리는 문서 형식으로 제공되며, HTML이라는 마크업 언어로 작성됩니다. 우리가 흔히 사용하는 웹 브라우저(Chrome, Safari, Firefox, Edge 등)를 통해 이러한 웹 페이지를 열어 볼 수 있습니다. \n 웹을 이루는 가장 기초적인 구성 요소는 HTML, CSS, JavaScript입니다. 웹 콘텐츠의 의미와 구조를 정의하는 HTML, 웹페이지의 모양/표현을 담당하는 CSS, 웹페이지의 기능/동작을 담당하는 JavaScript가 웹을 이루는 가장 기초적인 구성 요소입니다.",
         "img": null,
         "code": null
       },
       {
         "sub_id": 1,
-        "sub_name": "2. HTML 이란?",
+        "sub_name": "2) HTML 이란?",
         "desc": "HTML(Hypertext Markup Language)은 프로그래밍 언어가 아니라, 우리가 보는 웹페이지가 어떻게 구조화 되어 있는지 브라우저로 하여금 알 수 있게 해주는 마크업 언어입니다.\n 마크업 언어: 문서를 작성할 때 사용되는 언어로, 문서의 내용을 구조화하고 형식을 지정하는 역할을 합니다.",
         "img": "back_link.png",
         "code": "&lt; !DOCTYPE html &gt;\n&lt;html lang=&quot;en&quot;&gt;\n  &lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot; /&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;\n    &lt;title&gt;Document&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;&lt;/body&gt;\n&lt;/html&gt;"
@@ -23,31 +23,352 @@
   },
   {
     "stage_id": 0,
-    "title_id": 0,
+    "title_id": 1,
     "level_id": 0,
-    "title": "HTML 이란?",
+    "title": "2. HTML의 기본 구조",
     "subtitles": [
       {
+        "sub_id": 0,
+        "sub_name": "1) <!DOCTYPE html> ",
+        "desc": "모든 HTML 문서는 <!DOCTYPE> 선언으로 시작합니다. 이는 문서 유형 선언으로, 현재의 표준을 의미합니다. 이를 통해 브라우저는 해당 문서를 최신 표준에 맞춰 정확하게 해석하고 랜더링 할 수 있습니다.\n - HTML 버전 정보를 브라우저에 제공하지 않습니다.\n - HTML 태그가 아닙니다. HTML이 시작하기 전에 선언하는 선언문입니다.\n - 과거 버전과 호환성을 유지하려면 해당하는 DOCTYPE 선언을 사용해야 합니다.\n",
+        "img": null,
+        "code": "&lt; !DOCTYPE html &gt;\n&lt;html lang=&quot;en&quot;&gt;\n  &lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot; /&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;\n    &lt;title&gt;Document&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;&lt;/body&gt;\n&lt;/html&gt;"
+      },
+      {
         "sub_id": 1,
-        "sub_name": "HTML 이란?",
-        "desc": "HTML(Hypertext Markup Language)은 프로그래밍 언어가 아니라, 우리가 보는 웹페이지가 어떻게 구조화 되어 있는지 브라우저로 하여금 알 수 있게 해주는 마크업 언어입니다.\n 마크업 언어: 문서를 작성할 때 사용되는 언어로, 문서의 내용을 구조화하고 형식을 지정하는 역할을 합니다.",
-        "img": "back_link.png",
-        "code": "&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n  &lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot; /&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;\n    &lt;title&gt;Document&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;&lt;/body&gt;\n&lt;/html&gt;"
+        "sub_name": "2) <html>",
+        "desc": "`<html>`태그는 HTML 문서의 루트, 최상단 요소입니다. 문서의 모든 내용을 포함하는 최상위 요소로, 문서의 시작과 끝을 나타냅니다.lang속성을 통해 해당 페이지의 주 언어가 무엇인지 설정할 수 있습니다.\n한국어는lang='ko',lang='ko-KR'와 같이 설정할 수 있습니다. 이는 웹 페이지의 언어를 설정하는 것으로, 검색 엔진이나 스크린 리더, 번역 기능 제공 등이 페이지의 언어를 인식하고 사용자에게 적절한 정보를 제공할 수 있도록 합니다.\n",
+        "img": null,
+        "code": "&lt;!DOCTYPE html&gt;\n&lt;html lang='en'&gt;\n  &lt;head&gt;\n    &lt;meta charset='UTF-8'&gt;\n    &lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;\n    &lt;title&gt;Document&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;&lt;/body&gt;\n&lt;/html&gt;"
+      },
+      {
+        "sub_id": 2,
+        "sub_name": "3) head",
+        "desc": "&lt;!DOCTYPE html>\n&lt;html lang='en'>&lt;/html>",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 3,
+        "sub_name": "4) meta",
+        "desc": "- 메타데이터: “어떤 목적을 위해 만들어진 데이터” \n - 검색엔진은 메타정보를 살펴보고 페이지의 다양한 정보를 가져갑니다.",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 4,
+        "sub_name": "5) title",
+        "desc": "- 브라우저의 제목 표시줄이나 페이지 탭에 보이는 문서 제목을 정의합니다. 특수문자는 제외하고 텍스트만 포함하세요. \n- 검색엔진은 이 제목을 보고 사용자가 탐색할 페이지를 선택합니다 \n- 페이지마다 적당한 제목이 노출되도록 개발하는 것도 중요합니다. \n- **약 60자를 넘지 않아야 합니다.**그보다 길어지게 된다면 브라우저에서 노출되는 제목이 축소되어 보일 수 있습니다. \n",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 5,
+        "sub_name": "6) link",
+        "desc": "현재 문서와 외부 리소스의 관계를 명시합니다. 외부 스타일 시트, 폰트, 파비콘을 연결할 때 사용합니다. \n 빈 태그, 속성만을 포함합니다. \n - `rel`: relations 관계. 대상 파일의 속성을 나타냅니다. \n- `href`: hyper-references 경로. 연결 시 참조할 파일의 위치를 나타냅니다. \n- `head` 요소 내부에만 위치할 수 있습니다.",
+        "img": null,
+        "code": "&lt;html&gt;\n\b\b&lt;head&gt;\n\b\b\b&lt;meta charset='UTF-8'&gt;\n\b\b\b\b&lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;\n\b\b\b\b&lt;title&gt;Document&lt;/title&gt;\n\b\b\b\b&lt;link rel='stylesheet' href='style.css' /&gt;\n\b\b\b\b&lt;/head&gt;\n\b\b\b&lt;body&gt;&lt;/body&gt;\n&lt;/html&gt;"
+      },
+      {
+        "sub_id": 6,
+        "sub_name": "7) body",
+        "desc": "body 태그는 웹 페이지의 실제 내용을 담는 부분입니다. 웹 페이지의 모든 내용은 body 태그 내부에 작성되어야 하며, 브라우저는 body 태그 내부의 내용을 해석하여 사용자에게 보여줍니다. 우리가 앞으로 배울 내용이 이곳에 담기게 됩니다.",
+        "img": null,
+        "code": null
+      }
+    ]
+  },
+  {
+    "stage_id": 0,
+    "title_id": 2,
+    "level_id": 0,
+    "title": "3. HTML 기본 문법",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "1) 태그 (Tag)",
+        "desc": "어떤 표시를 하기 위해 붙인 꼬리표. 웹 문서에 정보를 정의해주는 형식입니다. \n기본적으로 `<>` 시작 태그(여는 태그) `</>` 종료 태그(닫는 태그)의 쌍으로 구성되어 있습니다.\n\n - 요소 Element: 문서의 내용(contents)와 태그(tag), 속성(Attribute)으로 이루어져 있습니다.\n- 태그 Tag: 문서의 내용(contents)의 시작과 끝을 알립니다.\n- 속성 Attribute: 태그에 추가 정보를 부여합니다.\n\n출처: 위니북스-HTML/CSS 에센셜",
+        "img": "tag.png",
+        "code": null
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "2) 빈 요소 / 셀프 클로징",
+        "desc": "셀프 클로징이라고도 불리는 빈 요소는 닫는 태그가 없는 요소입니다. 이러한 요소는 닫는 태그가 없어도 브라우저가 정상적으로 해석할 수 있습니다. 대표적인 빈 요소로는 <br>, <img>, <input> 등이 있습니다. 다만 셀프 클로징이라는 명칭보단 빈 요소라는 명칭을 사용하는 것을 권합니다.",
+        "img": null,
+        "code": "&lt;br /&gt;\n&lt;input type='text' /&gt;\n&lt;img src='' alt='' /&gt;"
+      },
+      {
+        "sub_id": 2,
+        "sub_name": "2) 태그의 관계",
+        "desc": "",
+        "img": "tagTree.png",
+        "code": null
+      },
+      {
+        "sub_id": 3,
+        "sub_name": "2.1) 부모(Parent) 요소",
+        "desc": "부모 요소는 다른 요소를 포함하는 요소를 말합니다. \n위 예제에서 `<section>` 태그는 `<h1>`, `<img>`, `<div>` 태그의 부모 요소입니다.",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 4,
+        "sub_name": "2.2) 자식(Child) 요소",
+        "desc": "자식 요소는 다른 요소 내부에 직접 포함된 요소를 말합니다. \n위 예제에서 `<h1>`, `<img>`, `<div>` 태그는 `<section>` 태그의 자식 요소입니다.",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 5,
+        "sub_name": "2.3) 형제(Sibling) 요소",
+        "desc": "형제 요소는 같은 부모 요소를 가지는 요소들을 말합니다. \n위 예제에서 `<h1>`, `<img>`, `<div>` 태그는 서로 형제 관계에 있습니다.",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 6,
+        "sub_name": "2.4) 자손(Descendant) 요소",
+        "desc": "자손 요소는 어떤 요소의 내부에 포함된 모든 요소를 말합니다. 자식 요소뿐만 아니라 자식의 자식 요소까지 포함합니다. 위 예제에서 <strong> 태그는 <section> 태그의 자손 요소입니다.",
+        "img": null,
+        "code": "&lt;html&gt;\n    &lt;head&gt;&lt;/head&gt;\n    &lt;body&gt;\n        &lt;section&gt;\n              &lt;h1&gt;\n\t&lt;strong&gt;&lt;/strong&gt;\n              &lt;/h1&gt;\n              &lt;img /&gt;\n                    &lt;div&gt;\n\t&lt;p&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/p&gt;\n\t&lt;p&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/p&gt;\n\t&lt;p&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/p&gt;\n                    &lt;/div&gt;\n          &lt;/section&gt;\n    &lt;/body&gt;\n&lt;/html&gt;"
       }
     ]
   },
   {
     "stage_id": 0,
     "title_id": 0,
-    "level_id": 0,
-    "title": "",
+    "level_id": 1,
+    "title": "1. 글자 태그",
     "subtitles": [
       {
         "sub_id": 0,
-        "sub_name": "",
+        "sub_name": "1) Heading 태그",
+        "desc": "제목을 입력할 때 사용하는 제목 글자 태그입니다.\n<h> 태그는 Heading(제목)을 의미하며, 각각의 숫자는 크기 및 우선 순위를 나타냅니다. 숫자가 작을수록 더 높은 중요도를 갖습니다. 책의 목차처럼 순서대로 작성해야 합니다.",
+        "img": null,
+        "code": "&lt;h1&gt;첫 번째 제목&lt;/h1&gt;\n&lt;h2&gt;두 번째 제목&lt;/h2&gt;\n&lt;h3&gt;세 번째 제목&lt;/h3&gt;\n&lt;h4&gt;네 번째 제목&lt;/h4&gt;\n&lt;h5&gt;다섯 번째 제목&lt;/h5&gt;\n&lt;h6&gt;여섯 번째 제목&lt;/h6&gt;\n"
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "2) paragraph 태그",
+        "desc": "<p> 태그는 paragraph(문단)을 의미합니다. HTML에서 문단은 꼭 문장만이 아니라 문단 안에는 다양한 콘텐츠가 들어갈 수 있습니다. 이미지나 입력 폼 등 서로 관련 있는 인라인 콘텐츠(쉽게 얘기하여 개행이 되지 않는 콘텐츠)는 구성 요소가 될 수 있습니다. 다만 p태그 안에 다른 p태그 등의 블록 요소를 넣는 것은 허용되지 않습니다. ",
+        "img": null,
+        "code": "&lt;p&gt;\nLorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga veritatisrepellendus voluptatem enim iste! Fugiat quisquam aliquam, et libero verovoluptates magni! Animi libero perspiciatis, maxime voluptate placeatexpedita nisi.\n&lt;/p&gt;"
+      },
+      {
+        "sub_id": 2,
+        "sub_name": "3) anchor 태그",
+        "desc": "<a> 태그는 다른 페이지나 같은 페이지의 특정 위치, 파일, 이메일 주소 등 다양한 URL로 연결할 수 있는 하이퍼링크를 만듭니다. \n앵커 태그는 `href` 속성을 사용하여 하이퍼링크를 생성합니다. `href`는 hypertext reference(하이퍼텍스트 참조)의 약자로, 링크가 가리키는 대상의 주소를 지정합니다.",
+        "img": null,
+        "code": "&lt;a href='https://www.google.com/'&gt;Google&lt;/a&gt;"
+      },
+      {
+        "sub_id": 3,
+        "sub_name": "4) br & hr 태그",
+        "desc": "HTML에서 `<br>` 태그와 `<hr>` 태그는 각각 줄 바꿈과 수평선을 나타내는 데 사용됩니다. 이 태그들은 문서의 구조를 더 명확하게 하고, 시각적으로 내용을 구분하는 데 유용합니다.\n<br>은 break(line break)로 줄을 나눈다는 뜻입니다. `<br>` 태그는 블록 요소가 아니므로, 문단을 나누지 않고 같은 문단 내에서 줄 바꿈을 생성합니다. \n<hr>은 horizontal rule의 약어로 수평선을 그린다는 뜻입니다. 수평선은 문단을 구분하거나 콘텐츠를 구분하는 데 사용됩니다. 수평선은 블록 요소로 처리되어, 수평선 위 아래로 줄 바꿈이 추가됩니다.",
+        "img": null,
+        "code": "&lt;h1&gt;대한민국 헌법 제 1장&lt;/h1&gt;\n&lt;p&gt;\n\b제 1조 대한민국은 민주공화국이다. &lt;br /&gt; \n\b\b대한민국의 주권은 국민에게 있고, 모든 권력은 국민으로 부터 나온다.\n&lt;/p&gt;\n&lt;hr /&gt;\n&lt;p&gt;\n출처: 국가정보법령센터 \n&lt;/p&gt;"
+      }
+    ]
+  },
+  {
+    "stage_id": 0,
+    "title_id": 1,
+    "level_id": 1,
+    "title": "2. 목록 태그",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "1) 기본 목록 태그",
+        "desc": "- ol (ordered list) : 순서가 있는 목록 태그 \n- ul (unordered list): 순서가 없는 목록 태그 \n- li (list): 목록의 항목, 반드시 <ol>, <ul>, <menu>의 자식 요소로만 사용해야 합니다.",
+        "img": null,
+        "code": "&lt;ol&gt;\n\b\b&lt;li&gt;item&lt;/li&gt;\n\b\b\b&lt;li&gt;item&lt;/li&gt;\n\b\b\b&lt;li&gt;item&lt;/li&gt;\n\b\b&lt;/ol&gt;\n\b\b&lt;ul&gt;\n\b\b\b&lt;li&gt;item&lt;/li&gt;\n\b\b\b&lt;li&gt;item&lt;/li&gt;\n\b\b\b&lt;li&gt;item&lt;/li&gt;\n&lt;/ul&gt;"
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "2) 정의 목록 태그",
+        "desc": "정의 목록은 특정 용어와 그 정의를 표현할 때 사용하는 태그입니다. \n- dl (definition list): 설명 목록. 이 태그는 용어와 해당 용어의 설명을 함께 제공하는데 사용됩니다. \n- dt (Definition Term): <dl>에서 정의될 용어를 나타냅니다. \n- dd(Description Details): <dt>로 정의된 용어의 설명을 나타냅니다.",
+        "img": null,
+        "code": "&lt;dl&gt;\n\b\b&lt;dt&gt;Web&lt;/dt&gt;\n\b\b\b\b&lt;dd&gt;\n\b\b\b\bWorld Wide Web(WWW)의 줄일말로, 전 세계적으로 분산된 수많은 문서와 기타 리소스들이 서로 연결되어 있는 거대한 정보의 네트워크를 의미합니다.\n\b\b\b\b\b&lt;/dd&gt;\n&lt;/dl&gt;"
+      }
+    ]
+  },
+  {
+    "stage_id": 0,
+    "title_id": 0,
+    "level_id": 2,
+    "title": "1. 공간을 차지하는 태그",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "1) div",
+        "desc": "div 태그는 division의 약자로, 웹 페이지의 레이아웃을 구성하기 위한 태그입니다. 이 태그는 블록 요소로 개행이 되며 여러 태그들을 그룹핑하기 위한 용도로 사용합니다. CSS로 스타일을 주기 전에는 콘텐츠나 레이아웃에 영향을 주지 않습니다. \n- 블록 요소: 부모 요소의 전체 공간을 차지하여 블록을 만드는 HTML 요소입니다. 이러한 요소는 항상 새로운 줄에서 시작하고, 좌우 양측으로 최대한 늘어나 가능한 모든 너비를 차지합니다.",
+        "img": null,
+        "code": "&lt;div&gt;\n\b\b&lt;p&gt;HTML&lt;/p&gt;\n\b\b\b&lt;p&gt;CSS&lt;/p&gt;\n\b\b\b&lt;p&gt;JS&lt;/p&gt;\n\b\b\b&lt;/div&gt;\n\b\b&lt;div&gt;\n\n\b\b&lt;p&gt;python&lt;/p&gt;\n\b\b\b&lt;p&gt;AI&lt;/p&gt;\n\b\b\b&lt;p&gt;통계학&lt;/p&gt;\n&lt;/div&gt;"
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "2) <span>",
+        "desc": "`<span>` 태그는 인라인 컨테이너로, 스타일을 적용하거나 인라인 요소를 묶는 데 사용됩니다. 본질적으로는 아무런 의미를 나타내지 않지만, 특정 텍스트나 인라인 요소에 CSS 스타일을 적용할 때 유용합니다.\n- 인라인 요소: 인라인 요소는 항상 블록 레벨 요소 내에 포함되며, 콘텐츠의 흐름을 끊지 않고, 컨텐츠에 따라 할당된 공간만 차지합니다. 문장이나 단어 같은 작은 부분에 대해 적용되며, 새로운 줄을 만들지 않습니다.",
+        "img": null,
+        "code": "&lt;p&gt;\n\b\b이건\n\b\b\b&lt;span style='background-color: red'&gt;span&lt;/span&gt; 태그입니다.\n\b\b\b&lt;/p&gt;\n\b\b&lt;p&gt;\n\b\b\b이런식으로\n\b\b&lt;span style='font-weight: bold'&gt;사용&lt;/span&gt; 합니다.\n&lt;/p&gt;"
+      }
+    ]
+  },
+  {
+    "stage_id": 0,
+    "title_id": 1,
+    "level_id": 2,
+    "title": "2. 그 외 다양한 태그들",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "1) <img>",
+        "desc": "<img> 태그는 HTMl 문서에 이미지를 삽입하는데 사용됩니다. 다른 태그와 달리 닫는 태그가 없는 빈 요소(void element)입니다.\n - img 태그의 속성 \n- src: 이미지의 경로 \n- alt \n\b\b\b\b\b- 이미지에 대한 설명 \n\b\b\b\b\b- src에 지정한 이미지를 브라우저가 제대로 불어오지 못했을 때 alt값에 적힌 내용을 보여줍니다. \n\b\b\b\b\b- 시각에 장애가 있으신 분들을 위해 스크린 리더를 지원합니다.",
+        "img": null,
+        "code": "&lt;img \n\b\bsrc='rosy.jpg' \n\b\b\balt='위니브 검은 토끼 캐릭터 로지' \n/&gt;"
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "2) <adress>",
+        "desc": "<adress>는 해당 콘텐츠에 대한 연락처 정보를 나타냅니다.\n\n- 연락처 정보: 물리적 주소, URL, 이메일 주소, 전화번호, SNS 정보, 좌표 등을 포함합니다.\n- 개인, 조직, 단체의 이름 명시: 연락처 정보를 제공하는 개인, 조직, 또는 단체의 이름을 반드시 적어야 합니다.\n- 위치: 페이지 헤더나 푸터에 배치하여 사업체의 연락 방법으로 사용할 수 있습니다. 또한, article 내에 사용하여 글의 작성자를 나타낼 수도 있습니다.\n- 제한 사항: 연락처 외의 정보(예: 출판일 등)를 포함해서는 안 됩니다.",
+        "img": null,
+        "code": "&lt;footer&gt; \n\b\b&lt;address&gt; \n\b\b\bABC Corp.&lt;br /&gt; \n\b\b\b\b\b123 Main St.&lt;br /&gt; \n\b\b\b\b\bSpringfield, USA&lt;br /&gt; \n\b\b\b\b\b&lt;a href='mailto:contact@abccorp.com'&gt;contact@abccorp.com&lt;/a&gt;&lt;br /&gt; \n\b\b\b\b\b&lt;a href='tel:+1234567890'&gt;+1 (234) 567-890&lt;/a&gt;&lt;br /&gt; \n\b\b\b\b\b&lt;a href='https://twitter.com/abccorp'&gt;@abccorp&lt;/a&gt; \n\b\b\b&lt;/address&gt; \n&lt;/footer&gt;"
+      },
+      {
+        "sub_id": 2,
+        "sub_name": "3) <strong>",
+        "desc": "중대하거나 긴급한 콘텐츠를 나타내는 태그입니다.\n- 기본적으로 굵은 글꼴이 적용됩니다.\n- 스크린 리더를 사용하여 컴퓨터 화면을 낭독할 때 strong 사이에 있는 문자는 거센 억양으로 소리를 내어 발음하여 사용자가 중요한 정보를 쉽게 인식할 수 있도록 합니다.",
+        "img": null,
+        "code": "&lt;strong&gt;경고! 이 물질은 인체에 유해한 성분이 들어있습니다!&lt;/strong&gt;"
+      }
+    ]
+  },
+  {
+    "stage_id": 1,
+    "title_id": 0,
+    "level_id": 0,
+    "title": "1. Semantic Tags",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "1) Semantic Tags?",
+        "desc": "HTML에는 웹 페이지의 다양한 부분을 정의하는데 사용할 수 있는 몇 가지 의미적 요소가 있습니다.\n Semantic Tag는 HTML 구조를 설계할 때, 브라우저가 웹 사이트의 구조를 쉽게 파악할 수 있게 도와줍니다.\nSemantic Tag를 사용해 콘텐츠를 구분하고, div 태그는 스타일 적용을 위한 용도로 사용할것을 권장합니다.",
+        "img": "semanticTags.png",
+        "code": null
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "1) <header>",
+        "desc": "- 소개 및 탐색에 도움을 줍니다. \n- 회사명, 제목, 로고, 검색 폼, 작성자 이름 등의 요소가 포함 될 수 있어요. \n- 헤더를 중첩 사용하거나 헤더 안에 푸터를 사용할 수 없습니다. \n",
+        "img": null,
+        "code": "&lt;body&gt; \n\b\b&lt;header&gt; \n\b\b\b&lt;h1&gt;페이지 제목입니다.&lt;/h1&gt; \n\b\b&lt;/header&gt; \n&lt;/body&gt;"
+      },
+      {
+        "sub_id": 2,
+        "sub_name": "2) <nav>",
+        "desc": "- 문서의 부분 중 현재 페이지 내, 또는 다른 페이지로의 링크를 보여줍니다.\n- 내부에는 메뉴, 목차등이 포함됩니다.\n- 문서의 모든 링크가 `<nav>` 안에 있을 필요는 없어요. 페이지의 주요 탐색 링크를 위한 태그입니다.\n- 하나는 사이트 전체 탐색, 다른 하나는 현재 페이지 내 탐색으로 사용하는 등, 하나의 웹페이지에 여러 개의 `<nav>` 태그를 가질 수 있습니다.\n",
+        "img": null,
+        "code": "&lt;body&gt; \n\b\b&lt;header&gt; \n\b\b\b&lt;nav&gt;\n\b\b\b\b&lt;ul&gt; \n\b\b\b\b\b&lt;li&gt;&lt;a href='#'&gt;뉴스&lt;/a&gt;&lt;/li&gt; \n\b\b\b\b\b&lt;li&gt;&lt;a href='#'&gt;상품&lt;/a&gt;&lt;/li&gt; \n\b\b\b\b\b&lt;li&gt;&lt;a href='#'&gt;지도&lt;/a&gt;&lt;/li&gt; \n\b\b\b\b&lt;/ul&gt; \n\b\b\b&lt;/nav&gt; \n\b\b&lt;/header&gt; \n&lt;/body&gt;"
+      },
+      {
+        "sub_id": 3,
+        "sub_name": "3) <footer>",
+        "desc": "- 페이지의 작성자, 저작권정보, 페이지 관련 문서 등의 내용을 담습니다.",
+        "img": null,
+        "code": "&lt;footer> \n\b\b&lt;address> \n\b\b\b&lt;dl> \n\b\b\b\b&lt;dt>대표자&lt;/dt> \n\b\b\b\b&lt;dd>쿼카&lt;/dd> \n\b\b\b\b&lt;dt>사업자등록번호&lt;/dt> \n\b\b\b\b&lt;dd>123-45-67890&lt;/dd> \n\b\b\b\b&lt;dt>통신판매업신고번호&lt;/dt>\n\b\b\b\b&lt;dd>제1234-서울강남-1234호&lt;/dd>\n\b\b\b&lt;/dl>\n\b\b&lt;/address>\n\b\b&lt;p>ⓒ 2024 quokka. All rights reserved.&lt;/p>\n&lt;/footer>"
+      },
+      {
+        "sub_id": 4,
+        "sub_name": "4) <main>",
+        "desc": "- body의 **주요** 콘텐츠를 나타냅니다. \n- 웹페이지에서 한 번만 사용할 수 있습니다. \n- 사이드바, 탐색 링크, 저작권정보, 사이트 로고, 검색 폼 등 여러 페이지에 반복되는 콘텐츠를 포함해서는 안 됩니다. (검색 폼이 주요 기능이라면 예외입니다)",
+        "img": null,
+        "code": "&lt;body&gt; \n\b\b&lt;main&gt;hello world!&lt;/main&gt;\n&lt;/body&gt;"
+      },
+      {
+        "sub_id": 5,
+        "sub_name": "5) <section>",
+        "desc": "- 문서 내에서 특정한 섹션을 정의하는 데 사용됩니다. 이 태그는 일반적으로 주제나 컨텐츠를 구분짓기 위해 사용됩니다. \n- 제목 요소를 자식으로 포함하여야 합니다.",
+        "img": null,
+        "code": "&lt;h1&gt;좋아하는 동물을 소개합니다.&lt;/h1&gt;\n&lt;section&gt;\n\b\b&lt;h2&gt;쿼카!&lt;/h2&gt;\n\b\b&lt;p&gt;쿼카는 캥거루과에 속하는 소형 포유유 동물로써...&lt;/p&gt;\n&lt;/section&gt;\n&lt;section&gt;\n\b\b&lt;h2&gt;쿼카의 습성&lt;/h2&gt;\n\b\b&lt;p&gt;쿼카는 캥거루과에 속하는 소형 포유유 동물로써...&lt;/p&gt;\n&lt;/section&gt;"
+      },
+      {
+        "sub_id": 6,
+        "sub_name": "6) <article>",
+        "desc": "- 독립적으로 구분해 배포하거나 재사용할 수 있는 구획을 나타냅니다.\n - 아티클이 대표적으로 사용되는 곳은 뉴스 홈페이지입니다.\n- 제목 요소를 자식으로 포함하여야 합니다!\n",
+        "img": null,
+        "code": "&lt;h1&gt;스포츠 뉴스&lt;/h1&gt;\n&lt;article&gt;\n\b\b&lt;h2&gt;월별 주요 뉴스&lt;/h2&gt;\n\b\b\b&lt;article&gt;\n\b\b\b\b&lt;h3&gt;3월 뉴스&lt;/h3&gt;\n\b\b\b\b&lt;p&gt;월드컵 개최지 선정, 평창 되나?...&lt;/p&gt;\n\b\b\b&lt;/article&gt;\n\b\b&lt;article&gt;\n\b\b\b&lt;h3&gt;4월 뉴스&lt;/h3&gt;\n\b\b\b&lt;p&gt;월트컵 개최지 선정 불발, 어디로 갔나 1조는?...&lt;/p&gt;\n\b\b&lt;/article&gt;\n&lt;/article&gt;"
+      },
+      {
+        "sub_id": 7,
+        "sub_name": "7) <aside>",
+        "desc": "- 문서의 주요 내용과 간접적으로 연관된 부분을 나타냅니다.\n- 문서의 주요 흐름을 따라가지 않고, 보조적인 역할만 하는 공간입니다.\n- 광고 배너,사이드바 등에 사용합니다.",
+        "img": null,
+        "code": "&lt;h1&gt;연예면 뉴스&lt;/h1&gt;\n&lt;article&gt;\n\b\b&lt;h2&gt;크리스 에반스, 로다주에 이어 MCU 복귀?&lt;/h2&gt;\n\b\b&lt;p&gt;배우 크리스 에반스가 MCU(마블 시네마틱 유니버스)에 복귀한다...&lt;/p&gt;\n\b\b&lt;aside&gt;광고&lt;/aside&gt;\n&lt;/article&gt;"
+      }
+    ]
+  },
+  {
+    "stage_id": 1,
+    "title_id": 0,
+    "level_id": 1,
+    "title": "1. form",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "1) form 태그",
+        "desc": "<Form> 태그는 웹 페이지에서 사용자로부터 데이터를 수집하고 서버로 전송하는 데 사용되는 HTML 요소입니다. 사용자로부터 입력을 받기 위한 양식을 작성하는 태그들을 통틀어 form이라고 합니다. 로그인, 회원 가입, 검색, 설문조사 등 다양한 상호작용을 구현할 때 폼을 활용합니다. \n\n - action 속성: 폼 데이터를 처리할 서버의 URL을 지정합니다.\n- method 속성: 데이터를 서버로 전송하는 방식을 지정합니다. 주로 GET 또는 POST 방식을 사용합니다.",
+        "img": null,
+        "code": "&lt;form action='/login' method='POST'&gt;\n\b\b&lt;!-- 폼 요소들 --&gt;\n&lt;/form&gt;"
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "2) input 태그",
+        "desc": "<input> 태그는 사용자로부터 데이터를 입력받는 가장 기본적인 HTML 요소입니다.\n텍스트, 비밀번호, 체크박스, 라디오 버튼 등 다양한 형태의 입력을 지원합니다.\n\n- type 속성: 입력 필드의 유형을 지정합니다. 예를 들어, 텍스트 입력은 `type='text'`, 비밀번호 입력은 `type='password'` 등으로 지정합니다. 모든 `input`, `select`, `textarea` 요소에 필수적으로 설정됩니다.\n- name 속성: 폼 데이터와 함께 전송될 때 사용되는 필드의 이름을 지정합니다. 서버 측에서 이 이름을 통해 데이터를 식별합니다.\n- id 속성: 레이블(label) 요소에서 for 속성을 사용하여 id 속성과 일치시킬 수 있습니다. 이렇게 하면 사용자가 레이블을 클릭했을 때 해당 입력 필드가 자동으로 포커스를 받거나, 스크린 리더가 사용될 때 사용자에게 더 나은 접근성을 제공할 수 있습니다.\n- value 속성: 사용자가 입력한 값이나 기본 설정 값을 나타냅니다. 폼이 제출될 때, name 속성의 값과 함께 서버로 전송됩니다. 주로 `input` 요소에 사용됩니다.",
+        "img": null,
+        "code": "&lt;input type='text' id='username' name='username' /&gt;\n&lt;input type='password' id='password' name='password' /&gt;\n&lt;input type='checkbox' id='remember' name='remember' /&gt;\n&lt;input type='radio' id='gender-male' name='gender' value='male' /&gt;\n"
+      },
+      {
+        "sub_id": 2,
+        "sub_name": "3) label 태그",
+        "desc": "<label> 태그는 입력 필드의 설명을 제공하고, 해당 레이블을 클릭하면 연결된 입력 요소에 포커스가 맞춰지도록 합니다. 이는 사용자가 손쉽게 입력 필드를 선택할 수 있게 하며, 폼의 사용성을 크게 향상시킵니다.\n- for 속성: 이 속성은 `<label&gt;`이 설명하는 입력 요소의 ID를 지정합니다. for 속성의 값은 해당 입력 요소의 id 속성 값과 일치해야 합니다.",
+        "img": null,
+        "code": "&lt;!-- for-id를 이용해 연결하기 --&gt;\n&lt;label for='user-id'&gt;아이디&lt;/label&gt;\n&lt;input id='user-id' type='text' /&gt;\n"
+      },
+      {
+        "sub_id": 3,
+        "sub_name": "4) fieldset & legend",
         "desc": "",
-        "img": "back_link.png",
-        "code": ""
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 4,
+        "sub_name": "fieldset",
+        "desc": "- form 관련 요소들을 묶을 때 사용합니다.\n- disabled를 사용할 경우 모든 자손 컨트롤을 비활성화합니다.",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 5,
+        "sub_name": "legend",
+        "desc": "그룹의 제목을 제공합니다.",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 6,
+        "sub_name": "placeholder",
+        "desc": "컨트롤에 무엇을 입력해야하는지 알려주는 힌트",
+        "img": null,
+        "code": "&lt;fieldset&gt;\n&lt;legend&gt;사용자 정보&lt;/legend&gt;\n\b\b&lt;label for='username'&gt;사용자 이름&lt;/label&gt;\n\b\b&lt;input \n\b\b\btype='text' \n\b\b\bid='username'\n\b\b\bname='username'\n\b\b\bplaceholder='이름을 입력하세요'\n\b\b/&gt;\n&lt;/fieldset&gt;"
+      },
+      {
+        "sub_id": 7,
+        "sub_name": "5) Button",
+        "desc": "- 사용자가 클릭할수 있는 요소입니다.\n- form 내부뿐만 아니라 버튼이 필요한 곳이라면 어디에든 배치할 수 있습니다.\n\n - `button`: 기본 행동이 없습니다. 클릭했을 때 아무것도 하지 않습니다. JavaScript와 연결하여 사용합니다\n\t- <button>의 기본타입 입니다.\n\t- 양식 제출용이 아니라면 타입을 꼭 button으로 지정해주세요. 2. `submit`: 서버로 양식 데이터를 제출합니다.\n\t- <form> 태그 내부에 위치해있는 <button>의 기본 타입은 submit 입니다\n- reset: <input type='reset'> 과 동일하게 초깃값으로 되돌립니다.",
+        "img": null,
+        "code": "&lt;button type='button'&gt;버튼&lt;/button&gt;\n&lt;button type='reset'&gt;초기화&lt;/button&gt;\n&lt;button type='submit'&gt;전송&lt;/button&gt;\n"
       }
     ]
   }

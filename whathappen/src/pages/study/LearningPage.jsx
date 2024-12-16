@@ -215,7 +215,7 @@ const Image = styled.img`
 const CodeBlock = styled.div`
   background-color: #f1f4ff;
   border-radius: 2rem;
-  overflow-x: scroll;
+  overflow-x: auto;
   pre {
     ${({ theme }) => theme.laptop`
       font-size: 1.5rem;
@@ -227,6 +227,7 @@ const CodeBlock = styled.div`
     font-size: 1.6rem;
     font-weight: 300;
     line-height: 2.8rem;
+    white-space: pre-wrap;
   }
 `;
 // end ContentContainer
@@ -260,7 +261,7 @@ const Button = styled.button`
   }
 `;
 
-const LevelNavigation = () => {
+const LearningPage = () => {
   const [activeLevel, setActiveLevel] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -304,7 +305,7 @@ const LevelNavigation = () => {
             <h3 className="sr-only">목차</h3>
             {data.map((level, index) => (
               <MenuItem
-                key={level.id}
+                key={level.level_id}
                 active={activeLevel === index}
                 onClick={() => handleMenuItemClick(index)}
               >
@@ -324,14 +325,15 @@ const LevelNavigation = () => {
               try {
                 imageUrl = require(`../../assets/${subtitle.img}`);
               } catch (error) {
+                // eslint-disable-next-line no-console
                 console.error("Image not found:", subtitle.img);
               }
             }
 
             return (
-              <ContentItem key={subtitle.id}>
+              <ContentItem key={subtitle.sub_id}>
                 <Title>{subtitle.sub_name}</Title>
-                <Description>{subtitle.desc}</Description>
+                <Description key={subtitle.sub_id}>{subtitle.desc}</Description>
                 {hasImage && <Image src={imageUrl} alt="이미지" />}
                 {hasCode && (
                   <CodeBlock>
@@ -363,4 +365,4 @@ const LevelNavigation = () => {
   );
 };
 
-export default LevelNavigation;
+export default LearningPage;
