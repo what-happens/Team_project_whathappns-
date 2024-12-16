@@ -176,39 +176,33 @@ const Background = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   min-height: 100vh;
   z-index: -999;
   background-image: url(${backGround});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 3rem;
 
   ${media.medium`
     background-size: cover; 
-    height: 100%; 
+    min-height: 100%; 
   `}
 
   ${media.small`
     background-size: cover; 
-    height: 100%; 
+    min-height: 100%; 
   `}
 `;
 const MyPageContents = styled.div`
   display: flex;
   flex-direction: column;
-  height: 60vh;
-  width: 80vw;
-  margin: 8rem auto;
-  padding: 3rem 1rem 3rem 1rem;
-  ${media.medium`
-    margin-top: 1rem;
-  `}
+  margin: 0 auto;
+  padding: 15rem 1rem 3rem 1rem;
 `;
 
 const GreetingMsg = styled.div`
