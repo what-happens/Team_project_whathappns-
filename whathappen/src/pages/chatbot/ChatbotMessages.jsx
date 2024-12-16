@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import leftArrow from "../../assets/left_arrow.png";
 import sendImg from "../../assets/send.png";
-import Message from "./component/Messages";
+import Message from "./component/Message";
 import PropTypes from "prop-types";
 import { useChat } from "../../hooks/useChatService";
 
@@ -75,6 +75,7 @@ ChatbotMessages.propTypes = {
 };
 
 const MessagesWrap = styled.div`
+  background-color: #fff;
   padding: 2.6rem 2.3rem;
   border: 1px solid #2e5dff;
   width: 30.4rem;
