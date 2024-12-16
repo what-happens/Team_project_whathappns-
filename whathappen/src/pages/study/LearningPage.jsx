@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import levelData from "./levelDate.json";
+import data from "../../data/yejin/learn(stage01-02).json";
 import back from "../../assets/back_link.png";
 
 const Container = styled.div`
@@ -11,9 +11,10 @@ const Container = styled.div`
 `;
 
 const HeaderContainer = styled.header`
-  width: 30rem;
+  width: 20%;
   border: 1px solid var(--main-color);
   border-radius: 20px;
+  /* overflow-y: scroll; */
 `;
 
 const BackLink = styled(Link)`
@@ -34,16 +35,16 @@ const BackLink = styled(Link)`
 const MenuTitle = styled.h2`
   color: var(--main-color);
   padding: 3rem 1.5rem;
-  font-size: 3.2rem;
+  font-size: 3rem;
   font-weight: 700;
 `;
 
 const MenuItem = styled.li`
   margin: 0;
-  padding: 15px;
+  padding: 1.5rem;
   list-style: none;
 
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 500;
 
   cursor: pointer;
@@ -59,18 +60,49 @@ const MenuItem = styled.li`
 
 // start ContentContainer
 const ContentContainer = styled.main`
-  flex-grow: 1;
-  padding: 20px;
-  border: 1px solid black;
+  width: 80%;
+  padding: 0 2rem;
   position: relative;
   overflow-y: scroll;
 `;
 
 const ContentItem = styled.div`
-  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
   padding: 15px;
-  background-color: #f9f9f9;
   border-radius: 5px;
+`;
+const Title = styled.h3`
+  font-size: 3rem;
+  font-weight: 700;
+
+  color: var(--main-color);
+`;
+
+const Description = styled.p`
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 2.8rem;
+
+  white-space: pre-wrap;
+`;
+
+const Image = styled.img`
+  height: 20rem;
+  object-fit: contain;
+  border: 1px solid black;
+`;
+
+const CodeBlock = styled.div`
+  background-color: #f1f4ff;
+  border-radius: 2rem;
+  pre {
+    padding: 2rem;
+    font-size: 1.6rem;
+    font-weight: 300;
+    line-height: 2.8rem;
+  }
 `;
 // end ContentContainer
 
@@ -115,7 +147,7 @@ const LevelNavigation = () => {
   };
 
   const handleNextLevel = () => {
-    if (activeLevel < levelData.length - 1) {
+    if (activeLevel < data.length - 1) {
       setActiveLevel(activeLevel + 1);
     }
   };
@@ -128,7 +160,7 @@ const LevelNavigation = () => {
         <nav>
           <MenuTitle>Level 01</MenuTitle>
           <h3 className="sr-only">목차</h3>
-          {levelData.map((level, index) => (
+          {data.map((level, index) => (
             <MenuItem
               key={level.id}
               active={activeLevel === index}
@@ -141,14 +173,37 @@ const LevelNavigation = () => {
       </HeaderContainer>
 
       <ContentContainer>
-        {levelData[activeLevel].subtitles.map((subtitle) => (
-          <ContentItem key={subtitle.id}>
-            <h3>{subtitle.title}</h3>
-            <pre>
-              <code>{subtitle.content}</code>
-            </pre>
-          </ContentItem>
-        ))}
+        {data[activeLevel].subtitles.map((subtitle) => {
+          const hasCode = subtitle.code && subtitle.code.trim() !== "";
+          const hasImage = subtitle.img && subtitle.img.trim() !== "";
+          let imageUrl = null;
+
+          if (hasImage) {
+            try {
+              imageUrl = require(`../../assets/${subtitle.img}`);
+            } catch (error) {
+              // eslint-disable-next-line no-console
+              console.error("Image not found:", subtitle.img);
+            }
+          }
+
+          return (
+            <ContentItem key={subtitle.id}>
+              <Title>{subtitle.sub_name}</Title>
+              <Description>{subtitle.desc}</Description>
+              {hasImage && <Image src={imageUrl} alt="이미지" />}
+              {hasCode && (
+                <CodeBlock>
+                  <pre
+                    dangerouslySetInnerHTML={{
+                      __html: subtitle.code,
+                    }}
+                  ></pre>
+                </CodeBlock>
+              )}
+            </ContentItem>
+          );
+        })}
 
         <NavigationButtons>
           <Button onClick={handlePrevLevel} disabled={activeLevel === 0}>
@@ -156,7 +211,7 @@ const LevelNavigation = () => {
           </Button>
           <Button
             onClick={handleNextLevel}
-            disabled={activeLevel === levelData.length - 1}
+            disabled={activeLevel === data.length - 1}
           >
             &gt;
           </Button>
