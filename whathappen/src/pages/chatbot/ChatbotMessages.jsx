@@ -21,6 +21,7 @@ export default function ChatbotMessages({ onPrev }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("submitting message:", inputMessage);
     if (!inputMessage.trim()) return;
 
     await sendMessage(inputMessage);
@@ -75,13 +76,13 @@ ChatbotMessages.propTypes = {
 };
 
 const MessagesWrap = styled.div`
-  background-color: #fff;
   padding: 2.6rem 2.3rem;
   border: 1px solid #2e5dff;
   width: 30.4rem;
   height: 44.5rem;
   border-radius: 2rem;
   box-shadow: 0.1rem 0.1rem 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
+  background-color: white;
 `;
 
 const ChatHeader = styled.header`
