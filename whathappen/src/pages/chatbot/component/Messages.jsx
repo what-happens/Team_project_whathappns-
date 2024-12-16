@@ -2,7 +2,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 export default function Message({ type, text }) {
-  return <MessagesStyle type={type}>{text}</MessagesStyle>;
+  return <MessageBubble type={type}>{text}</MessageBubble>;
 }
 
 Message.propTypes = {
@@ -10,15 +10,15 @@ Message.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
-const MessagesStyle = styled.p`
+const MessageBubble = styled.p`
   border-radius: 2rem;
   max-width: 21.4rem;
   padding: 1rem;
   font-size: 1rem;
   line-height: 1.5rem;
-  /* font-family: "Gmarket Sans";
-  font-weight: 400; */
   position: relative;
+  word-break: break-word;
+  white-space: pre-wrap;
 
   ${(props) =>
     props.type === "bot"
