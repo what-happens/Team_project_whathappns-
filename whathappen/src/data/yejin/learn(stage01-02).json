@@ -7,14 +7,14 @@
     "subtitles": [
       {
         "sub_id": 0,
-        "sub_name": "WEB",
+        "sub_name": "1. WEB",
         "desc": "  웹은 World Wide Web(WWW)의 줄임말로, 전 세계적으로 분산된 수많은 문서와 기타 리소스들이 서로 연결되어 있는 거대한 정보의 네트워크를 의미합니다.\n 일반적으로 웹 페이지라고 불리는 문서 형식으로 제공되며, HTML이라는 마크업 언어로 작성됩니다. 우리가 흔히 사용하는 웹 브라우저(Chrome, Safari, Firefox, Edge 등)를 통해 이러한 웹 페이지를 열어 볼 수 있습니다. \n 웹을 이루는 가장 기초적인 구성 요소는 HTML, CSS, JavaScript입니다. 웹 콘텐츠의 의미와 구조를 정의하는 HTML, 웹페이지의 모양/표현을 담당하는 CSS, 웹페이지의 기능/동작을 담당하는 JavaScript가 웹을 이루는 가장 기초적인 구성 요소입니다.",
         "img": null,
         "code": null
       },
       {
         "sub_id": 1,
-        "sub_name": "HTML 이란?",
+        "sub_name": "2. HTML 이란?",
         "desc": "HTML(Hypertext Markup Language)은 프로그래밍 언어가 아니라, 우리가 보는 웹페이지가 어떻게 구조화 되어 있는지 브라우저로 하여금 알 수 있게 해주는 마크업 언어입니다.\n 마크업 언어: 문서를 작성할 때 사용되는 언어로, 문서의 내용을 구조화하고 형식을 지정하는 역할을 합니다.",
         "img": "back_link.png",
         "code": "&lt; !DOCTYPE html &gt;\n&lt;html lang=&quot;en&quot;&gt;\n  &lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot; /&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;\n    &lt;title&gt;Document&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;&lt;/body&gt;\n&lt;/html&gt;"
