@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export const useChat = () => {
   const [messages, setMessages] = useState([
-    { type: "bot", text: "안녕하세요. 무엇을 도와드릴까요?" },
+    { type: "bot", text: "안녕하세요! 무엇이 궁금하신가요?!?" },
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -18,16 +18,19 @@ export const useChat = () => {
     setMessages((prev) => [...prev, { type: "user", text: userMessage }]);
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_ALAN_API}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          content: userMessage,
-          client_id: process.env.REACT_APP_CLIENT_ID,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_ALAN_API}/api/v1/question`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            content: userMessage,
+            client_id: process.env.REACT_APP_CLIENT_ID,
+          }),
+        }
+      );
 
       const data = await response.json();
 
@@ -42,7 +45,7 @@ export const useChat = () => {
         ...prev,
         {
           type: "bot",
-          text: "죄송합니다. 오류가 발생했습니다.",
+          text: "죄송합니다. 서비스 오류가 발생했습니다.",
         },
       ]);
     } finally {
