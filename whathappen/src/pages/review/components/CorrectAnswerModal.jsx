@@ -77,4 +77,10 @@ const OImg = styled.div`
     left: 15%;
     top: -50%;
   `}
+  ${media.xsmall`
+    width: 31rem;
+  height: 27rem;
+    left: 5%;
+    top: -30%;
+  `}
 `;
