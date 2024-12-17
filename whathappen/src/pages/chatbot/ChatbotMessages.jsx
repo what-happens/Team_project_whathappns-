@@ -77,7 +77,7 @@ ChatbotMessages.propTypes = {
 
 const MessagesWrap = styled.div`
   padding: 2.6rem 2.3rem;
-  width: 38 0.4rem;
+  width: 35.4rem;
   height: 47.5rem;
   border-radius: 2rem;
   box-shadow: 0.1rem 0.1rem 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
