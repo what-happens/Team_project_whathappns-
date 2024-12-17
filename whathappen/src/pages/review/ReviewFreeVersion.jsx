@@ -181,6 +181,7 @@ const roll = keyframes`
             transform: rotate(360deg);
   }
 `;
+
 const LoadingImg = styled.div`
   background-image: url(${loadingImg});
   position: absolute;
