@@ -6,7 +6,12 @@ import Bookmark from "../../../components/Bookmark";
 import { media } from "../../../styles/MideaQuery";
 import PropTypes from "prop-types";
 
-export default function QuizCard({ quiz, handleSubmit, handleAnswerSelect }) {
+export default function QuizCard({
+  quiz,
+  handleSubmit,
+  handleAnswerSelect,
+  answers,
+}) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const isLastQuestion = currentQuestion === quiz.length - 1;
 
@@ -16,9 +21,8 @@ export default function QuizCard({ quiz, handleSubmit, handleAnswerSelect }) {
     }
   };
 
-  const handleNext = (e) => {
-    e.preventDefault();
-    if (currentQuestion < quiz.length - 1) {
+  const handleNext = () => {
+    if (answers[currentQuestion] && currentQuestion < quiz.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     }
   };
@@ -46,6 +50,7 @@ export default function QuizCard({ quiz, handleSubmit, handleAnswerSelect }) {
               id={`${quiz[currentQuestion].id}-${idx}`}
               onChange={() => handleAnswerSelect(answer, currentQuestion)}
               value={answer}
+              checked={answer === answers[currentQuestion]}
               required
             />
             <label htmlFor={`${quiz[currentQuestion].id}-${idx}`}>
@@ -241,4 +246,5 @@ QuizCard.propTypes = {
   ).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleAnswerSelect: PropTypes.func.isRequired,
+  answers: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

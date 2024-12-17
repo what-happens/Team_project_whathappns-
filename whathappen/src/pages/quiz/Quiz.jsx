@@ -56,6 +56,7 @@ export default function Quiz() {
           quiz={quiz}
           handleSubmit={handleSubmit}
           handleAnswerSelect={handleAnswerSelect}
+          answers={answers}
         />
       </QuizMain>
       {isConfirmModalOpen && (
