@@ -11,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import loadingImg from "../../assets/loading_Img.svg";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/authSlice";
+import { media } from "../../styles/MideaQuery";
 
 function Login() {
   const [idValue, setIdValue] = useState("");
@@ -341,6 +342,15 @@ const LoadingImg = styled.div`
   transform-origin: center center;
   animation: ${roll} 0.8s linear infinite;
   z-index: 30;
+  ${media.small`
+    left: 38%;
+  `}
+  ${media.medium`
+    left: 41%;
+  `}
+  ${media.xsmall`
+    left: 30%;
+  `}
 `;
 const LoadingText = styled.p`
   position: absolute;
@@ -349,6 +359,15 @@ const LoadingText = styled.p`
   font-weight: 700;
   font-size: 5rem;
   z-index: 30;
+  ${media.small`
+    left: 30%;
+  `}
+  ${media.medium`
+    left: 35%;
+  `}
+  ${media.xsmall`
+    left: 15%;
+  `}
 `;
 
 export default Login;

@@ -6,6 +6,7 @@ import { Google } from "./components/JoinSvg";
 import { useNavigate } from "react-router-dom";
 import loadingImg from "../../assets/loading_Img.svg";
 import { Link } from "react-router-dom";
+import { media } from "../../styles/MideaQuery";
 
 export default function Join() {
   const [nameValue, setNameValue] = useState("");
@@ -254,7 +255,7 @@ const Input = styled.input`
   padding: 3rem 0 3rem 2rem;
   box-sizing: border-box;
   font-size: 1.5rem;
-  width: 42rem;
+  width: 100%;
   height: 3rem;
   border: 1px solid #c4c4c4;
   border-radius: 15px;
@@ -333,6 +334,15 @@ const LoadingImg = styled.div`
   transform-origin: center center;
   animation: ${roll} 0.8s linear infinite;
   z-index: 30;
+  ${media.small`
+    left: 38%;
+  `}
+  ${media.medium`
+    left: 41%;
+  `}
+  ${media.xsmall`
+    left: 30%;
+  `}
 `;
 const LoadingText = styled.p`
   position: absolute;
@@ -341,4 +351,13 @@ const LoadingText = styled.p`
   font-weight: 700;
   font-size: 5rem;
   z-index: 30;
+  ${media.small`
+    left: 30%;
+  `}
+  ${media.medium`
+    left: 35%;
+  `}
+  ${media.xsmall`
+    left: 15%;
+  `}
 `;
