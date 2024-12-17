@@ -141,13 +141,13 @@ const LoadingPage = styled.div`
 
 const roll = keyframes`
   0% {
-
-            transform: rotate(0);
+    transform: rotate(0);
   }
   100% {
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 `;
+
 const LoadingImg = styled.div`
   background-image: url(${loadingImg});
   position: absolute;
@@ -161,7 +161,19 @@ const LoadingImg = styled.div`
   transform-origin: center center;
   animation: ${roll} 0.8s linear infinite;
   z-index: 30;
+
+  ${media.small`
+    width: 12rem;
+    height: 12rem;
+    left: 42%;
+  `}
+  ${media.xsmall`
+    width: 10rem;
+    height: 10rem;
+    left: 38%;
+  `}
 `;
+
 const LoadingText = styled.p`
   position: absolute;
   top: 52%;
@@ -169,6 +181,15 @@ const LoadingText = styled.p`
   font-weight: 700;
   font-size: 5rem;
   z-index: 30;
+
+  ${media.small`
+    font-size: 4rem;
+    left: 40%;
+  `}
+  ${media.xsmall`
+    font-size: 3rem;
+    left: 35%;
+  `}
 `;
 
 const Background = styled.div`
@@ -188,7 +209,7 @@ const Background = styled.div`
   align-items: center;
   padding-bottom: 3rem;
 
-  ${media.medium`
+  ${media.large`
     background-size: cover; 
     min-height: 100%; 
   `}
@@ -196,13 +217,28 @@ const Background = styled.div`
   ${media.small`
     background-size: cover; 
     min-height: 100%; 
+    padding-bottom: 2rem;
+  `}
+
+  ${media.xsmall`
+    background-size: cover; 
+    min-height: 100%;
+    padding-bottom: 1.5rem;
   `}
 `;
+
 const MyPageContents = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   padding: 15rem 1rem 3rem 1rem;
+
+  ${media.small`
+    padding: 12rem 1rem 2rem 1rem;
+  `}
+  ${media.xsmall`
+    padding: 10rem 1rem 1.5rem 1rem;
+  `}
 `;
 
 const GreetingMsg = styled.div`
@@ -215,10 +251,14 @@ const GreetingMsg = styled.div`
   br {
     display: none;
   }
-  ${media.medium`
-    br{
+  ${media.small`
+    font-size: 3.8rem;
+    br {
       display: inline-block;
     }
+  `}
+  ${media.xsmall`
+    font-size: 3rem;
   `}
 `;
 
@@ -237,8 +277,18 @@ const StatusContents = styled.div`
   margin: 3rem 0;
   border-radius: 2rem;
 
-  ${media.medium`
+  ${media.large`
     min-width: 66rem;
+  `}
+  ${media.small`
+    min-width: 60rem;
+    height: 18rem;
+    padding: 2rem;
+  `}
+  ${media.xsmall`
+    min-width: 32rem;
+    height: 15rem;
+    padding: 1.5rem;
   `}
 `;
 
@@ -249,6 +299,15 @@ const StatusBox = styled.div`
   justify-content: center;
   align-items: center;
   gap: 3rem;
+
+  ${media.small`
+    font-size: 2.8rem;
+    gap: 2rem;
+  `}
+  ${media.xsmall`
+    font-size: 2.2rem;
+    gap: 1.5rem;
+  `}
 `;
 
 const StatusVal = styled.div`
@@ -263,6 +322,13 @@ const Division = styled.div`
   height: 12.4rem;
   width: 1px;
   background-color: #c4c4c4;
+
+  ${media.small`
+    height: 10rem;
+  `}
+  ${media.xsmall`
+    height: 8rem;
+  `}
 `;
 
 const CourseContents = styled.section`
@@ -277,8 +343,20 @@ const CourseContents = styled.section`
     margin-bottom: 1rem;
   }
 
-  ${media.medium`
+  ${media.large`
     flex-direction: column;
+  `}
+
+  ${media.small`
+    h2 {
+      font-size: 3.2rem;
+    }
+  `}
+
+  ${media.xsmall`
+    h2 {
+      font-size: 2.8rem;
+    }
   `}
 `;
 
@@ -298,10 +376,17 @@ const ProgressContents = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 2rem;
 
-  ${media.medium`
+  ${media.large`
     min-width: 66rem;
+  `}
+  ${media.small`
+    min-width: 56rem;
+    padding: 1.5rem;
+  `}
+  ${media.xsmall`
+    min-width: 32rem;
+    padding: 1rem;
   `}
 `;
