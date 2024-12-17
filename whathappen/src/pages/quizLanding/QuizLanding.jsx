@@ -160,8 +160,11 @@ const QuizLogo = styled.img`
     height: 100%;
   `}
   ${media.small`
-    width: 40rem;
-    height: 100%;
+    width: 34rem;
+  `}
+
+  ${media.xsmall`
+    width: 25rem;
   `}
 `;
 
@@ -177,13 +180,20 @@ const QuizControlSection = styled.section`
   & > a > button {
     ${media.medium`
       font-size: 2.5rem;
-      width: 18rem;
+      width: 19rem;
+      padding: 2rem 1.8rem;
     `}
     ${media.small`
-      width: 11rem;
+      width: 12rem;
       font-size: 1.5rem;
       padding: 0.8rem 1.2rem;
       border-radius: 1.6rem;
     `}
+    ${media.xsmall`
+    width: 9rem;
+    font-size: 1rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 1rem;
+  `}
   }
 `;
