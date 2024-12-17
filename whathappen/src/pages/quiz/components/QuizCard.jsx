@@ -158,8 +158,17 @@ const QuestionNumber = styled.p`
     display: block;
     font-weight: bolder;
   }
+  ${media.mediumlarge`
+    font-size: 3.3rem;
+  `}
   ${media.medium`
     font-size: 3rem;
+  `}
+  ${media.small`
+    font-size: 2.5rem;
+  `}
+  ${media.xsmall`
+    font-size: 2rem;
   `}
 `;
 
@@ -167,19 +176,31 @@ const QuizQuestion = styled.h3`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20rem;
+  height: 18rem;
   max-height: 35rem;
   max-width: 55rem;
   word-wrap: break-word;
-  font-size: 3.7rem;
+  font-size: 3rem;
   line-height: 5rem;
+  ${media.mediumlarge`
+    max-width: 48rem;
+    font-size: 2.6rem;
+  `}
   ${media.medium`
-  height:auto;
-    font-size: 2.8rem;
+    height: 20rem;
+    font-size: 2.3rem;
   `}
   ${media.small`
-    height:auto;
+  padding:2rem 0;
+  height:auto;
+    max-height:26rem;
     font-size: 2rem;
+    line-height: 3.8rem;
+  `}
+  ${media.xsmall`
+    max-height: 50rem;
+    font-size: 1.5rem;
+    line-height: 3.5rem;
   `}
 `;
 
@@ -190,6 +211,14 @@ const FormWrapper = styled.form`
   justify-content: center;
   font-size: 2rem;
   line-height: 3rem;
+  ${media.small`
+    font-size: 1.5rem;
+    line-height: 2.8rem;
+  `}
+  ${media.xsmall`
+    font-size: 1.3rem;
+    line-height: 2.5rem;
+  `}
 `;
 
 const QuizInputWrapper = styled.div`
@@ -206,6 +235,12 @@ const QuizInputWrapper = styled.div`
     border-radius: 2rem;
     border: 1px solid #2e5dff;
     cursor: pointer;
+    ${media.small`
+      padding: 1.8rem 0;
+  `}
+    ${media.xsmall`
+      padding: 1.5rem 0;
+  `}
   }
 
   input[type="radio"]:checked + label {
@@ -226,10 +261,20 @@ const ButtonWrapper = styled.div`
   margin-top: 2.75rem;
   gap: 1.5rem;
   & > button {
+    ${media.medium`
+    font-size: 1.6rem;
+    padding:0.7rem 1.7rem;
+    border-radius:1.4rem;
+  `}
     ${media.small`
-    font-size: 1.5rem;
-    padding:1rem 1rem;
-    border-radius:1.7rem;
+    font-size: 1.3rem;
+    padding:0.5rem 1rem;
+    border-radius:1.4rem;
+  `}
+    ${media.xsmall`
+    font-size: 1rem;
+    padding:0.1rem 1rem;
+    border-radius:1rem;
   `}
   }
 `;
