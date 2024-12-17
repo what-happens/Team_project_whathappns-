@@ -178,7 +178,7 @@ const QuizSection = styled.section`
    padding: 3rem 2rem;
    border-radius: 1rem;
    max-width: 100%;
-   margin: 0 auto;
+   margin: 0 auto 10rem;
  `}
 `;
 

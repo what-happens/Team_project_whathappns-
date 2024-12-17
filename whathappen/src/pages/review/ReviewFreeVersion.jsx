@@ -132,7 +132,7 @@ export default function ReviewFreeVersion() {
 }
 
 const Background = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -143,7 +143,6 @@ const Background = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -157,6 +156,7 @@ const Background = styled.div`
   ${media.small`
     background-size: cover; 
     height: 100%; 
+    min-height:100vh;
   `}
 `;
 const LoadingPage = styled.div`
@@ -194,6 +194,15 @@ const LoadingImg = styled.div`
   transform-origin: center center;
   animation: ${roll} 0.8s linear infinite;
   z-index: 30;
+  ${media.small`
+    left: 38%;
+  `}
+  ${media.medium`
+    left: 41%;
+  `}
+  ${media.xsmall`
+    left: 30%;
+  `}
 `;
 const LoadingText = styled.p`
   position: absolute;
@@ -202,6 +211,15 @@ const LoadingText = styled.p`
   font-weight: 700;
   font-size: 5rem;
   z-index: 30;
+  ${media.small`
+    left: 30%;
+  `}
+  ${media.medium`
+    left: 35%;
+  `}
+  ${media.xsmall`
+    left: 15%;
+  `}
 `;
 
 const vibrate = keyframes`
