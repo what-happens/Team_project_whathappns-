@@ -7,13 +7,9 @@
       {
         "sub_id": 0,
         "sub_name": "transform_explanation ",
-        "contents": [
-          {
-            "desc": "요소를 2D 또는 3D 공간에서 이동, 회전, 크기 조절, 기울이기 등의 효과를 적용할 수 있도록 해주는 CSS 속성입니다.\n이 속성을 활용하면 요소를 애니메이션 없이도 동적으로 배치하거나 스타일링할 수 있습니다.\ntransform은 아래와 같이 다양한 속성값을 가집니다.",
-            "code": ".box {\n\ttransform: translate(50px, 50px);\ntransform: rotate(45deg);\ntransform: scale(1.5);\ntransform: skew(20deg, 10deg);\n}",
-            "img": null
-          }
-        ]
+        "desc": "요소를 2D 또는 3D 공간에서 이동, 회전, 크기 조절, 기울이기 등의 효과를 적용할 수 있도록 해주는 CSS 속성입니다.\n이 속성을 활용하면 요소를 애니메이션 없이도 동적으로 배치하거나 스타일링할 수 있습니다.\ntransform은 아래와 같이 다양한 속성값을 가집니다.",
+        "code": ".box {\n\ttransform: translate(50px, 50px);\ntransform: rotate(45deg);\ntransform: scale(1.5);\ntransform: skew(20deg, 10deg);\n}",
+        "img": null
       }
     ]
   },
@@ -26,24 +22,16 @@
       {
         "sub_id": 0,
         "sub_name": "translate",
-        "contents": [
-          {
-            "desc": "이 함수는 요소의 기본 위치 즉, 현재 배치된 위치를 기준으로 지정된 거리만큼 이동시킵니다.\n레이아웃의 다른 요소에는 영향을 주지 않습니다. translateX, translateY를 사용하여, 특정 방향을 지정할 수도 있습니다",
-            "code": ".translate-example {\n\twidth: 100px; \nheight: 100px;\nbackground-color: lightblue;\ntransform: translate(50px, 50px); /* 요소를 오른쪽 50px, 아래쪽 50px 이동 */\n}",
-            "img": null
-          }
-        ]
+        "desc": "이 함수는 요소의 기본 위치 즉, 현재 배치된 위치를 기준으로 지정된 거리만큼 이동시킵니다.\n레이아웃의 다른 요소에는 영향을 주지 않습니다. translateX, translateY를 사용하여, 특정 방향을 지정할 수도 있습니다",
+        "code": ".translate-example {\n\twidth: 100px; \nheight: 100px;\nbackground-color: lightblue;\ntransform: translate(50px, 50px); /* 요소를 오른쪽 50px, 아래쪽 50px 이동 */\n}",
+        "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "scale",
-        "contents": [
-          {
-            "desc": "scale() 함수는 요소의 크기를 수평(x축)과 수직(y축) 방향으로 확대하거나, 축소하여 요소의 크기를 조절합니다.\n1보다 큰 값은 요소를 확대하고, 1보다 작은 값은 요소를 축소합니다.\n 요소의 원래 크기를 기준으로 비율을 설정하며, 크기를 조절해도 요소의 위치는 유지됩니다.",
-            "code": ".scale-example {\n\twidth: 100px;\nheight: 100px;\nbackground-color: lightcoral;\ntransform: scale(1.5); /* 요소를 1.5배 확대 */\n}",
-            "img": null
-          }
-        ]
+        "desc": "scale() 함수는 요소의 크기를 수평(x축)과 수직(y축) 방향으로 확대하거나, 축소하여 요소의 크기를 조절합니다.\n1보다 큰 값은 요소를 확대하고, 1보다 작은 값은 요소를 축소합니다.\n 요소의 원래 크기를 기준으로 비율을 설정하며, 크기를 조절해도 요소의 위치는 유지됩니다.",
+        "code": ".scale-example {\n\twidth: 100px;\nheight: 100px;\nbackground-color: lightcoral;\ntransform: scale(1.5); /* 요소를 1.5배 확대 */\n}",
+        "img": null
       }
     ]
   },
@@ -56,24 +44,16 @@
       {
         "sub_id": 0,
         "sub_name": "rotate",
-        "contents": [
-          {
-            "desc": "rotate() 함수는 요소를 지정된 각도만큼 회전시킵니다. 양수 값은 시계 방향, 음수 값은 반시계 방향으로 회전합니다.\n각도 단위로 deg(도), rad(라디안), turn(회전) 등을 지원합니다.",
-            "code": ".rotate-example {\n\twidth: 100px;\nheight: 100px;\n background-color: lightgreen; \ntransform: rotate(45deg); /* 요소를 시계 방향으로 45도 회전 */\n}",
-            "img": null
-          }
-        ]
+        "desc": "rotate() 함수는 요소를 지정된 각도만큼 회전시킵니다. 양수 값은 시계 방향, 음수 값은 반시계 방향으로 회전합니다.\n각도 단위로 deg(도), rad(라디안), turn(회전) 등을 지원합니다.",
+        "code": ".rotate-example {\n\twidth: 100px;\nheight: 100px;\n background-color: lightgreen; \ntransform: rotate(45deg); /* 요소를 시계 방향으로 45도 회전 */\n}",
+        "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "skew",
-        "contents": [
-          {
-            "desc": "skew() 함수는 요소를 기울이는 데 사용됩니다. X축과 Y축에 대해 지정된 각도만큼 요소를 기울일 수 있습니다. \n단위는 각도 deg, rad, turn 등을 사용하며, X축과 Y축의 각도를 별도로 지정할 수 있습니다.",
-            "code": " .skew-example {\n\t width: 100px; \nheight: 100px;\nbackground-color: lightgoldenrodyellow; \ntransform: skew(20deg, 10deg); /* X축으로 20도, Y축으로 10도 기울이기 */\n}",
-            "img": null
-          }
-        ]
+        "desc": "skew() 함수는 요소를 기울이는 데 사용됩니다. X축과 Y축에 대해 지정된 각도만큼 요소를 기울일 수 있습니다. \n단위는 각도 deg, rad, turn 등을 사용하며, X축과 Y축의 각도를 별도로 지정할 수 있습니다.",
+        "code": " .skew-example {\n\t width: 100px; \nheight: 100px;\nbackground-color: lightgoldenrodyellow; \ntransform: skew(20deg, 10deg); /* X축으로 20도, Y축으로 10도 기울이기 */\n}",
+        "img": null
       }
     ]
   },
@@ -86,24 +66,16 @@
       {
         "sub_id": 0,
         "sub_name": "about_transition",
-        "contents": [
-          {
-            "desc": "요소의 css속성값이 변할 때, 부드럽고 자연스럽게 보여주는 애니메이션 효과를 적용합니다.\n 다시 말해, 속성의 변화가 일정 기간에 걸쳐 점진적으로 일어나도록 합니다. \n이를 통해 변화가 발생하는 속성, 지속 시간, 타이밍 함수 등을 조정하여 다양한 연출을 할 수 있습니다.",
-            "code": ".box {\n\t width: 100px; \nheight: 100px;\nbackground: coral;\ntransition: opacity 0.5s, transform 0.5s;\n}\n.box:hover {\n\topacity: 0.5; \ntransform: translateX(50px);\n}",
-            "img": null
-          }
-        ]
+        "desc": "요소의 css속성값이 변할 때, 부드럽고 자연스럽게 보여주는 애니메이션 효과를 적용합니다.\n 다시 말해, 속성의 변화가 일정 기간에 걸쳐 점진적으로 일어나도록 합니다. \n이를 통해 변화가 발생하는 속성, 지속 시간, 타이밍 함수 등을 조정하여 다양한 연출을 할 수 있습니다.",
+        "code": ".box {\n\t width: 100px; \nheight: 100px;\nbackground: coral;\ntransition: opacity 0.5s, transform 0.5s;\n}\n.box:hover {\n\topacity: 0.5; \ntransform: translateX(50px);\n}",
+        "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "transition_property ",
-        "contents": [
-          {
-            "desc": "전환효과를 적용시킬 CSS 속성(예 : width, height, background-color 등)을 선택적으로 지정하는 데 사용됩니다.\n이 속성을 사용하면 애니메이션 효과를 세부적으로 제어할 수 있습니다.  쉼표로 구분하여 여러 속성을 동시에 지정할 수 있습니다",
-            "code": ".property-example {\n\t width: 100px;\n height: 100px; \nbackground-color: lightblue; \ntransition-property: background-color; /* 배경색만 전환 효과 적용 */ \ntransition-duration: 0.5s; \n} \n .property-example:hover { \n\tbackground-color: lightcoral;\n}",
-            "img": null
-          }
-        ]
+        "desc": "전환효과를 적용시킬 CSS 속성(예 : width, height, background-color 등)을 선택적으로 지정하는 데 사용됩니다.\n이 속성을 사용하면 애니메이션 효과를 세부적으로 제어할 수 있습니다.  쉼표로 구분하여 여러 속성을 동시에 지정할 수 있습니다",
+        "code": ".property-example {\n\t width: 100px;\n height: 100px; \nbackground-color: lightblue; \ntransition-property: background-color; /* 배경색만 전환 효과 적용 */ \ntransition-duration: 0.5s; \n} \n .property-example:hover { \n\tbackground-color: lightcoral;\n}",
+        "img": null
       }
     ]
   },
@@ -115,35 +87,23 @@
       {
         "sub_id": 0,
         "sub_name": "transition_duration",
-        "contents": [
-          {
-            "desc": "CSS 속성의 전환 효과가 완료되기까지 걸리는 시간을 설정합니다. \n 시간 단위로 초(s) 또는 밀리초(ms)를 사용할 수 있습니다. 전환 효과의 속도를 조절할 수 있습니다. \n예를 들어, 0.5s는 0.5초 동안 전환 효과가 진행됨을 의미합니다.",
-            "code": ".duration-example {\n\t width: 100px;\nheight: 100px; \nbackground-color: lightgreen; \ntransition-property: background-color; \ntransition-duration: 2s; /* 2초 동안 전환 */\n} \n.duration-example:hover { \nbackground-color: lightgoldenrodyellow; \n }",
-            "img": null
-          }
-        ]
+        "desc": "CSS 속성의 전환 효과가 완료되기까지 걸리는 시간을 설정합니다. \n 시간 단위로 초(s) 또는 밀리초(ms)를 사용할 수 있습니다. 전환 효과의 속도를 조절할 수 있습니다. \n예를 들어, 0.5s는 0.5초 동안 전환 효과가 진행됨을 의미합니다.",
+        "code": ".duration-example {\n\t width: 100px;\nheight: 100px; \nbackground-color: lightgreen; \ntransition-property: background-color; \ntransition-duration: 2s; /* 2초 동안 전환 */\n} \n.duration-example:hover { \nbackground-color: lightgoldenrodyellow; \n }",
+        "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "transition-timing_function",
-        "contents": [
-          {
-            "desc": "transition-timing-function은  전환 효과의 진행 속도를 설정합니다.\n전환이 시작부터 끝까지 어떻게 진행될지를 결정하는 곡선을 지정합니다.  \n기본적인 값으로는 ease, linear,ease-in, ease-out, ease-in-out 등이 있으며, \nsteps 함수는 입력한 수만큼 변화의 단계를 설정합니다.",
-            "code": ".timing-example {\n\twidth: 100px;\nheight: 100px;\nbackground-color: lightpink; \ntransition-property: transform; \ntransition-duration: 1s;  transition-timing-function: ease-in-out; /* ease-in-out 효과 *} .timing-example:hover { transform: translateX(100px); }",
-            "img": null
-          }
-        ]
+        "desc": "transition-timing-function은  전환 효과의 진행 속도를 설정합니다.\n전환이 시작부터 끝까지 어떻게 진행될지를 결정하는 곡선을 지정합니다.  \n기본적인 값으로는 ease, linear,ease-in, ease-out, ease-in-out 등이 있으며, \nsteps 함수는 입력한 수만큼 변화의 단계를 설정합니다.",
+        "code": ".timing-example {\n\twidth: 100px;\nheight: 100px;\nbackground-color: lightpink; \ntransition-property: transform; \ntransition-duration: 1s;  transition-timing-function: ease-in-out; /* ease-in-out 효과 *} .timing-example:hover { transform: translateX(100px); }",
+        "img": null
       },
       {
         "sub_id": 2,
         "sub_name": "transition-delay",
-        "contents": [
-          {
-            "desc": " 전환이 시작되는 시점을 조정합니다. 즉, 효과 시작을 지연시키는 시간을 설정합니다. \n양수 값은 지정된 시간 후에 시작하며, 음수 값은 이미 진행 중인 것처럼 시작합니다.",
-            "code": ".delay-example {\n\t width: 100px; \nheight: 100px; \nbackground-color: lightsteelblue; \ntransition-property: background-color; \ntransition-duration: 1s;  \ntransition-delay: 0.5s; /* 0.5초 지연 후 전환 */\n} \n.delay-example:hover { \n\tbackground-color: lightcoral;\n}",
-            "img": null
-          }
-        ]
+        "desc": " 전환이 시작되는 시점을 조정합니다. 즉, 효과 시작을 지연시키는 시간을 설정합니다. \n양수 값은 지정된 시간 후에 시작하며, 음수 값은 이미 진행 중인 것처럼 시작합니다.",
+        "code": ".delay-example {\n\t width: 100px; \nheight: 100px; \nbackground-color: lightsteelblue; \ntransition-property: background-color; \ntransition-duration: 1s;  \ntransition-delay: 0.5s; /* 0.5초 지연 후 전환 */\n} \n.delay-example:hover { \n\tbackground-color: lightcoral;\n}",
+        "img": null
       }
     ]
   },
@@ -156,24 +116,16 @@
       {
         "sub_id": 0,
         "sub_name": "transform_3D",
-        "contents": [
-          {
-            "desc": "transform 속성은 3D 변형 메소드로서도 활용할 수 있습니다. 이는 Z축에 회전, 크기 조절, 기울이기, 이동 효과를 적용할 수 있게 합니다. \n아래와 같은 3D 메소드를 사용할 때는 반드시 perpective와 함께 사용해야 합니다. \ntranslateZ(z) : z축 거리만큼 이동합니다. rotateZ(z) : z축 기준으로 회전합니다. scaleZ(z) : z축 기준으로 크기를 배율로 조정합니다.",
-            "code": ".element { \n\t transform-style: preserve-3d; /* 3D 변형 사용 설정 */ \ntransform: translateZ(50px) rotateZ(45deg) scaleZ(1.5); \nwidth: 200px; \nheight: 200px; \n background-color: #3498db;\n }",
-            "img": null
-          }
-        ]
+        "desc": "transform 속성은 3D 변형 메소드로서도 활용할 수 있습니다. 이는 Z축에 회전, 크기 조절, 기울이기, 이동 효과를 적용할 수 있게 합니다. \n아래와 같은 3D 메소드를 사용할 때는 반드시 perpective와 함께 사용해야 합니다. \ntranslateZ(z) : z축 거리만큼 이동합니다. rotateZ(z) : z축 기준으로 회전합니다. scaleZ(z) : z축 기준으로 크기를 배율로 조정합니다.",
+        "code": ".element { \n\t transform-style: preserve-3d; /* 3D 변형 사용 설정 */ \ntransform: translateZ(50px) rotateZ(45deg) scaleZ(1.5); \nwidth: 200px; \nheight: 200px; \n background-color: #3498db;\n }",
+        "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "perspective",
-        "contents": [
-          {
-            "desc": "사용자의 z축 위치를 정할 수 있는 속성이며, 값이 작을수록 변형이 커집니다. \n즉, 값이 작을수록 사용자가 가까이 다가가는 효과를 주게 됩니다. 이 속성은 부모 요소에 적용하며, \n직계 자식 요소에만 영향을 미칩니다. 음수 값은 사용할 수 없습니다.",
-            "code": ".container {\t\nperspective: 500px;\n}\n.box {\n\twidth: 150px;\nheight: 150px;\nbackground: lightblue;\ntransform: rotateZ(30deg) translateZ(50px);\ntransition: transform 1s;\n}.box:hover {\n\ttransform: rotateZ(60deg) translateZ(100px) scaleZ(1.2);\n}",
-            "img": null
-          }
-        ]
+        "desc": "사용자의 z축 위치를 정할 수 있는 속성이며, 값이 작을수록 변형이 커집니다. \n즉, 값이 작을수록 사용자가 가까이 다가가는 효과를 주게 됩니다. 이 속성은 부모 요소에 적용하며, \n직계 자식 요소에만 영향을 미칩니다. 음수 값은 사용할 수 없습니다.",
+        "code": ".container {\t\nperspective: 500px;\n}\n.box {\n\twidth: 150px;\nheight: 150px;\nbackground: lightblue;\ntransform: rotateZ(30deg) translateZ(50px);\ntransition: transform 1s;\n}.box:hover {\n\ttransform: rotateZ(60deg) translateZ(100px) scaleZ(1.2);\n}",
+        "img": null
       }
     ]
   },
@@ -185,13 +137,9 @@
       {
         "sub_id": 0,
         "sub_name": "layout_explanation",
-        "contents": [
-          {
-            "desc": "반응형 디자인은 다양한 화면 크기에서 웹 페이지가 최적화되도록 구성하는 방법입니다. \n반응형 웹은 픽셀 대신 상대적인 단위를 사용하여 레이아웃을 구성하며, 화면 크기에 따라 요소들의 \n크기가 자동으로 조절되도록 할 수 있습니다.",
-            "code": ":root {\n\tfont-size: 16px; \n}\n.container {\n\t display: flex;\ngap: 2%;\n}\n.box {\n\t width: 48%;\nbackground: lightblue;\npadding: 2em;\nfont-size: 1rem;\ntext-align: center;\nborder: 1px solid steelblue;\n}",
-            "img": null
-          }
-        ]
+        "desc": "반응형 디자인은 다양한 화면 크기에서 웹 페이지가 최적화되도록 구성하는 방법입니다. \n반응형 웹은 픽셀 대신 상대적인 단위를 사용하여 레이아웃을 구성하며, 화면 크기에 따라 요소들의 \n크기가 자동으로 조절되도록 할 수 있습니다.",
+        "code": ":root {\n\tfont-size: 16px; \n}\n.container {\n\t display: flex;\ngap: 2%;\n}\n.box {\n\t width: 48%;\nbackground: lightblue;\npadding: 2em;\nfont-size: 1rem;\ntext-align: center;\nborder: 1px solid steelblue;\n}",
+        "img": null
       }
     ]
   },
@@ -203,35 +151,23 @@
       {
         "sub_id": 0,
         "sub_name": "percent",
-        "contents": [
-          {
-            "desc": "퍼센트(%)는 부모 요소의 크기를 기준으로 자식 요소의 크기를 비율로 설정합니다.\n유동적인 레이아웃을 만들 때 가장 기본적으로 사용됩니다.\n부모 요소의 크기가 동적으로 변하면, 자식 요소도 함께 변경됩니다.",
-            "code": "div {\n\twidth: 50%; /* 부모 크기의 절반 */\n}",
-            "img": null
-          }
-        ]
+        "desc": "퍼센트(%)는 부모 요소의 크기를 기준으로 자식 요소의 크기를 비율로 설정합니다.\n유동적인 레이아웃을 만들 때 가장 기본적으로 사용됩니다.\n부모 요소의 크기가 동적으로 변하면, 자식 요소도 함께 변경됩니다.",
+        "code": "div {\n\twidth: 50%; /* 부모 크기의 절반 */\n}",
+        "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "em",
-        "contents": [
-          {
-            "desc": "현재 요소의 폰트 크기를 기준으로 상대적인 크기를 설정합니다.\n배율 개념으로 동작하며, 중첩된 요소에 사용할 경우 예상치 못한 크기 변화가 발생할 수 있으니 주의해야 합니다",
-            "code": "div {\n\tfont-size: 2em; /* 현재 요소 폰트 크기의 두 배 */\n}",
-            "img": null
-          }
-        ]
+        "desc": "현재 요소의 폰트 크기를 기준으로 상대적인 크기를 설정합니다.\n배율 개념으로 동작하며, 중첩된 요소에 사용할 경우 예상치 못한 크기 변화가 발생할 수 있으니 주의해야 합니다",
+        "code": "div {\n\tfont-size: 2em; /* 현재 요소 폰트 크기의 두 배 */\n}",
+        "img": null
       },
       {
         "sub_id": 2,
         "sub_name": "rem",
-        "contents": [
-          {
-            "desc": "문서의 최상위 요소 즉, <html> 의 폰트 크기를 기준으로 계산됩니다.\n기본적으로 브라우저의 기본 폰트 크기인 16px을 사용합니다.\n전역 설정과 조화를 이루기 때문에 예측 가능한 레이아웃을 구성할 수 있습니다.",
-            "code": "html {\n\tfont-size: 16px;\n}\ndiv {\n\tfont-size: 1.5rem; /* 24px */\n}",
-            "img": null
-          }
-        ]
+        "desc": "문서의 최상위 요소 즉, <html> 의 폰트 크기를 기준으로 계산됩니다.\n기본적으로 브라우저의 기본 폰트 크기인 16px을 사용합니다.\n전역 설정과 조화를 이루기 때문에 예측 가능한 레이아웃을 구성할 수 있습니다.",
+        "code": "html {\n\tfont-size: 16px;\n}\ndiv {\n\tfont-size: 1.5rem; /* 24px */\n}",
+        "img": null
       }
     ]
   },
@@ -243,24 +179,16 @@
       {
         "sub_id": 0,
         "sub_name": "functions_explanation",
-        "contents": [
-          {
-            "desc": "CSS 함수는 스타일 속성 값으로 계산식이나 조건을 지정하여 동적인 스타일을 적용할 수 있게 하는 도구입니다. \n반응형 디자인, 유연한 레이아웃 설정, 계산 기반 스타일링 등에 활용됩니다.\n이 기능을 활용하면 계산을 통해 값을 설정하거나, 여러 값 중에서 조건에 맞는 값을 선택할 수 있습니다.",
-            "code": ".box {\n\twidth: min(90%, 600px); /* 90%와 600px 중 더 작은 값 선택 */\nfont-size: calc(1rem + 1vw); /* 1rem에 화면 너비의 1%를 더한 폰트 크기 */\n}",
-            "img": null
-          }
-        ]
+        "desc": "CSS 함수는 스타일 속성 값으로 계산식이나 조건을 지정하여 동적인 스타일을 적용할 수 있게 하는 도구입니다. \n반응형 디자인, 유연한 레이아웃 설정, 계산 기반 스타일링 등에 활용됩니다.\n이 기능을 활용하면 계산을 통해 값을 설정하거나, 여러 값 중에서 조건에 맞는 값을 선택할 수 있습니다.",
+        "code": ".box {\n\twidth: min(90%, 600px); /* 90%와 600px 중 더 작은 값 선택 */\nfont-size: calc(1rem + 1vw); /* 1rem에 화면 너비의 1%를 더한 폰트 크기 */\n}",
+        "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "function_combinations",
-        "contents": [
-          {
-            "desc": "calc(), min(), max()를 함께 사용하면 더욱 정교하고 동적인 스타일링이 가능합니다.\n여러 제약 조건을 고려한 반응형 디자인을 구현할 때 최적입니다.",
-            "code": ".box {\n\twidth: min(calc(100% - 20px), 500px); /* 계산된 값과 500px 중 최소값 사용 */\n}",
-            "img": null
-          }
-        ]
+        "desc": "calc(), min(), max()를 함께 사용하면 더욱 정교하고 동적인 스타일링이 가능합니다.\n여러 제약 조건을 고려한 반응형 디자인을 구현할 때 최적입니다.",
+        "code": ".box {\n\twidth: min(calc(100% - 20px), 500px); /* 계산된 값과 500px 중 최소값 사용 */\n}",
+        "img": null
       }
     ]
   },
@@ -272,35 +200,23 @@
       {
         "sub_id": 0,
         "sub_name": "calc",
-        "contents": [
-          {
-            "desc": "calc() 함수는 CSS에서 계산식을 사용하여 동적인 값이나 복잡한 계산을 처리할 수 있게 합니다.\n사칙연산(+, -, *, /)을 지원하며, 서로 다른 단위를 조합해 유연한 스타일을 구현할 수 있습니다. \n레이아웃의 특정 여백이나 패딩을 동적으로 설정할 때 유용합니다.",
-            "code": ".container {\n\twidth: calc(100% - 20px); /* 부모 요소의 100% 너비에서 20px을 뺀 너비 */\n}\n.box {\n\twidth: calc(50% - 10px);  /* 50%의 너비에서 10px을 뺀 너비 */\npadding: calc(1rem + 10px); /* 1rem과 10px을 더한 padding */\n}",
-            "img": null
-          }
-        ]
+        "desc": "calc() 함수는 CSS에서 계산식을 사용하여 동적인 값이나 복잡한 계산을 처리할 수 있게 합니다.\n사칙연산(+, -, *, /)을 지원하며, 서로 다른 단위를 조합해 유연한 스타일을 구현할 수 있습니다. \n레이아웃의 특정 여백이나 패딩을 동적으로 설정할 때 유용합니다.",
+        "code": ".container {\n\twidth: calc(100% - 20px); /* 부모 요소의 100% 너비에서 20px을 뺀 너비 */\n}\n.box {\n\twidth: calc(50% - 10px);  /* 50%의 너비에서 10px을 뺀 너비 */\npadding: calc(1rem + 10px); /* 1rem과 10px을 더한 padding */\n}",
+        "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "min",
-        "contents": [
-          {
-            "desc": "min() 함수는 여러 값 중 가장 작은 값을 선택하며, 주로 요소의 최소 크기 설정에 사용됩니다.\n요소 크기를 제한하여 반응형 디자인에서 화면 크기에 맞는 크기를 자동 조정할 수 있습니다.",
-            "code": ".box {\n\twidth: min(100%, 400px); /* 100%와 400px 중 더 작은 값 사용 */\n}",
-            "img": null
-          }
-        ]
+        "desc": "min() 함수는 여러 값 중 가장 작은 값을 선택하며, 주로 요소의 최소 크기 설정에 사용됩니다.\n요소 크기를 제한하여 반응형 디자인에서 화면 크기에 맞는 크기를 자동 조정할 수 있습니다.",
+        "code": ".box {\n\twidth: min(100%, 400px); /* 100%와 400px 중 더 작은 값 사용 */\n}",
+        "img": null
       },
       {
         "sub_id": 2,
         "sub_name": "max",
-        "contents": [
-          {
-            "desc": "max() 함수는 여러 값 중 가장 큰 값을 선택하며, 요소 크기나 값을 고정할 때 활용됩니다.\n최소값 이상으로 크기를 보장하고 싶을 때 유용합니다.",
-            "code": ".box {\n\t width: max(300px, 10%); /* 300px과 10% 중 더 큰 값 사용 */\n}",
-            "img": null
-          }
-        ]
+        "desc": "max() 함수는 여러 값 중 가장 큰 값을 선택하며, 요소 크기나 값을 고정할 때 활용됩니다.\n최소값 이상으로 크기를 보장하고 싶을 때 유용합니다.",
+        "code": ".box {\n\t width: max(300px, 10%); /* 300px과 10% 중 더 큰 값 사용 */\n}",
+        "img": null
       }
     ]
   },
@@ -313,24 +229,16 @@
       {
         "sub_id": 0,
         "sub_name": "media_query_explanation",
-        "contents": [
-          {
-            "desc": "미디어쿼리는 사용자의 화면 크기나, 장치 특성에 따라 다른 스타일을 적용할 수 있게 해줍니다. \n이를 통해 다양한 화면 크기와 해상도를 가진 디바이스에서 콘텐츠를 최적화하여 표시할 수 있습니다.\n @media 규칙을 사용하여 정의되며, 특정 조건을 만족하는 경우에만 CSS 스타일을 적용할 수  있습니다.",
-            "code": "/* 기본 스타일 */\nbody {\n\tfont-size: 16px;\n}\n/* 화면 너비가 768px 이하인 경우 */\n@media (max-width: 768px) {\n\tbody {\n\t font-size: 14px;\n}\n}",
-            "img": null
-          }
-        ]
+        "desc": "미디어쿼리는 사용자의 화면 크기나, 장치 특성에 따라 다른 스타일을 적용할 수 있게 해줍니다. \n이를 통해 다양한 화면 크기와 해상도를 가진 디바이스에서 콘텐츠를 최적화하여 표시할 수 있습니다.\n @media 규칙을 사용하여 정의되며, 특정 조건을 만족하는 경우에만 CSS 스타일을 적용할 수  있습니다.",
+        "code": "/* 기본 스타일 */\nbody {\n\tfont-size: 16px;\n}\n/* 화면 너비가 768px 이하인 경우 */\n@media (max-width: 768px) {\n\tbody {\n\t font-size: 14px;\n}\n}",
+        "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "media_types",
-        "contents": [
-          {
-            "desc": "스타일시트가 어떤 장치나 출력 방식에 적용되어야 하는지를 명시합니다.\n이를 통해 웹 개발자는 특정 장치나 환경에 따라 다르게 표시되는 스타일을 정의할 수 있습니다.\nall : 모든 장치에 적용됩니다.\nscreen : 주로 컴퓨터 화면, 스마트폰, 태블릿 등의 스크린을 대상으로 보여집니다.\n print : 인쇄될 문서에 적용됩니다. 이는 웹페이지를 인쇄할 때 사용되는 스타일을 명시하는 데 사용됩니다.",
-            "code": "@media screen and (max-width: 768px) {\n\t /* 스크린용 스타일 규칙 */\n}\n @media print {\n\t/* 인쇄용 스타일 규칙 */\n}",
-            "img": null
-          }
-        ]
+        "desc": "스타일시트가 어떤 장치나 출력 방식에 적용되어야 하는지를 명시합니다.\n이를 통해 웹 개발자는 특정 장치나 환경에 따라 다르게 표시되는 스타일을 정의할 수 있습니다.\nall : 모든 장치에 적용됩니다.\nscreen : 주로 컴퓨터 화면, 스마트폰, 태블릿 등의 스크린을 대상으로 보여집니다.\n print : 인쇄될 문서에 적용됩니다. 이는 웹페이지를 인쇄할 때 사용되는 스타일을 명시하는 데 사용됩니다.",
+        "code": "@media screen and (max-width: 768px) {\n\t /* 스크린용 스타일 규칙 */\n}\n @media print {\n\t/* 인쇄용 스타일 규칙 */\n}",
+        "img": null
       }
     ]
   },
@@ -342,24 +250,16 @@
       {
         "sub_id": 0,
         "sub_name": "min_width",
-        "contents": [
-          {
-            "desc": "요소의 최소 너비를 지정합니다. 화면 너비가 이 값 이상일 때 스타일이 적용됩니다.\n보통 큰 화면(데스크탑)에서 레이아웃을 변경하는 데 사용됩니다.",
-            "code": "/* 기본 스타일 */\n.responsive-box {\n\twidth: 100%;\npadding: 20px;\nbackground-color: lightblue;\nfont-size: 1.5rem;\n}\n/* 화면 너비가 600px 이상일 때 */\n @media (min-width: 600px) {\n\t.responsive-box {\nbackground-color: lightgreen;\n}\n}",
-            "img": null
-          }
-        ]
+        "desc": "요소의 최소 너비를 지정합니다. 화면 너비가 이 값 이상일 때 스타일이 적용됩니다.\n보통 큰 화면(데스크탑)에서 레이아웃을 변경하는 데 사용됩니다.",
+        "code": "/* 기본 스타일 */\n.responsive-box {\n\twidth: 100%;\npadding: 20px;\nbackground-color: lightblue;\nfont-size: 1.5rem;\n}\n/* 화면 너비가 600px 이상일 때 */\n @media (min-width: 600px) {\n\t.responsive-box {\nbackground-color: lightgreen;\n}\n}",
+        "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "max_width",
-        "contents": [
-          {
-            "desc": "요소의 최대 너비를 지정합니다. 화면 너비가 이 값 이하일 때 스타일이 적용됩니다.\n주로 작은 화면(모바일)에서 레이아웃을 조정할 때 사용됩니다.",
-            "code": "/* 기본 스타일 */\n .responsive-box {\n\t  width: 100%;\n padding: 20px;\n background-color: lightblue;\nfont-size: 1.5rem;\n}\n/* 화면 너비가 400px 이하일 때 */\n @media (max-width: 400px) {\n\t.responsive-box {\n\t background-color: lightyellow;\nfont-size: 1rem;\n}\n}",
-            "img": null
-          }
-        ]
+        "desc": "요소의 최대 너비를 지정합니다. 화면 너비가 이 값 이하일 때 스타일이 적용됩니다.\n주로 작은 화면(모바일)에서 레이아웃을 조정할 때 사용됩니다.",
+        "code": "/* 기본 스타일 */\n .responsive-box {\n\t  width: 100%;\n padding: 20px;\n background-color: lightblue;\nfont-size: 1.5rem;\n}\n/* 화면 너비가 400px 이하일 때 */\n @media (max-width: 400px) {\n\t.responsive-box {\n\t background-color: lightyellow;\nfont-size: 1rem;\n}\n}",
+        "img": null
       }
     ]
   }
