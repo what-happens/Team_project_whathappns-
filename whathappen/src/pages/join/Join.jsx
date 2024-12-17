@@ -187,6 +187,12 @@ export default function Join() {
             borderRadius="10px"
             padding="1.5rem"
             type="submit"
+            smallStyles={{
+              width: "38rem",
+            }}
+            xsmallStyles={{
+              width: "30rem",
+            }}
           >
             가입하기
           </Button>
@@ -259,18 +265,15 @@ const Input = styled.input`
   height: 3rem;
   border: 1px solid #c4c4c4;
   border-radius: 15px;
+  ${media.small`
+    font-size:1.3rem;
+  `}
 `;
 
 const InputWarp = styled.div`
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  &::after {
-    content: " * ";
-    color: #ff2e62;
-    align-items: center;
-    padding-left: 1rem;
-  }
 `;
 
 const Warp = styled.div`
