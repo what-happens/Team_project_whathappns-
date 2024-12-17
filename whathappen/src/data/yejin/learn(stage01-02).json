@@ -16,7 +16,7 @@
         "sub_id": 1,
         "sub_name": "2) HTML 이란?",
         "desc": "HTML(Hypertext Markup Language)은 프로그래밍 언어가 아니라, 우리가 보는 웹페이지가 어떻게 구조화 되어 있는지 브라우저로 하여금 알 수 있게 해주는 마크업 언어입니다.\n 마크업 언어: 문서를 작성할 때 사용되는 언어로, 문서의 내용을 구조화하고 형식을 지정하는 역할을 합니다.",
-        "img": "back_link.png",
+        "img": null,
         "code": "&lt; !DOCTYPE html &gt;\n&lt;html lang=&quot;en&quot;&gt;\n  &lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot; /&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;\n    &lt;title&gt;Document&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;&lt;/body&gt;\n&lt;/html&gt;"
       }
     ]

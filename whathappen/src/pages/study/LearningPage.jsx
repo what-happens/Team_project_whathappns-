@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import media from "./media";
-import { Menu, X } from "lucide-react"; // 햄버거 메뉴 아이콘용
+import { Menu, AlignRight } from "lucide-react"; // 햄버거 메뉴 아이콘용
 
 import data from "../../data/yejin/learn(stage01-02).json";
 import back from "../../assets/back_link.png";
@@ -85,7 +85,6 @@ const Container = styled.div`
 
 const HeaderContainer = styled.header`
   ${({ theme }) => theme.laptop`
-    width: 35%;
     position: fixed;
     top: 5rem;
     right: 0;
@@ -97,13 +96,7 @@ const HeaderContainer = styled.header`
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   `};
-  ${({ theme }) => theme.tablet`
-    width: 40%;
-  `};
-  ${({ theme }) => theme.mobile`
-    width: 50%;
-  `};
-  width: 20%;
+  width: 40rem;
   border: 1px solid var(--main-color);
   border-radius: 20px;
   transition: all 0.3s ease;
@@ -168,7 +161,7 @@ const ContentContainer = styled.main`
     width: 100%;
     padding: 2.5rem 1rem;
   `};
-  width: 80%;
+  width: 100%;
   padding: 0 2rem;
   position: relative;
   overflow-y: scroll;
@@ -188,6 +181,7 @@ const Title = styled.h3`
   `};
   font-size: 3rem;
   font-weight: 700;
+  margin-top: 2rem;
 
   color: var(--main-color);
 `;
@@ -205,11 +199,10 @@ const Description = styled.p`
 
 const Image = styled.img`
   ${({ theme }) => theme.mobile`
-    height: 25rem;
+    height: 20rem;
   `};
   height: 30rem;
   object-fit: contain;
-  border: 1px solid black;
 `;
 
 const CodeBlock = styled.div`
@@ -292,7 +285,11 @@ const LearningPage = () => {
         <BackLink />
         <MobileLevelTitle>{data[activeLevel].title}</MobileLevelTitle>
         <HamburgerButton onClick={toggleMenu}>
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMenuOpen ? (
+            <AlignRight size={24} color="#2E5DFF" />
+          ) : (
+            <Menu size={24} color="#C4C4C4" />
+          )}
         </HamburgerButton>
       </MobileContainer>
 
