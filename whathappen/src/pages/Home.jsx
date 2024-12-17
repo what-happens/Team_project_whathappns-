@@ -6,9 +6,11 @@ import Header from "../components/Header";
 import Chatbot from "./chatbot/Chatbot";
 import chatOpen from "../assets/chatbot_open.png";
 import chatClose from "../assets/chatbot_close.png";
+import { useSelector } from "react-redux";
 
 const App = () => {
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
+  const { isLoggedIn } = useSelector((state) => state.auth);
 
   const toggleChatbot = () => {
     setIsChatbotOpen((prev) => !prev);
@@ -18,11 +20,13 @@ const App = () => {
       <Header />
       {isChatbotOpen && <Chatbot />}
       <InfiniteComponentLoader />
-      <ChatToggle
-        src={isChatbotOpen ? chatClose : chatOpen}
-        alt={isChatbotOpen ? "챗봇 닫기" : "챗봇 열기"}
-        onClick={toggleChatbot}
-      />
+      {isLoggedIn && (
+        <ChatToggle
+          src={isChatbotOpen ? chatClose : chatOpen}
+          alt={isChatbotOpen ? "챗봇 닫기" : "챗봇 열기"}
+          onClick={toggleChatbot}
+        />
+      )}
     </>
   );
 };
