@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { media } from "../styles/MideaQuery";
 
 export default function Button({
   fontSize = "small",
@@ -14,6 +15,9 @@ export default function Button({
   onClick,
   children,
   width,
+  mediumStyles = {},
+  xsmallStyles = {},
+  smallStyles = {},
 }) {
   return (
     <StyledButton
@@ -27,6 +31,9 @@ export default function Button({
       onClick={onClick}
       $width={width}
       $fontFamily={fontFamily}
+      $mediumStyles={mediumStyles}
+      $smallStyles={smallStyles}
+      $xsmallStyles={xsmallStyles}
     >
       {children}
     </StyledButton>
@@ -70,6 +77,17 @@ const StyledButton = styled.button`
   border: ${(props) => props.$border};
   width: ${(props) => props.$width};
   font-family: ${(props) => props.$fontFamily};
+  ${media.medium`
+    ${(props) => props.$mediumStyles}
+  `}
+
+  ${media.small`
+    ${(props) => props.$smallStyles}
+  `}
+
+  ${media.xsmall`
+    ${(props) => props.$xsmallStyles} 
+  `}
 
   &:hover {
     background-color: ${(props) => {
@@ -109,4 +127,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
   width: PropTypes.string,
+  mediumStyles: PropTypes.object,
+  smallStyles: PropTypes.object,
+  xsmallStyles: PropTypes.object,
 };
