@@ -69,13 +69,13 @@ const selectCommonStyle = css`
   justify-content: center;
   align-items: center;
 
-  ${media.medium`
+  ${media.small`
     width: 28.5rem;
   height: 6.5rem;
   font-size: 2.7rem;
 `}
 
-  ${media.small`
+  ${media.xsmall`
     width: 23rem;
   height: 6rem;
   font-size: 2.4rem;
