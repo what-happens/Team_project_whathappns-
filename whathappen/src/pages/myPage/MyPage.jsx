@@ -66,12 +66,8 @@ export default function MyPage() {
           <StatusContents>
             <h2 className="sr-only">학습 현황</h2>
             <StatusBox>
-              <StatusVal>
-                {userData.clearStates && userData.clearStates.length > 0
-                  ? `${userData.clearStates[0].stage_id} stage`
-                  : "0 stage"}
-              </StatusVal>
-              <StatusLabel>기초학습</StatusLabel>
+              <StatusVal>{userData.clearStages.length} stage</StatusVal>
+              <StatusLabel>진행중인 스테이지</StatusLabel>
             </StatusBox>
             <Division />
             <StatusBox>
@@ -89,9 +85,8 @@ export default function MyPage() {
             <StampContents>
               <h2>Stamp</h2>
               <h2 className="sr-only">스탬프 북</h2>
-              <Stamps />
+              <Stamps clearStages={userData.clearStages} />
             </StampContents>
-
             <ProgressContents>
               <h2 style={{ color: "var(--main-color)" }}>기초학습 진척도</h2>
               <CircularProgressbar
@@ -301,11 +296,11 @@ const StatusBox = styled.div`
   gap: 3rem;
 
   ${media.small`
-    font-size: 2.8rem;
+    font-size: 2.6rem;
     gap: 2rem;
   `}
   ${media.xsmall`
-    font-size: 2.2rem;
+    font-size: 2rem;
     gap: 1.5rem;
   `}
 `;
