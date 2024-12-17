@@ -138,9 +138,9 @@ const QuizSection = styled.section`
   position: relative;
   animation: ${bounce} 1.11s both;
   background-color: white;
+
   ${media.medium`
-    width:80%;
-    height:80%;
+    width: 80%; 
   `}
 `;
 
@@ -162,14 +162,19 @@ const QuizQuestion = styled.h3`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 18rem;
-  font-size: 4rem;
+  height: 20rem;
+  max-height: 35rem;
+  max-width: 55rem;
+  word-wrap: break-word;
+  font-size: 3.7rem;
   line-height: 5rem;
   ${media.medium`
-    font-size: 3rem;
+  height:auto;
+    font-size: 2.8rem;
   `}
   ${media.small`
-    font-size: 2.3rem;
+    height:auto;
+    font-size: 2rem;
   `}
 `;
 
@@ -215,6 +220,13 @@ const ButtonWrapper = styled.div`
   width: 100%;
   margin-top: 2.75rem;
   gap: 1.5rem;
+  & > button {
+    ${media.small`
+    font-size: 1.5rem;
+    padding:1rem 1rem;
+    border-radius:1.7rem;
+  `}
+  }
 `;
 
 QuizCard.propTypes = {
