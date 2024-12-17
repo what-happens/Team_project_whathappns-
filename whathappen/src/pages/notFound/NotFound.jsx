@@ -30,12 +30,24 @@ const NotFoundMsg = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
   font-size: 2rem;
   font-weight: 300;
   color: #2e5dff;
-  ${media.medium`
-    font-size: 1.7rem;
+  span {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  br {
+    display: none;
+  }
+  ${media.xsmall`
+    br{
+      display: block;
+    }
+    .pc-only {
+      display:none;
+    }
   `}
 `;
 
@@ -69,6 +81,7 @@ const Character = styled.img`
   transform: translateY(${(props) => props.$jump}px);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   object-fit: contain;
+  z-index: 9;
   ${media.medium`
     display: none;
   `}
@@ -194,7 +207,7 @@ const NotFound = () => {
           if (prev <= -40) {
             setScore((s) => s + 10);
             setSpeed((s) => Math.min(s + 0.2, 12));
-            setCurrentObstacle(getRandomObstacle()); // 새로운 장애물 랜덤 선택
+            setCurrentObstacle(getRandomObstacle());
             return 600;
           }
           if (checkCollision(prev)) {
@@ -213,8 +226,14 @@ const NotFound = () => {
     <NotFoundContents>
       <NotFoundImg src={error404} alt="404 에러" />
       <NotFoundMsg>
-        <span>죄송합니다, 찾을 수 없는 페이지입니다.</span>
-        <span>요청하신 페이지의 주소가 변경, 삭제되어 찾을 수 없습니다.</span>
+        <span>
+          죄송합니다, <br />
+          찾을 수 없는 페이지입니다.
+        </span>
+        <span className="pc-only">
+          요청하신 페이지의 주소가 <br />
+          변경, 삭제되어 찾을 수 없습니다.
+        </span>
       </NotFoundMsg>
       <GameWrapper>
         <GameContainer>
