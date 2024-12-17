@@ -16,7 +16,7 @@ const StampBox = styled.div`
   height: 429px;
   border-radius: 20px;
 
-  ${media.medium`
+  ${media.large`
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
@@ -26,6 +26,18 @@ const StampBox = styled.div`
     height: 11rem;
     border-radius: 1rem;
     gap: 1rem;
+  `}
+
+  ${media.small`
+    height: 9rem;
+    padding: 1.5rem 0.8rem;
+    gap: 0.8rem;
+  `}
+
+  ${media.xsmall`
+    height: 7rem;
+    padding: 1rem 0.5rem;
+    gap: 0.5rem;
   `}
 `;
 
@@ -45,11 +57,23 @@ const StampSlot = styled.div`
     height: 10.2rem;
   }
 
-  ${media.medium`
+  ${media.large`
     max-width: 7.213rem;
     height: 7.213rem;
     border-radius: 1rem;
     margin: 0;
+  `}
+
+  ${media.small`
+    max-width: 5.5rem;
+    height: 5.5rem;
+    border-radius: 0.8rem;
+  `}
+
+  ${media.xsmall`
+    max-width: 4rem;
+    height: 4rem;
+    border-radius: 0.6rem;
   `}
 `;
 
