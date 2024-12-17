@@ -77,7 +77,7 @@ const OImg = styled.div`
     left: 15%;
     top: -50%;
   `}
-  ${media.xsmall`
+  ${media.xsmall` 
     width: 31rem;
   height: 27rem;
     left: 5%;
