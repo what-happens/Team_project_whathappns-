@@ -82,10 +82,17 @@ const Success = styled.h3`
   text-align: center;
   font-size: 3rem;
   font-weight: 700;
+  ${media.xsmall`
+    font-size:2rem;
+  `}
 `;
 const Text = styled.p`
   font-size: 2rem;
   font-weight: 300;
+  ${media.xsmall`
+    text-align:center;
+    font-size:2rem;
+  `}
 `;
 const CongratulationsText = styled.div`
   background-image: url(${congratulations});
@@ -123,6 +130,12 @@ const CorrectBox = styled.div`
   `}
   ${media.small`
     left: 5%;
+    top: 40%;
+  `}
+  ${media.xsmall`
+    width: 30rem;
+
+    left: 10.5%;
     top: 40%;
   `}
 `;
