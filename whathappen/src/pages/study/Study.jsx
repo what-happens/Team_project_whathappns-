@@ -17,6 +17,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `;
 
 const Header = styled.header`
@@ -81,9 +82,20 @@ const BackLink = styled(Link)`
 `;
 
 const StudySection = styled.section`
+  /* ${({ theme }) => theme.laptop`
+  `};
+  ${({ theme }) => theme.tablet`
+    width: 3rem;
+  `};
+  ${({ theme }) => theme.mobile`
+    width: 3rem;
+  `};
+  height: 80rem; */
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   gap: 4rem;
+  box-sizing: border-box;
 `;
 
 const SectionTitle = styled.h2`
@@ -93,9 +105,14 @@ const SectionTitle = styled.h2`
       margin-bottom: 1rem;
   `};
   ${({ theme }) => theme.tablet`
-      font-size: ${({ theme }) => theme.fontSizes.md};
-      line-height: 4.2rem;
+      font-size: ${({ theme }) => theme.fontSizes.ml};
+      line-height: 5rem;
       margin-bottom: 1rem;
+  `};
+  ${({ theme }) => theme.mobile2`
+    font-size: ${({ theme }) => theme.fontSizes.md};
+    line-height: 4rem;
+    margin-bottom: 1rem;
   `};
   ${({ theme }) => theme.mobile`
     font-size: ${({ theme }) => theme.fontSizes.title};
@@ -104,7 +121,7 @@ const SectionTitle = styled.h2`
   `};
   text-align: center;
   color: #fff;
-  font-size: 6rem;
+  font-size: 5rem;
   font-weight: 700;
   line-height: 7rem;
   margin-bottom: 5rem;
