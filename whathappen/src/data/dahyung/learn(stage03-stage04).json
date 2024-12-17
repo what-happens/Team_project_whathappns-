@@ -205,7 +205,7 @@
         "contents": [
           {
             "desc": "text-decoration 속성은 텍스트에 장식을 추가하는 단축 속성입니다. 이 속성은 다음과 같은 개별 속성들을 포함합니다.\n- text-decoration-line: 선의 위치 (underline, overline, line-through)- text-decoration-color: 선의 색상/n - text-decoration-style: 선의 스타일 (solid, wavy, dashed 등)\n - text-decoration-thickness: 선의 두께",
-            "code": "",
+            "code": ".text4{\n\ttext-decoration: underline wavy blue;\n}",
             "img": "none"
           }
         ]
@@ -216,7 +216,7 @@
         "contents": [
           {
             "desc": "text-align 속성은 텍스트의 가로 정렬을 설정합니다. 이 속성은 블록 레벨 요소 내의 인라인 콘텐츠(텍스트, 인라인 요소)를 정렬하는 데 사용됩니다. 주요 값으로는 다음과 같은 것들이 있습니다.\n- left: 왼쪽 정렬 (기본값)\n- right: 오른쪽 정렬\n- center: 중앙 정렬\n- justify: 양쪽 정렬 (마지막 줄 제외)\n- justify-all: 양쪽 정렬 (마지막 줄 포함)",
-            "code": "",
+            "code": ".item1 {\n\ttext-align: center;\n}",
             "img": "none"
           }
         ]
@@ -227,7 +227,7 @@
         "contents": [
           {
             "desc": "line-height 속성은 텍스트 줄 사이의 간격을 설정합니다. 이 속성은 텍스트의 가독성에 큰 영향을 미치므로 적절히 조정하는 것이 중요합니다.\n line-height는 다음과 같은 값을 사용할 수 있습니다:\n 숫자: 요소의 글꼴 크기에 대한 배수 (예: 1.5)\n 길이: px, em 등의 단위 (예: 20px, 1.5em) \n 백분율: 요소의 글꼴 크기에 대한 백분율 (예: 150%) \n normal: 브라우저의 기본값",
-            "code": "",
+            "code": ".item1 {\n\tline-height: 1.8;\n}",
             "img": "none"
           }
         ]
