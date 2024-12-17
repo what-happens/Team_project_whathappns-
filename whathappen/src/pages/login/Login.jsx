@@ -179,7 +179,17 @@ function Login() {
               </div>
             </InputIconPassword>
           </Warp>
-          <Button width="43rem" borderRadius="10px" type="submit">
+          <Button
+            width="43rem"
+            borderRadius="10px"
+            type="submit"
+            smallStyles={{
+              width: "38rem",
+            }}
+            xsmallStyles={{
+              width: "30rem",
+            }}
+          >
             로그인
           </Button>
         </Form>
@@ -191,6 +201,12 @@ function Login() {
             width="43rem"
             borderRadius="10px"
             color="blue"
+            smallStyles={{
+              width: "38rem",
+            }}
+            xsmallStyles={{
+              width: "30rem",
+            }}
           >
             회원가입
           </Button>
@@ -235,8 +251,8 @@ const LogoContent = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  width: 150px;
-  height: 150px;
+  width: 15rem;
+  height: 15rem;
 `;
 
 const Form = styled.form`
@@ -253,6 +269,12 @@ const Input = styled.input`
   height: 3rem;
   border: 1px solid #c4c4c4;
   border-radius: 15px;
+  ${media.small`
+    width: 38rem;
+  `}
+  ${media.xsmall`
+    width: 30rem;
+  `}
 `;
 
 const Warp = styled.div`
