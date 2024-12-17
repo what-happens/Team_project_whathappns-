@@ -1,0 +1,17 @@
+[
+  {
+    "stage_id": 4,
+    "level_id": 0,
+    "title_id": 0,
+    "title": "transform_basics",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "transform_explanation ",
+        "desc": "요소를 2D 또는 3D 공간에서 이동, 회전, 크기 조절, 기울이기 등의 효과를 적용할 수 있도록 해주는 CSS 속성입니다.\n이 속성을 활용하면 요소를 애니메이션 없이도 동적으로 배치하거나 스타일링할 수 있습니다.\ntransform은 아래와 같이 다양한 속성값을 가집니다.",
+        "code": ".box {\n\ttransform: translate(50px, 50px);\ntransform: rotate(45deg);\ntransform: scale(1.5);\ntransform: skew(20deg, 10deg);\n}",
+        "img": null
+      }
+    ]
+  }
+]
