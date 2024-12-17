@@ -40,6 +40,11 @@ const ConfirmExit = styled(CommonModal)`
   height: 13rem;
   border-radius: 1.4rem;
 `}
+  ${media.xsmall`
+    width: 24rem;
+  height: 11rem;
+  border-radius: 1.2rem;
+`}
 `;
 
 const ConfirmExitMessage = styled.p`
@@ -49,10 +54,15 @@ const ConfirmExitMessage = styled.p`
   text-align: center;
   ${media.medium`
     font-size: 1.8rem;
+    margin: 2rem;
 `}
   ${media.small`
     font-size: 1.3rem;
     margin: 1.7rem;
+`}
+  ${media.xsmall`
+    font-size: 1rem;
+    margin: 0.8rem;
 `}
 `;
 
@@ -64,14 +74,18 @@ const ButtonType = styled.div`
 `}
   & > button, & > a > button {
     ${media.medium`
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     padding:0.5rem 1.6rem;
-    width:10rem
+    width:8rem
 `}
     ${media.small`
       width: 8rem;
     font-size: 1rem;
     padding:0.05rem 1.2rem;
+`}
+    ${media.xsmall`
+      width: 5rem;
+      font-size: 0.8rem;
 `}
   }
 `;

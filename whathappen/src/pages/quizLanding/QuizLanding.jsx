@@ -66,14 +66,6 @@ export default function QuizLanding() {
             padding="2rem 5rem"
             borderRadius="2.5rem"
             onClick={onClickQuizStart}
-            smallStyles={{
-              fontSize: "1.8rem",
-              padding: "1rem 3rem",
-            }}
-            xsmallStyles={{
-              fontSize: "1.5rem",
-              padding: "1rem 2rem",
-            }}
           >
             퀴즈 풀기!
           </Button>
@@ -83,14 +75,6 @@ export default function QuizLanding() {
             backgroundColor="red"
             padding="2rem 5rem"
             borderRadius="2.5rem"
-            smallStyles={{
-              fontSize: "1.8rem",
-              padding: "1.5rem 3rem",
-            }}
-            xsmallStyles={{
-              fontSize: "1.5rem",
-              padding: "1.2rem 2rem",
-            }}
           >
             뒤로가기
           </Button>
@@ -175,9 +159,12 @@ const QuizLogo = styled.img`
     width: 38rem;
     height: 100%;
   `}
+  ${media.small`
+    width: 34rem;
+  `}
+
   ${media.xsmall`
-    width: 32rem;
-    height: 100%;
+    width: 25rem;
   `}
 `;
 
@@ -189,4 +176,24 @@ const QuizOptionsSection = styled.section`
 const QuizControlSection = styled.section`
   display: flex;
   gap: 2.2rem;
+  & > button,
+  & > a > button {
+    ${media.medium`
+      font-size: 2.5rem;
+      width: 19rem;
+      padding: 2rem 1.8rem;
+    `}
+    ${media.small`
+      width: 12rem;
+      font-size: 1.5rem;
+      padding: 0.8rem 1.2rem;
+      border-radius: 1.6rem;
+    `}
+    ${media.xsmall`
+    width: 9rem;
+    font-size: 1rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 1rem;
+  `}
+  }
 `;

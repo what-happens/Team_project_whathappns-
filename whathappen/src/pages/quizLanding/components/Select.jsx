@@ -75,11 +75,16 @@ const selectCommonStyle = css`
   font-size: 2.7rem;
 `}
 
-  ${media.xsmall`
-    width: 23rem;
+  ${media.small`
+    width: 22rem;
   height: 6rem;
-  font-size: 2.4rem;
+  font-size: 2.2rem;
 `}
+  ${media.xsmall`
+    width: 16rem;
+    height: 4.8rem;
+  font-size: 1.7rem;
+  `}
 `;
 
 const SelectBox = styled.button`

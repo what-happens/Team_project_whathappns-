@@ -122,16 +122,6 @@ const ResultBackground = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  ${media.medium`
-    background-size: cover; 
-    height: 100%; 
-  `}
-
-  ${media.small`
-    background-size: cover; 
-    height: 100%; 
-  `}
 `;
 const QuizResultMain = styled.main`
   width: 63rem;
@@ -150,9 +140,14 @@ const QuizResultMain = styled.main`
     border-radius: 4rem;
 `}
   ${media.small`
-    width: 38rem;
-    height: 40rem;
+    width: 36rem;
+    height: 38rem;
     border-radius: 2.7rem;
+`}
+  ${media.xsmall`
+    width: 32rem;
+    height: 34rem;
+    border-radius: 2.3rem;
 `}
 `;
 
@@ -169,6 +164,11 @@ const Logo = styled.img`
     width: 19rem;
     height: 5rem;
     margin-bottom: 3rem;
+  `}
+  ${media.xsmall`
+    width: 15rem;
+    height: 4rem;
+    margin-bottom: 2rem;
   `}
 `;
 
@@ -189,6 +189,11 @@ const QuizResultSection = styled.section`
     gap: 1.2rem; 
     padding-bottom: 2.8rem;
   `}
+  ${media.xsmall`
+    width: 22rem; 
+    gap: 1rem; 
+    padding-bottom: 2.3rem;
+  `}
 `;
 
 const QuizResultTitle = styled.h2`
@@ -198,6 +203,9 @@ const QuizResultTitle = styled.h2`
 `}
   ${media.small`
     font-size: 2.8rem;
+`}
+  ${media.xsmall`
+    font-size: 2rem;
 `}
 `;
 
@@ -223,6 +231,12 @@ const QuizResultMessage = styled.div`
     font-size: 2.2rem;
     border-radius: 1.2rem;
 `}
+  ${media.xsmall`
+    width: 13rem;
+    height: 3.7rem;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+`}
 `;
 
 const ResultContainer = styled.ul`
@@ -233,6 +247,9 @@ const ResultContainer = styled.ul`
   margin-top: 2rem;
   ${media.medium`
     gap: 3rem;
+    `}
+  ${media.xsmall`
+    gap: 2rem;
     `}
 `;
 
@@ -280,6 +297,10 @@ const ResultCount = styled.div`
       font-size: 1.8rem;
       margin-bottom: 3rem;
       `}
+      ${media.xsmall`
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      `}
 `;
 
 const ResultControlSection = styled.section`
@@ -298,6 +319,11 @@ const ResultControlSection = styled.section`
         width: 9rem;
         font-size: 1rem;
         padding:0.05rem 1.2rem;
+        `}
+        ${media.xsmall`
+        width: 7rem;
+        font-size: 0.8rem;
+        padding:0;
         `}
   }
 `;
