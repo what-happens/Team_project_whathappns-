@@ -5,7 +5,7 @@ const sizes = {
   mediumlarge: 867,
   medium: 768,
   small: 600,
-  xsmall: 400,
+  xsmall: 440,
 };
 
 const media = Object.entries(sizes).reduce((acc, [key, value]) => {
