@@ -3,8 +3,10 @@ import styled from "styled-components";
 import Button from "../../components/Button";
 import error404 from "../../assets/error404.png";
 import potato from "../../assets/error_sad_potato.png";
-import obstacle from "../../assets/error_obstacle.png";
+import obstacle1 from "../../assets/error_obstacle_1.png";
+import obstacle2 from "../../assets/error_obstacle_2.png";
 import { Link } from "react-router-dom";
+import { media } from "../../styles/MideaQuery";
 
 const NotFoundContents = styled.div`
   display: flex;
@@ -32,12 +34,18 @@ const NotFoundMsg = styled.div`
   font-size: 2rem;
   font-weight: 300;
   color: #2e5dff;
+  ${media.medium`
+    font-size: 1.7rem;
+  `}
 `;
 
 const GameWrapper = styled.div`
   border: 0.2rem solid #2e5dff;
   padding: 2rem;
   border-radius: 1rem;
+  ${media.medium`
+    display: none;
+  `}
 `;
 
 const GameContainer = styled.div`
@@ -47,6 +55,9 @@ const GameContainer = styled.div`
   position: relative;
   overflow: hidden;
   background-color: rgba(46, 93, 254, 0.05);
+  ${media.medium`
+    display: none;
+  `}
 `;
 
 const Character = styled.img`
@@ -58,6 +69,9 @@ const Character = styled.img`
   transform: translateY(${(props) => props.$jump}px);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   object-fit: contain;
+  ${media.medium`
+    display: none;
+  `}
 `;
 
 const Obstacle = styled.img`
@@ -67,32 +81,40 @@ const Obstacle = styled.img`
   bottom: 1rem;
   left: ${(props) => props.$position}px;
   object-fit: contain;
+  ${media.medium`
+    display: none;
+  `}
 `;
 
 const ScoreBoard = styled.div`
   position: absolute;
-  top: 2rem;
-  right: 2rem;
+  right: 1rem;
   font-size: 1.8rem;
   font-weight: bold;
   color: #2e5dff;
   padding: 0.5rem 1rem;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 0.5rem;
+  ${media.medium`
+    display: none;
+  `}
 `;
 
 const GameOverlay = styled.div`
+  width: 80%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 900;
   color: #2e5dff;
   text-align: center;
-  padding: 2rem 3rem;
   border-radius: 1rem;
   z-index: 10;
+  ${media.medium`
+    display: none;
+  `}
 `;
 
 const NotFound = () => {
@@ -100,21 +122,26 @@ const NotFound = () => {
   const [isJumping, setIsJumping] = useState(false);
   const [jumpHeight, setJumpHeight] = useState(0);
   const [obstaclePosition, setObstaclePosition] = useState(600);
+  const [currentObstacle, setCurrentObstacle] = useState(obstacle1);
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
   const [speed, setSpeed] = useState(5);
 
+  const getRandomObstacle = () => {
+    return Math.random() < 0.5 ? obstacle1 : obstacle2;
+  };
+
   const jump = useCallback(() => {
     if (!isJumping && gameStarted && !gameOver) {
       setIsJumping(true);
-      setJumpHeight(-140); // 점프 높이 증가
+      setJumpHeight(-140);
 
       setTimeout(() => {
         setJumpHeight(0);
         setTimeout(() => {
           setIsJumping(false);
-        }, 400); // 착지 시간 증가
-      }, 400); // 체공 시간 증가
+        }, 400);
+      }, 400);
     }
   }, [isJumping, gameStarted, gameOver]);
 
@@ -126,6 +153,21 @@ const NotFound = () => {
     setObstaclePosition(600);
     setIsJumping(false);
     setJumpHeight(0);
+    setCurrentObstacle(getRandomObstacle());
+  };
+
+  const checkCollision = (obstaclePosition) => {
+    const characterBottom = jumpHeight;
+    const characterLeft = 50;
+    const characterRight = characterLeft + 50;
+    const obstacleLeft = obstaclePosition;
+    const obstacleRight = obstaclePosition + 20;
+
+    return (
+      obstacleLeft < characterRight - 20 &&
+      obstacleRight > characterLeft + 20 &&
+      characterBottom > -50
+    );
   };
 
   useEffect(() => {
@@ -152,25 +194,13 @@ const NotFound = () => {
           if (prev <= -40) {
             setScore((s) => s + 10);
             setSpeed((s) => Math.min(s + 0.2, 12));
+            setCurrentObstacle(getRandomObstacle()); // 새로운 장애물 랜덤 선택
             return 600;
           }
-
-          // 충돌 감지 로직 개선
-          const characterBottom = jumpHeight;
-          const characterLeft = 50; // Character의 left 위치
-          const characterRight = characterLeft + 50; // Character의 width
-          const obstacleLeft = prev;
-          const obstacleRight = prev + 20;
-
-          if (
-            obstacleLeft < characterRight - 20 && // 여유 공간 추가
-            obstacleRight > characterLeft + 20 && // 여유 공간 추가
-            characterBottom > -50 // 점프 높이가 충분하지 않을 때만 충돌
-          ) {
+          if (checkCollision(prev)) {
             setGameOver(true);
             return prev;
           }
-
           return prev - speed;
         });
       }, 20);
@@ -193,7 +223,11 @@ const NotFound = () => {
           )}
           {gameOver && <GameOverlay>GAMEOVER</GameOverlay>}
           <Character src={potato} alt="캐릭터" $jump={jumpHeight} />
-          <Obstacle src={obstacle} alt="장애물" $position={obstaclePosition} />
+          <Obstacle
+            src={currentObstacle}
+            alt="장애물"
+            $position={obstaclePosition}
+          />
           <ScoreBoard>점수: {score}</ScoreBoard>
         </GameContainer>
       </GameWrapper>
@@ -213,5 +247,4 @@ const NotFound = () => {
     </NotFoundContents>
   );
 };
-
 export default NotFound;
