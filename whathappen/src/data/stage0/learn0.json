@@ -1,0 +1,138 @@
+[
+  {
+    "stage_id": 0,
+    "level_id": 0,
+    "title_id": 0,
+    "title": "1. WEB? HTML?",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "1) WEB",
+        "desc": "  웹은 World Wide Web(WWW)의 줄임말로, 전 세계적으로 분산된 수많은 문서와 기타 리소스들이 서로 연결되어 있는 거대한 정보의 네트워크를 의미합니다.\n 일반적으로 웹 페이지라고 불리는 문서 형식으로 제공되며, HTML이라는 마크업 언어로 작성됩니다. 우리가 흔히 사용하는 웹 브라우저(Chrome, Safari, Firefox, Edge 등)를 통해 이러한 웹 페이지를 열어 볼 수 있습니다. \n 웹을 이루는 가장 기초적인 구성 요소는 HTML, CSS, JavaScript입니다. 웹 콘텐츠의 의미와 구조를 정의하는 HTML, 웹페이지의 모양/표현을 담당하는 CSS, 웹페이지의 기능/동작을 담당하는 JavaScript가 웹을 이루는 가장 기초적인 구성 요소입니다.",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "2) HTML 이란?",
+        "desc": "HTML(Hypertext Markup Language)은 프로그래밍 언어가 아니라, 우리가 보는 웹페이지가 어떻게 구조화 되어 있는지 브라우저로 하여금 알 수 있게 해주는 마크업 언어입니다.\n 마크업 언어: 문서를 작성할 때 사용되는 언어로, 문서의 내용을 구조화하고 형식을 지정하는 역할을 합니다.",
+        "img": null,
+        "code": "&lt; !DOCTYPE html &gt;\n&lt;html lang=&quot;en&quot;&gt;\n  &lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot; /&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;\n    &lt;title&gt;Document&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;&lt;/body&gt;\n&lt;/html&gt;"
+      }
+    ]
+  },
+  {
+    "stage_id": 0,
+    "level_id": 0,
+    "title_id": 1,
+    "title": "2. HTML의 기본 구조",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "1) <!DOCTYPE html> ",
+        "desc": "모든 HTML 문서는 <!DOCTYPE> 선언으로 시작합니다. 이는 문서 유형 선언으로, 현재의 표준을 의미합니다. 이를 통해 브라우저는 해당 문서를 최신 표준에 맞춰 정확하게 해석하고 랜더링 할 수 있습니다.\n - HTML 버전 정보를 브라우저에 제공하지 않습니다.\n - HTML 태그가 아닙니다. HTML이 시작하기 전에 선언하는 선언문입니다.\n - 과거 버전과 호환성을 유지하려면 해당하는 DOCTYPE 선언을 사용해야 합니다.\n",
+        "img": null,
+        "code": "&lt; !DOCTYPE html &gt;\n&lt;html lang=&quot;en&quot;&gt;\n  &lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot; /&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;\n    &lt;title&gt;Document&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;&lt;/body&gt;\n&lt;/html&gt;"
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "2) <html>",
+        "desc": "`<html>`태그는 HTML 문서의 루트, 최상단 요소입니다. 문서의 모든 내용을 포함하는 최상위 요소로, 문서의 시작과 끝을 나타냅니다.lang속성을 통해 해당 페이지의 주 언어가 무엇인지 설정할 수 있습니다.\n한국어는lang='ko',lang='ko-KR'와 같이 설정할 수 있습니다. 이는 웹 페이지의 언어를 설정하는 것으로, 검색 엔진이나 스크린 리더, 번역 기능 제공 등이 페이지의 언어를 인식하고 사용자에게 적절한 정보를 제공할 수 있도록 합니다.\n",
+        "img": null,
+        "code": "&lt;!DOCTYPE html&gt;\n&lt;html lang='en'&gt;\n  &lt;head&gt;\n    &lt;meta charset='UTF-8'&gt;\n    &lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;\n    &lt;title&gt;Document&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;&lt;/body&gt;\n&lt;/html&gt;"
+      },
+      {
+        "sub_id": 2,
+        "sub_name": "3) head",
+        "desc": "&lt;!DOCTYPE html>\n&lt;html lang='en'>&lt;/html>",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 3,
+        "sub_name": "4) meta",
+        "desc": "- 메타데이터: “어떤 목적을 위해 만들어진 데이터” \n - 검색엔진은 메타정보를 살펴보고 페이지의 다양한 정보를 가져갑니다.",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 4,
+        "sub_name": "5) title",
+        "desc": "- 브라우저의 제목 표시줄이나 페이지 탭에 보이는 문서 제목을 정의합니다. 특수문자는 제외하고 텍스트만 포함하세요. \n- 검색엔진은 이 제목을 보고 사용자가 탐색할 페이지를 선택합니다 \n- 페이지마다 적당한 제목이 노출되도록 개발하는 것도 중요합니다. \n- **약 60자를 넘지 않아야 합니다.**그보다 길어지게 된다면 브라우저에서 노출되는 제목이 축소되어 보일 수 있습니다. \n",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 5,
+        "sub_name": "6) link",
+        "desc": "현재 문서와 외부 리소스의 관계를 명시합니다. 외부 스타일 시트, 폰트, 파비콘을 연결할 때 사용합니다. \n 빈 태그, 속성만을 포함합니다. \n - `rel`: relations 관계. 대상 파일의 속성을 나타냅니다. \n- `href`: hyper-references 경로. 연결 시 참조할 파일의 위치를 나타냅니다. \n- `head` 요소 내부에만 위치할 수 있습니다.",
+        "img": null,
+        "code": "&lt;html&gt;\n\b\b&lt;head&gt;\n\b\b\b&lt;meta charset='UTF-8'&gt;\n\b\b\b\b&lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;\n\b\b\b\b&lt;title&gt;Document&lt;/title&gt;\n\b\b\b\b&lt;link rel='stylesheet' href='style.css' /&gt;\n\b\b\b\b&lt;/head&gt;\n\b\b\b&lt;body&gt;&lt;/body&gt;\n&lt;/html&gt;"
+      },
+      {
+        "sub_id": 6,
+        "sub_name": "7) body",
+        "desc": "body 태그는 웹 페이지의 실제 내용을 담는 부분입니다. 웹 페이지의 모든 내용은 body 태그 내부에 작성되어야 하며, 브라우저는 body 태그 내부의 내용을 해석하여 사용자에게 보여줍니다. 우리가 앞으로 배울 내용이 이곳에 담기게 됩니다.",
+        "img": null,
+        "code": null
+      }
+    ]
+  },
+  {
+    "stage_id": 0,
+    "level_id": 0,
+    "title_id": 2,
+    "title": "3. HTML 기본 문법",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "1) 태그 (Tag)",
+        "desc": "어떤 표시를 하기 위해 붙인 꼬리표. 웹 문서에 정보를 정의해주는 형식입니다. \n기본적으로 `<>` 시작 태그(여는 태그) `</>` 종료 태그(닫는 태그)의 쌍으로 구성되어 있습니다.\n\n - 요소 Element: 문서의 내용(contents)와 태그(tag), 속성(Attribute)으로 이루어져 있습니다.\n- 태그 Tag: 문서의 내용(contents)의 시작과 끝을 알립니다.\n- 속성 Attribute: 태그에 추가 정보를 부여합니다.\n\n출처: 위니북스-HTML/CSS 에센셜",
+        "img": "tag.png",
+        "code": null
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "2) 빈 요소 / 셀프 클로징",
+        "desc": "셀프 클로징이라고도 불리는 빈 요소는 닫는 태그가 없는 요소입니다. 이러한 요소는 닫는 태그가 없어도 브라우저가 정상적으로 해석할 수 있습니다. 대표적인 빈 요소로는 <br>, <img>, <input> 등이 있습니다. 다만 셀프 클로징이라는 명칭보단 빈 요소라는 명칭을 사용하는 것을 권합니다.",
+        "img": null,
+        "code": "&lt;br /&gt;\n&lt;input type='text' /&gt;\n&lt;img src='' alt='' /&gt;"
+      },
+      {
+        "sub_id": 2,
+        "sub_name": "2) 태그의 관계",
+        "desc": "",
+        "img": "tagTree.png",
+        "code": null
+      },
+      {
+        "sub_id": 3,
+        "sub_name": "2.1) 부모(Parent) 요소",
+        "desc": "부모 요소는 다른 요소를 포함하는 요소를 말합니다. \n위 예제에서 `<section>` 태그는 `<h1>`, `<img>`, `<div>` 태그의 부모 요소입니다.",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 4,
+        "sub_name": "2.2) 자식(Child) 요소",
+        "desc": "자식 요소는 다른 요소 내부에 직접 포함된 요소를 말합니다. \n위 예제에서 `<h1>`, `<img>`, `<div>` 태그는 `<section>` 태그의 자식 요소입니다.",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 5,
+        "sub_name": "2.3) 형제(Sibling) 요소",
+        "desc": "형제 요소는 같은 부모 요소를 가지는 요소들을 말합니다. \n위 예제에서 `<h1>`, `<img>`, `<div>` 태그는 서로 형제 관계에 있습니다.",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 6,
+        "sub_name": "2.4) 자손(Descendant) 요소",
+        "desc": "자손 요소는 어떤 요소의 내부에 포함된 모든 요소를 말합니다. 자식 요소뿐만 아니라 자식의 자식 요소까지 포함합니다. 위 예제에서 <strong> 태그는 <section> 태그의 자손 요소입니다.",
+        "img": null,
+        "code": "&lt;html&gt;\n    &lt;head&gt;&lt;/head&gt;\n    &lt;body&gt;\n        &lt;section&gt;\n              &lt;h1&gt;\n\t&lt;strong&gt;&lt;/strong&gt;\n              &lt;/h1&gt;\n              &lt;img /&gt;\n                    &lt;div&gt;\n\t&lt;p&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/p&gt;\n\t&lt;p&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/p&gt;\n\t&lt;p&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/p&gt;\n                    &lt;/div&gt;\n          &lt;/section&gt;\n    &lt;/body&gt;\n&lt;/html&gt;"
+      }
+    ]
+  }
+]

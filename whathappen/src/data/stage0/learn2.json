@@ -1,0 +1,53 @@
+[
+  {
+    "stage_id": 0,
+    "level_id": 2,
+    "title_id": 0,
+    "title": "1. 공간을 차지하는 태그",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "1) div",
+        "desc": "div 태그는 division의 약자로, 웹 페이지의 레이아웃을 구성하기 위한 태그입니다. 이 태그는 블록 요소로 개행이 되며 여러 태그들을 그룹핑하기 위한 용도로 사용합니다. CSS로 스타일을 주기 전에는 콘텐츠나 레이아웃에 영향을 주지 않습니다. \n- 블록 요소: 부모 요소의 전체 공간을 차지하여 블록을 만드는 HTML 요소입니다. 이러한 요소는 항상 새로운 줄에서 시작하고, 좌우 양측으로 최대한 늘어나 가능한 모든 너비를 차지합니다.",
+        "img": null,
+        "code": "&lt;div&gt;\n\b\b&lt;p&gt;HTML&lt;/p&gt;\n\b\b\b&lt;p&gt;CSS&lt;/p&gt;\n\b\b\b&lt;p&gt;JS&lt;/p&gt;\n\b\b\b&lt;/div&gt;\n\b\b&lt;div&gt;\n\n\b\b&lt;p&gt;python&lt;/p&gt;\n\b\b\b&lt;p&gt;AI&lt;/p&gt;\n\b\b\b&lt;p&gt;통계학&lt;/p&gt;\n&lt;/div&gt;"
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "2) <span>",
+        "desc": "`<span>` 태그는 인라인 컨테이너로, 스타일을 적용하거나 인라인 요소를 묶는 데 사용됩니다. 본질적으로는 아무런 의미를 나타내지 않지만, 특정 텍스트나 인라인 요소에 CSS 스타일을 적용할 때 유용합니다.\n- 인라인 요소: 인라인 요소는 항상 블록 레벨 요소 내에 포함되며, 콘텐츠의 흐름을 끊지 않고, 컨텐츠에 따라 할당된 공간만 차지합니다. 문장이나 단어 같은 작은 부분에 대해 적용되며, 새로운 줄을 만들지 않습니다.",
+        "img": null,
+        "code": "&lt;p&gt;\n\b\b이건\n\b\b\b&lt;span style='background-color: red'&gt;span&lt;/span&gt; 태그입니다.\n\b\b\b&lt;/p&gt;\n\b\b&lt;p&gt;\n\b\b\b이런식으로\n\b\b&lt;span style='font-weight: bold'&gt;사용&lt;/span&gt; 합니다.\n&lt;/p&gt;"
+      }
+    ]
+  },
+  {
+    "stage_id": 0,
+    "level_id": 2,
+    "title_id": 1,
+    "title": "2. 그 외 다양한 태그들",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "1) <img>",
+        "desc": "<img> 태그는 HTMl 문서에 이미지를 삽입하는데 사용됩니다. 다른 태그와 달리 닫는 태그가 없는 빈 요소(void element)입니다.\n - img 태그의 속성 \n- src: 이미지의 경로 \n- alt \n\b\b\b\b\b- 이미지에 대한 설명 \n\b\b\b\b\b- src에 지정한 이미지를 브라우저가 제대로 불어오지 못했을 때 alt값에 적힌 내용을 보여줍니다. \n\b\b\b\b\b- 시각에 장애가 있으신 분들을 위해 스크린 리더를 지원합니다.",
+        "img": null,
+        "code": "&lt;img \n\b\bsrc='rosy.jpg' \n\b\b\balt='위니브 검은 토끼 캐릭터 로지' \n/&gt;"
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "2) <adress>",
+        "desc": "<adress>는 해당 콘텐츠에 대한 연락처 정보를 나타냅니다.\n\n- 연락처 정보: 물리적 주소, URL, 이메일 주소, 전화번호, SNS 정보, 좌표 등을 포함합니다.\n- 개인, 조직, 단체의 이름 명시: 연락처 정보를 제공하는 개인, 조직, 또는 단체의 이름을 반드시 적어야 합니다.\n- 위치: 페이지 헤더나 푸터에 배치하여 사업체의 연락 방법으로 사용할 수 있습니다. 또한, article 내에 사용하여 글의 작성자를 나타낼 수도 있습니다.\n- 제한 사항: 연락처 외의 정보(예: 출판일 등)를 포함해서는 안 됩니다.",
+        "img": null,
+        "code": "&lt;footer&gt; \n\b\b&lt;address&gt; \n\b\b\bABC Corp.&lt;br /&gt; \n\b\b\b\b\b123 Main St.&lt;br /&gt; \n\b\b\b\b\bSpringfield, USA&lt;br /&gt; \n\b\b\b\b\b&lt;a href='mailto:contact@abccorp.com'&gt;contact@abccorp.com&lt;/a&gt;&lt;br /&gt; \n\b\b\b\b\b&lt;a href='tel:+1234567890'&gt;+1 (234) 567-890&lt;/a&gt;&lt;br /&gt; \n\b\b\b\b\b&lt;a href='https://twitter.com/abccorp'&gt;@abccorp&lt;/a&gt; \n\b\b\b&lt;/address&gt; \n&lt;/footer&gt;"
+      },
+      {
+        "sub_id": 2,
+        "sub_name": "3) <strong>",
+        "desc": "중대하거나 긴급한 콘텐츠를 나타내는 태그입니다.\n- 기본적으로 굵은 글꼴이 적용됩니다.\n- 스크린 리더를 사용하여 컴퓨터 화면을 낭독할 때 strong 사이에 있는 문자는 거센 억양으로 소리를 내어 발음하여 사용자가 중요한 정보를 쉽게 인식할 수 있도록 합니다.",
+        "img": null,
+        "code": "&lt;strong&gt;경고! 이 물질은 인체에 유해한 성분이 들어있습니다!&lt;/strong&gt;"
+      }
+    ]
+  }
+]

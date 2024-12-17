@@ -1,0 +1,66 @@
+[
+  {
+    "stage_id": 1,
+    "level_id": 1,
+    "title_id": 0,
+    "title": "1. form",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "1) form 태그",
+        "desc": "<Form> 태그는 웹 페이지에서 사용자로부터 데이터를 수집하고 서버로 전송하는 데 사용되는 HTML 요소입니다. 사용자로부터 입력을 받기 위한 양식을 작성하는 태그들을 통틀어 form이라고 합니다. 로그인, 회원 가입, 검색, 설문조사 등 다양한 상호작용을 구현할 때 폼을 활용합니다. \n\n - action 속성: 폼 데이터를 처리할 서버의 URL을 지정합니다.\n- method 속성: 데이터를 서버로 전송하는 방식을 지정합니다. 주로 GET 또는 POST 방식을 사용합니다.",
+        "img": null,
+        "code": "&lt;form action='/login' method='POST'&gt;\n\b\b&lt;!-- 폼 요소들 --&gt;\n&lt;/form&gt;"
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "2) input 태그",
+        "desc": "<input> 태그는 사용자로부터 데이터를 입력받는 가장 기본적인 HTML 요소입니다.\n텍스트, 비밀번호, 체크박스, 라디오 버튼 등 다양한 형태의 입력을 지원합니다.\n\n- type 속성: 입력 필드의 유형을 지정합니다. 예를 들어, 텍스트 입력은 `type='text'`, 비밀번호 입력은 `type='password'` 등으로 지정합니다. 모든 `input`, `select`, `textarea` 요소에 필수적으로 설정됩니다.\n- name 속성: 폼 데이터와 함께 전송될 때 사용되는 필드의 이름을 지정합니다. 서버 측에서 이 이름을 통해 데이터를 식별합니다.\n- id 속성: 레이블(label) 요소에서 for 속성을 사용하여 id 속성과 일치시킬 수 있습니다. 이렇게 하면 사용자가 레이블을 클릭했을 때 해당 입력 필드가 자동으로 포커스를 받거나, 스크린 리더가 사용될 때 사용자에게 더 나은 접근성을 제공할 수 있습니다.\n- value 속성: 사용자가 입력한 값이나 기본 설정 값을 나타냅니다. 폼이 제출될 때, name 속성의 값과 함께 서버로 전송됩니다. 주로 `input` 요소에 사용됩니다.",
+        "img": null,
+        "code": "&lt;input type='text' id='username' name='username' /&gt;\n&lt;input type='password' id='password' name='password' /&gt;\n&lt;input type='checkbox' id='remember' name='remember' /&gt;\n&lt;input type='radio' id='gender-male' name='gender' value='male' /&gt;\n"
+      },
+      {
+        "sub_id": 2,
+        "sub_name": "3) label 태그",
+        "desc": "<label> 태그는 입력 필드의 설명을 제공하고, 해당 레이블을 클릭하면 연결된 입력 요소에 포커스가 맞춰지도록 합니다. 이는 사용자가 손쉽게 입력 필드를 선택할 수 있게 하며, 폼의 사용성을 크게 향상시킵니다.\n- for 속성: 이 속성은 `<label&gt;`이 설명하는 입력 요소의 ID를 지정합니다. for 속성의 값은 해당 입력 요소의 id 속성 값과 일치해야 합니다.",
+        "img": null,
+        "code": "&lt;!-- for-id를 이용해 연결하기 --&gt;\n&lt;label for='user-id'&gt;아이디&lt;/label&gt;\n&lt;input id='user-id' type='text' /&gt;\n"
+      },
+      {
+        "sub_id": 3,
+        "sub_name": "4) fieldset & legend",
+        "desc": "",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 4,
+        "sub_name": "fieldset",
+        "desc": "- form 관련 요소들을 묶을 때 사용합니다.\n- disabled를 사용할 경우 모든 자손 컨트롤을 비활성화합니다.",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 5,
+        "sub_name": "legend",
+        "desc": "그룹의 제목을 제공합니다.",
+        "img": null,
+        "code": null
+      },
+      {
+        "sub_id": 6,
+        "sub_name": "placeholder",
+        "desc": "컨트롤에 무엇을 입력해야하는지 알려주는 힌트",
+        "img": null,
+        "code": "&lt;fieldset&gt;\n&lt;legend&gt;사용자 정보&lt;/legend&gt;\n\b\b&lt;label for='username'&gt;사용자 이름&lt;/label&gt;\n\b\b&lt;input \n\b\b\btype='text' \n\b\b\bid='username'\n\b\b\bname='username'\n\b\b\bplaceholder='이름을 입력하세요'\n\b\b/&gt;\n&lt;/fieldset&gt;"
+      },
+      {
+        "sub_id": 7,
+        "sub_name": "5) Button",
+        "desc": "- 사용자가 클릭할수 있는 요소입니다.\n- form 내부뿐만 아니라 버튼이 필요한 곳이라면 어디에든 배치할 수 있습니다.\n\n - `button`: 기본 행동이 없습니다. 클릭했을 때 아무것도 하지 않습니다. JavaScript와 연결하여 사용합니다\n\t- <button>의 기본타입 입니다.\n\t- 양식 제출용이 아니라면 타입을 꼭 button으로 지정해주세요. 2. `submit`: 서버로 양식 데이터를 제출합니다.\n\t- <form> 태그 내부에 위치해있는 <button>의 기본 타입은 submit 입니다\n- reset: <input type='reset'> 과 동일하게 초깃값으로 되돌립니다.",
+        "img": null,
+        "code": "&lt;button type='button'&gt;버튼&lt;/button&gt;\n&lt;button type='reset'&gt;초기화&lt;/button&gt;\n&lt;button type='submit'&gt;전송&lt;/button&gt;\n"
+      }
+    ]
+  }
+]
