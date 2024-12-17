@@ -6,8 +6,9 @@ import "swiper/css/navigation";
 import styled, { ThemeProvider, keyframes } from "styled-components";
 import theme from "../theme";
 import media from "../media";
-import icon from "../../../assets/icon_level.png";
+import Data from "../../../data/yejin/level(stage01-02).json";
 
+// start styled-cpomponents
 const SliderWrapper = styled.div`
   ${({ theme }) => theme.tesktop`
     width: 70rem;
@@ -131,7 +132,8 @@ const CardImg = styled.div`
     height: 15rem;
   `};
   display: flex;
-  background-color: var(--main-color);
+  background-color: ${(props) =>
+    props.$isDone ? `var(--main-color)` : `#F6F6F6`};
   width: 20rem;
   height: 20rem;
   border-radius: 50rem;
@@ -187,17 +189,10 @@ const CardContent = styled.span`
   line-height: 4rem;
   color: #000;
 `;
+// end styled-cpomponents
 
 const CardSlider = () => {
   const [swiper, setSwiper] = useState(null);
-  const cardData = [
-    { id: 1, img: icon, title: "Level 01", content: "명작 소개 페이지 만들기" },
-    { id: 2, img: icon, title: "Level 02", content: "명작 소개 페이지 만들기" },
-    { id: 3, img: icon, title: "Level 03", content: "명작 소개 페이지 만들기" },
-    { id: 4, img: icon, title: "Level 04", content: "명작 소개 페이지 만들기" },
-    { id: 5, img: icon, title: "Level 05", content: "명작 소개 페이지 만들기" },
-    { id: 6, img: icon, title: "Master", content: "명작 소개 페이지 만들기" },
-  ];
 
   return (
     <ThemeProvider theme={{ ...theme, ...media }}>
@@ -234,17 +229,20 @@ const CardSlider = () => {
           }}
           className="mySwiper"
         >
-          {cardData.map((card) => (
-            <SwiperSlide key={card.id}>
-              <CardWrapper>
-                <CardImg>
-                  <img src={card.img} alt="" />
-                </CardImg>
-                <CardTitle>{card.title}</CardTitle>
-                <CardContent>{card.content}</CardContent>
-              </CardWrapper>
-            </SwiperSlide>
-          ))}
+          {Data.map((card) => {
+            const imageUrl = require(`../../../assets/${card.img}`);
+            return (
+              <SwiperSlide key={card.id}>
+                <CardWrapper>
+                  <CardImg $isDone={card.done}>
+                    <img src={imageUrl} alt="level 아이콘" />
+                  </CardImg>
+                  <CardTitle>{card.level_name}</CardTitle>
+                  <CardContent>{card.theme}</CardContent>
+                </CardWrapper>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
         <StyledButton onClick={() => swiper.slideNext()}>&gt;</StyledButton>
       </SliderWrapper>
