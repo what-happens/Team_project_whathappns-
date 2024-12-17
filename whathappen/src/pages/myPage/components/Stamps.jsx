@@ -1,7 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 import { media } from "../../../styles/MideaQuery";
+import stageData from "../../../data/stageMeta.json";
+import PropTypes from "prop-types";
+import stampIcon from "../../../assets/Stamp.png";
 
+const StampIcon = styled.img`
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+
+  ${media.large`
+    width: 70%;
+    height: 70%;
+  `}
+
+  ${media.small`
+    width: 80%;
+    height: 80%;
+  `}
+`;
 const StampBox = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -46,8 +64,12 @@ const StampSlot = styled.div`
   border-radius: 1rem;
   width: 16.2rem;
   height: 16.2rem;
-  background-color: var(--main-color);
+  background-color: var(--main-color); // 조건부 스타일 제거
   box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 4px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media (max-width: 1280px) {
     width: 12.2rem;
     height: 12.2rem;
@@ -76,15 +98,48 @@ const StampSlot = styled.div`
     border-radius: 0.6rem;
   `}
 `;
+const Stamps = ({ clearStages }) => {
+  const isStageCompleted = (stageId) => {
+    const clearedStage = clearStages?.find(
+      (stage) => stage.stage_id === stageId.toString()
+    );
 
-const Stamps = () => {
+    if (!clearedStage) return false;
+
+    const stage = stageData.stages.find(
+      (s) => s.staged_id === parseInt(clearedStage.stage_id)
+    );
+
+    return clearedStage.levels.length === stage?.level_num;
+  };
+
   return (
     <StampBox>
-      {[...Array(7)].map((_, index) => (
-        <StampSlot key={index} filled={index < 7} />
+      {stageData.stages.map((stage) => (
+        <StampSlot
+          key={stage.staged_id}
+          isCompleted={isStageCompleted(stage.staged_id)}
+        >
+          {isStageCompleted(stage.staged_id) && (
+            <StampIcon src={stampIcon} alt="완료 스탬프" />
+          )}
+        </StampSlot>
       ))}
     </StampBox>
   );
+};
+
+Stamps.propTypes = {
+  clearStages: PropTypes.arrayOf(
+    PropTypes.shape({
+      levels: PropTypes.arrayOf(PropTypes.string),
+      stage_id: PropTypes.string,
+    })
+  ),
+};
+
+Stamps.defaultProps = {
+  clearStages: [],
 };
 
 export default Stamps;
