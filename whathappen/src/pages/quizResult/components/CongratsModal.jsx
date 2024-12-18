@@ -92,9 +92,9 @@ export default function CongratulationsModal({ isOpen, onClose }) {
           틀린문제와 북마크한 문제를 복습 노트에 저장했습니다!
         </SaveMessage>
         <MyPageMessage>
-          마이페이지에서 복습 노트에 저장된 문제들을 복습해보아요!!
+          복습노트에서 저장된 문제들을 다시한번 풀어보아요!!
         </MyPageMessage>
-        <Link to="/mypage">
+        <Link to="/review">
           <Button onClick={onClose}>마이페이지로 이동</Button>
         </Link>
       </Congratulations>
