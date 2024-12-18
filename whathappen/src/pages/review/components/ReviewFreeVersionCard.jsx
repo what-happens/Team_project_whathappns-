@@ -8,13 +8,21 @@ import WrongAnswerModal from "./WrongAnswerModal";
 import CorrectAnswerModal from "./CorrectAnswerModal";
 import Bookmark from "./Bookmark";
 
-export default function QuizCard({ quizId, activeTab, reviewData }) {
+export default function QuizCard({
+  quizId,
+  activeTab,
+  reviewData,
+  quizCategory,
+}) {
   const [quiz, setQuiz] = useState(null);
   const [shuffledAnswer, setShuffledAnswer] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState(null);
   const [, setError] = useState(null);
+  const [bookmarkStatus, setBookmarkStatus] = useState(
+    reviewData.find((item) => item.qid === quizId)?.isBookmark || false
+  );
 
   const shuffleArray = (arr) => {
     const newArray = [...arr];
@@ -78,7 +86,8 @@ export default function QuizCard({ quizId, activeTab, reviewData }) {
 
       return () => clearTimeout(timer);
     }
-  }, [isCorrect]);
+  }, [isCorrect, activeTab]);
+
   const handleAnswerClick = (answer) => {
     setSelectedAnswer(answer);
   };
@@ -93,11 +102,24 @@ export default function QuizCard({ quizId, activeTab, reviewData }) {
     }
   };
 
+  const handleBookmarkChange = (status) => {
+    setBookmarkStatus(status);
+  };
+
   if (!quiz) {
     return null;
   }
+
   return (
     <QuizSection>
+      <Bookmark
+        quizId={quizId}
+        quizCategory={quizCategory}
+        top="-2rem"
+        right="2rem"
+        isBookmarked={bookmarkStatus}
+        onBookmarkChange={handleBookmarkChange}
+      />
       <QuizQuestion>{quiz.question}</QuizQuestion>
       <FormWrapper onSubmit={handleSubmit}>
         {shuffledAnswer.map((answer, idx) => (
@@ -119,23 +141,9 @@ export default function QuizCard({ quizId, activeTab, reviewData }) {
             </Button>
           )}
           {activeTab === "bookmark" && (
-            <>
-              <div style={{ display: "flex", gap: "1rem" }}>
-                <Bookmark
-                  top={"-5rem"}
-                  right={"3.3rem"}
-                  size={"small"}
-                  quizId={quizId}
-                  isBookmarked={
-                    reviewData.find((item) => item.qid === quizId)
-                      ?.isBookmark || false
-                  }
-                />
-                <Button type="submit" backgroundColor={"green"}>
-                  제출하기
-                </Button>
-              </div>
-            </>
+            <Button type="submit" backgroundColor={"green"}>
+              제출하기
+            </Button>
           )}
         </ButtonWrapper>
       </FormWrapper>
@@ -264,6 +272,7 @@ const ButtonWrapper = styled.div`
 
 QuizCard.propTypes = {
   quizId: PropTypes.number.isRequired,
+  quizCategory: PropTypes.string.isRequired,
   activeTab: PropTypes.string,
   reviewData: PropTypes.arrayOf(
     PropTypes.shape({
@@ -272,14 +281,6 @@ QuizCard.propTypes = {
       qid: PropTypes.number,
       category: PropTypes.string,
       updateAt: PropTypes.object,
-    })
-  ).isRequired,
-  quizzes: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      question: PropTypes.string.isRequired,
-      correct_answer: PropTypes.string.isRequired,
-      incorrect_answers: PropTypes.arrayOf(PropTypes.string).isRequired,
     })
   ).isRequired,
 };

@@ -10,6 +10,7 @@ import backGround from "../../assets/review-background-2.svg";
 export default function ReviewFreeVersion() {
   const [activeTab, setActiveTab] = useState("wrong");
   const [selectedQuizId, setSelectedQuizId] = useState(null);
+  const [selectedQuizCategory, setSelectedQuizCategory] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [, setError] = useState(null);
   const [reviewData, setReviewData] = useState([]);
@@ -53,8 +54,9 @@ export default function ReviewFreeVersion() {
     setSelectedQuizId(null);
   };
 
-  const handleQuestionClick = (quizId) => {
-    setSelectedQuizId(quizId);
+  const handleQuestionClick = (quiz) => {
+    setSelectedQuizId(quiz.qid);
+    setSelectedQuizCategory(quiz.category);
   };
 
   return (
@@ -107,7 +109,7 @@ export default function ReviewFreeVersion() {
                       return (
                         <Question
                           key={item.qid}
-                          onClick={() => handleQuestionClick(item.qid)}
+                          onClick={() => handleQuestionClick(item)}
                         >
                           {item.category} 문제 {item.qid}
                         </Question>
@@ -120,6 +122,7 @@ export default function ReviewFreeVersion() {
         </Warp>
         {selectedQuizId && (
           <QuizCard
+            quizCategory={selectedQuizCategory}
             quizId={selectedQuizId}
             activeTab={activeTab}
             reviewData={reviewData}
