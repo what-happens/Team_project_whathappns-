@@ -11,6 +11,7 @@ export default function QuizCard({
   handleSubmit,
   handleAnswerSelect,
   answers,
+  onBookmarkUpdate,
 }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const isLastQuestion = currentQuestion === quiz.length - 1;
@@ -27,9 +28,61 @@ export default function QuizCard({
     }
   };
 
+  const [bookmarkedQuestions, setBookmarkedQuestions] = useState(
+    quiz.map((q) => q.isBookmark)
+  );
+
+  const handleBookmarkClick = async () => {
+    try {
+      const newBookmarkState = !bookmarkedQuestions[currentQuestion];
+
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/bookmark`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            bookmark: [
+              {
+                qid: quiz[currentQuestion].id,
+                category: quiz[currentQuestion].category,
+                action: bookmarkedQuestions[currentQuestion] ? "delete" : "add",
+              },
+            ],
+          }),
+          credentials: "include",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("북마크 업데이트 실패");
+      }
+
+      const data = await response.json();
+
+      const newBookmarkedQuestions = [...bookmarkedQuestions];
+      newBookmarkedQuestions[currentQuestion] = newBookmarkState;
+      setBookmarkedQuestions(newBookmarkedQuestions);
+
+      if (onBookmarkUpdate) {
+        onBookmarkUpdate(data.bookmark);
+      }
+    } catch (error) {
+      if (onBookmarkUpdate) {
+        onBookmarkUpdate(null, error);
+      }
+    }
+  };
   return (
     <QuizSection>
-      <Bookmark top={"-4.5rem"} right={"7.2rem"} />
+      <Bookmark
+        top={"-4.5rem"}
+        right={"7.2rem"}
+        isBookmarked={bookmarkedQuestions[currentQuestion]}
+        onClick={handleBookmarkClick}
+      />
       <QuestionNumber>
         문제
         <span>
@@ -287,9 +340,12 @@ QuizCard.propTypes = {
       correct_answer: PropTypes.string.isRequired,
       incorrect_answers: PropTypes.arrayOf(PropTypes.string).isRequired,
       answers: PropTypes.arrayOf(PropTypes.string).isRequired,
+      isBookmark: PropTypes.bool.isRequired,
+      category: PropTypes.string.isRequired,
     })
   ).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleAnswerSelect: PropTypes.func.isRequired,
   answers: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onBookmarkUpdate: PropTypes.func,
 };
