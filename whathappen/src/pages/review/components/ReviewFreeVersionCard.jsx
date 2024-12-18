@@ -35,7 +35,7 @@ export default function QuizCard({
 
   useEffect(() => {
     const fetchQuizData = async () => {
-      if (!quizId) return;
+      if (quizId === null || quizId === undefined) return;
 
       try {
         const response = await fetch(
@@ -72,6 +72,15 @@ export default function QuizCard({
   }, [quizId]);
 
   useEffect(() => {
+    setSelectedAnswer(null);
+    setIsSubmitted(false);
+    setIsCorrect(null);
+    setBookmarkStatus(
+      reviewData.find((item) => item.qid === quizId)?.isBookmark || false
+    );
+  }, [quizId, reviewData]);
+
+  useEffect(() => {
     if (isCorrect === true && activeTab === "bookmark") {
       const timer = setTimeout(() => {
         setIsCorrect(null);
@@ -106,7 +115,7 @@ export default function QuizCard({
     setBookmarkStatus(status);
   };
 
-  if (!quiz) {
+  if (quiz === null) {
     return null;
   }
 

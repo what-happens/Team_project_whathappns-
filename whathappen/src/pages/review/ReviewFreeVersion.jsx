@@ -101,15 +101,18 @@ export default function ReviewFreeVersion() {
                     .filter((item) => {
                       const filtered =
                         activeTab === "bookmark"
-                          ? item.isBookmark
-                          : item.isWrong;
+                          ? item.isBookmark === true
+                          : item.isWrong === true;
+
                       return filtered;
                     })
                     .map((item) => {
                       return (
                         <Question
-                          key={item.qid}
-                          onClick={() => handleQuestionClick(item)}
+                          key={`quiz-${item.qid}`}
+                          onClick={() => {
+                            handleQuestionClick(item);
+                          }}
                         >
                           {item.category} 문제 {item.qid + 1}
                         </Question>
@@ -120,7 +123,7 @@ export default function ReviewFreeVersion() {
             </Scrollbar>
           </QuestionContainer>
         </Warp>
-        {selectedQuizId && (
+        {selectedQuizId !== null && selectedQuizCategory && (
           <QuizCard
             quizCategory={selectedQuizCategory}
             quizId={selectedQuizId}
