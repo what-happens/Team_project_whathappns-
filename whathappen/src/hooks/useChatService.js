@@ -14,20 +14,16 @@ export const useChat = () => {
 
   async function askQuestion(content) {
     try {
-      const url = new URL(`${BASE_URL}/api/v1/question  `);
+      const url = new URL(`${BASE_URL}/api/v1/question`);
       url.searchParams.append("content", content);
       url.searchParams.append("client_id", CLIENT_ID);
 
-      const proxyUrl = "https://api.allorigins.win/raw?url=";
-      const response = await fetch(
-        proxyUrl + encodeURIComponent(url.toString()),
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(url.toString(), {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
