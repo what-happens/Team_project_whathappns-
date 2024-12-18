@@ -6,10 +6,19 @@ import Stamps from "./components/Stamps";
 import { media } from "../../styles/MideaQuery";
 import backGround from "../../assets/review-background-2.svg";
 import loadingImg from "../../assets/loading_Img.svg";
+import stageData from "../../data/stageMeta.json";
 
 export default function MyPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState(null);
+
+  const calculateProgress = (clearStages, totalLevels) => {
+    const completedLevels = clearStages.reduce((sum, stage) => {
+      return sum + stage.levels.length;
+    }, 0);
+
+    return (completedLevels / totalLevels) * 100;
+  };
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -44,6 +53,7 @@ export default function MyPage() {
 
     fetchUserData();
   }, []);
+
   return (
     <Background>
       {isLoading && (
@@ -89,30 +99,38 @@ export default function MyPage() {
             </StampContents>
             <ProgressContents>
               <h2 style={{ color: "var(--main-color)" }}>기초학습 진척도</h2>
-              <CircularProgressbar
-                value={20}
-                text={`20%`}
-                background={true}
-                styles={{
-                  root: {
-                    maxHeight: "300px",
-                    maxWidth: "300px",
-                    minHeight: "220px",
-                    minWidth: "220px",
-                  },
-                  path: {
-                    stroke: `var(--main-color)`,
-                  },
-                  text: {
-                    fontSize: "1.5rem",
-                    fontWeight: 700,
-                    fill: "var(--main-color)",
-                  },
-                  background: {
-                    fill: "white",
-                  },
-                }}
-              />
+              {(() => {
+                const progress = calculateProgress(
+                  userData.clearStages,
+                  stageData.total_levelnum
+                );
+                return (
+                  <CircularProgressbar
+                    value={progress}
+                    text={`${Math.round(progress)}%`}
+                    background={true}
+                    styles={{
+                      root: {
+                        maxHeight: "300px",
+                        maxWidth: "300px",
+                        minHeight: "220px",
+                        minWidth: "220px",
+                      },
+                      path: {
+                        stroke: `var(--main-color)`,
+                      },
+                      text: {
+                        fontSize: "1.5rem",
+                        fontWeight: 700,
+                        fill: "var(--main-color)",
+                      },
+                      background: {
+                        fill: "white",
+                      },
+                    }}
+                  />
+                );
+              })()}
             </ProgressContents>
           </CourseContents>
         </MyPageContents>
