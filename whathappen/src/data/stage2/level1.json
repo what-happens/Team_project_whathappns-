@@ -1,0 +1,65 @@
+{
+  "level_id": 1,
+  "stage_id": 2,
+  "code_type": "css",
+  "code": "|=0=| {margin: 0;padding: 0;}|=1=|container {padding: 20px;}|=2=|box {background-color: #f0f0f0;}|=3=| {color: blue;}p|=4=|li= {margin: 10px 0;}#container|=5=| {color: green;}ul |=6=| li {list-style: square;}h1 |=7=| span {color: red;}.box |=8=| ul {border: 1px solid black;}",
+  "sub_code": "<div id='container'><h1>제목</h1><div class='box'><p>첫 번째 단락</p><p>두 번째 단락</p></div><ul><li>항목 1</li><li>항목 2</li><li>항목 3</li></ul><span>형제 1</span><span>형제 2</span><span>형제 3</span></div>",
+  "level_name": "선택자",
+  "theme": "선택자를 사용해 스타일 적용하기!",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 이 선택자는 HTML 내 모든 태그에 스타일을 적용합니다.",
+      "choices": ["*", "%", "$", "#"],
+      "answer": "*"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2. HTML 문서 내에서 한 번만 사용될 수 있는 고유한 식별자는?",
+      "choices": ["$", ".", "#", "+"],
+      "answer": "#"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. 특정 요소를 선택해 스타일을 적용시키고, 재사용성이 높아 많이 사용됩니다.",
+      "choices": ["#", "!", "%", "."],
+      "answer": "."
+    },
+    {
+      "q_id": 3,
+      "q_title": "Q4. 특정 HTML 태그를 선택해 스타일을 적용합니다. 제목1의 배경색을 토마토로 바꿔보세요. ",
+      "choices": ["input", "*", "h1", "p"],
+      "answer": "h1"
+    },
+    {
+      "q_id": 4,
+      "q_title": "Q5. 여러 개의 선택자를 한 번에 동일한 스타일을 적용할 수 있어 코드의 중복을 줄입니다.",
+      "choices": ["&", ",", "<", "+"],
+      "answer": ","
+    },
+    {
+      "q_id": 5,
+      "q_title": "Q6. 특정 요소의 모든 하위 요소를 선택합니다. div의 자손을 선택해 보세요.",
+      "choices": [" p", "+p", ".p", "!p"],
+      "answer": " p"
+    },
+    {
+      "q_id": 6,
+      "q_title": "Q7. 특정 요소의 직계 자식만 선택합니다.",
+      "choices": ["<", ">", "=", "@"],
+      "answer": ">"
+    },
+    {
+      "q_id": 7,
+      "q_title": "Q8. 특정 요소의 뒤에 나오는 형제 요소들을 모두 선택합니다. ",
+      "choices": ["+", "~", "!", "-"],
+      "answer": "~"
+    },
+    {
+      "q_id": 8,
+      "q_title": "Q9. 특정 요소의 바로 뒤에 나오는 형제 요소만 선택합니다.",
+      "choices": ["+", "~", "!", "-"],
+      "answer": "+"
+    }
+  ]
+}
