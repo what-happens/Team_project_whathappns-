@@ -62,7 +62,8 @@ const PointOneBanner = () => {
       <BannerContent gap="4.2rem" center color="white">
         <BannerTitle>POINT 01</BannerTitle>
         <BannerDescription center>
-          귀여운 구황작물 친구들과 함께 HTML / CSS 로 이루어진 화면을
+          귀여운 구황작물 친구들과 함께 <br className="mobile-only" />
+          HTML / CSS 로 이루어진 화면을
           <br />
           쉽고 재미있게 만들어 보아요!!
         </BannerDescription>
@@ -94,7 +95,8 @@ const PointThreeBanner = () => {
       <BannerContent center>
         <BannerTitle color="#2E5DFE">POINT 03</BannerTitle>
         <BannerDescription center>
-          퀴즈에서 틀린 문제나 어려웠던 문제를 한눈에 보고
+          퀴즈에서 틀린 문제나 어려웠던 <br className="mobile-only" />
+          문제를 한눈에 보고
           <br />
           씹고 뜯고 맛볼 수 있습니다!!
         </BannerDescription>
@@ -219,6 +221,14 @@ const SubBanner = styled.section`
     justify-content: center;
     align-content: center;
   `}
+  .mobile-only {
+    display: none;
+  }
+  ${media.xsmall`
+  .mobile-only{
+    display: block;
+  }
+  `}
 `;
 
 const PointTwoSubBanner = styled(SubBanner)`
@@ -272,6 +282,11 @@ const BannerImage = styled.div`
   ${media.mediumlarge`
     width: 90vw;
     min-width: 48rem;
+  `}
+  ${media.xsmall`
+    min-width: 38rem;
+    width: 100%;
+    max-width: 38rem;
   `}
 `;
 
