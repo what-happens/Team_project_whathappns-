@@ -7,6 +7,7 @@ const initialState = {
   userAnswers: {},
   parsedData: [],
   codeString: "",
+  subcode: "",
   selectedQid: null,
   isShowAnswers: false,
   type: "",
@@ -46,6 +47,9 @@ const learnSlice = createSlice({
     setType(state, action) {
       state.type = action.payload;
     },
+    setSubCode(state, action) {
+      state.subcode = action.payload;
+    },
   },
 });
 
@@ -59,6 +63,7 @@ export const {
   setIsShowAnswers,
   setAnswers,
   setType,
+  setSubCode,
 } = learnSlice.actions;
 
 export default learnSlice.reducer;
