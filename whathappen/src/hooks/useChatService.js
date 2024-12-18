@@ -1,28 +1,17 @@
-import { useState } from "react";
-import { marked } from "marked";
-
-marked.setOptions({
-  breaks: true,
-  gfm: true,
-  sanitize: false,
-  mangle: false,
-  headerIds: false,
-});
-
-const preprocessMarkdown = (text) => {
-  return text
-    .replace(/\. /g, ".\n\n")
-    .replace(/- /g, "\n- ")
-    .replace(/###/g, "\n###")
-    .replace(/```/g, "\n```\n");
+const stripHtml = (html) => {
+  const temp = document.createElement("div");
+  temp.innerHTML = html;
+  return temp.textContent || temp.innerText || "";
 };
+
+const markdownToText = (markdown) => {
+  const html = marked(markdown);
+  return stripHtml(html);
+};
+
 export const useChat = () => {
   const [messages, setMessages] = useState([
-    {
-      type: "bot",
-      text: "안녕하세요! 무엇이 궁금하신가요?!?",
-      html: "<p>안녕하세요! 무엇이 궁금하신가요?!?</p>",
-    },
+    { type: "bot", text: "안녕하세요! 무엇이 궁금하신가요?!?" },
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -38,11 +27,6 @@ export const useChat = () => {
       const url = new URL(`${BASE_URL}/api/v1/question`);
       url.searchParams.append("content", content + PROMPT);
       url.searchParams.append("client_id", CLIENT_ID);
-      console.log("Request URL:", url.toString());
-      console.log("Parameters:", {
-        content: content + PROMPT,
-        client_id: CLIENT_ID,
-      });
       const response = await fetch(url.toString(), {
         method: "GET",
         headers: {
@@ -68,29 +52,14 @@ export const useChat = () => {
     setIsLoading(true);
     setError(null);
 
-    setMessages((prev) => [
-      ...prev,
-      {
-        type: "user",
-        text: userMessage,
-        html: userMessage,
-      },
-    ]);
+    setMessages((prev) => [...prev, { type: "user", text: userMessage }]);
 
     try {
       const data = await askQuestion(userMessage.toString());
 
-      const processedMarkdown = preprocessMarkdown(data.content);
-      const htmlContent = marked(processedMarkdown);
+      const plainText = markdownToText(data.content);
 
-      setMessages((prev) => [
-        ...prev,
-        {
-          type: "bot",
-          text: data.content,
-          html: htmlContent,
-        },
-      ]);
+      setMessages((prev) => [...prev, { type: "bot", text: plainText }]);
     } catch (err) {
       console.error("에러:", err);
       setError(err.message);
