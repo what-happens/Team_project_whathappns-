@@ -146,6 +146,26 @@ const QuizSection = styled.section`
 
   ${media.medium`
     width: 80%; 
+    padding: 2.8rem 6rem;
+  `}
+  ${media.small`
+    padding: 2.2rem 4.4rem;
+    border-radius: 4rem;
+    & > svg {
+      top:-2.6rem;
+      right:4rem;
+      width: 4.5rem;
+      height: 7.3rem;
+    }
+  `}
+  ${media.xsmall`
+    padding: 1.8rem 3.3rem;
+    border-radius: 3.6rem;
+    & > svg {
+      right:3rem;
+      width: 3rem;
+      height: 6.5rem;
+    }
   `}
 `;
 
@@ -163,12 +183,15 @@ const QuestionNumber = styled.p`
   `}
   ${media.medium`
     font-size: 3rem;
+    line-height: 4.2rem;
   `}
   ${media.small`
     font-size: 2.5rem;
+    line-height: 3.8rem;
   `}
   ${media.xsmall`
     font-size: 2rem;
+    line-height: 3.5rem;
   `}
 `;
 
@@ -187,8 +210,9 @@ const QuizQuestion = styled.h3`
     font-size: 2.6rem;
   `}
   ${media.medium`
-    height: 20rem;
+    max-height: 20rem;
     font-size: 2.3rem;
+    line-height: 4rem;
   `}
   ${media.small`
   padding:2rem 0;
@@ -198,9 +222,9 @@ const QuizQuestion = styled.h3`
     line-height: 3.8rem;
   `}
   ${media.xsmall`
-    max-height: 50rem;
+    max-height: 48rem;
     font-size: 1.5rem;
-    line-height: 3.5rem;
+    line-height: 3rem;
   `}
 `;
 
@@ -261,20 +285,14 @@ const ButtonWrapper = styled.div`
   margin-top: 2.75rem;
   gap: 1.5rem;
   & > button {
-    ${media.medium`
-    font-size: 1.6rem;
-    padding:0.7rem 1.7rem;
-    border-radius:1.4rem;
-  `}
     ${media.small`
-    font-size: 1.3rem;
-    padding:0.5rem 1rem;
-    border-radius:1.4rem;
+    font-size: 1.5rem;
+    padding:0.5rem 1.8rem;
+    border-radius:1.6rem;
   `}
     ${media.xsmall`
-    font-size: 1rem;
-    padding:0.1rem 1rem;
-    border-radius:1rem;
+    font-size: 1.2rem;
+    padding:0.3rem 1.4rem;
   `}
   }
 `;
