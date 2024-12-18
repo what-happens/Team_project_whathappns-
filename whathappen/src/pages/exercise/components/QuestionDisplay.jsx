@@ -4,23 +4,38 @@ import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import Button from "../../../components/Button";
 export default function QuestionDisplay({ height }) {
-  const [displayQuestion, setDisplayQuestion] = useState(true);
-  const { parsedData } = useSelector((state) => state.learn);
+  const [isDisplayQuestion, setIsDisplayQuestion] = useState(true);
+  const { parsedData, selectedQid, questions } = useSelector(
+    (state) => state.learn
+  );
+
   const onClickDisplayQuestion = () => {
-    setDisplayQuestion(true);
+    setIsDisplayQuestion(true);
   };
 
   const onClickDisplayAnswer = () => {
-    setDisplayQuestion(false);
+    setIsDisplayQuestion(false);
   };
+
+  const displayQuestion = () => {
+    if (selectedQid !== null) {
+      return (
+        <p>
+          {questions.find((question) => question.q_id === selectedQid).q_title}
+        </p>
+      );
+    }
+    return <p>문제를 보시려면 코드의 버튼을 눌러주세요</p>;
+  };
+
   return (
     <QuestionContainer $height={height}>
       <div>
         <Button onClick={onClickDisplayQuestion}>문제 보기</Button>
         <Button onClick={onClickDisplayAnswer}>정답 화면 보기</Button>
       </div>
-      {displayQuestion ? (
-        <p>문제를 보시려면 코드의 버튼을 눌러주세요</p>
+      {isDisplayQuestion ? (
+        displayQuestion()
       ) : (
         <iframe
           srcDoc={parsedData.htmlCode} // srcdoc 속성에 HTML 코드 삽입
