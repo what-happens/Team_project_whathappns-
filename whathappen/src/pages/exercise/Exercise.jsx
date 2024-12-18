@@ -4,7 +4,6 @@ import QuestionDisplay from "./components/QuestionDisplay";
 import UserDisplay from "./components/UserDisplay";
 import styled from "styled-components";
 import DragableBar from "./components/DragableBar";
-import BlankOption from "./components/BlankOption";
 import { fetchJson } from "../../utils/fetchJson";
 import useExercise from "../../hooks/useExercise";
 
@@ -13,23 +12,9 @@ export default function Exercise() {
   const [totalHeight, setTotalHeight] = useState(80);
   const [editorWidth, setEditorWidth] = useState(40);
   const [renderWidth, setRenderWidth] = useState(60);
-  const [problems, setProblems] = useState([]); //문제 관리
-  const [selectedProblemId, setSelectedProblemId] = useState(null); //id를 값으로 받음
-  const [isShow, setIsShow] = useState(false); //버튼 모달 관리
   const { setExerciseCode, setExerciseQuestions } = useExercise();
-  //const [answer, setAnswer] = useState([]);
-  console.log([
-    setTotalWidth,
-    setTotalHeight,
-    isShow,
-    selectedProblemId,
-    setProblems,
-    setSelectedProblemId,
-  ]);
 
-  const selectedProblem = problems.find(
-    (problem) => problem.id === selectedProblemId
-  );
+  console.log([setTotalWidth, setTotalHeight]);
 
   const handleDrag = (delta) => {
     setEditorWidth((prev) => Math.max(10, Math.min(prev + delta, 90))); // 최소 10%, 최대 90%
@@ -63,9 +48,6 @@ export default function Exercise() {
           <UserDisplay height={50} />
         </div>
       </ExerciseContainer>
-      {isShow && (
-        <BlankOption problem={selectedProblem} setIsShow={setIsShow} />
-      )}
     </>
   );
 }
