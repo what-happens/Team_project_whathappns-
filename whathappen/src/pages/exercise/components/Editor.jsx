@@ -1,9 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import CodeDisplay from "./CodeDisplay";
 
-export default function Editor({ width, editorItem }) {
-  return <EditorContainer $width={width}>{editorItem}</EditorContainer>;
+export default function Editor({ width }) {
+  return (
+    <EditorContainer $width={width}>
+      <CodeDisplay />
+    </EditorContainer>
+  );
 }
 
 const EditorContainer = styled.section`
@@ -15,5 +20,4 @@ const EditorContainer = styled.section`
 
 Editor.propTypes = {
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  editorItem: PropTypes.array,
 };
