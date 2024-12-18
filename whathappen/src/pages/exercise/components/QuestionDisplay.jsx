@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Button from "../../../components/Button";
 export default function QuestionDisplay({ height }) {
   const [isDisplayQuestion, setIsDisplayQuestion] = useState(true);
-  const { parsedData, selectedQid, questions } = useSelector(
+  const { parsedData, selectedQid, questions, type, subcode } = useSelector(
     (state) => state.learn
   );
 
@@ -28,22 +28,39 @@ export default function QuestionDisplay({ height }) {
     return <p>문제를 보시려면 코드의 버튼을 눌러주세요</p>;
   };
 
+  const generateIframeContent = (cssCode, htmlCode) => {
+    return `
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <style>
+          ${cssCode}
+        </style>
+      </head>
+      <body>
+        ${htmlCode} 
+      </body>
+      </html>
+    `;
+  };
+
+  const displayCorrect = () => {
+    let srcDoc = "";
+    if (type === "css") {
+      srcDoc = generateIframeContent(parsedData.cssCode, subcode);
+    } else if (type === "html") {
+      srcDoc = generateIframeContent(subcode, parsedData.htmlCode);
+    }
+    return <iframe srcDoc={srcDoc} width={600} height={400} />;
+  };
+
   return (
     <QuestionContainer $height={height}>
       <div>
         <Button onClick={onClickDisplayQuestion}>문제 보기</Button>
         <Button onClick={onClickDisplayAnswer}>정답 화면 보기</Button>
       </div>
-      {isDisplayQuestion ? (
-        displayQuestion()
-      ) : (
-        <iframe
-          srcDoc={parsedData.htmlCode} // srcdoc 속성에 HTML 코드 삽입
-          width="600"
-          height="400"
-          title="HTML Content"
-        />
-      )}
+      {isDisplayQuestion ? displayQuestion() : displayCorrect()}
     </QuestionContainer>
   );
 }
