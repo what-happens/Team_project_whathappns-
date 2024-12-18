@@ -1,7 +1,8 @@
 // import React from "react";
 // import LearningPage from "./LearningPage";
-import CardSlider from "./components/CardSlider";
+// import CardSlider from "./components/CardSlider";
+import LevelCards from "./fetch";
 
 export default function AAA() {
-  return <CardSlider>AAA</CardSlider>;
+  return <LevelCards>AAA</LevelCards>;
 }
