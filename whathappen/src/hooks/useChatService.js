@@ -16,9 +16,8 @@ export const useChat = () => {
   async function askQuestion(content) {
     try {
       const url = new URL(`${BASE_URL}/api/v1/question`);
-      url.searchParams.append("content", content);
+      url.searchParams.append("content", content + PROMPT);
       url.searchParams.append("client_id", CLIENT_ID);
-      url.searchParams.append("prompt", PROMPT);
       console.log("Request URL:", url.toString());
       console.log("Parameters:", {
         content: content + PROMPT,
