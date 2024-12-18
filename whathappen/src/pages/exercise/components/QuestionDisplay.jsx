@@ -53,6 +53,27 @@ const QuestionContainer = styled.section`
   height: ${(props) => props.$height}%;
   border: 1px solid var(--main-color);
   border-radius: 0px 20px 0px 0px;
+  padding: 2rem;
+  overflow: auto;
+  div {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  p {
+    margin: 1rem 0;
+    font-size: 1.6rem;
+    line-height: 1.5;
+  }
+  iframe {
+    border: none;
+    border-radius: 8px;
+  }
+  Button {
+    font-size: 2rem;
+    border-radius: 1rem;
+    padding: 1rem 3rem;
+  }
 `;
 
 QuestionDisplay.propTypes = {

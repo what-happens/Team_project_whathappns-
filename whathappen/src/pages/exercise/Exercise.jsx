@@ -6,7 +6,7 @@ import styled from "styled-components";
 import DragableBar from "./components/DragableBar";
 import { fetchJson } from "../../utils/fetchJson";
 import useExercise from "../../hooks/useExercise";
-
+// import Button from "../../components/Button";
 export default function Exercise() {
   const [totalWidth, setTotalWidth] = useState(144);
   const [totalHeight, setTotalHeight] = useState(80);
@@ -45,7 +45,7 @@ export default function Exercise() {
         <div style={{ width: `${renderWidth}%`, height: "100%" }}>
           <QuestionDisplay height={50} />
           <HorizontalDivide />
-          <UserDisplay height={50} />
+          <UserDisplay height={48} />
         </div>
       </ExerciseContainer>
     </>
@@ -54,17 +54,20 @@ export default function Exercise() {
 
 const ExerciseContainer = styled.section`
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
-  margin: 4rem auto;
-  border-radius: 2rem 2rem 2rem 2rem;
+  margin: 5rem auto;
+  border-radius: 2rem;
   width: ${(props) => props.$width}rem;
   height: ${(props) => props.$height}rem;
   /* border: 1px solid #c4c4c4; */
+  width: min(90vw, 120rem); // 화면의 90% 또는 최대 120rem
+  height: min(80vh, 70rem); // 화면의 80% 또는 최대 70rem
 `;
 
 const HorizontalDivide = styled.div`
-  height: 15px;
+  height: ${(props) => props.$height}rem;
+  height: 13px;
   width: 100%;
   background-color: white;
   border: 1px solid #2e5dfe;

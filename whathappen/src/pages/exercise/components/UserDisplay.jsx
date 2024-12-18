@@ -38,7 +38,14 @@ const UserDisplayContainer = styled.section`
   width: 100%;
   height: ${(props) => props.$height}%;
   border: 1px solid var(--main-color);
-  border-radius: 0 0 20px 0px;
+  border-radius: 0 0 2rem 0;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: start;
+  justify-content: flex-start;
+  overflow: hidden;
 `;
 
 UserDisplay.propTypes = {
