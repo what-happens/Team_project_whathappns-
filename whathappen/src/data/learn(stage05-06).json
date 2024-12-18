@@ -17,7 +17,7 @@
 
   {
     "stage_id": 4,
-    "level_id": 1,
+    "level_id": 0,
     "title_id": 1,
     "title": "Movement and Scaling",
     "subtitles": [
@@ -40,7 +40,7 @@
 
   {
     "stage_id": 4,
-    "level_id": 2,
+    "level_id": 0,
     "title_id": 2,
     "title": "Rotation and Distortion",
     "subtitles": [
@@ -62,8 +62,8 @@
   },
   {
     "stage_id": 4,
-    "level_id": 3,
-    "title_id": 3,
+    "level_id": 1,
+    "title_id": 0,
     "title": "transition_explanation",
     "subtitles": [
       {
@@ -84,8 +84,8 @@
   },
   {
     "stage_id": 4,
-    "level_id": 4,
-    "title_id": 4,
+    "level_id": 1,
+    "title_id": 1,
     "title": "Time Control",
     "subtitles": [
       {
@@ -114,8 +114,8 @@
 
   {
     "stage_id": 4,
-    "level_id": 5,
-    "title_id": 5,
+    "level_id": 2,
+    "title_id": 0,
     "title": "advanced_transform",
     "subtitles": [
       {
@@ -135,9 +135,9 @@
     ]
   },
   {
-    "stage_id": 4,
-    "level_id": 6,
-    "title_id": 6,
+    "stage_id": 5,
+    "level_id": 0,
+    "title_id": 0,
     "title": "responsive_design",
     "subtitles": [
       {
@@ -150,9 +150,9 @@
     ]
   },
   {
-    "stage_id": 4,
-    "level_id": 7,
-    "title_id": 7,
+    "stage_id": 5,
+    "level_id": 0,
+    "title_id": 1,
     "title": "relative_units",
     "subtitles": [
       {
@@ -179,9 +179,9 @@
     ]
   },
   {
-    "stage_id": 4,
-    "level_id": 8,
-    "title_id": 8,
+    "stage_id": 5,
+    "level_id": 1,
+    "title_id": 0,
     "title": "CSS_functions",
     "subtitles": [
       {
@@ -201,9 +201,9 @@
     ]
   },
   {
-    "stage_id": 4,
-    "level_id": 9,
-    "title_id": 9,
+    "stage_id": 5,
+    "level_id": 1,
+    "title_id": 1,
     "title": "type_of_functions",
     "subtitles": [
       {
@@ -230,9 +230,9 @@
     ]
   },
   {
-    "stage_id": 4,
-    "level_id": 10,
-    "title_id": 10,
+    "stage_id": 5,
+    "level_id": 2,
+    "title_id": 0,
     "title": "media_query",
     "subtitles": [
       {
@@ -252,9 +252,9 @@
     ]
   },
   {
-    "stage_id": 4,
-    "level_id": 11,
-    "title_id": 11,
+    "stage_id": 5,
+    "level_id": 2,
+    "title_id": 1,
     "title": "viewport_based",
     "subtitles": [
       {

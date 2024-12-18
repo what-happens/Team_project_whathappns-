@@ -86,6 +86,12 @@ const StyledLink = styled(Link)`
   ${media.medium`
     font-size: 2rem;
   `}
+  ${media.small`
+    font-size: 1.8rem;
+  `}
+  ${media.xsmall`
+    font-size: 1.6rem;
+  `}
 `;
 
 const StyledImg = styled.img`
@@ -94,6 +100,9 @@ const StyledImg = styled.img`
   object-fit: contain;
   vertical-align: top;
   margin: 0 0.8rem 0 1rem;
+  ${media.xsmall`
+    margin: 0 0.4rem 0 1rem;
+  `}
 `;
 
 const QuizMain = styled.main`
