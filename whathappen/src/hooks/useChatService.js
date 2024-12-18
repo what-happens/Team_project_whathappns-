@@ -20,7 +20,7 @@ export const useChat = () => {
       url.searchParams.append("content", content);
       url.searchParams.append("client_id", CLIENT_ID);
       url.searchParams.append("prompt", PROMPT);
-
+      console.log("Request URL:", url.toString());
       const response = await fetch(url.toString(), {
         method: "GET",
         headers: {
