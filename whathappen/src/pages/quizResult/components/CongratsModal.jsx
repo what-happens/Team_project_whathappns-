@@ -95,7 +95,7 @@ export default function CongratulationsModal({ isOpen, onClose }) {
           복습노트에서 저장된 문제들을 다시한번 풀어보아요!!
         </MyPageMessage>
         <Link to="/review">
-          <Button onClick={onClose}>마이페이지로 이동</Button>
+          <Button onClick={onClose}>복습노트로 이동</Button>
         </Link>
       </Congratulations>
     </>
