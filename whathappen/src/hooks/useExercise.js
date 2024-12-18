@@ -6,12 +6,13 @@ import {
   setSelectedQid,
   setIsShowAnswers,
   setAnswers,
+  setType,
 } from "../redux/learnSlice";
 import { ParserFactory } from "../utils/parser";
 import { useEffect } from "react";
 
 const useExercise = () => {
-  const { questions, codeString, isShowAnswers } = useSelector(
+  const { questions, codeString, isShowAnswers, type } = useSelector(
     (state) => state.learn
   );
   const dispatch = useDispatch();
@@ -36,15 +37,21 @@ const useExercise = () => {
   const setSelectedUserAnswer = (answer) => {
     dispatch(setAnswers(answer));
   };
-  const parseExercise = async (type) => {
+  const parseExercise = (type) => {
     const parser = ParserFactory[type];
     const parsedSegment = parser(codeString, questions);
     dispatch(setParsed(parsedSegment));
   };
 
+  const setExerciseType = (type) => {
+    if (type === "html" || type === "css") {
+      dispatch(setType(type));
+    }
+  };
+
   useEffect(() => {
     if (codeString !== "" && questions.length !== 0) {
-      parseExercise("html");
+      parseExercise(type);
     }
   }, [codeString, questions]);
 
@@ -55,6 +62,7 @@ const useExercise = () => {
     setExerciseSelectedQid,
     setIsShow,
     setSelectedUserAnswer,
+    setExerciseType,
   };
 };
 
