@@ -16,7 +16,7 @@
         "sub_id": 1,
         "sub_name": "2) HTML 이란?",
         "desc": "HTML(Hypertext Markup Language)은 프로그래밍 언어가 아니라, 우리가 보는 웹페이지가 어떻게 구조화 되어 있는지 브라우저로 하여금 알 수 있게 해주는 마크업 언어입니다.\n 마크업 언어: 문서를 작성할 때 사용되는 언어로, 문서의 내용을 구조화하고 형식을 지정하는 역할을 합니다.",
-        "img": null,
+        "img": "back_link.png",
         "code": "&lt; !DOCTYPE html &gt;\n&lt;html lang=&quot;en&quot;&gt;\n  &lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot; /&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;\n    &lt;title&gt;Document&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;&lt;/body&gt;\n&lt;/html&gt;"
       }
     ]
@@ -137,8 +137,8 @@
   },
   {
     "stage_id": 0,
-    "title_id": 0,
     "level_id": 1,
+    "title_id": 0,
     "title": "1. 글자 태그",
     "subtitles": [
       {
@@ -173,8 +173,8 @@
   },
   {
     "stage_id": 0,
-    "title_id": 1,
     "level_id": 1,
+    "title_id": 1,
     "title": "2. 목록 태그",
     "subtitles": [
       {
@@ -195,8 +195,8 @@
   },
   {
     "stage_id": 0,
-    "title_id": 0,
     "level_id": 2,
+    "title_id": 0,
     "title": "1. 공간을 차지하는 태그",
     "subtitles": [
       {
@@ -217,8 +217,8 @@
   },
   {
     "stage_id": 0,
-    "title_id": 1,
     "level_id": 2,
+    "title_id": 1,
     "title": "2. 그 외 다양한 태그들",
     "subtitles": [
       {
@@ -246,13 +246,13 @@
   },
   {
     "stage_id": 1,
-    "title_id": 0,
     "level_id": 0,
+    "title_id": 0,
     "title": "1. Semantic Tags",
     "subtitles": [
       {
         "sub_id": 0,
-        "sub_name": "1) Semantic Tags?",
+        "sub_name": "1. Semantic Tags?",
         "desc": "HTML에는 웹 페이지의 다양한 부분을 정의하는데 사용할 수 있는 몇 가지 의미적 요소가 있습니다.\n Semantic Tag는 HTML 구조를 설계할 때, 브라우저가 웹 사이트의 구조를 쉽게 파악할 수 있게 도와줍니다.\nSemantic Tag를 사용해 콘텐츠를 구분하고, div 태그는 스타일 적용을 위한 용도로 사용할것을 권장합니다.",
         "img": "semanticTags.png",
         "code": null
@@ -310,8 +310,8 @@
   },
   {
     "stage_id": 1,
-    "title_id": 0,
     "level_id": 1,
+    "title_id": 0,
     "title": "1. form",
     "subtitles": [
       {

@@ -1,0 +1,24 @@
+[
+  {
+    "stage_id": 3,
+    "level_id": 2,
+    "title_id": 0,
+    "title": "position 속성",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "static, relative, absolute",
+        "desc": "position 속성은 문서상에 요소를 배치하는 방법을 지정합니다. 다양한 position 속성값들이 있으며 각각 고유한 특성을 가지고 있습니다.\n1. static: position 속성의 기본값입니다. 이 값은 “고정된” 상태를 의미합니다. 이 속성이 적용된 요소는 HTML을 작성한 순서대로 정상적인 흐름에 따라 위치가 지정됩니다.\n2. relative: 요소를 상대적으로 배치합니다. `relative`로 설정된 요소는 다른 콘텐츠들의 위치에 영향을 미치지 않으면서 자신만의 위치만을 조정할 수 있습니다.\n3. absolute: 요소를 절대적인 위치로 배치합니다. `absolute` 요소는 일반적인 문서 흐름에서 제거되어 독립적으로 위치를 잡습니다.",
+        "code": ".static-box {\n\tposition: static;\n\tborder: 2px solid black;\n\tpadding: 10px;\n}\n.relative-box {\n\tposition: relative;\n\tleft: 20px;\n\ttop: 20px;\n\tborder: 2px solid red;\n\tpadding: 10px;\n}\n.container {\n\tposition: relative;\n\theight: 100px;\n\tborder: 2px solid black;\n}\n.absolute-box {\n\tposition: absolute;\n\tright: 10px;\n\tbottom: 10px;\n\tborder: 2px solid blue;\n\tpadding: 5px;\n}",
+        "img": null
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "fixed, sticky",
+        "desc": "1. fixed: 요소를 브라우저 창을 기준으로 고정 위치에 배치합니다. fixed가 적용된 요소는 일반적인 문서 흐름에서 제거되고, 스크롤을 해도 화면의 같은 위치에 고정되어 있습니다. \n2. sticky: sticky`는 스크롤 위치에 따라 relative가 될 수도, fixed 가 될 수도 있습니다. 스크롤 전에는 relative, 지정된 임계점에 도달하면 fixed처럼 동작합니다.",
+        "code": ".fixed-box {\n\tposition: fixed;\n.sticky-box {\n\tposition: sticky;\n\ttop: 0;\n}",
+        "img": null
+      }
+    ]
+  }
+]
