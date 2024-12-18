@@ -1,16 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
-  setAnswerCode,
   setCodeString,
   setParsed,
   setQuestions,
   setSelectedQid,
+  setIsShowAnswers,
+  setAnswers,
 } from "../redux/learnSlice";
 import { ParserFactory } from "../utils/parser";
 import { useEffect } from "react";
 
 const useExercise = () => {
-  const { questions, codeString } = useSelector((state) => state.learn);
+  const { questions, codeString, isShowAnswers } = useSelector(
+    (state) => state.learn
+  );
   const dispatch = useDispatch();
 
   const setExerciseQuestions = (question) => {
@@ -21,12 +24,17 @@ const useExercise = () => {
     dispatch(setCodeString(codeString));
   };
 
-  const setExerciseAnswerCode = (codeString) => {
-    dispatch(setAnswerCode(codeString));
-  };
-
   const setExerciseSelectedQid = (qid) => {
     dispatch(setSelectedQid(qid));
+  };
+
+  const setIsShow = (state) => {
+    if (isShowAnswers === state) return;
+    dispatch(setIsShowAnswers(state));
+  };
+
+  const setSelectedUserAnswer = (answer) => {
+    dispatch(setAnswers(answer));
   };
   const parseExercise = async (type) => {
     const parser = ParserFactory[type];
@@ -41,11 +49,12 @@ const useExercise = () => {
   }, [codeString, questions]);
 
   return {
-    setExerciseAnswerCode,
     setExerciseCode,
     setExerciseQuestions,
     parseExercise,
     setExerciseSelectedQid,
+    setIsShow,
+    setSelectedUserAnswer,
   };
 };
 
