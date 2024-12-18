@@ -31,19 +31,19 @@ const ConfirmExit = styled(CommonModal)`
   height: 22.6rem;
   border-radius: 2rem;
   ${media.medium`
-    width: 35rem;
-  height: 16rem;
+    width: 44rem;
+  height: 20rem;
   border-radius: 1.8rem;
 `}
   ${media.small`
-    width: 28rem;
-  height: 13rem;
-  border-radius: 1.4rem;
+    width: 35rem;
+  height: 16rem;
+  border-radius: 1.5rem;
 `}
   ${media.xsmall`
-    width: 24rem;
-  height: 11rem;
-  border-radius: 1.2rem;
+    width: 30rem;
+  height: 14rem;
+  border-radius: 1.3rem;
 `}
 `;
 
@@ -53,15 +53,15 @@ const ConfirmExitMessage = styled.p`
   margin: 2.4rem;
   text-align: center;
   ${media.medium`
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     margin: 2rem;
 `}
   ${media.small`
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     margin: 1.7rem;
 `}
   ${media.xsmall`
-    font-size: 1rem;
+    font-size: 1.5rem;
     margin: 0.8rem;
 `}
 `;
@@ -74,18 +74,22 @@ const ButtonType = styled.div`
 `}
   & > button, & > a > button {
     ${media.medium`
-    font-size: 1.4rem;
-    padding:0.5rem 1.6rem;
-    width:8rem
+    font-size: 1.5rem;
+    padding:0.5rem 1.8rem;
+    width:9rem;
+    border-radius: 1.4rem;
 `}
     ${media.small`
       width: 8rem;
-    font-size: 1rem;
-    padding:0.05rem 1.2rem;
+    font-size: 1.2rem;
+    padding:0.2rem 1rem;
+    border-radius: 1.2rem;
 `}
     ${media.xsmall`
-      width: 5rem;
-      font-size: 0.8rem;
+      width: 6.5rem;
+      padding:0 1rem;
+      font-size: 1rem;
+      border-radius: 1rem;
 `}
   }
 `;
