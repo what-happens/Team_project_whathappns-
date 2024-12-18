@@ -1,50 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Button from "../../../components/Button";
 
-export default function BlankOption({ problem, setIsShow }) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [shuffledAnswer, setShuffledAnswer] = useState([]);
-
-  const shuffleArray = (arr) => {
-    const newArray = [...arr];
-    for (let i = newArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-    }
-    return newArray;
-  };
-
-  useEffect(() => {
-    const shuffled = shuffleArray([
-      ...problem.incorrect_answer,
-      problem.correct_answer,
-    ]);
-    setShuffledAnswer(shuffled);
-    setIsLoading(true);
-  }, [problem]);
-
-  const handleOnClick = (e) => {
-    setIsShow(false);
-    console.log(e.target.textContent);
-    console.log(shuffledAnswer);
-  };
-  if (!isLoading) {
-    return <div>loading</div>;
-  }
-
-  return shuffledAnswer.map((answer, idx) => (
-    <Button key={`${problem.id}-${idx}`} onClick={handleOnClick}>
-      {answer}
+export default function BlankOption({ choices, q_id, handleOnClick }) {
+  return choices.map((choice, idx) => (
+    <Button key={`${q_id}-${idx}`} onClick={() => handleOnClick(choice)}>
+      {choice}
     </Button>
   ));
 }
 
 BlankOption.propTypes = {
-  problem: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    correct_answer: PropTypes.string.isRequired,
-    incorrect_answer: PropTypes.arrayOf(PropTypes.string).isRequired,
-  }),
-  setIsShow: PropTypes.func,
+  choices: PropTypes.arrayOf(PropTypes.string).isRequired,
+  q_id: PropTypes.number.isRequired,
+  handleOnClick: PropTypes.func,
 };
