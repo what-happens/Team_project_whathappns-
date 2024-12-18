@@ -69,6 +69,7 @@ export default function MyPage() {
             <h1 className="sr-only">마이페이지</h1>
             <GreetingMsg>
               <span className="greetings">안녕하세요, {userData.name}</span>
+              <br></br>
               <span style={{ color: "white" }}> 고객님!</span>
             </GreetingMsg>
           </header>
@@ -77,7 +78,11 @@ export default function MyPage() {
             <h2 className="sr-only">학습 현황</h2>
             <StatusBox>
               <StatusVal>{userData.clearStages.length} stage</StatusVal>
-              <StatusLabel>진행중인 스테이지</StatusLabel>
+              <StatusLabel>
+                진행중인
+                <Break />
+                스테이지
+              </StatusLabel>
             </StatusBox>
             <Division />
             <StatusBox>
@@ -139,6 +144,12 @@ export default function MyPage() {
   );
 }
 
+const Break = styled.br`
+  display: none;
+  ${media.xsmall`
+    display:block;
+  `}
+`;
 const LoadingPage = styled.div`
   position: fixed;
   top: 0;
