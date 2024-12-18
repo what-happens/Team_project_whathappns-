@@ -1,7 +1,7 @@
 import { ReactComponent as BookmarkIcon } from "../../../assets/iconBookmark.svg";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DeleteBookmarkModal from "./DeleteBookmarkModal";
 
 export default function Bookmark({
@@ -10,10 +10,18 @@ export default function Bookmark({
   size = "large",
   isBookmarked,
   quizId,
+  onBookmarkChange,
+  quizCategory,
 }) {
   const [clicked, setClicked] = useState(isBookmarked);
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    setClicked(isBookmarked);
+  }, [isBookmarked]);
+
   const handleAddBookmark = async () => {
+    console.log(typeof quizCategory);
     try {
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/bookmark`,
@@ -27,6 +35,7 @@ export default function Bookmark({
             bookmark: [
               {
                 qid: quizId,
+                category: quizCategory,
                 action: "add",
               },
             ],
@@ -34,11 +43,15 @@ export default function Bookmark({
         }
       );
 
+      const data = await response.json();
+
       if (response.ok) {
         setClicked(true);
-        console.log("북마크 추가 성공!");
+        window.location.reload();
+        onBookmarkChange?.(true);
+        console.log("북마크 추가 성공!", data);
       } else {
-        console.error("북마크 추가 실패");
+        console.error("북마크 추가 실패", data);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -66,11 +79,15 @@ export default function Bookmark({
         }
       );
 
+      const data = await response.json();
+
       if (response.ok) {
         setClicked(false);
         window.location.reload();
+        onBookmarkChange?.(false);
+        console.log("북마크 삭제 성공!", data);
       } else {
-        console.error("북마크 삭제 실패");
+        console.error("북마크 삭제 실패", data);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -111,8 +128,8 @@ const StyledBookmark = styled(BookmarkIcon)`
   top: ${(props) => props.$top};
   right: ${(props) => props.$right};
   fill: ${(props) => (props.$clicked ? "#FF2E62" : "#C4C4C4")};
-  width: ${(props) => (props.$size === "small" ? "3rem" : "4.5rem")};
-  height: ${(props) => (props.$size === "small" ? "6.5em" : "10rem")};
+  width: ${(props) => (props.$size === "small" ? "3em" : "4rem")};
+  height: ${(props) => (props.$size === "small" ? "6.5em" : "7.5rem")};
   cursor: pointer;
   transition: all 0.5s;
 `;
@@ -123,4 +140,6 @@ Bookmark.propTypes = {
   size: PropTypes.string,
   isBookmarked: PropTypes.bool,
   quizId: PropTypes.number.isRequired,
+  onBookmarkChange: PropTypes.func,
+  quizCategory: PropTypes.string.isRequired,
 };
