@@ -101,7 +101,7 @@ const StampSlot = styled.div`
 const Stamps = ({ clearStages }) => {
   const isStageCompleted = (stageId) => {
     const clearedStage = clearStages?.find(
-      (stage) => stage.stage_id === stageId.toString()
+      (stage) => stage.stage_id === stageId
     );
 
     if (!clearedStage) return false;
