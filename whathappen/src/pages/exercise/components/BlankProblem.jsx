@@ -1,18 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-//문제를 props로 받아온다.
-//모달은 누가 관리하는게??
-export default function BlankProblem({ problem, onSelect, setIsShow }) {
+import useExercise from "../../../hooks/useExercise";
+
+export default function BlankProblem({ qid }) {
+  const { setIsShow, setExerciseSelectedQid } = useExercise();
   const handleOnClickBlank = () => {
-    onSelect(problem.id);
     setIsShow(true);
+    setExerciseSelectedQid(qid);
   };
 
   return <BlankButton type="button" onClick={handleOnClickBlank}></BlankButton>;
 }
 
 const BlankButton = styled.button`
+  display: block;
   margin: 2rem;
   padding: 1rem 5rem;
   background-color: #c4c4c4;
@@ -21,11 +23,5 @@ const BlankButton = styled.button`
 `;
 
 BlankProblem.propTypes = {
-  problem: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    correct_answer: PropTypes.string.isRequired,
-    incorrect_answer: PropTypes.arrayOf(PropTypes.string).isRequired,
-  }),
-  onSelect: PropTypes.func,
-  setIsShow: PropTypes.func,
+  qid: PropTypes.number,
 };
