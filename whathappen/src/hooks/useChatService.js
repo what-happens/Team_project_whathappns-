@@ -1,8 +1,18 @@
 import { useState } from "react";
+import { marked } from "marked";
+
+marked.setOptions({
+  breaks: true,
+  sanitize: true,
+});
 
 export const useChat = () => {
   const [messages, setMessages] = useState([
-    { type: "bot", text: "안녕하세요! 무엇이 궁금하신가요?!?" },
+    {
+      type: "bot",
+      text: "안녕하세요! 무엇이 궁금하신가요?!?",
+      html: "<p>안녕하세요! 무엇이 궁금하신가요?!?</p>",
+    },
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -48,13 +58,28 @@ export const useChat = () => {
     setIsLoading(true);
     setError(null);
 
-    setMessages((prev) => [...prev, { type: "user", text: userMessage }]);
+    setMessages((prev) => [
+      ...prev,
+      {
+        type: "user",
+        text: userMessage,
+        html: userMessage,
+      },
+    ]);
 
     try {
       const data = await askQuestion(userMessage.toString());
-      console.log("응답:", data);
 
-      setMessages((prev) => [...prev, { type: "bot", text: data.content }]);
+      const htmlContent = marked(data.content);
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          type: "bot",
+          text: data.content,
+          html: htmlContent,
+        },
+      ]);
     } catch (err) {
       console.error("에러:", err);
       setError(err.message);
