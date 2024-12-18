@@ -7,6 +7,7 @@ import {
   setIsShowAnswers,
   setAnswers,
   setType,
+  setSubCode,
 } from "../redux/learnSlice";
 import { ParserFactory } from "../utils/parser";
 import { useEffect } from "react";
@@ -37,6 +38,7 @@ const useExercise = () => {
   const setSelectedUserAnswer = (answer) => {
     dispatch(setAnswers(answer));
   };
+
   const parseExercise = (type) => {
     const parser = ParserFactory[type];
     const parsedSegment = parser(codeString, questions);
@@ -49,6 +51,11 @@ const useExercise = () => {
     }
   };
 
+  const setExerciseSubcode = (codeString) => {
+    if (codeString) {
+      dispatch(setSubCode(codeString));
+    }
+  };
   useEffect(() => {
     if (codeString !== "" && questions.length !== 0) {
       parseExercise(type);
@@ -63,6 +70,7 @@ const useExercise = () => {
     setIsShow,
     setSelectedUserAnswer,
     setExerciseType,
+    setExerciseSubcode,
   };
 };
 
