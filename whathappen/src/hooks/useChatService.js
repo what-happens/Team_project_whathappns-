@@ -3,9 +3,19 @@ import { marked } from "marked";
 
 marked.setOptions({
   breaks: true,
-  sanitize: true,
+  gfm: true,
+  sanitize: false,
+  mangle: false,
+  headerIds: false,
 });
 
+const preprocessMarkdown = (text) => {
+  return text
+    .replace(/\. /g, ".\n\n")
+    .replace(/- /g, "\n- ")
+    .replace(/###/g, "\n###")
+    .replace(/```/g, "\n```\n");
+};
 export const useChat = () => {
   const [messages, setMessages] = useState([
     {
@@ -70,7 +80,8 @@ export const useChat = () => {
     try {
       const data = await askQuestion(userMessage.toString());
 
-      const htmlContent = marked(data.content);
+      const processedMarkdown = preprocessMarkdown(data.content);
+      const htmlContent = marked(processedMarkdown);
 
       setMessages((prev) => [
         ...prev,
