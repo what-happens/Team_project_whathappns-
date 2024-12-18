@@ -111,7 +111,7 @@ export default function ReviewFreeVersion() {
                           key={item.qid}
                           onClick={() => handleQuestionClick(item)}
                         >
-                          {item.category} 문제 {item.qid}
+                          {item.category} 문제 {item.qid + 1}
                         </Question>
                       );
                     })}

@@ -6,10 +6,19 @@ import Stamps from "./components/Stamps";
 import { media } from "../../styles/MideaQuery";
 import backGround from "../../assets/review-background-2.svg";
 import loadingImg from "../../assets/loading_Img.svg";
+import stageData from "../../data/stageMeta.json";
 
 export default function MyPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState(null);
+
+  const calculateProgress = (clearStages, totalLevels) => {
+    const completedLevels = clearStages.reduce((sum, stage) => {
+      return sum + stage.levels.length;
+    }, 0);
+
+    return (completedLevels / totalLevels) * 100;
+  };
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -44,6 +53,7 @@ export default function MyPage() {
 
     fetchUserData();
   }, []);
+
   return (
     <Background>
       {isLoading && (
@@ -59,6 +69,7 @@ export default function MyPage() {
             <h1 className="sr-only">마이페이지</h1>
             <GreetingMsg>
               <span className="greetings">안녕하세요, {userData.name}</span>
+              <br></br>
               <span style={{ color: "white" }}> 고객님!</span>
             </GreetingMsg>
           </header>
@@ -67,7 +78,11 @@ export default function MyPage() {
             <h2 className="sr-only">학습 현황</h2>
             <StatusBox>
               <StatusVal>{userData.clearStages.length} stage</StatusVal>
-              <StatusLabel>진행중인 스테이지</StatusLabel>
+              <StatusLabel>
+                진행중인
+                <Break />
+                스테이지
+              </StatusLabel>
             </StatusBox>
             <Division />
             <StatusBox>
@@ -89,30 +104,38 @@ export default function MyPage() {
             </StampContents>
             <ProgressContents>
               <h2 style={{ color: "var(--main-color)" }}>기초학습 진척도</h2>
-              <CircularProgressbar
-                value={20}
-                text={`20%`}
-                background={true}
-                styles={{
-                  root: {
-                    maxHeight: "300px",
-                    maxWidth: "300px",
-                    minHeight: "220px",
-                    minWidth: "220px",
-                  },
-                  path: {
-                    stroke: `var(--main-color)`,
-                  },
-                  text: {
-                    fontSize: "1.5rem",
-                    fontWeight: 700,
-                    fill: "var(--main-color)",
-                  },
-                  background: {
-                    fill: "white",
-                  },
-                }}
-              />
+              {(() => {
+                const progress = calculateProgress(
+                  userData.clearStages,
+                  stageData.total_levelnum
+                );
+                return (
+                  <CircularProgressbar
+                    value={progress}
+                    text={`${Math.round(progress)}%`}
+                    background={true}
+                    styles={{
+                      root: {
+                        maxHeight: "300px",
+                        maxWidth: "300px",
+                        minHeight: "220px",
+                        minWidth: "220px",
+                      },
+                      path: {
+                        stroke: `var(--main-color)`,
+                      },
+                      text: {
+                        fontSize: "1.5rem",
+                        fontWeight: 700,
+                        fill: "var(--main-color)",
+                      },
+                      background: {
+                        fill: "white",
+                      },
+                    }}
+                  />
+                );
+              })()}
             </ProgressContents>
           </CourseContents>
         </MyPageContents>
@@ -121,6 +144,12 @@ export default function MyPage() {
   );
 }
 
+const Break = styled.br`
+  display: none;
+  ${media.xsmall`
+    display:block;
+  `}
+`;
 const LoadingPage = styled.div`
   position: fixed;
   top: 0;
