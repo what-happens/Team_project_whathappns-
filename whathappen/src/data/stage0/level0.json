@@ -1,0 +1,42 @@
+{
+  "level_id": 0,
+  "stage_id": 0,
+  "done": false,
+  "level_name": "Level 01",
+  "theme": "HTML 기본 구조",
+  "code": "<!DOCTYPE html><html lang='en'>|=0=|<meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'>|=1=||=2=||=3=|</html>",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 이 태그는 기계가 식별할 수 있는 문서 정보(메타데이터)를 담고있습니다. 이 태그는 무엇일까요?",
+      "choices": ["<header>", "<title>", "<head>"],
+      "answer": "<head>"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2. 이 태그는 브라우저의 제목 표시줄이나 페이지 탭에 보이는 문서 제목입니다. 이 태그는 무엇일까요?",
+      "choices": [
+        "<tap>Document</tap>",
+        "<title>Document</title>",
+        "<browser>Document</browser>"
+      ],
+      "answer": "<title>Document</title>"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. Q1에 작성한 태그는 여는 태그 입니다. 다음 중 Q1의 올바른 닫는 태그는 무엇일까요?",
+      "choices": ["<header/>", "<head/>", "</head>", "</head>"],
+      "answer": "</head>"
+    },
+    {
+      "q_id": 3,
+      "q_title": "Q4. 이 태그는 사용자에게 보이는 영역입니다. 이 태그는 무엇일까요?",
+      "choices": [
+        "<body>Hellow world!</body>",
+        "<section>Hellow world!</section>",
+        "<area>Hellow world!</area>"
+      ],
+      "answer": "<body>Hellow world!</body>"
+    }
+  ]
+}
