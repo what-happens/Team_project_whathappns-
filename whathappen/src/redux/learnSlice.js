@@ -9,6 +9,7 @@ const initialState = {
   codeString: "",
   selectedQid: null,
   isShowAnswers: false,
+  type: "",
 };
 
 const learnSlice = createSlice({
@@ -42,6 +43,9 @@ const learnSlice = createSlice({
       // q_id를 키로 추가하거나 기존 값 덮어쓰기
       state.userAnswers[qid] = userAnswer;
     },
+    setType(state, action) {
+      state.type = action.payload;
+    },
   },
 });
 
@@ -54,6 +58,7 @@ export const {
   setSelectedQid,
   setIsShowAnswers,
   setAnswers,
+  setType,
 } = learnSlice.actions;
 
 export default learnSlice.reducer;
