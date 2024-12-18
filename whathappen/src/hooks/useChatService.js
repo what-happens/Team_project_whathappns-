@@ -11,8 +11,7 @@ export const useChat = () => {
 
   const BASE_URL = process.env.REACT_APP_ALAN_API;
   const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-  const PROMPT =
-    "학습자의 질문에 명확하고 이해하기 쉽게 답변하고 출처는 삭제, 데이터 형식은 STRING으로 파싱해서 답변해주세요요";
+  const PROMPT = "학습자의 질문에 명확하고 이해하기 쉽게 답변하고 출처는 삭제";
 
   async function askQuestion(content) {
     try {
@@ -22,9 +21,8 @@ export const useChat = () => {
       url.searchParams.append("prompt", PROMPT);
       console.log("Request URL:", url.toString());
       console.log("Parameters:", {
-        content: content,
+        content: content + PROMPT,
         client_id: CLIENT_ID,
-        prompt: PROMPT,
       });
       const response = await fetch(url.toString(), {
         method: "GET",
