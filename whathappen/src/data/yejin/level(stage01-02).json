@@ -1,8 +1,7 @@
 [
   {
-    "level_id": 0,
     "stage_id": 0,
-    "done": true,
+    "level_id": 5,
     "img": "icon_level.png",
     "level_name": "Level 01",
     "theme": "HTML 기본 구조",
@@ -42,9 +41,8 @@
     ]
   },
   {
-    "level_id": 1,
     "stage_id": 0,
-    "done": false,
+    "level_id": 1,
     "img": "icon_level.png",
     "level_name": "Level 02",
     "theme": "글을 적어보자",
@@ -86,7 +84,6 @@
   {
     "level_id": 2,
     "stage_id": 0,
-    "done": false,
     "img": "icon_level.png",
     "level_name": "Level 03",
     "theme": "공간을 나누는 태그",
@@ -126,9 +123,8 @@
     ]
   },
   {
-    "level_id": 3,
     "stage_id": 0,
-    "done": false,
+    "level_id": 3,
     "img": "icon_level.png",
     "level_name": "Master",
     "theme": "영화 소개 페이지 만들기",
@@ -188,9 +184,8 @@
     ]
   },
   {
-    "level_id": 0,
     "stage_id": 1,
-    "done": false,
+    "level_id": 0,
     "img": "icon_level.png",
     "level_name": "Level 01",
     "theme": "Sementic Tags",
@@ -248,9 +243,8 @@
     ]
   },
   {
-    "level_id": 1,
     "stage_id": 1,
-    "done": false,
+    "level_id": 1,
     "img": "icon_level.png",
     "level_name": "Level 02",
     "theme": "<form> 활용하기",
@@ -290,9 +284,8 @@
     ]
   },
   {
-    "level_id": 2,
     "stage_id": 1,
-    "done": false,
+    "level_id": 2,
     "img": "icon_level.png",
     "level_name": "Master",
     "theme": "회원가입 만들기",

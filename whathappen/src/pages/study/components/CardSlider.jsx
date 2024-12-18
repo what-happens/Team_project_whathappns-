@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
@@ -133,7 +133,7 @@ const CardImg = styled.div`
   `};
   display: flex;
   background-color: ${(props) =>
-    props.$isDone ? `var(--main-color)` : `#F6F6F6`};
+    props.$isCleared ? `var(--main-color)` : `#F6F6F6`};
   width: 20rem;
   height: 20rem;
   border-radius: 50rem;
@@ -193,6 +193,47 @@ const CardContent = styled.span`
 
 const CardSlider = () => {
   const [swiper, setSwiper] = useState(null);
+  const [clearData, setClearData] = useState([]);
+
+  useEffect(() => {
+    // Fetch clear stage data
+    const fetchClearStage = async () => {
+      try {
+        // 실제 API 엔드포인트로 대체해야 합니다
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/stage/clear`,
+          {
+            method: "GET",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          const levels = data.clearStage[0]?.levels || [];
+
+          setClearData(levels);
+          console.log("Levels:", levels);
+          console.log("data:", data);
+        } else {
+          const errorData = await response.json();
+          console.error("Error:", errorData);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchClearStage();
+  }, []);
+
+  // clearData 상태를 추적하는 useEffect
+  useEffect(() => {
+    console.log("Updated clearData:", clearData);
+  }, [clearData]); // clearData 변경 시마다 실행
 
   return (
     <ThemeProvider theme={{ ...theme, ...media }}>
@@ -232,9 +273,10 @@ const CardSlider = () => {
           {Data.map((card) => {
             const imageUrl = require(`../../../assets/${card.img}`);
             return (
-              <SwiperSlide key={card.id}>
+              // 추후 키값 변경하기. level_id로
+              <SwiperSlide key={`${card.stage_id}-${card.level_id}`}>
                 <CardWrapper>
-                  <CardImg $isDone={card.done}>
+                  <CardImg $isCleared={clearData.includes(card.level_id)}>
                     <img src={imageUrl} alt="level 아이콘" />
                   </CardImg>
                   <CardTitle>{card.level_name}</CardTitle>
