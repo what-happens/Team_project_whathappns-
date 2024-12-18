@@ -1,0 +1,42 @@
+{
+  "stage_id": 1,
+  "level_id": 1,
+  "level_name": "Level 02",
+  "theme": "<form> 활용하기",
+  "code": "<!DOCTYPE html><html lang='en'>|=0=|<meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><body><form |=0=| |=1=|>|=2=||=3=|</form></body>",
+  "code_type": "html",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1.이 것은 폼의 속성 중 하나로, 폼 데이터를 처리할 서버의 URL을 지정합니다. 이것은 무엇일까요?",
+      "choices": ["action='/login'", "method='/login'", "POST='/login'"],
+      "answer": "action='/login'"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2.이 것은 폼의 속성 중 하나로, 데이터를 서버로 전송하는 방식을 지정합니다. 이것은 무엇일까요?",
+      "choices": ["server='POST'", "action='POST'", "method='POST'"],
+      "answer": "method='POST'"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. 이 태그는 입력 필드의 설명을 제공합니다. 이 태그는 무엇일까요?",
+      "choices": [
+        "<label for='useremail'>아이디:</label>",
+        "<input for='useremail'>아이디:</input>",
+        "<field for='useremail'>아이디:</field>"
+      ],
+      "answer": "<label for='useremail'>아이디:</label>"
+    },
+    {
+      "q_id": 3,
+      "q_title": "Q4. 이 태그는 사용자로부터 데이터를 입력받는 가장 기본적인 HTML 요소입니다. 이 태그는 무엇일까요?",
+      "choices": [
+        "<input type='email' id='useremail' name='useremail' />",
+        "<label type='email' id='useremail' name='useremail' />",
+        "<form type='email' id='useremail' name='useremail' />"
+      ],
+      "answer": "<input type='email' id='useremail' name='useremail' />"
+    }
+  ]
+}
