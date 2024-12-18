@@ -69,19 +69,19 @@ const selectCommonStyle = css`
   justify-content: center;
   align-items: center;
 
-  ${media.small`
-    width: 28.5rem;
+  ${media.medium`
+    width: 27rem;
   height: 6.5rem;
-  font-size: 2.7rem;
+  font-size: 2.3rem;
 `}
 
   ${media.small`
-    width: 22rem;
-  height: 6rem;
-  font-size: 2.2rem;
+    width: 23rem;
+  height: 5.5rem;
+  font-size: 2rem;
 `}
   ${media.xsmall`
-    width: 16rem;
+    width: 18rem;
     height: 4.8rem;
   font-size: 1.7rem;
   `}

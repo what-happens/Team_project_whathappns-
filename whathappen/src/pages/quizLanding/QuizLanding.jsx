@@ -155,16 +155,16 @@ const QuizLogo = styled.img`
   opacity: 0;
   animation: ${bounceImg} 0.6s ease-out both;
 
-  ${media.small`
-    width: 38rem;
+  ${media.medium`
+    width: 45rem;
     height: 100%;
   `}
   ${media.small`
-    width: 34rem;
+    width: 36rem;
   `}
 
   ${media.xsmall`
-    width: 25rem;
+    width: 28rem;
   `}
 `;
 
@@ -179,21 +179,22 @@ const QuizControlSection = styled.section`
   & > button,
   & > a > button {
     ${media.medium`
-      font-size: 2.5rem;
-      width: 19rem;
-      padding: 2rem 1.8rem;
+      font-size: 1.8rem;
+      width: 16rem;
+      padding: 1.5rem 1.8rem;
+      border-radius: 2rem;
     `}
     ${media.small`
-      width: 12rem;
-      font-size: 1.5rem;
-      padding: 0.8rem 1.2rem;
-      border-radius: 1.6rem;
+      width: 13rem;
+      font-size: 1.6rem;
+      padding: 1rem 1.6rem;
+      border-radius: 1.7rem;
     `}
     ${media.xsmall`
-    width: 9rem;
-    font-size: 1rem;
-      padding: 0.2rem 0.5rem;
-      border-radius: 1rem;
+    width: 10.5rem;
+    font-size: 1.4rem;
+      padding: 0.5rem 1.3rem;
+      border-radius: 1.4rem;
   `}
   }
 `;
