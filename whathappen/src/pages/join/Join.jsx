@@ -70,17 +70,20 @@ export default function Join() {
       try {
         setLoading(true);
 
-        const response = await fetch("http://localhost:5000/user/signin", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: idValue,
-            password: pwValue,
-            name: nameValue,
-          }),
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/user/signup`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: idValue,
+              password: pwValue,
+              name: nameValue,
+            }),
+          }
+        );
 
         if (response.ok) {
           navigate("/joinsuccess");
