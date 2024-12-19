@@ -48,11 +48,6 @@ const CardSlider = () => {
     fetchClearStage();
   }, []);
 
-  // clearData 상태를 추적하는 useEffect
-  useEffect(() => {
-    console.log("Updated clearData:", clearData);
-  }, [clearData]); // clearData 변경 시마다 실행
-
   useEffect(() => {
     if (stageId) {
       // 동적 import로 JSON 데이터 불러오기
@@ -68,11 +63,11 @@ const CardSlider = () => {
   }, [stageId]);
 
   if (error) {
-    return <div>{error}</div>;
+    return <ErrMessage>{error}</ErrMessage>;
   }
 
   if (!levelData) {
-    return <div>Loading...</div>;
+    return <ErrMessage>Loading...</ErrMessage>;
   }
 
   return (
@@ -173,6 +168,26 @@ const jello = keyframes`
 `;
 
 // start styled-cpomponents
+const ErrMessage = styled.div`
+  ${({ theme }) => theme.tesktop`
+    font-size: 3rem;
+  `};
+  ${({ theme }) => theme.laptop`
+    font-size: 3rem;
+  `};
+  ${({ theme }) => theme.tablet`
+    font-size: 3rem;
+  `};
+  ${({ theme }) => theme.mobile2`
+    font-size: 3rem;
+  `};
+  ${({ theme }) => theme.mobile`
+    font-size: 3rem;
+  `};
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+`;
 const SliderWrapper = styled.div`
   ${({ theme }) => theme.tesktop`
     width: 70rem;
@@ -243,9 +258,9 @@ const CardWrapper = styled.div`
   border-radius: 20px;
   transition: all 0.5s ease;
   border: 1px solid #c4c4c4;
+  box-sizing: border-box;
   /* box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38); */
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-
   &:hover {
     transform: scale(1.05);
   }
@@ -256,9 +271,13 @@ const CardWrapper = styled.div`
 `;
 
 const CardLink = styled(Link)`
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   text-decoration: none;
   outline: none;

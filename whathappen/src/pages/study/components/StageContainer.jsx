@@ -2,7 +2,32 @@ import React from "react";
 import styled, { ThemeProvider, keyframes } from "styled-components";
 import theme from "../theme";
 import media from "../media";
-import stage from "../../../data/stage.json";
+import stages from "../../../data/stages.json";
+import { Link } from "react-router-dom";
+
+const StageContainer = () => {
+  return (
+    <ThemeProvider theme={{ ...theme, ...media }}>
+      <MenuContainer>
+        <MenuList>
+          {stages.map((stage) => {
+            const imageUrl = require(`../../../assets/${stage.img}`);
+            return (
+              <MenuItem key={stage.stage_id}>
+                <MenuLink to={`/study/${stage.stage_id}`} className="mr-2">
+                  <MenuImage src={imageUrl} alt={stage.stage_name} />
+                  <MenuTitle>{stage.stage_name}</MenuTitle>
+                </MenuLink>
+              </MenuItem>
+            );
+          })}
+        </MenuList>
+      </MenuContainer>
+    </ThemeProvider>
+  );
+};
+
+export default StageContainer;
 
 // Styled Components with Responsive Design
 const MenuContainer = styled.div`
@@ -23,7 +48,7 @@ const MenuContainer = styled.div`
   padding: 0rem;
 `;
 
-const MenuList = styled.ul`
+const MenuList = styled.ol`
   ${({ theme }) => theme.laptop`
     gap: 4rem;
   `};
@@ -80,7 +105,7 @@ const MenuItem = styled.li`
   transition: transform 0.3s ease;
 `;
 
-const MenuLink = styled.a`
+const MenuLink = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -106,41 +131,16 @@ const MenuImage = styled.img`
   }
 `;
 
-const MenuTitle = styled.p`
+const MenuTitle = styled.span`
   ${({ theme }) => theme.tablet`
     font-size: ${({ theme }) => theme.fontSizes.subTitle};
   `};
   ${({ theme }) => theme.mobile`
     font-size: ${({ theme }) => theme.fontSizes.base};
   `};
-  display: block;
   color: #fff;
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
   text-shadow: #b3b3b3 0px 0 10px;
 `;
-
-const StageContainer = () => {
-  return (
-    <ThemeProvider theme={{ ...theme, ...media }}>
-      <MenuContainer>
-        <MenuList>
-          {stage.map((item) => {
-            const imageUrl = require(`../../../assets/${item.img}`);
-            return (
-              <MenuItem key={item.stage_id}>
-                <MenuLink href="#">
-                  <MenuImage src={imageUrl} alt={item.stage_name} />
-                  <MenuTitle>{item.stage_name}</MenuTitle>
-                </MenuLink>
-              </MenuItem>
-            );
-          })}
-        </MenuList>
-      </MenuContainer>
-    </ThemeProvider>
-  );
-};
-
-export default StageContainer;
