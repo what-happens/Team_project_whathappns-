@@ -15,6 +15,7 @@ import Review from "./pages/review/ReviewFreeVersion";
 import AuthHeader from "./components/AuthHeader";
 import ProtectedRoute from "./components/ProtectedRoute";
 import JoinSuccess from "./pages/joinSuccess/JoinSuccess";
+import ParentPage from "./pages/study/p";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/join" element={<Join />} />
         <Route path="/joinsuccess" element={<JoinSuccess />} />
         <Route path="/*" element={<NotFound />} />
+        <Route path="/aaa/*" element={<ParentPage />} />
 
         <Route element={<ProtectedRoute />}>
           <Route path="/quizpage" element={<QuizPage />} />
