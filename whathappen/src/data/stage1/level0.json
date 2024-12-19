@@ -4,7 +4,7 @@
   "img": "icon_level.png",
   "level_name": "Level 01",
   "theme": "Sementic Tags",
-  "code": "<!DOCTYPE html><html lang='en'>|=0=|<meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><body>|=0=|<nav><a href='#'>Home</a><a href='#'>About</a><a href='#'>Contact</a></nav>|=1=||=2=|<h2>스크랩한 기사</h2>|=3=|<h3>첫 번째 기사</h3><p>이곳은 최신 소식과 관련된 첫 번째 기사입니다. 여기에는 관련된 정보를자세히 설명하고 있습니다.</p>|=4=||=5=|<aside><h2>관련 링크</h2><ul><li><a href='#'>첫 번째 기사</a></li><li><a href='#'>두 번째 기사</a></li></ul></aside></main>|=6=|</body>",
+  "code": "<!DOCTYPE html><html lang='en'><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><body>|=0=|<nav><a href='#'>Home</a><a href='#'>About</a><a href='#'>Contact</a></nav>|=1=||=2=|<h2>스크랩한 기사</h2>|=3=|<h3>첫 번째 기사</h3><p>이곳은 최신 소식과 관련된 첫 번째 기사입니다. 여기에는 관련된 정보를자세히 설명하고 있습니다.</p>|=4=||=5=|<aside><h2>관련 링크</h2><ul><li><a href='#'>첫 번째 기사</a></li><li><a href='#'>두 번째 기사</a></li></ul></aside></main>|=6=|</body>",
   "code_type": "html",
   "questions": [
     {

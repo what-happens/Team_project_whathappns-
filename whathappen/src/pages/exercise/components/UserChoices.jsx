@@ -1,16 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
 import useExercise from "../../../hooks/useExercise";
 import BlankOption from "./BlankOption";
 import { useSelector } from "react-redux";
 
-export default function UserDisplay({ height }) {
+export default function UserChoices() {
   const { selectedQid, questions, isShowAnswers } = useSelector(
     (state) => state.learn
   );
   const { setIsShow, setSelectedUserAnswer, setExerciseSelectedQid } =
     useExercise();
+
   const handleOnClickBlankOption = (answer) => {
     setIsShow(false);
     setSelectedUserAnswer(answer);
@@ -22,7 +21,7 @@ export default function UserDisplay({ height }) {
   );
 
   return (
-    <UserDisplayContainer $height={height}>
+    <>
       {isShowAnswers && (
         <BlankOption
           choices={selectedQuestion.choices}
@@ -30,24 +29,6 @@ export default function UserDisplay({ height }) {
           handleOnClick={handleOnClickBlankOption}
         />
       )}
-    </UserDisplayContainer>
+    </>
   );
 }
-
-const UserDisplayContainer = styled.section`
-  width: 100%;
-  height: ${(props) => props.$height}%;
-  border: 1px solid var(--main-color);
-  border-radius: 0 0 2rem 0;
-  padding: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: start;
-  justify-content: flex-start;
-  overflow: hidden;
-`;
-
-UserDisplay.propTypes = {
-  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};

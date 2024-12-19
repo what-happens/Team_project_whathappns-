@@ -3,7 +3,7 @@
   "level_id": 1,
   "level_name": "Level 02",
   "theme": "<form> 활용하기",
-  "code": "<!DOCTYPE html><html lang='en'>|=0=|<meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><body><form |=0=| |=1=|>|=2=||=3=|</form></body>",
+  "code": "<!DOCTYPE html><html lang='en'><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><body><form |=0=| |=1=|>|=2=||=3=|</form></body>",
   "code_type": "html",
   "questions": [
     {

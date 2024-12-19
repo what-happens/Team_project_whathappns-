@@ -2,15 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   questions: [],
-  stageId: 0,
-  level: 0,
   userAnswers: {},
   parsedData: [],
   codeString: "",
-  subcode: "",
+  subCode: "",
   selectedQid: null,
   isShowAnswers: false,
   type: "",
+  activeTab: "html",
 };
 
 const learnSlice = createSlice({
@@ -19,12 +18,6 @@ const learnSlice = createSlice({
   reducers: {
     setQuestions(state, action) {
       state.questions = action.payload;
-    },
-    setStageId(state, action) {
-      state.stageId = action.payload;
-    },
-    setLevel(state, action) {
-      state.level = action.payload;
     },
     setParsed(state, action) {
       state.parsedData = action.payload;
@@ -48,7 +41,10 @@ const learnSlice = createSlice({
       state.type = action.payload;
     },
     setSubCode(state, action) {
-      state.subcode = action.payload;
+      state.subCode = action.payload;
+    },
+    setActiveTab(state, action) {
+      state.activeTab = action.payload;
     },
   },
 });
@@ -64,6 +60,7 @@ export const {
   setAnswers,
   setType,
   setSubCode,
+  setActiveTab,
 } = learnSlice.actions;
 
 export default learnSlice.reducer;

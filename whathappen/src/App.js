@@ -29,7 +29,7 @@ function App() {
 
         <Route element={<ProtectedRoute />}>
           <Route path="/quizpage" element={<QuizPage />} />
-          <Route path="/exercise" element={<Exercise />} />
+          <Route path="/exercise/:stage/:level" element={<Exercise />} />
           <Route path="/learncourse" element={<LearningCourse />} />
           <Route path="/learnpage" element={<LearningPage />} />
           <Route path="/study" element={<Study />} />
