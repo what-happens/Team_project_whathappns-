@@ -13,5 +13,50 @@
         "img": null
       }
     ]
+  },
+  {
+    "stage_id": 4,
+    "level_id": 0,
+    "title_id": 1,
+    "title": "Movement and Scaling",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "translate",
+        "desc": "이 함수는 요소의 기본 위치 즉, 현재 배치된 위치를 기준으로 지정된 거리만큼 이동시킵니다.\n레이아웃의 다른 요소에는 영향을 주지 않습니다. translateX, translateY를 사용하여, 특정 방향을 지정할 수도 있습니다",
+        "code": ".translate-example {\n\twidth: 100px; \nheight: 100px;\nbackground-color: lightblue;\ntransform: translate(50px, 50px); /* 요소를 오른쪽 50px, 아래쪽 50px 이동 */\n}",
+        "img": null
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "scale",
+        "desc": "scale() 함수는 요소의 크기를 수평(x축)과 수직(y축) 방향으로 확대하거나, 축소하여 요소의 크기를 조절합니다.\n1보다 큰 값은 요소를 확대하고, 1보다 작은 값은 요소를 축소합니다.\n 요소의 원래 크기를 기준으로 비율을 설정하며, 크기를 조절해도 요소의 위치는 유지됩니다.",
+        "code": ".scale-example {\n\twidth: 100px;\nheight: 100px;\nbackground-color: lightcoral;\ntransform: scale(1.5); /* 요소를 1.5배 확대 */\n}",
+        "img": null
+      }
+    ]
+  },
+
+  {
+    "stage_id": 4,
+    "level_id": 0,
+    "title_id": 2,
+    "title": "Rotation and Distortion",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "rotate",
+        "desc": "rotate() 함수는 요소를 지정된 각도만큼 회전시킵니다. 양수 값은 시계 방향, 음수 값은 반시계 방향으로 회전합니다.\n각도 단위로 deg(도), rad(라디안), turn(회전) 등을 지원합니다.",
+        "code": ".rotate-example {\n\twidth: 100px;\nheight: 100px;\n background-color: lightgreen; \ntransform: rotate(45deg); /* 요소를 시계 방향으로 45도 회전 */\n}",
+        "img": null
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "skew",
+        "desc": "skew() 함수는 요소를 기울이는 데 사용됩니다. X축과 Y축에 대해 지정된 각도만큼 요소를 기울일 수 있습니다. \n단위는 각도 deg, rad, turn 등을 사용하며, X축과 Y축의 각도를 별도로 지정할 수 있습니다.",
+        "code": " .skew-example {\n\t width: 100px; \nheight: 100px;\nbackground-color: lightgoldenrodyellow; \ntransform: skew(20deg, 10deg); /* X축으로 20도, Y축으로 10도 기울이기 */\n}",
+        "img": null
+      }
+    ]
   }
 ]

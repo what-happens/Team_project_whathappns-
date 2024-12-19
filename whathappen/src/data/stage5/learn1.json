@@ -1,1 +1,53 @@
-{}
+[
+  {
+    "stage_id": 5,
+    "level_id": 1,
+    "title_id": 0,
+    "title": "CSS_functions",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "functions_explanation",
+        "desc": "CSS 함수는 스타일 속성 값으로 계산식이나 조건을 지정하여 동적인 스타일을 적용할 수 있게 하는 도구입니다. \n반응형 디자인, 유연한 레이아웃 설정, 계산 기반 스타일링 등에 활용됩니다.\n이 기능을 활용하면 계산을 통해 값을 설정하거나, 여러 값 중에서 조건에 맞는 값을 선택할 수 있습니다.",
+        "code": ".box {\n\twidth: min(90%, 600px); /* 90%와 600px 중 더 작은 값 선택 */\nfont-size: calc(1rem + 1vw); /* 1rem에 화면 너비의 1%를 더한 폰트 크기 */\n}",
+        "img": null
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "function_combinations",
+        "desc": "calc(), min(), max()를 함께 사용하면 더욱 정교하고 동적인 스타일링이 가능합니다.\n여러 제약 조건을 고려한 반응형 디자인을 구현할 때 최적입니다.",
+        "code": ".box {\n\twidth: min(calc(100% - 20px), 500px); /* 계산된 값과 500px 중 최소값 사용 */\n}",
+        "img": null
+      }
+    ]
+  },
+  {
+    "stage_id": 5,
+    "level_id": 1,
+    "title_id": 1,
+    "title": "type_of_functions",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "calc",
+        "desc": "calc() 함수는 CSS에서 계산식을 사용하여 동적인 값이나 복잡한 계산을 처리할 수 있게 합니다.\n사칙연산(+, -, *, /)을 지원하며, 서로 다른 단위를 조합해 유연한 스타일을 구현할 수 있습니다. \n레이아웃의 특정 여백이나 패딩을 동적으로 설정할 때 유용합니다.",
+        "code": ".container {\n\twidth: calc(100% - 20px); /* 부모 요소의 100% 너비에서 20px을 뺀 너비 */\n}\n.box {\n\twidth: calc(50% - 10px);  /* 50%의 너비에서 10px을 뺀 너비 */\npadding: calc(1rem + 10px); /* 1rem과 10px을 더한 padding */\n}",
+        "img": null
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "min",
+        "desc": "min() 함수는 여러 값 중 가장 작은 값을 선택하며, 주로 요소의 최소 크기 설정에 사용됩니다.\n요소 크기를 제한하여 반응형 디자인에서 화면 크기에 맞는 크기를 자동 조정할 수 있습니다.",
+        "code": ".box {\n\twidth: min(100%, 400px); /* 100%와 400px 중 더 작은 값 사용 */\n}",
+        "img": null
+      },
+      {
+        "sub_id": 2,
+        "sub_name": "max",
+        "desc": "max() 함수는 여러 값 중 가장 큰 값을 선택하며, 요소 크기나 값을 고정할 때 활용됩니다.\n최소값 이상으로 크기를 보장하고 싶을 때 유용합니다.",
+        "code": ".box {\n\t width: max(300px, 10%); /* 300px과 10% 중 더 큰 값 사용 */\n}",
+        "img": null
+      }
+    ]
+  }
+]

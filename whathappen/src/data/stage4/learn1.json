@@ -1,1 +1,53 @@
-{}
+[
+  {
+    "stage_id": 4,
+    "level_id": 1,
+    "title_id": 0,
+    "title": "transition_explanation",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "about_transition",
+        "desc": "요소의 css속성값이 변할 때, 부드럽고 자연스럽게 보여주는 애니메이션 효과를 적용합니다.\n 다시 말해, 속성의 변화가 일정 기간에 걸쳐 점진적으로 일어나도록 합니다. \n이를 통해 변화가 발생하는 속성, 지속 시간, 타이밍 함수 등을 조정하여 다양한 연출을 할 수 있습니다.",
+        "code": ".box {\n\t width: 100px; \nheight: 100px;\nbackground: coral;\ntransition: opacity 0.5s, transform 0.5s;\n}\n.box:hover {\n\topacity: 0.5; \ntransform: translateX(50px);\n}",
+        "img": null
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "transition_property ",
+        "desc": "전환효과를 적용시킬 CSS 속성(예 : width, height, background-color 등)을 선택적으로 지정하는 데 사용됩니다.\n이 속성을 사용하면 애니메이션 효과를 세부적으로 제어할 수 있습니다.  쉼표로 구분하여 여러 속성을 동시에 지정할 수 있습니다",
+        "code": ".property-example {\n\t width: 100px;\n height: 100px; \nbackground-color: lightblue; \ntransition-property: background-color; /* 배경색만 전환 효과 적용 */ \ntransition-duration: 0.5s; \n} \n .property-example:hover { \n\tbackground-color: lightcoral;\n}",
+        "img": null
+      }
+    ]
+  },
+  {
+    "stage_id": 4,
+    "level_id": 1,
+    "title_id": 1,
+    "title": "Time Control",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "transition_duration",
+        "desc": "CSS 속성의 전환 효과가 완료되기까지 걸리는 시간을 설정합니다. \n 시간 단위로 초(s) 또는 밀리초(ms)를 사용할 수 있습니다. 전환 효과의 속도를 조절할 수 있습니다. \n예를 들어, 0.5s는 0.5초 동안 전환 효과가 진행됨을 의미합니다.",
+        "code": ".duration-example {\n\t width: 100px;\nheight: 100px; \nbackground-color: lightgreen; \ntransition-property: background-color; \ntransition-duration: 2s; /* 2초 동안 전환 */\n} \n.duration-example:hover { \nbackground-color: lightgoldenrodyellow; \n }",
+        "img": null
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "transition-timing_function",
+        "desc": "transition-timing-function은  전환 효과의 진행 속도를 설정합니다.\n전환이 시작부터 끝까지 어떻게 진행될지를 결정하는 곡선을 지정합니다.  \n기본적인 값으로는 ease, linear,ease-in, ease-out, ease-in-out 등이 있으며, \nsteps 함수는 입력한 수만큼 변화의 단계를 설정합니다.",
+        "code": ".timing-example {\n\twidth: 100px;\nheight: 100px;\nbackground-color: lightpink; \ntransition-property: transform; \ntransition-duration: 1s;  transition-timing-function: ease-in-out; /* ease-in-out 효과 *} .timing-example:hover { transform: translateX(100px); }",
+        "img": null
+      },
+      {
+        "sub_id": 2,
+        "sub_name": "transition-delay",
+        "desc": " 전환이 시작되는 시점을 조정합니다. 즉, 효과 시작을 지연시키는 시간을 설정합니다. \n양수 값은 지정된 시간 후에 시작하며, 음수 값은 이미 진행 중인 것처럼 시작합니다.",
+        "code": ".delay-example {\n\t width: 100px; \nheight: 100px; \nbackground-color: lightsteelblue; \ntransition-property: background-color; \ntransition-duration: 1s;  \ntransition-delay: 0.5s; /* 0.5초 지연 후 전환 */\n} \n.delay-example:hover { \n\tbackground-color: lightcoral;\n}",
+        "img": null
+      }
+    ]
+  }
+]
