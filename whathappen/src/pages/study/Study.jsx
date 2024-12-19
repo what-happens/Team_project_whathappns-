@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import StudyLanding from "./StudyLanding";
 // import StudyLanding from "./test/A";
-// import B from "./test/B";
-// import C from "./test/C";
+import B from "./B";
+import C from "./C";
 
 const Study = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -35,7 +35,7 @@ const Study = () => {
     <>
       {currentStep === 1 && <StudyLanding onStageIdSet={handleStageIdSet} />}
       {currentStep === 2 && (
-        <StudyLanding
+        <B
           stageId={stageId}
           metaData={metaData}
           onLevelIdSet={handleLevelIdSet}
@@ -43,7 +43,7 @@ const Study = () => {
         />
       )}
       {currentStep === 3 && (
-        <StudyLanding
+        <C
           levelId={levelId}
           learnData={learnData}
           onPrevious={() => setCurrentStep(2)}

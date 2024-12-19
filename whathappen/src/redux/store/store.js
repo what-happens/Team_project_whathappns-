@@ -13,13 +13,13 @@ import storage from "redux-persist/lib/storage";
 import authReducer from "../authSlice";
 import quizReducer from "../quizSlice";
 import learnReducer from "../learnSlice";
-import stepReducer from "../stepSlice";
+import studyReducer from "../studySlice";
 
 const rootReducer = combineReducers({
   auth: authReducer,
   quiz: quizReducer,
   learn: learnReducer,
-  step: stepReducer,
+  study: studyReducer,
 });
 
 const persistConfig = {
