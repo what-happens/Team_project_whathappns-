@@ -34,6 +34,10 @@ const Mainbanner = () => {
               fontsize="2rem"
               width="25rem"
               padding="2rem"
+              smallStyles={{
+                fontSize: "1.6rem",
+                padding: "1rem 3rem",
+              }}
             >
               코딩하러 가기!
             </Button>
@@ -262,11 +266,11 @@ const BannerTitle = styled.h2`
   color: ${(props) => props.color || "inherit"};
 
   ${media.large`
-    font-size: 4.5rem;
+    font-size: 4.2rem;
   `}
 
   ${media.mediumlarge`
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     text-align: center;
   `}
 `;
@@ -282,6 +286,7 @@ const BannerDescription = styled.p`
   ${media.mediumlarge`
     font-size: 1.6rem;
     text-align: center;
+    line-height:3rem;
   `}
 `;
 
@@ -323,16 +328,17 @@ const PointOneBannerImage = styled(BannerImage)`
   width: 90vw;
   max-width: 105rem;
   height: 61rem;
+
   ${media.mediumlarge`
-    max-width: 50rem;
-    max-height: 24.6rem;
+    max-width: 60rem;
+    height: 40rem;
   `}
+
   ${media.small`
-    max-width: 20rem;
-    max-height: 15.6rem;
+    max-width: 100%;
+    height: 30rem;
   `}
 `;
-
 const PointTwoBannerImage = styled(BannerImage)`
   background-image: url(${subBannerImageTwo});
   width: 90vw;
@@ -340,10 +346,24 @@ const PointTwoBannerImage = styled(BannerImage)`
   height: 60vh;
   max-height: 97rem;
   margin: 2rem auto;
+
+  ${media.large`
+    max-width: 90rem;
+    height: 55vh;
+    max-height: 80rem;
+  `}
+
   ${media.mediumlarge`
     background-image: url(${subBannerImageTwoMobile});
     max-width: 60rem;
+    height: 50vh;
     max-height: 68rem;
+  `}
+  
+  ${media.small`
+    max-width: 100%;
+    height: 40vh;
+    max-height: 50rem;
   `}
 `;
 
