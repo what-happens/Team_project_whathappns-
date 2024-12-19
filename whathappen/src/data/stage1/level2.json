@@ -1,7 +1,7 @@
 {
   "stage_id": 1,
   "level_id": 2,
-  "code": "<!DOCTYPE html><html lang='en'>|=0=|<meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><body><h1>회원가입</h1>|=0=||=1=||=2=|<div class='form-group'>|=3=||=4=|</div><div class='form-group'><label for='email'>이메일</label><inputtype='email'id='email'name='email'placeholder='이메일을 입력하세요'/></div><div class='form-group'><label for='password'>비밀번호</label><inputtype='password'id='password'name='password'placeholder='비밀번호를 입력하세요'/></div><div class='form-group'><label for='confirm-password'>비밀번호 확인</label><inputtype='password'id='confirm-password'name='confirm-password'placeholder='비밀번호를 다시 입력하세요'/></div></fieldset>|=5=|</form></body>",
+  "code": "<!DOCTYPE html><html lang='en'><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><body><h1>회원가입</h1>|=0=||=1=||=2=|<div class='form-group'>|=3=||=4=|</div><div class='form-group'><label for='email'>이메일</label><inputtype='email'id='email'name='email'placeholder='이메일을 입력하세요'/></div><div class='form-group'><label for='password'>비밀번호</label><inputtype='password'id='password'name='password'placeholder='비밀번호를 입력하세요'/></div><div class='form-group'><label for='confirm-password'>비밀번호 확인</label><inputtype='password'id='confirm-password'name='confirm-password'placeholder='비밀번호를 다시 입력하세요'/></div></fieldset>|=5=|</form></body>",
   "code_type": "html",
   "level_name": "Master",
   "theme": "회원가입 만들기",
