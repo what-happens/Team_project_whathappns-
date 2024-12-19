@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/what_happns_logo_b.png";
 import icon from "../../assets/join_success_icon.png";
 import Button from "../../components/Button";
+import { media } from "../../styles/MideaQuery";
 
 export default function JoinSuccess() {
   return (
@@ -12,7 +13,8 @@ export default function JoinSuccess() {
         <Icon />
         <Title>회원가입 완료!</Title>
         <Text>
-          환영합니다! 회원가입이 성공적으로 완료되었습니다!<br></br>
+          환영합니다! <br className="xsmall-only" />
+          회원가입이 성공적으로 완료되었습니다!<br></br>
           로그인 후 다양한 서비스를 제공 받으세요!
         </Text>
         <ButtonWarp>
@@ -44,6 +46,12 @@ const Title = styled.h2`
   font-size: 4rem;
   font-weight: 700;
   color: var(--main-color);
+  ${media.small`
+    font-size: 3.6rem;
+  `}
+  ${media.xsmall`
+    font-size: 3.2rem;
+  `}
 `;
 
 const Text = styled.p`
@@ -52,6 +60,18 @@ const Text = styled.p`
   font-weight: 300;
   color: #333;
   text-align: center;
+  .xsmall-only {
+    display: none;
+  }
+  ${media.small`
+    font-size: 2.6rem;
+  `}
+  ${media.xsmall`
+    font-size: 2.2rem;
+    .xsmall-only {
+      display: block;
+    }
+  `}
 `;
 const ButtonWarp = styled.div`
   display: flex;
