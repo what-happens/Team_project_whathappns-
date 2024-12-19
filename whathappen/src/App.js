@@ -9,7 +9,6 @@ import Study from "./pages/study/Study";
 import StudyFinish from "./pages/study/StudyFinish";
 import LearningCourse from "./pages/study/LearningCourse";
 import LearningPage from "./pages/study/LearningPage";
-import P from "./pages/study/p";
 import NotFound from "./pages/notFound/NotFound";
 import MyPage from "./pages/myPage/MyPage";
 import Review from "./pages/review/ReviewFreeVersion";
@@ -27,7 +26,6 @@ function App() {
         <Route path="/join" element={<Join />} />
         <Route path="/joinsuccess" element={<JoinSuccess />} />
         <Route path="/*" element={<NotFound />} />
-        <Route path="/aaa" element={<AAA />} />
 
         <Route element={<ProtectedRoute />}>
           <Route path="/quizpage" element={<QuizPage />} />
