@@ -1,11 +1,30 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import useExercise from "../../../hooks/useExercise";
 
 export default function FileTab() {
+  const { activeTab } = useSelector((state) => state.learn);
+  const { setExerciseActiveTab } = useExercise();
+
+  const handleClickTab = (tabType) => {
+    setExerciseActiveTab(tabType);
+  };
+
   return (
     <TabContainer>
-      <ActiveTab>html</ActiveTab>
-      <Tab>css</Tab>
+      <Tab
+        onClick={() => handleClickTab("html")}
+        $isActive={activeTab === "html"}
+      >
+        html
+      </Tab>
+      <Tab
+        onClick={() => handleClickTab("css")}
+        $isActive={activeTab === "css"}
+      >
+        css
+      </Tab>
     </TabContainer>
   );
 }
@@ -26,11 +45,14 @@ const Tab = styled.button`
   text-align: center;
   font-size: 1.4rem;
   cursor: pointer;
-  background-color: var(--main-color);
-  color: white;
-`;
-
-const ActiveTab = styled(Tab)`
-  background-color: transparent;
+  border: none;
   color: var(--main-color);
+  background-color: ${({ $isActive }) =>
+    $isActive ? "var(--main-color)" : "transparent"};
+  color: ${({ $isActive }) => ($isActive ? "white" : "var(--main-color)")};
+
+  &:hover {
+    background-color: var(--main-color);
+    color: white;
+  }
 `;
