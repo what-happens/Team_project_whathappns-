@@ -68,16 +68,16 @@ export default function MyPage() {
           <header>
             <h1 className="sr-only">마이페이지</h1>
             <GreetingMsg>
-              <span className="greetings">안녕하세요, {userData.name}</span>
-              <br></br>
-              <span style={{ color: "white" }}> 고객님!</span>
+              <span className="greetings">안녕하세요, </span>
+              <br />
+              <span style={{ color: "white" }}>{userData.name} 고객님!</span>
             </GreetingMsg>
           </header>
 
           <StatusContents>
             <h2 className="sr-only">학습 현황</h2>
             <StatusBox>
-              <StatusVal>{userData.clearStages.length} stage</StatusVal>
+              <StatusVal>{userData.clearStages.length}</StatusVal>
               <StatusLabel>
                 진행중인
                 <Break />
@@ -86,13 +86,16 @@ export default function MyPage() {
             </StatusBox>
             <Division />
             <StatusBox>
-              <StatusVal> {userData.quizTime}회</StatusVal>
+              <StatusVal> {userData.quizTime}</StatusVal>
               <StatusLabel>퀴즈풀이</StatusLabel>
             </StatusBox>
             <Division />
             <StatusBox>
-              <StatusVal>{userData.bookmarkNum}개</StatusVal>
-              <StatusLabel>저장된 북마크</StatusLabel>
+              <StatusVal>{userData.bookmarkNum}</StatusVal>
+              <StatusLabel>
+                저장된 <Break />
+                북마크
+              </StatusLabel>
             </StatusBox>
           </StatusContents>
 
@@ -103,7 +106,9 @@ export default function MyPage() {
               <Stamps clearStages={userData.clearStages} />
             </StampContents>
             <ProgressContents>
-              <h2 style={{ color: "var(--main-color)" }}>기초학습 진척도</h2>
+              <h2 style={{ color: "var(--main-color)", fontWeight: "700" }}>
+                기초학습 진척도
+              </h2>
               {(() => {
                 const progress = calculateProgress(
                   userData.clearStages,
@@ -269,7 +274,7 @@ const GreetingMsg = styled.div`
   font-size: 4.8rem;
   font-weight: 500;
   .greetings {
-    font-weight: 900;
+    font-weight: 300;
     color: white;
   }
   br {
@@ -303,14 +308,17 @@ const StatusContents = styled.div`
 
   ${media.large`
     min-width: 66rem;
+    border-radius: 1rem;
   `}
   ${media.small`
     min-width: 60rem;
     height: 18rem;
     padding: 2rem;
+    border-radius: 1rem;
   `}
   ${media.xsmall`
     min-width: 32rem;
+   border-radius: 1rem;
     height: 15rem;
     padding: 1.5rem;
   `}
@@ -339,7 +347,7 @@ const StatusVal = styled.div`
 `;
 
 const StatusLabel = styled.h3`
-  font-weight: 500;
+  font-weight: 400;
 `;
 
 const Division = styled.div`
@@ -403,14 +411,17 @@ const ProgressContents = styled.section`
   padding: 2rem;
 
   ${media.large`
+    border-radius: 1rem;
     min-width: 66rem;
   `}
   ${media.small`
     min-width: 56rem;
     padding: 1.5rem;
+    border-radius: 1rem;
   `}
   ${media.xsmall`
     min-width: 32rem;
+    border-radius: 1rem;
     padding: 1rem;
   `}
 `;
