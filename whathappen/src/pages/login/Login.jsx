@@ -126,10 +126,8 @@ function Login() {
     <>
       <LoginContents>
         <Warp $flexDirection="column" $gap="2rem" $margin="0 0 2rem 0">
-          <h2 style={{ fontSize: "4.8rem", fontWeight: "700" }}>Login</h2>
-          <span style={{ fontSize: "3.6rem", fontWeight: "500" }}>
-            어서오세요!
-          </span>
+          <LoiginTitle>Login</LoiginTitle>
+          <LoiginText>어서오세요!</LoiginText>
         </Warp>
         <Form
           action="submit"
@@ -236,8 +234,22 @@ function Login() {
   );
 }
 
+const LoiginTitle = styled.h2`
+  font-size: 4.8rem;
+  font-weight: 700;
+  ${media.small`
+    font-size: 3.8rem;
+  `}
+`;
+const LoiginText = styled.span`
+  font-size: 3.6rem;
+  font-weight: 500;
+  ${media.small`
+    font-size: 2.6rem;
+  `}
+`;
 const LoginContents = styled.div`
-  margin-top: 20rem;
+  margin-top: 8rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
