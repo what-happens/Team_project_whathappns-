@@ -1,42 +1,23 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, forwardRef } from "react";
 import styled, { css } from "styled-components";
 import selectArrow from "../../../assets/selectArrow.png";
 import { media } from "../../../styles/MideaQuery";
 import PropTypes from "prop-types";
 
-export function Select({
-  options,
-  onSelectOption,
-  isOpen,
-  onSelectOpen,
-  index,
-}) {
+export const Select = forwardRef(function Select(
+  { options, onSelectOption, isOpen, onSelectOpen, index },
+  ref
+) {
   const [selectedOption, setSelectedOption] = useState(options[0][1]);
-  const selectRef = useRef(null);
 
   const handleSelectOption = (e, value) => {
     onSelectOption(value);
     setSelectedOption(e.target.textContent);
     onSelectOpen(null);
   };
-  //useEffect 부모로 올려서 셀렉트 박스마다 useEffect가 생성안되게 리팩토링 하기
-  useEffect(() => {
-    const handleClickOutSide = (event) => {
-      if (selectRef.current && !selectRef.current.contains(event.target)) {
-        console.log("click", event.target);
-        console.log(isOpen);
-        //onSelectOpen(index);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutSide);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutSide);
-    };
-  }, []);
 
   return (
-    <SelectBoxWrap ref={selectRef}>
+    <SelectBoxWrap ref={ref}>
       <SelectBox marginBottom="1.4rem" onClick={() => onSelectOpen(index)}>
         {selectedOption}
       </SelectBox>
@@ -52,7 +33,8 @@ export function Select({
       </SelectItemWrap>
     </SelectBoxWrap>
   );
-}
+});
+
 const SelectBoxWrap = styled.div`
   display: flex;
   flex-direction: column;
