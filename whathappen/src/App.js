@@ -66,7 +66,7 @@ function App() {
           }
         />
         <Route
-          path="/exercise"
+          path="/exercise/:stage/:level"
           element={
             // <ProtectedRoute>
             <Exercise />
