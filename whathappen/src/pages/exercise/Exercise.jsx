@@ -59,7 +59,7 @@ export default function Exercise() {
       </ExerciseContainer>
       <ExerciseFooter>
         <nav>
-          <StyledLink>&lt; 이전으로</StyledLink>
+          <StyledLink to={`/study/${stage}/${level}`}>&lt; 이전으로</StyledLink>
         </nav>
         <StyledLink>제출하기 &gt;</StyledLink>
       </ExerciseFooter>
