@@ -49,11 +49,11 @@ export default function Exercise() {
       <ExerciseContainer $width={totalWidth} $height={totalHeight}>
         <Editor width={editorWidth} />
         <DragableBar vertical={true} onDrag={handleDrag} />
-        <div style={{ width: `${renderWidth}%`, height: "100%" }}>
-          <QuestionDisplay height={50} />
+        <RightContainer style={{ width: `${renderWidth}%`, height: "100%" }}>
+          <QuestionDisplay />
           <HorizontalDivide />
-          <UserDisplay height={48} />
-        </div>
+          <UserDisplay />
+        </RightContainer>
       </ExerciseContainer>
     </>
   );
@@ -70,6 +70,18 @@ const ExerciseContainer = styled.section`
   /* border: 1px solid #c4c4c4; */
   width: min(90vw, 120rem); // 화면의 90% 또는 최대 120rem
   height: min(80vh, 70rem); // 화면의 80% 또는 최대 70rem
+  overflow: hidden;
+`;
+
+const RightContainer = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  & > :first-child,
+  & > :last-child {
+    flex: 1;
+    min-height: 0;
+  }
 `;
 
 const HorizontalDivide = styled.div`

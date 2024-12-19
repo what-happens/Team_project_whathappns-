@@ -67,7 +67,7 @@ export default function QuestionDisplay({ height }) {
 
 const QuestionContainer = styled.section`
   width: 100%;
-  height: ${(props) => props.$height}%;
+  height: 50%;
   border: 1px solid var(--main-color);
   border-radius: 0px 20px 0px 0px;
   padding: 2rem;
