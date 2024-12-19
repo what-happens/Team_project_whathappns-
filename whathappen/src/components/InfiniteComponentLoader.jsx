@@ -295,18 +295,17 @@ const BannerImage = styled.div`
   background-size: ${(props) => props.size || "contain"};
   background-position: center;
   background-repeat: no-repeat;
-  min-width: 45rem;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   ${(props) => props.margin && `margin: ${props.margin}`};
+
   ${media.mediumlarge`
     width: 90vw;
-    min-width: 48rem;
+    max-width: 100%;
   `}
-  ${media.xsmall`
-    min-width: 38rem;
+
+  ${media.small`
     width: 100%;
-    max-width: 38rem;
   `}
 `;
 
@@ -355,13 +354,14 @@ const PointTwoBannerImage = styled(BannerImage)`
 
   ${media.mediumlarge`
     background-image: url(${subBannerImageTwoMobile});
+    width: 100%;
     max-width: 60rem;
     height: 50vh;
     max-height: 68rem;
   `}
   
   ${media.small`
-    max-width: 100%;
+    width: 100%;
     height: 40vh;
     max-height: 50rem;
   `}
