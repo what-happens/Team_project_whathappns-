@@ -6,7 +6,171 @@ import "swiper/css/navigation";
 import styled, { ThemeProvider, keyframes } from "styled-components";
 import theme from "../theme";
 import media from "../media";
-import Data from "../../../data/yejin/level(stage01-02).json";
+import { Link, useParams } from "react-router-dom";
+
+const CardSlider = () => {
+  const [swiper, setSwiper] = useState(null);
+  const [clearData, setClearData] = useState([]);
+  const { stageId } = useParams();
+  const [levelData, setLevelData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchClearStage = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/stage/clear`,
+          {
+            method: "GET",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          const levels = data.clearStage[0]?.levels || [];
+
+          setClearData(levels);
+          console.log("Levels:", levels);
+          console.log("data:", data);
+        } else {
+          const errorData = await response.json();
+          console.error("Error:", errorData);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchClearStage();
+  }, []);
+
+  // clearData 상태를 추적하는 useEffect
+  useEffect(() => {
+    console.log("Updated clearData:", clearData);
+  }, [clearData]); // clearData 변경 시마다 실행
+
+  useEffect(() => {
+    if (stageId) {
+      // 동적 import로 JSON 데이터 불러오기
+      import(`../../../data/stage${stageId}/meta.json`)
+        .then((module) => {
+          setLevelData(module.default);
+        })
+        .catch((err) => {
+          console.error("Error loading JSON:", err);
+          setError("Failed to load data.");
+        });
+    }
+  }, [stageId]);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!levelData) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <ThemeProvider theme={{ ...theme, ...media }}>
+      <SliderWrapper>
+        <StyledButton onClick={() => swiper.slidePrev()}>&lt;</StyledButton>
+        <Swiper
+          modules={[Navigation]}
+          onBeforeInit={(swipper) => setSwiper(swipper)}
+          slidesPerView={1}
+          spaceBetween={50}
+          speed={500} /* 슬라이드 전환 속도 */
+          loop={false} /* 무한 루프 설정 */
+          breakpoints={{
+            480: {
+              slidesPerView: 1,
+              spaceBetween: 50,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 50,
+            },
+            1024: {
+              slidesPerView: 2,
+              spaceBetween: 50,
+            },
+            1200: {
+              slidesPerView: 3,
+              spaceBetween: 50,
+            },
+            1500: {
+              slidesPerView: 4,
+              spaceBetween: 50,
+            },
+          }}
+          className="mySwiper"
+        >
+          {Array.isArray(levelData) &&
+            levelData.map((levelCard) => {
+              const imageUrl = require(`../../../assets/${levelCard.img}`);
+              return (
+                <SwiperSlide key={levelCard.level_id}>
+                  <CardWrapper>
+                    <CardLink
+                      to={`/study/${stageId}/${levelCard.level_id}`}
+                      className="mr-2"
+                    >
+                      <CardImg
+                        $isCleared={clearData.includes(levelCard.level_id)}
+                      >
+                        <img src={imageUrl} alt="level 아이콘" />
+                      </CardImg>
+                      <CardTitle>{levelCard.level_name}</CardTitle>
+                      <CardContent>{levelCard.theme}</CardContent>
+                    </CardLink>
+                  </CardWrapper>
+                </SwiperSlide>
+              );
+            })}
+        </Swiper>
+        <StyledButton onClick={() => swiper.slideNext()}>&gt;</StyledButton>
+      </SliderWrapper>
+    </ThemeProvider>
+  );
+};
+
+export default CardSlider;
+
+const jello = keyframes`
+    0% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+            transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+            transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+            transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+            transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+            transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+`;
 
 // start styled-cpomponents
 const SliderWrapper = styled.div`
@@ -85,37 +249,19 @@ const CardWrapper = styled.div`
   &:hover {
     transform: scale(1.05);
   }
+
+  &:hover img {
+    animation: ${jello} 1.1s both;
+  }
 `;
 
-const jello = keyframes`
-    0% {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1);
-  }
-  30% {
-    -webkit-transform: scale3d(1.25, 0.75, 1);
-            transform: scale3d(1.25, 0.75, 1);
-  }
-  40% {
-    -webkit-transform: scale3d(0.75, 1.25, 1);
-            transform: scale3d(0.75, 1.25, 1);
-  }
-  50% {
-    -webkit-transform: scale3d(1.15, 0.85, 1);
-            transform: scale3d(1.15, 0.85, 1);
-  }
-  65% {
-    -webkit-transform: scale3d(0.95, 1.05, 1);
-            transform: scale3d(0.95, 1.05, 1);
-  }
-  75% {
-    -webkit-transform: scale3d(1.05, 0.95, 1);
-            transform: scale3d(1.05, 0.95, 1);
-  }
-  100% {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1);
-  }
+const CardLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  outline: none;
 `;
 
 const CardImg = styled.div`
@@ -137,6 +283,7 @@ const CardImg = styled.div`
   width: 20rem;
   height: 20rem;
   border-radius: 50rem;
+
   img {
     ${({ theme }) => theme.laptop`
       height: 13rem;
@@ -151,10 +298,6 @@ const CardImg = styled.div`
     height: 15rem;
     object-fit: contain;
     margin-bottom: 2rem;
-
-    &:hover {
-      animation: ${jello} 1.1s both;
-    }
   }
 `;
 
@@ -190,106 +333,3 @@ const CardContent = styled.span`
   color: #000;
 `;
 // end styled-cpomponents
-
-const CardSlider = () => {
-  const [swiper, setSwiper] = useState(null);
-  const [clearData, setClearData] = useState([]);
-
-  useEffect(() => {
-    // Fetch clear stage data
-    const fetchClearStage = async () => {
-      try {
-        // 실제 API 엔드포인트로 대체해야 합니다
-        const response = await fetch(
-          `${process.env.REACT_APP_API_URL}/stage/clear`,
-          {
-            method: "GET",
-            credentials: "include",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        if (response.ok) {
-          const data = await response.json();
-          const levels = data.clearStage[0]?.levels || [];
-
-          setClearData(levels);
-          console.log("Levels:", levels);
-          console.log("data:", data);
-        } else {
-          const errorData = await response.json();
-          console.error("Error:", errorData);
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-
-    fetchClearStage();
-  }, []);
-
-  // clearData 상태를 추적하는 useEffect
-  useEffect(() => {
-    console.log("Updated clearData:", clearData);
-  }, [clearData]); // clearData 변경 시마다 실행
-
-  return (
-    <ThemeProvider theme={{ ...theme, ...media }}>
-      <SliderWrapper>
-        <StyledButton onClick={() => swiper.slidePrev()}>&lt;</StyledButton>
-        <Swiper
-          modules={[Navigation]}
-          onBeforeInit={(swipper) => setSwiper(swipper)}
-          slidesPerView={1}
-          spaceBetween={50}
-          speed={500} /* 슬라이드 전환 속도 */
-          loop={false} /* 무한 루프 설정 */
-          breakpoints={{
-            480: {
-              slidesPerView: 1,
-              spaceBetween: 50,
-            },
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 50,
-            },
-            1024: {
-              slidesPerView: 2,
-              spaceBetween: 50,
-            },
-            1200: {
-              slidesPerView: 3,
-              spaceBetween: 50,
-            },
-            1500: {
-              slidesPerView: 4,
-              spaceBetween: 50,
-            },
-          }}
-          className="mySwiper"
-        >
-          {Data.map((card) => {
-            const imageUrl = require(`../../../assets/${card.img}`);
-            return (
-              // 추후 키값 변경하기. level_id로
-              <SwiperSlide key={`${card.stage_id}-${card.level_id}`}>
-                <CardWrapper>
-                  <CardImg $isCleared={clearData.includes(card.level_id)}>
-                    <img src={imageUrl} alt="level 아이콘" />
-                  </CardImg>
-                  <CardTitle>{card.level_name}</CardTitle>
-                  <CardContent>{card.theme}</CardContent>
-                </CardWrapper>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-        <StyledButton onClick={() => swiper.slideNext()}>&gt;</StyledButton>
-      </SliderWrapper>
-    </ThemeProvider>
-  );
-};
-
-export default CardSlider;
