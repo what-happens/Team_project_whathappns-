@@ -1,10 +1,23 @@
 [
   {
     "stage_id": 1,
-    "level_id": 0
+    "level_id": 0,
+    "img": "icon_level.png",
+    "level_name": "Level 01",
+    "theme": "Sementic Tags"
   },
   {
     "stage_id": 1,
-    "level_id": 1
+    "level_id": 1,
+    "img": "icon_level.png",
+    "level_name": "Level 02",
+    "theme": "<form> 활용하기"
+  },
+  {
+    "stage_id": 1,
+    "level_id": 2,
+    "img": "icon_level.png",
+    "level_name": "Master",
+    "theme": "회원가입 만들기"
   }
 ]

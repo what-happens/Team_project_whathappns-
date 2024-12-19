@@ -1,18 +1,37 @@
 [
   {
+    "level_id": 0,
     "stage_id": 3,
-    "level_id": 0
+    "img": "icon_level.png",
+    "level_name": "display 속성",
+    "theme": "요소를 베치해봅시다!"
   },
   {
     "stage_id": 3,
-    "level_id": 1
+    "level_id": 1,
+    "img": "icon_level.png",
+    "level_name": "이미지 비율 유지하기",
+    "theme": "이미지를 원하는 비율로!"
   },
   {
     "stage_id": 3,
-    "level_id": 2
+    "level_id": 2,
+    "img": "icon_level.png",
+    "level_name": "position 속성",
+    "theme": "다양한 positiond을 알아보자"
   },
   {
     "stage_id": 3,
-    "level_id": 3
+    "level_id": 3,
+    "img": "icon_level.png",
+    "level_name": "레이아웃",
+    "theme": "float, flex, grid에 대해 알아보자!"
+  },
+  {
+    "stage_id": 3,
+    "level_id": 4,
+    "img": "icon_level.png",
+    "level_name": "Master",
+    "theme": "사진첩 만들기"
   }
 ]
