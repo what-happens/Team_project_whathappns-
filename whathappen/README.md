@@ -94,7 +94,7 @@
 - main, develop, 개인 브랜치로 나누어 개발을 하였습니다.
   - **main** 브랜치는 배포 단계에서만 사용하는 브랜치입니다.
   - **develop** 브랜치는 개발 단계에서 master 역할을 하는 브랜치입니다.
-  - **개인** 브랜치는 팀원 마다 독립적인 개발 환경을 위하여 사용하고 merge 후 각 브랜치를 삭제해주었습니다.
+  - **개인 branch** 브랜치는 팀원 마다 독립적인 개발 환경을 위하여 사용하고 merge 후 각 브랜치를 삭제해주었습니다.
 
 <br>
 
@@ -219,6 +219,37 @@
 - 전체 개발 기간 : 2024-11-28 ~ 2024-12-23
 - UI 구현 : 2024-11-28 ~ 2024-12-09
 - 기능 구현 : 2024-12-09 ~ 2022-12-23
+
+gantt
+title What Happens 프로젝트 타임라인
+dateFormat YYYY-MM-DD
+section 초기 셋팅
+프로젝트 환경 구축 :2024-11-28, 2d
+
+    section 기본 기능
+    공통 컴포넌트 개발    :2024-11-30, 4d
+    메인페이지 구현       :active, 2024-11-30, 4d
+    인증 페이지 마크업    :2024-12-01, 3d
+
+    section 핵심 기능
+    Firebase 연동        :2024-12-04, 5d
+    퀴즈 시스템 개발     :2024-12-04, 5d
+    학습 페이지 개발     :2024-12-04, 5d
+    마이페이지 구현      :2024-12-04, 5d
+
+    section UI/UX
+    반응형 디자인        :2024-12-09, 5d
+    애니메이션 추가      :2024-12-09, 5d
+    UI 개선             :2024-12-09, 5d
+
+    section 데이터/기능
+    JSON 데이터 구조화   :2024-12-14, 3d
+    API 연동            :2024-12-14, 3d
+    챗봇 구현           :2024-12-14, 3d
+
+    section 마무리
+    문서화              :2024-12-17, 2d
+    버그수정/배포        :2024-12-17, 2d
 
 <br>
 
@@ -415,17 +446,17 @@
 
 ## 8. 트러블 슈팅
 
-- [윤시운](https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting)
-- [이휘경](https://www.naver.com)
-- [박예진](https://www.naver.com)
-- [김예원](https://www.naver.com)
-- [유다형](https://www.naver.com)
+- <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">윤시운</a>
+- <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">이휘경</a>
+- <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">박예진</a>
+- <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">김예원</a>
+- <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">유다형</a>
 
 <br>
 
 ## 9. 개선 목표
 
-- api 통신 같은경우 hook으로 만들어 사용
+- API 통신과 같은 같은경우 hook으로 만들어 사용
 
 <br>
 
