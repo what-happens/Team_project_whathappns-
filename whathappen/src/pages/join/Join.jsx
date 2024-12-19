@@ -117,10 +117,8 @@ export default function Join() {
     <>
       <JoinContents>
         <Warp $flexDirection="column" $gap="2rem" $margin="0 0 2rem 0">
-          <h2 style={{ fontSize: "4.8rem", fontWeight: "700" }}>Join</h2>
-          <span style={{ fontSize: "3.6rem", fontWeight: "500" }}>
-            환영합니다!
-          </span>
+          <JoinTitle>Join</JoinTitle>
+          <JoinText>환영합니다!!</JoinText>
         </Warp>
         <Form
           action="submit"
@@ -233,6 +231,20 @@ export default function Join() {
     </>
   );
 }
+const JoinTitle = styled.h2`
+  font-size: 4.8rem;
+  font-weight: 700;
+  ${media.small`
+    font-size: 3.8rem;
+  `}
+`;
+const JoinText = styled.span`
+  font-size: 3.6rem;
+  font-weight: 500;
+  ${media.small`
+    font-size: 2.6rem;
+  `}
+`;
 
 const JoinContents = styled.div`
   display: flex;
@@ -242,6 +254,7 @@ const JoinContents = styled.div`
   gap: 2rem;
   height: 100vh;
   padding: 22rem, 74rem, 4.3rem;
+  margin-top: 8rem;
 `;
 
 const LogoContent = styled.div`
