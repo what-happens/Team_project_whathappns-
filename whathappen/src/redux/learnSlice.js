@@ -11,6 +11,7 @@ const initialState = {
   selectedQid: null,
   isShowAnswers: false,
   type: "",
+  activeTab: "html",
 };
 
 const learnSlice = createSlice({
@@ -50,6 +51,9 @@ const learnSlice = createSlice({
     setSubCode(state, action) {
       state.subcode = action.payload;
     },
+    setActiveTab(state, action) {
+      state.activeTab = action.payload;
+    },
   },
 });
 
@@ -64,6 +68,7 @@ export const {
   setAnswers,
   setType,
   setSubCode,
+  setActiveTab,
 } = learnSlice.actions;
 
 export default learnSlice.reducer;
