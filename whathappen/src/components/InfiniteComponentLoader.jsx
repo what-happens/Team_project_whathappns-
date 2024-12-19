@@ -294,6 +294,10 @@ const MainBannerImage = styled(BannerImage)`
   background-image: url(${mainBannerImage});
   width: 69.2rem;
   height: 69.2rem;
+  ${media.large`
+    width: 65.2rem;
+    height: 65.2rem;
+  `}
   ${media.mediumlarge`
     display: none;
   `}
