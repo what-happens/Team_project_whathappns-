@@ -15,11 +15,15 @@ export default function BlankProblem({ qid }) {
 
 const BlankButton = styled.button`
   display: block;
-  margin: 2rem;
+  margin: 1rem;
   padding: 1rem 5rem;
   background-color: #c4c4c4;
   cursor: pointer;
   border: none;
+  transition: background-color 0.3s;
+  :hover {
+    background-color: #dee2e6;
+  }
 `;
 
 BlankProblem.propTypes = {
