@@ -308,7 +308,7 @@ const QuizInputWrapper = styled.div`
     text-align: center;
     display: block;
     width: 100%;
-    padding: 2.8rem 0;
+    padding: 2.8rem 1rem;
     border-radius: 2rem;
     border: 1px solid #2e5dff;
     cursor: pointer;

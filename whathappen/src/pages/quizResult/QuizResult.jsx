@@ -166,8 +166,8 @@ const Logo = styled.img`
     margin-bottom: 3rem;
   `}
   ${media.xsmall`
-    width: 15rem;
-    height: 4rem;
+    width: 17rem;
+    height: 4.5rem;
     margin-bottom: 2rem;
   `}
 `;
@@ -190,7 +190,7 @@ const QuizResultSection = styled.section`
     padding-bottom: 2.8rem;
   `}
   ${media.xsmall`
-    width: 22rem; 
+    width: 23rem; 
     gap: 1rem; 
     padding-bottom: 2.3rem;
   `}
@@ -205,7 +205,7 @@ const QuizResultTitle = styled.h2`
     font-size: 2.8rem;
 `}
   ${media.xsmall`
-    font-size: 2rem;
+    font-size: 2.5rem;
 `}
 `;
 
@@ -232,9 +232,9 @@ const QuizResultMessage = styled.div`
     border-radius: 1.2rem;
 `}
   ${media.xsmall`
-    width: 13rem;
-    height: 3.7rem;
-    font-size: 1.5rem;
+    width: 15rem;
+    height: 4rem;
+    font-size: 1.8rem;
     border-radius: 1rem;
 `}
 `;
@@ -246,10 +246,10 @@ const ResultContainer = styled.ul`
   gap: 4.5rem;
   margin-top: 2rem;
   ${media.medium`
-    gap: 3rem;
+    gap: 3.8rem;
     `}
   ${media.xsmall`
-    gap: 2rem;
+    gap: 2.8rem;
     `}
 `;
 
@@ -277,10 +277,13 @@ const ResultTypes = styled.div`
   font-weight: 400;
   ${resultItemCommon}
   ${media.medium`
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     `}
     ${media.small`
-      font-size: 1rem;
+      font-size: 1.5rem;
+      `}
+      ${media.xsmall`
+      font-size: 1.2rem;
       `}
 `;
 
@@ -312,18 +315,19 @@ const ResultControlSection = styled.section`
     width: 17rem;
     ${media.medium`
       font-size: 1.6rem;
-      padding:0.5rem 1.6rem;
+      padding:0.5rem 1.4rem;
       width:14rem
       `}
     ${media.small`
-        width: 9rem;
-        font-size: 1rem;
-        padding:0.05rem 1.2rem;
+        width: 10rem;
+        font-size: 1.2rem;
+        padding:0.1rem 1.2rem;
         `}
         ${media.xsmall`
-        width: 7rem;
-        font-size: 0.8rem;
-        padding:0;
+        width: 8.3rem;
+        font-size: 1rem;
+        padding: 0;
+        border-radius:1.2rem;
         `}
   }
 `;

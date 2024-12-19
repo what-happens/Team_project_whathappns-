@@ -6,13 +6,14 @@ import { media } from "../../styles/MideaQuery";
 import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { Category as Categories, Limits } from "../../constants/quizConstants";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import useFetchQuiz from "../../hooks/useFetchQuiz";
 import useQuizOptions from "../../hooks/useQuizOptions";
 import useQuizStep from "../../hooks/useQuizStep";
 
 export default function QuizLanding() {
   const [openSelectIndex, setOpenSelectIndex] = useState(null); // 열린 Select의 인덱스를 저장
+  const selectRefs = useRef([]); // Select refs 배열 생성
   const { moveNext } = useQuizStep();
   const { getQuiz } = useFetchQuiz();
   const { selectCategory, selectLimit } = useQuizOptions();
@@ -25,12 +26,28 @@ export default function QuizLanding() {
   };
 
   const handleSelectOpen = (index) => {
-    if (openSelectIndex === index) {
-      setOpenSelectIndex(null);
-    } else {
-      setOpenSelectIndex(index);
-    }
+    setOpenSelectIndex((prev) => (prev === index ? null : index));
   };
+
+  // 바깥 클릭 감지 이벤트
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // 클릭한 요소가 어떤 Select에도 속하지 않는 경우
+      if (
+        openSelectIndex !== null &&
+        selectRefs.current[openSelectIndex] &&
+        !selectRefs.current[openSelectIndex].contains(event.target)
+      ) {
+        setOpenSelectIndex(null); // Select 닫기
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [openSelectIndex]);
+
   const navigate = useNavigate();
 
   return (
@@ -49,6 +66,7 @@ export default function QuizLanding() {
             onSelectOption={selectCategory}
             isOpen={openSelectIndex === 0}
             onSelectOpen={handleSelectOpen}
+            ref={(el) => (selectRefs.current[0] = el)} // ref 설정
           />
           <Select
             index={1}
@@ -56,6 +74,7 @@ export default function QuizLanding() {
             onSelectOption={selectLimit}
             isOpen={openSelectIndex === 1}
             onSelectOpen={handleSelectOpen}
+            ref={(el) => (selectRefs.current[1] = el)} // ref 설정
           />
         </QuizOptionsSection>
         <QuizControlSection>
