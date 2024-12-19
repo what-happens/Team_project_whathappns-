@@ -149,7 +149,8 @@ const LandingBackground = styled.div`
   align-items: center;
   background-image: url(${backgroundImage});
   padding-bottom: 8rem;
-
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
