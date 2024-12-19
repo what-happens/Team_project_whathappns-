@@ -23,6 +23,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   gap: 5rem;
   position: relative;
 `;
