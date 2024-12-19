@@ -29,7 +29,7 @@ export default function FileTab() {
   );
 }
 
-const TabContainer = styled.section`
+const TabContainer = styled.div`
   display: flex;
   width: 100%;
   height: 8rem;
