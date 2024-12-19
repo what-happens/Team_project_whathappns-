@@ -1,42 +1,55 @@
-// src/pages/study/test/B.jsx
+// src/pages/study/B.jsx
 import React from "react";
-import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import { setLevelInfo, setCurrentStep } from "../../redux/studySlice";
+import { Link } from "react-router-dom";
 
-const B = ({ stageId, metaData, onLevelIdSet, onPrevious }) => {
+const B = () => {
+  const dispatch = useDispatch();
+  const { stageId, metaData } = useSelector((state) => state.study);
+
   const handleLevelSelect = (levelId) => {
-    // 동적 import 사용
-    import(`../../../data/stage${stageId}/learn${levelId}.json`)
+    import(`../../data/stage${stageId}/learn${levelId}.json`)
       .then((module) => {
-        onLevelIdSet(levelId, module.default);
+        dispatch(
+          setLevelInfo({
+            levelId,
+            learnData: module.default,
+          })
+        );
       })
       .catch((error) => {
         console.error("Failed to load learn JSON", error);
       });
   };
 
+  // const handlePrevious = () => {
+  //   dispatch(setCurrentStep(1));
+  // };
+
   return (
     <div>
       <h1>B 페이지</h1>
       <p>Stage ID: {stageId}</p>
-      <button onClick={onPrevious}>이전</button>
+      <Link to="/aaa/stage" onClick={() => dispatch(setCurrentStep(1))}>
+        이전
+      </Link>
 
-      {metaData.map((meta) => (
-        <button
-          key={meta.level_id}
-          onClick={() => handleLevelSelect(meta.level_id)}
-        >
-          Level {meta.level_id}로 이동
-        </button>
-      ))}
+      <div>
+        {Array.isArray(metaData) &&
+          metaData.map((meta) => (
+            <Link
+              key={meta.level_id}
+              to="/aaa/learn"
+              onClick={() => handleLevelSelect(meta.level_id)}
+              className="mr-2" // 링크 사이 간격
+            >
+              Level {meta.level_id}로 이동
+            </Link>
+          ))}
+      </div>
     </div>
   );
-};
-
-B.propTypes = {
-  stageId: PropTypes.number.isRequired,
-  metaData: PropTypes.array.isRequired,
-  onLevelIdSet: PropTypes.func.isRequired,
-  onPrevious: PropTypes.func.isRequired,
 };
 
 export default B;
