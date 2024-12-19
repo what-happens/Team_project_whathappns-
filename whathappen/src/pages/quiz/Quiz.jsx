@@ -74,6 +74,12 @@ const QuizHeader = styled.header`
   width: 100%;
   padding: 5rem 0;
   background-color: var(--main-color);
+  ${media.small`
+    padding: 4rem 0;
+  `}
+  ${media.xsmall`
+    padding: 2rem 0;
+  `}
 `;
 
 const StyledLink = styled(Link)`
