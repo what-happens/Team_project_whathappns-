@@ -71,6 +71,7 @@ const QuestionContainer = styled.section`
   height: 100%;
   border: 1px solid var(--main-color);
   border-bottom-right-radius: 2rem;
+  border-top-right-radius: 2rem;
 `;
 
 const ButtonWrapper = styled.div`
