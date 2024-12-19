@@ -74,6 +74,7 @@ const CodeDisplayWrapper = styled.section`
   font-size: 1.6rem;
   /* 웹킷 기반 브라우저 */
   &::-webkit-scrollbar {
+    height: 8px;
     width: 8px;
   }
   &::-webkit-scrollbar-track {
