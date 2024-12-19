@@ -1,0 +1,62 @@
+{
+  "stage_id": 0,
+  "level_id": 3,
+  "code": "<!doctype html><html lang='en'><head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1.0' /><title>Document</title></head><body>|=0=||=1=|<li class='container'>|=2=|<img src='#' alt='티파니에서 아침을 포스터' class='movie-poster' /><div class='movie-plot'><h3>영화 줄거리</h3><p>1961년 작 로맨틱 코미디 영화. 열정적인 여배우 홀리 골라이트리와세련된 사업가 폴 브래커필드의 사랑 이야기를 다룹니다.</p></div><div class='movie-info'>|=3=|<ul>|=4=|</ul></div></li>|=5=|</body>",
+  "code_type": "html",
+  "level_name": "Master",
+  "theme": "영화 소개 페이지 만들기",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 먼저 페이지를 소개할 제목을 작성해봅시다.",
+      "choices": [
+        "<h0>명작 영화 추천</h0>",
+        "<h1>명작 영화 추천</h1>",
+        "<h6>명작 영화 추천</h6>"
+      ],
+      "answer": "<h1>명작 영화 추천</h1>"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2. 영화를 소개하고 싶은 순서대로 작성하려합니다. 알맞은 목록 태그는 무엇일까요?",
+      "choices": ["<li>", "<ul>", "<ol>"],
+      "answer": "<ol>"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. 첫 번째로 소개할 영화 제목을 적어봅시다.",
+      "choices": [
+        "<h2 class='movie-title'>티파니에서 아침을</h2>",
+        "<h1 class='movie-title'>티파니에서 아침을</h1>",
+        "<h5 class='movie-title'>티파니에서 아침을</h5>"
+      ],
+      "answer": "<h2 class='movie-title'>티파니에서 아침을</h2>"
+    },
+    {
+      "q_id": 3,
+      "q_title": "Q4. 영화 줄거리와 영화 정보는 css로 스타일을 주기 위해 div로 공간을 구분했습니다. 영화 정보 공간에 제목을 붙여볼까요?",
+      "choices": [
+        "<h3>영화 감독/ 출연</h3>",
+        "<h2>영화 감독/ 출연</h2>",
+        "<h4>영화 감독/ 출연</h4>"
+      ],
+      "answer": "<h3>영화 감독/ 출연</h3>"
+    },
+    {
+      "q_id": 4,
+      "q_title": "Q5. 나중에 영화 감독과 출연진들을 목록에 추기하기 위해 ul 태그를 사용했습니다. '감독:' 글자의 굵기를 다르게 주기 위해 어떤 태그를 사용해야 할까요?",
+      "choices": [
+        "<li><div>감독:</div> 블레이크 에드워즈</li>",
+        "<span><li>감독:</li> 블레이크 에드워즈</apsn>",
+        "<li><span>감독:</span> 블레이크 에드워즈</li>"
+      ],
+      "answer": "<li><div>감독:</div> 블레이크 에드워즈</li>"
+    },
+    {
+      "q_id": 5,
+      "q_title": "Q6.Q2의 닫는 태그를 선택해주세요.",
+      "choices": ["</li>", "</ul>", "</ol>"],
+      "answer": "</ol>"
+    }
+  ]
+}

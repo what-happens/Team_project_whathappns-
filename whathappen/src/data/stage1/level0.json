@@ -1,0 +1,61 @@
+{
+  "stage_id": 1,
+  "level_id": 0,
+  "img": "icon_level.png",
+  "level_name": "Level 01",
+  "theme": "Sementic Tags",
+  "code": "<!DOCTYPE html><html lang='en'>|=0=|<meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><body>|=0=|<nav><a href='#'>Home</a><a href='#'>About</a><a href='#'>Contact</a></nav>|=1=||=2=|<h2>스크랩한 기사</h2>|=3=|<h3>첫 번째 기사</h3><p>이곳은 최신 소식과 관련된 첫 번째 기사입니다. 여기에는 관련된 정보를자세히 설명하고 있습니다.</p>|=4=||=5=|<aside><h2>관련 링크</h2><ul><li><a href='#'>첫 번째 기사</a></li><li><a href='#'>두 번째 기사</a></li></ul></aside></main>|=6=|</body>",
+  "code_type": "html",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 이 태그는 소개 및 탐색에 도움을 주는 태그입니다. 이 태그는 무엇일까요?",
+      "choices": [
+        "<head><h1>My page</h1></head>",
+        "<header><h1>My page</h1></header>",
+        "<title><h1>My page</h1></title>"
+      ],
+      "answer": "<header><h1>My page</h1></header>"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2.이 태그는 body의 주요 콘텐츠를 나타내는 태그 입니다. 이 태그는 무엇일까요?",
+      "choices": ["<div>", "<article>", "<section>", "<main>"],
+      "answer": "<main>"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. 이 태그는 문서 내에서 특정한 섹션을 정의하는데 사용됩니다. 이 태그는 무엇일까요?",
+      "choices": ["<div>", "<article>", "<section>", "<main>"],
+      "answer": "<section>"
+    },
+    {
+      "q_id": 3,
+      "q_title": "Q4. 이 태그는 독립적으로 구분해 배포하거나 재사용할 수 있는 구획을 나타냅니다. 이 태그는 무엇일까요?",
+      "choices": ["<div>", "<article>", "<section>", "<main>"],
+      "answer": "<article>"
+    },
+    {
+      "q_id": 4,
+      "q_title": "Q5. Q4 태그의 닫는 태그를 선택해주세요.",
+      "choices": ["</div>", "</article>", "</section>", "</main>"],
+      "answer": "</article>"
+    },
+    {
+      "q_id": 5,
+      "q_title": "Q6. Q3 태그의 닫는 태그를 선택해주세요.",
+      "choices": ["</div>", "</article>", "</section>", "</main>"],
+      "answer": "</section>"
+    },
+    {
+      "q_id": 6,
+      "q_title": "Q7. 이 태그는 페이지의 작성자, 저작권정보, 페이지 관련 문서 등의 내용을 담습니다. 이 태그는 무엇일까요?",
+      "choices": [
+        "<adress><p>&copy; 2024 My page</p></adress>",
+        "<footer><p>&copy; 2024 My page</p></footer>",
+        "<header><p>&copy; 2024 My page</p></header>"
+      ],
+      "answer": "<footer><p>&copy; 2024 My page</p></footer>"
+    }
+  ]
+}

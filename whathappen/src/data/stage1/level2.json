@@ -1,0 +1,58 @@
+{
+  "stage_id": 1,
+  "level_id": 2,
+  "code": "<!DOCTYPE html><html lang='en'>|=0=|<meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><body><h1>회원가입</h1>|=0=||=1=||=2=|<div class='form-group'>|=3=||=4=|</div><div class='form-group'><label for='email'>이메일</label><inputtype='email'id='email'name='email'placeholder='이메일을 입력하세요'/></div><div class='form-group'><label for='password'>비밀번호</label><inputtype='password'id='password'name='password'placeholder='비밀번호를 입력하세요'/></div><div class='form-group'><label for='confirm-password'>비밀번호 확인</label><inputtype='password'id='confirm-password'name='confirm-password'placeholder='비밀번호를 다시 입력하세요'/></div></fieldset>|=5=|</form></body>",
+  "code_type": "html",
+  "level_name": "Master",
+  "theme": "회원가입 만들기",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 이 태그는 사용자로부터 입력을 받기 위한 양식을 작성하는 태그들을 통틀어 지칭합니다. 이 태그는 무엇일까요?",
+      "choices": ["<fieldset>", "<method>", "<form>"],
+      "answer": "<form>"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2. 이 태그는 form 관련 요소들을 묶을 때 사용합니다. 이 태그는 무엇일까요?",
+      "choices": ["<fieldset>", "<form>", "<label>"],
+      "answer": "<fieldset>"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. 이 태그는 그룹의 제목을 제공합니다. 이 태그는 무엇일까요?",
+      "choices": ["<legend>", "<title>", "<label>"],
+      "answer": "<legend>"
+    },
+    {
+      "q_id": 3,
+      "q_title": "Q4. 이 속성은 <label>이 설명하는 입력 요소의 ID를 지정합니다. 이 속성은 무엇일까요?",
+      "choices": [
+        "<label id='username'>사용자 이름</label>",
+        "<label for='username'>사용자 이름</label>",
+        "<label type='username'>사용자 이름</label>"
+      ],
+      "answer": "<label for='username'>사용자 이름</label>"
+    },
+    {
+      "q_id": 4,
+      "q_title": "Q5. 설명한 input 속성 순서에 맞는 것을 골라주세요. 첫 번째 속성은 입력 필드의 유형을 지정합니다. 두 번째 속성은 레이블(label) 요소에서 for 속성을 사용하여 이 속성과 일치시킬 수 있습니다. 세 번째 속성은 폼 데이터와 함께 전송될 때 사용되는 필드의 이름입니다.",
+      "choices": [
+        "<input id='text' name='username' type='username' placeholder='이름을 입력하세요'/>",
+        "<input name='text' id='username' type='username' placeholder='이름을 입력하세요'/>",
+        "<input type='text' id='username' name='username' placeholder='이름을 입력하세요'/>"
+      ],
+      "answer": "<input type='text' id='username' name='username' placeholder='이름을 입력하세요'/>"
+    },
+    {
+      "q_id": 5,
+      "q_title": "Q6. 서버로 양식 데이터를 제출하기 위해 올바른 버튼 태그는 무엇일까요?",
+      "choices": [
+        "<button type='submit'>전송</button>",
+        "<button type='button'>전송</button>",
+        "<button type='reset'>전송</button>"
+      ],
+      "answer": "<button type='submit'>전송</button>"
+    }
+  ]
+}

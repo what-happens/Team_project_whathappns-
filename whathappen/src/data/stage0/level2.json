@@ -1,0 +1,42 @@
+{
+  "level_id": 2,
+  "stage_id": 0,
+  "level_name": "Level 03",
+  "theme": "공간을 나누는 태그",
+  "code": "<!doctype html><html lang='en'><head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1.0' /><title>Document</title></head><body><h1>명작 영화 소개</h1><h2>Psycho(1960) - 스릴러</h2>|=0=||=1=|<p>앨프리드 히치콕의 대표작 중 하나로, 로버트 블록이 쓴 동명 소설을바탕으로 만든 영화.</p>|=2=|<a href='#'>출처: 네이버 영화</a>|=3=|</body></html>",
+  "code_type": "html",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 이 태그는 블록 요소로 개행이 되며 여러 태그들을 그룹핑하기 위한 용도로 사용합니다. 이 태그는 무엇일까요?",
+      "choices": ["<section>", "<span>", "<div>"],
+      "answer": "<div>"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2. 이 태그는 이미지를 삽입하는데 사용합니다. 이 태그는 무엇일까요?",
+      "choices": [
+        "<img src='#' alt='싸이코 포스터' />",
+        "<picture src='#' alt='싸이코 포스터' />",
+        "<image src='#' alt='싸이코 포스터' />"
+      ],
+      "answer": "<img src='#' alt='싸이코 포스터' />"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. 이 태그는 중대하거나 긴급한 콘텐츠를 나타냅니다. 이 태그는 무엇일까요?",
+      "choices": [
+        "<span>경고! 이 영화는 무섭습니다!</span>",
+        "<strong>경고! 이 영화는 무섭습니다!</strong>",
+        "<warn>경고! 이 영화는 무섭습니다!</warn>"
+      ],
+      "answer": "<strong>경고! 이 영화는 무섭습니다!</strong>"
+    },
+    {
+      "q_id": 3,
+      "q_title": "Q4. 다음중 Q2의 닫는 태그로 알맞은 것은 무엇일까요?",
+      "choices": ["</section>", "</span>", "</div>"],
+      "answer": "</div>"
+    }
+  ]
+}

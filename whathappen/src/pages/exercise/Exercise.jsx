@@ -12,7 +12,12 @@ export default function Exercise() {
   const [totalHeight, setTotalHeight] = useState(80);
   const [editorWidth, setEditorWidth] = useState(40);
   const [renderWidth, setRenderWidth] = useState(60);
-  const { setExerciseCode, setExerciseQuestions } = useExercise();
+  const {
+    setExerciseCode,
+    setExerciseQuestions,
+    setExerciseType,
+    setExerciseSubcode,
+  } = useExercise();
 
   console.log([setTotalWidth, setTotalHeight]);
 
@@ -25,9 +30,11 @@ export default function Exercise() {
     // 비동기 작업을 처리하는 함수
     const loadJsonData = async () => {
       try {
-        const json = await fetchJson(0, 0, "level");
+        const json = await fetchJson(1, 2, "level");
         setExerciseCode(json.default.code); // import는 .default로 접근해야 함
         setExerciseQuestions(json.default.questions);
+        setExerciseType(json.default.code_type);
+        setExerciseSubcode(json.default.sub_code);
       } catch (error) {
         console.error("Error loading JSON data:", error);
       }
