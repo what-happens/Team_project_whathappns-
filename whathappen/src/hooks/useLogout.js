@@ -13,13 +13,16 @@ export default function useLogout() {
       await signOut(auth);
       dispatch(logoutAction());
 
-      const response = await fetch("http://localhost:5000/user/logout", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/user/logout`,
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.ok) {
         navigate("/");
