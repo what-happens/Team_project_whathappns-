@@ -107,9 +107,16 @@ const StyledImg = styled.img`
 
 const QuizMain = styled.main`
   width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-image: url(${backGround});
   padding-bottom: 8rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
