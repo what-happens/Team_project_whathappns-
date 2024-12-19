@@ -45,6 +45,10 @@ const Mainbanner = () => {
               fontsize="2rem"
               width="25rem"
               padding="2rem"
+              smallStyles={{
+                fontSize: "1.6rem",
+                padding: "1rem 3rem",
+              }}
             >
               웹사이트 만들러 가기!
             </Button>
@@ -201,6 +205,9 @@ const MainBanner = styled.section`
   justify-content: center;
   align-items: center;
 
+  ${media.large`
+    gap: 3rem;
+  `}
   ${media.mediumlarge`
     padding: 12rem 2rem 6rem;
     flex-direction: column;
@@ -245,7 +252,7 @@ const BannerContent = styled.div`
   color: ${(props) => props.color || "inherit"};
   ${media.mediumlarge`
     text-align: center;
-    gap: 2rem;
+    gap: 1rem;
   `}
 `;
 
@@ -253,8 +260,13 @@ const BannerTitle = styled.h2`
   font-size: 6rem;
   font-weight: 700;
   color: ${(props) => props.color || "inherit"};
+
+  ${media.large`
+    font-size: 4.5rem;
+  `}
+
   ${media.mediumlarge`
-    font-size: 5rem;
+    font-size: 3.5rem;
     text-align: center;
   `}
 `;
@@ -264,8 +276,11 @@ const BannerDescription = styled.p`
   line-height: 3.5rem;
   font-weight: 300;
   text-align: ${(props) => (props.center ? "center" : "left")};
-  ${media.mediumlarge`
+  ${media.large`
     font-size: 2rem;
+  `}
+  ${media.mediumlarge`
+    font-size: 1.6rem;
     text-align: center;
   `}
 `;
@@ -275,7 +290,7 @@ const BannerImage = styled.div`
   background-size: ${(props) => props.size || "contain"};
   background-position: center;
   background-repeat: no-repeat;
-  min-width: 1000px;
+  min-width: 45rem;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   ${(props) => props.margin && `margin: ${props.margin}`};
@@ -292,11 +307,11 @@ const BannerImage = styled.div`
 
 const MainBannerImage = styled(BannerImage)`
   background-image: url(${mainBannerImage});
-  width: 69.2rem;
-  height: 69.2rem;
+  width: 55.2rem;
+  height: 55.2rem;
   ${media.large`
-    width: 65.2rem;
-    height: 65.2rem;
+    width: 42rem;
+    height: 42rem;
   `}
   ${media.mediumlarge`
     display: none;
@@ -311,6 +326,10 @@ const PointOneBannerImage = styled(BannerImage)`
   ${media.mediumlarge`
     max-width: 50rem;
     max-height: 24.6rem;
+  `}
+  ${media.small`
+    max-width: 20rem;
+    max-height: 15.6rem;
   `}
 `;
 
