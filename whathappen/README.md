@@ -11,7 +11,7 @@
 ## 프로젝트 소개
 
 - HTML / CSS 입문 수준의 기초 학습을 할 수 있는 프로젝트 입니다!
-- 1 ~ 7 단계의 State 에서 이론과 실습을 통해 작은 화면을을
+- 1 ~ 6 단계의 State 에서 이론과 실습을 통해 작은 화면을을
   직접 만들어 보며 공부할 수 있습니다!
 - 랜덤하게 출제되는 HTML / CSS 의 기초문제들을 퀴즈게임 형태로 직접 풀어보고 틀린문제를 저장하고 북마크 기능을 통해 저장할 수 있습니다
 - 틀린문제와 북마크한 문제들을 복습노트에서 확인하고 다시 풀어볼 수 있습니다!
@@ -52,10 +52,16 @@
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/React.png?raw=true" width="80">
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/StyledComponents.png?raw=true" width="80">
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Redux.png?raw=true" width="80">
-- Back-end : node.js , firebase
+- Back-end : node.js , Firebase , Swagger , Express , CORS , .ENV , Nodemon , PM2 , Nginx
   <br>
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/NodeJS.png?raw=true" width="80">
   <img src="../whathappen/src/assets/firebase.png" width="80">
+  <img src="../whathappen/src/assets/swagger.png" width="80">
+  <img src="../whathappen/src/assets/express.png" width="80">
+  <img src="../whathappen/src/assets/ENV.png" width="80">
+  <img src="../whathappen/src/assets/Nodemon.png" width="80">
+  <img src="../whathappen/src/assets/pm2.png" width="80">
+  <img src="../whathappen/src/assets/NGINX.png" width="80">
 - 버전 관리 : Github<br>
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Github.png?raw=true" width="80">
 - 협업 툴 : Jira , Notion , Discord<br>
@@ -102,64 +108,122 @@
 
 ```
 ├── README.md
-├── .eslintrc.jsON
+├── .eslintrc.json
 ├── .gitignore
 ├── .prettierignore.json
 ├── .prettierrc.json
 ├── package-lock.json
 ├── package.json
 │
-├── asset
+├── public
 │    ├── favicon.svg
-│    ├── mainfest.json
+│    ├── manifest.json
 │    ├── robots.txt
 │    └── index.html
+│
 └── src
      ├── App.jsx
      ├── index.jsx
-     ├── firebase.jsx
+     ├── firebase.config.js
+     │
      ├── api
-     │     └── mandarinAPI.js
-     ├── asset
-     │     ├── logo.png
-     │     ├── logo_white.png
-     │     ├── main_banner_vector.png
-     │     └── loading.gif
-     │          .
-     │          .
-     ├── compnents
-     │     ├── AuthHeader.jsx
-     │     ├── AuthNav.jsx
-     │     ├── Bookmark.jsx
-     │     ├── Butoon.jsx
-     │     ├── Button.jsx
-     │     ├── Footer.jsx
-     │     ├── Header.jsx
-     │     ├── MobileHeader.jsx
-     │     └── InfinitieComponentLoader.js
+     │    └── mandarinAPI.js
+     │
+     ├── assets
+     │    ├── images
+     │    │    ├── logo.png
+     │    │    ├── logo_white.png
+     │    │    ├── main_banner_vector.png
+     │    │    └── loading.gif
+     │    └── icons
+     │
+     ├── components
+     │    ├── common
+     │    │    ├── Button.jsx
+     │    │    ├── Header
+     │    │    │    ├── Header.jsx
+     │    │    │    ├── AuthHeader.jsx
+     │    │    │    └── MobileHeader.jsx
+     │    │    ├── Nav
+     │    │    │    └── AuthNav.jsx
+     │    │    ├── Footer.jsx
+     │    │    └── Loading
+     │    │         └── InfiniteComponentLoader.js
+     │    └── features
+     │         └── Bookmark.jsx
+     │
+     ├── constants
+     │    └── stages.js
+     │
      ├── data
-     │     ├── learn.json
-     │     ├── level2.json
-     │     └── level3.json
-     │          .
-     │          .
+     │    └── stages
+     │         ├── stage0.json
+     │         ├── stage1.json
+     │         ├── stage2.json
+     │         ├── stage3.json
+     │         ├── stage4.json
+     │         └── stage5.json
+     │
      ├── hooks
-     │     ├── useFirestore.js
-     │     ├── useLogout.js
-     │     ├── useSignup.js
-     │     └── useLogin.js
+     │    ├── services
+     │    │    ├── useChatService.js
+     │    │    └── useFirestore.js
+     │    ├── auth
+     │    │    ├── useSignup.js
+     │    │    └── useLogout.js
+     │    └── features
+     │         ├── useExercise.js
+     │         ├── useFetchQuiz.js
+     │         ├── useQuizOptions.js
+     │         └── useQuizStep.js
      │
      ├── pages
-     │     ├──
-     │     ├──
-     │     ├──
-     │     └──
-     ├── redux
-     │     ├──
-     │     └──
-     └── styles
-               ├── GlobalStyle.js
-               └── MideaQuery.js
+     │    ├── Home
+     │    │    ├── Home.jsx
+     │    │    └── components
+     │    │         └── Banner.jsx
+     │    ├── Quiz
+     │    │    ├── Quiz.jsx
+     │    │    └── components
+     │    │         ├── QuizContent.jsx
+     │    │         └── QuizResult.jsx
+     │    ├── Exercise
+     │    │    ├── Exercise.jsx
+     │    │    └── components
+     │    │         ├── ExerciseContent.jsx
+     │    │         └── ExerciseResult.jsx
+     │    ├── Chat
+     │    │    ├── Chat.jsx
+     │    │    └── components
+     │    │         ├── ChatRoom.jsx
+     │    │         └── ChatMessage.jsx
+     │    └── Auth
+     │         ├── Auth.jsx
+     │         └── components
+     │              ├── Login.jsx
+     │              ├── Signup.jsx
+     │              └── AuthForm.jsx
+     │
+     ├── store
+     │    ├── index.js
+     │    ├── actions
+     │    │    ├── authActions.js
+     │    │    ├── quizActions.js
+     │    │    └── chatActions.js
+     │    └── reducers
+     │         ├── authReducer.js
+     │         ├── quizReducer.js
+     │         └── chatReducer.js
+     │
+     ├── styles
+     │    ├── GlobalStyle.js
+     │    ├── theme.js
+     │    └── MediaQuery.js
+     │
+     └── utils
+          ├── auth.js
+          ├── formatting.js
+          └── validation.js
 ```
 
 <br>
@@ -235,15 +299,7 @@
 
 <br>
 
-## 6. 신경 쓴 부분
-
-- [PrivateRoutes 접근제한 설정]
-
-- [Redux persist 통한 상태관리 및 유지]
-
-<br>
-
-## 7. 페이지별 기능
+## 6. 페이지별 기능
 
 ### [랜딩페이지]
 
@@ -418,7 +474,7 @@
 
 <br>
 
-## 8. 트러블 슈팅
+## 7. 트러블 슈팅
 
 - <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">윤시운</a>
 - <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">이휘경</a>
@@ -428,7 +484,7 @@
 
 <br>
 
-## 9. 개선 목표
+## 8. 개선 목표
 
 - API 통신이나 validation 같은 경우 hook으로 만들어 사용 할 수 있게끔 개선 필요
 - 현재 firebase SNS 로그인 서비스를 사용하고 있으나 백엔드에서 처리하게끔 개선 필요
