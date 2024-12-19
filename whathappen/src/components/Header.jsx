@@ -57,6 +57,10 @@ export default function Header() {
               fontSize="small"
               borderRadius="5rem"
               onClick={logout}
+              smallStyles={{
+                fontSize: "1.4rem",
+                padding: "0.4rem 3rem",
+              }}
             >
               로그아웃
             </Button>
@@ -74,6 +78,10 @@ export default function Header() {
         fontSize="small"
         borderRadius="5rem"
         onClick={logout}
+        smallStyles={{
+          fontSize: "1.4rem",
+          padding: "0.4rem 3rem",
+        }}
       >
         로그아웃
       </Button>
@@ -86,7 +94,15 @@ export default function Header() {
         <Logo>이게되네?</Logo>
       </Link>
       <Link to="/login">
-        <Button padding="1rem 3rem" fontSize="small" borderRadius="5rem">
+        <Button
+          padding="1rem 3rem"
+          fontSize="small"
+          borderRadius="5rem"
+          smallStyles={{
+            fontSize: "1.4rem",
+            padding: "0.4rem 3rem",
+          }}
+        >
           로그인
         </Button>
       </Link>
