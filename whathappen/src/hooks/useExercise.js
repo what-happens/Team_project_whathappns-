@@ -8,6 +8,7 @@ import {
   setAnswers,
   setType,
   setSubCode,
+  setActiveTab,
 } from "../redux/learnSlice";
 import { ParserFactory } from "../utils/parser";
 import { useEffect } from "react";
@@ -56,6 +57,12 @@ const useExercise = () => {
       dispatch(setSubCode(codeString));
     }
   };
+
+  const setExerciseActiveTab = (tabType) => {
+    if (tabType === "html" || tabType === "css") {
+      dispatch(setActiveTab(tabType));
+    }
+  };
   useEffect(() => {
     if (codeString !== "" && questions.length !== 0) {
       parseExercise(type);
@@ -71,6 +78,7 @@ const useExercise = () => {
     setSelectedUserAnswer,
     setExerciseType,
     setExerciseSubcode,
+    setExerciseActiveTab,
   };
 };
 
