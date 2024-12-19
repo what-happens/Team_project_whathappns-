@@ -8,8 +8,23 @@ export default function DeleteBookmarkModal({ onClose, onDelete }) {
       <ModalBox>
         <Text>북마크를 삭제하시겠습니까?</Text>
         <ButtonWrap>
-          <Button onClick={onDelete}>예</Button>
-          <Button onClick={onClose} backgroundColor="red">
+          <Button
+            onClick={onDelete}
+            smallStyles={{
+              width: "5rem",
+              fontSize: "1.4rem",
+            }}
+          >
+            예
+          </Button>
+          <Button
+            backgroundColor="red"
+            onClick={onDelete}
+            smallStyles={{
+              width: "10rem",
+              fontSize: "1.4rem",
+            }}
+          >
             아니오
           </Button>
         </ButtonWrap>
