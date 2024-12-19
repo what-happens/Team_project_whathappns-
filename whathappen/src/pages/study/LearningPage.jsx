@@ -8,6 +8,116 @@ import { Menu, AlignRight } from "lucide-react"; // 햄버거 메뉴 아이콘�
 import data from "../../data/yejin/learn(stage01-02).json";
 import back from "../../assets/back_link.png";
 
+const LearningPage = () => {
+  const [activeLevel, setActiveLevel] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handlePrevLevel = () => {
+    if (activeLevel > 0) {
+      setActiveLevel(activeLevel - 1);
+    }
+  };
+
+  const handleNextLevel = () => {
+    if (activeLevel < data.length - 1) {
+      setActiveLevel(activeLevel + 1);
+    }
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleMenuItemClick = (index) => {
+    setActiveLevel(index);
+    setIsMenuOpen(false);
+  };
+
+  return (
+    <ThemeProvider theme={{ ...theme, ...media }}>
+      <MobileContainer>
+        <BackLink />
+        <MobileLevelTitle>{data[activeLevel].title}</MobileLevelTitle>
+        <HamburgerButton onClick={toggleMenu}>
+          {isMenuOpen ? (
+            <AlignRight size={24} color="#2E5DFF" />
+          ) : (
+            <Menu size={24} color="#C4C4C4" />
+          )}
+        </HamburgerButton>
+      </MobileContainer>
+
+      <Container>
+        <HeaderContainer isOpen={isMenuOpen}>
+          <BackLink />
+          <h1 className="sr-only">학습 페이지</h1>
+          <nav>
+            <MenuTitle>Level 01</MenuTitle>
+            <h3 className="sr-only">목차</h3>
+            {data.map((level, index) => (
+              <MenuItem
+                key={level.level_id}
+                active={activeLevel === index}
+                onClick={() => handleMenuItemClick(index)}
+              >
+                {level.title}
+              </MenuItem>
+            ))}
+          </nav>
+        </HeaderContainer>
+
+        <ContentContainer>
+          {data[activeLevel].subtitles.map((subtitle) => {
+            const hasCode = subtitle.code && subtitle.code.trim() !== "";
+            const hasImage = subtitle.img && subtitle.img.trim() !== "";
+            let imageUrl = null;
+
+            if (hasImage) {
+              try {
+                imageUrl = require(`../../assets/${subtitle.img}`);
+              } catch (error) {
+                // eslint-disable-next-line no-console
+                console.error("Image not found:", subtitle.img);
+              }
+            }
+
+            return (
+              <ContentItem key={subtitle.sub_id}>
+                <Title>{subtitle.sub_name}</Title>
+                <Description key={subtitle.sub_id}>{subtitle.desc}</Description>
+                {hasImage && <Image src={imageUrl} alt="이미지" />}
+                {hasCode && (
+                  <CodeBlock>
+                    <pre
+                      dangerouslySetInnerHTML={{
+                        __html: subtitle.code,
+                      }}
+                    ></pre>
+                  </CodeBlock>
+                )}
+              </ContentItem>
+            );
+          })}
+
+          <NavigationButtons>
+            <Button onClick={handlePrevLevel} disabled={activeLevel === 0}>
+              &lt;
+            </Button>
+            <Button
+              onClick={handleNextLevel}
+              disabled={activeLevel === data.length - 1}
+            >
+              &gt;
+            </Button>
+          </NavigationButtons>
+        </ContentContainer>
+      </Container>
+    </ThemeProvider>
+  );
+};
+
+export default LearningPage;
+
 // start MobileContainer
 const MobileContainer = styled.div`
   ${({ theme }) => theme.laptop`
@@ -253,113 +363,3 @@ const Button = styled.button`
     color: #fff;
   }
 `;
-
-const LearningPage = () => {
-  const [activeLevel, setActiveLevel] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handlePrevLevel = () => {
-    if (activeLevel > 0) {
-      setActiveLevel(activeLevel - 1);
-    }
-  };
-
-  const handleNextLevel = () => {
-    if (activeLevel < data.length - 1) {
-      setActiveLevel(activeLevel + 1);
-    }
-  };
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleMenuItemClick = (index) => {
-    setActiveLevel(index);
-    setIsMenuOpen(false);
-  };
-
-  return (
-    <ThemeProvider theme={{ ...theme, ...media }}>
-      <MobileContainer>
-        <BackLink />
-        <MobileLevelTitle>{data[activeLevel].title}</MobileLevelTitle>
-        <HamburgerButton onClick={toggleMenu}>
-          {isMenuOpen ? (
-            <AlignRight size={24} color="#2E5DFF" />
-          ) : (
-            <Menu size={24} color="#C4C4C4" />
-          )}
-        </HamburgerButton>
-      </MobileContainer>
-
-      <Container>
-        <HeaderContainer isOpen={isMenuOpen}>
-          <BackLink />
-          <h1 className="sr-only">학습 페이지</h1>
-          <nav>
-            <MenuTitle>Level 01</MenuTitle>
-            <h3 className="sr-only">목차</h3>
-            {data.map((level, index) => (
-              <MenuItem
-                key={level.level_id}
-                active={activeLevel === index}
-                onClick={() => handleMenuItemClick(index)}
-              >
-                {level.title}
-              </MenuItem>
-            ))}
-          </nav>
-        </HeaderContainer>
-
-        <ContentContainer>
-          {data[activeLevel].subtitles.map((subtitle) => {
-            const hasCode = subtitle.code && subtitle.code.trim() !== "";
-            const hasImage = subtitle.img && subtitle.img.trim() !== "";
-            let imageUrl = null;
-
-            if (hasImage) {
-              try {
-                imageUrl = require(`../../assets/${subtitle.img}`);
-              } catch (error) {
-                // eslint-disable-next-line no-console
-                console.error("Image not found:", subtitle.img);
-              }
-            }
-
-            return (
-              <ContentItem key={subtitle.sub_id}>
-                <Title>{subtitle.sub_name}</Title>
-                <Description key={subtitle.sub_id}>{subtitle.desc}</Description>
-                {hasImage && <Image src={imageUrl} alt="이미지" />}
-                {hasCode && (
-                  <CodeBlock>
-                    <pre
-                      dangerouslySetInnerHTML={{
-                        __html: subtitle.code,
-                      }}
-                    ></pre>
-                  </CodeBlock>
-                )}
-              </ContentItem>
-            );
-          })}
-
-          <NavigationButtons>
-            <Button onClick={handlePrevLevel} disabled={activeLevel === 0}>
-              &lt;
-            </Button>
-            <Button
-              onClick={handleNextLevel}
-              disabled={activeLevel === data.length - 1}
-            >
-              &gt;
-            </Button>
-          </NavigationButtons>
-        </ContentContainer>
-      </Container>
-    </ThemeProvider>
-  );
-};
-
-export default LearningPage;
