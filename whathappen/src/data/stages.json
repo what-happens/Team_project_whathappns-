@@ -2,43 +2,36 @@
   {
     "stage_id": 0,
     "stage_name": "stage 01",
-    "img": "icon_stage1.png",
-    "data": "stage0/meta.json"
+    "img": "icon_stage1.png"
   },
   {
     "stage_id": 1,
     "stage_name": "stage 02",
-    "img": "icon_stage2.png",
-    "data": "stage1/meta.json"
+    "img": "icon_stage2.png"
   },
   {
     "stage_id": 2,
     "stage_name": "stage 03",
-    "img": "icon_stage3.png",
-    "data": "stage2/meta.json"
+    "img": "icon_stage3.png"
   },
   {
     "stage_id": 3,
     "stage_name": "stage 04",
-    "img": "icon_stage4.png",
-    "data": "stage3/meta.json"
+    "img": "icon_stage4.png"
   },
   {
     "stage_id": 4,
     "stage_name": "stage 05",
-    "img": "icon_stage5.png",
-    "data": "stage4/meta.json"
+    "img": "icon_stage5.png"
   },
   {
     "stage_id": 5,
     "stage_name": "stage 06",
-    "img": "icon_stage6.png",
-    "data": "stage5/meta.json"
+    "img": "icon_stage6.png"
   },
   {
     "stage_id": 6,
     "stage_name": "stage 07",
-    "img": "icon_stage7.png",
-    "data": "stage6/meta.json"
+    "img": "icon_stage7.png"
   }
 ]

@@ -1,21 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import media from "./media";
-import { Link } from "react-router-dom";
-// import StageContainer from "./components/StageContainer";
+import StageContainer from "./components/StageContainer";
 import backGround from "../../assets/quiz-page-background3.svg";
-import PropTypes from "prop-types";
-import stages from "../../data/stages.json";
 
-export default function StudyLanding({ onStageIdSet }) {
-  const handleStageSelect = (stage) => {
-    import(`../../data/${stage.data}`).then((metaData) => {
-      onStageIdSet(stage.stage_id, metaData);
-      console.log(metaData);
-    });
-  };
-
+export default function StudyLanding() {
   return (
     <ThemeProvider theme={{ ...theme, ...media }}>
       <Container>
@@ -24,28 +15,16 @@ export default function StudyLanding({ onStageIdSet }) {
           <BackLink to="/">메인으로</BackLink>
         </Header>
 
-        <StudySection>
+        <StudyContainer>
           <SectionTitle>
             간단하고 쉽게! <br /> 다양한 기능을 함께 만들어요!
           </SectionTitle>
-          {stages.map((stage) => (
-            <button
-              key={stage.stage_id}
-              onClick={() => handleStageSelect(stage)}
-            >
-              Stage {stage.stage_id}로 이동
-            </button>
-          ))}
-        </StudySection>
+          <StageContainer></StageContainer>
+        </StudyContainer>
       </Container>
     </ThemeProvider>
   );
 }
-
-// start Styled-components
-StudyLanding.propTypes = {
-  onStageIdSet: PropTypes.func.isRequired,
-};
 
 const Container = styled.div`
   ${({ theme }) => theme.tablet`
@@ -122,7 +101,7 @@ const BackLink = styled(Link)`
   }
 `;
 
-const StudySection = styled.section`
+const StudyContainer = styled.main`
   /* ${({ theme }) => theme.laptop`
   `};
   ${({ theme }) => theme.tablet`
@@ -165,5 +144,5 @@ const SectionTitle = styled.h2`
   font-size: 5rem;
   font-weight: 700;
   line-height: 7rem;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 `;

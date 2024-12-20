@@ -1,16 +1,40 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import media from "./media";
 import { Menu, AlignRight } from "lucide-react"; // 햄버거 메뉴 아이콘용
 
-import data from "../../data/yejin/learn(stage01-02).json";
 import back from "../../assets/back_link.png";
 
 const LearningPage = () => {
+  const { stageId, levelId } = useParams();
+  const [learnData, setData] = useState(null);
+  const [error, setError] = useState(null);
   const [activeLevel, setActiveLevel] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isVisible = Number(stageId) === 0 && Number(levelId) === 0;
+
+  useEffect(() => {
+    if (stageId && levelId) {
+      import(`../../data/stage${stageId}/learn${levelId}.json`)
+        .then((module) => {
+          setData(module.default);
+        })
+        .catch((err) => {
+          console.error("Error loading JSON:", err);
+          setError("Failed to load data.");
+        });
+    }
+  }, [stageId, levelId]);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!learnData) {
+    return <div>Loading...</div>;
+  }
 
   const handlePrevLevel = () => {
     if (activeLevel > 0) {
@@ -19,7 +43,7 @@ const LearningPage = () => {
   };
 
   const handleNextLevel = () => {
-    if (activeLevel < data.length - 1) {
+    if (activeLevel < learnData.length - 1) {
       setActiveLevel(activeLevel + 1);
     }
   };
@@ -36,8 +60,8 @@ const LearningPage = () => {
   return (
     <ThemeProvider theme={{ ...theme, ...media }}>
       <MobileContainer>
-        <BackLink />
-        <MobileLevelTitle>{data[activeLevel].title}</MobileLevelTitle>
+        <BackLink to={`/study/${stageId}`} className="mr-2" />
+        <MobileLevelTitle>{learnData[activeLevel].title}</MobileLevelTitle>
         <HamburgerButton onClick={toggleMenu}>
           {isMenuOpen ? (
             <AlignRight size={24} color="#2E5DFF" />
@@ -49,27 +73,30 @@ const LearningPage = () => {
 
       <Container>
         <HeaderContainer isOpen={isMenuOpen}>
-          <BackLink />
+          <BackLink to={`/study/${stageId}`} className="mr-2" />
           <h1 className="sr-only">학습 페이지</h1>
-          <nav>
-            <MenuTitle>Level 01</MenuTitle>
+          <MenuTitle>Level 01</MenuTitle>
+          <div>
             <h3 className="sr-only">목차</h3>
-            {data.map((level, index) => (
-              <MenuItem
-                key={level.level_id}
-                active={activeLevel === index}
-                onClick={() => handleMenuItemClick(index)}
-              >
-                {level.title}
-              </MenuItem>
-            ))}
-          </nav>
+            <nav>
+              {learnData.map((level, index) => (
+                <MenuItem
+                  key={level.level_id}
+                  active={activeLevel === index}
+                  onClick={() => handleMenuItemClick(index)}
+                >
+                  {level.title}
+                </MenuItem>
+              ))}
+            </nav>
+          </div>
         </HeaderContainer>
 
         <ContentContainer>
-          {data[activeLevel].subtitles.map((subtitle) => {
+          {learnData[activeLevel].subtitles.map((subtitle) => {
             const hasCode = subtitle.code && subtitle.code.trim() !== "";
             const hasImage = subtitle.img && subtitle.img.trim() !== "";
+            const hasLink = subtitle.link && subtitle.link.trim() !== "";
             let imageUrl = null;
 
             if (hasImage) {
@@ -84,7 +111,7 @@ const LearningPage = () => {
             return (
               <ContentItem key={subtitle.sub_id}>
                 <Title>{subtitle.sub_name}</Title>
-                <Description key={subtitle.sub_id}>{subtitle.desc}</Description>
+                <Description>{subtitle.desc}</Description>
                 {hasImage && <Image src={imageUrl} alt="이미지" />}
                 {hasCode && (
                   <CodeBlock>
@@ -94,6 +121,16 @@ const LearningPage = () => {
                       }}
                     ></pre>
                   </CodeBlock>
+                )}
+                {hasLink && (
+                  <ExternalLink
+                    href={subtitle.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    isVisible={isVisible}
+                  >
+                    books.weniv.co.kr
+                  </ExternalLink>
                 )}
               </ContentItem>
             );
@@ -105,7 +142,7 @@ const LearningPage = () => {
             </Button>
             <Button
               onClick={handleNextLevel}
-              disabled={activeLevel === data.length - 1}
+              disabled={activeLevel === learnData.length - 1}
             >
               &gt;
             </Button>
@@ -331,6 +368,29 @@ const CodeBlock = styled.div`
     font-weight: 300;
     line-height: 2.8rem;
     white-space: pre-wrap;
+  }
+`;
+
+const ExternalLink = styled.a
+  .withConfig({
+    shouldForwardProp: (prop) => prop !== "isVisible", // 'isVisible' prop이 DOM에 전달되지 않도록 필터링
+  })
+  .attrs({
+    target: "_blank",
+    rel: "noopener noreferrer",
+  })`
+  display: ${(props) => (props.isVisible ? "block" : "none")};
+  background-color: #f1f4ff;
+  color: #333;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 5rem;
+  padding-left: 2rem;
+  border-radius: 10px;
+
+  &:hover {
+    color: var(--main-color);
   }
 `;
 // end ContentContainer

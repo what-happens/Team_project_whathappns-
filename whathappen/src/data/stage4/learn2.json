@@ -1,1 +1,24 @@
-{}
+[
+  {
+    "stage_id": 4,
+    "level_id": 2,
+    "title_id": 0,
+    "title": "advanced_transform",
+    "subtitles": [
+      {
+        "sub_id": 0,
+        "sub_name": "transform_3D",
+        "desc": "transform 속성은 3D 변형 메소드로서도 활용할 수 있습니다. 이는 Z축에 회전, 크기 조절, 기울이기, 이동 효과를 적용할 수 있게 합니다. \n아래와 같은 3D 메소드를 사용할 때는 반드시 perpective와 함께 사용해야 합니다. \ntranslateZ(z) : z축 거리만큼 이동합니다. rotateZ(z) : z축 기준으로 회전합니다. scaleZ(z) : z축 기준으로 크기를 배율로 조정합니다.",
+        "code": ".element { \n\t transform-style: preserve-3d; /* 3D 변형 사용 설정 */ \ntransform: translateZ(50px) rotateZ(45deg) scaleZ(1.5); \nwidth: 200px; \nheight: 200px; \n background-color: #3498db;\n }",
+        "img": null
+      },
+      {
+        "sub_id": 1,
+        "sub_name": "perspective",
+        "desc": "사용자의 z축 위치를 정할 수 있는 속성이며, 값이 작을수록 변형이 커집니다. \n즉, 값이 작을수록 사용자가 가까이 다가가는 효과를 주게 됩니다. 이 속성은 부모 요소에 적용하며, \n직계 자식 요소에만 영향을 미칩니다. 음수 값은 사용할 수 없습니다.",
+        "code": ".container {\t\nperspective: 500px;\n}\n.box {\n\twidth: 150px;\nheight: 150px;\nbackground: lightblue;\ntransform: rotateZ(30deg) translateZ(50px);\ntransition: transform 1s;\n}.box:hover {\n\ttransform: rotateZ(60deg) translateZ(100px) scaleZ(1.2);\n}",
+        "img": null
+      }
+    ]
+  }
+]

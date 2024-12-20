@@ -1,18 +1,30 @@
 [
   {
     "stage_id": 2,
-    "level_id": 0
+    "level_id": 0,
+    "img": "icon_level.png",
+    "level_name": "선택자",
+    "theme": "선택자를 사용해 스타일 적용하기!"
   },
   {
     "stage_id": 2,
-    "level_id": 1
+    "level_id": 1,
+    "img": "icon_level.png",
+    "level_name": "텍스트 꾸미기",
+    "theme": "텍스트를 다채롭게!"
   },
   {
     "stage_id": 2,
-    "level_id": 2
+    "level_id": 2,
+    "img": "icon_level.png",
+    "level_name": "가상클래스와 가상요소 기초",
+    "theme": "세밀하고 동적인 스타일을 적용해보자!"
   },
   {
     "stage_id": 2,
-    "level_id": 3
+    "level_id": 3,
+    "img": "icon_level.png",
+    "level_name": "Master",
+    "theme": "명함 만들기"
   }
 ]

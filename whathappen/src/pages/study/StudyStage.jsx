@@ -1,11 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import media from "./media";
 import CardSlider from "./components/CardSlider";
 import back from "../../assets/back_link.png";
 import filed from "../../assets/study-state-background.svg";
+
+export default function StudyStage() {
+  const { stageId } = useParams();
+  const stageInfo = String(
+    isNaN(Number(stageId)) ? "not available." : Number(stageId) + 1
+  ).padStart(2, "0");
+
+  return (
+    <ThemeProvider theme={{ ...theme, ...media }}>
+      <Container>
+        <h1 className="sr-only">학습 과정 페이지</h1>
+        <Header>
+          <BackLink to="/study" />
+          <Title>STAGE {stageInfo}</Title>
+        </Header>
+        <CardSlider></CardSlider>
+      </Container>
+    </ThemeProvider>
+  );
+}
 
 const Container = styled.div`
   ${({ theme }) => theme.laptop`
@@ -69,18 +89,3 @@ const Title = styled.h2`
   color: white;
   font-weight: 700;
 `;
-
-export default function LearningCourse() {
-  return (
-    <ThemeProvider theme={{ ...theme, ...media }}>
-      <Container>
-        <h1 className="sr-only">학습 과정 페이지</h1>
-        <Header>
-          <BackLink to="/study" />
-          <Title>STAGE 01</Title>
-        </Header>
-        <CardSlider></CardSlider>
-      </Container>
-    </ThemeProvider>
-  );
-}

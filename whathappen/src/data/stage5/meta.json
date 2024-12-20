@@ -1,10 +1,30 @@
 [
   {
     "stage_id": 5,
-    "level_id": 0
+    "level_id": 0,
+    "img": "icon_level.png",
+    "level_name": "Level 01",
+    "theme": "반응형 단위 설정하기"
   },
   {
     "stage_id": 5,
-    "level_id": 1
+    "level_id": 1,
+    "img": "icon_level.png",
+    "level_name": "Level 02",
+    "theme": "반응형 속성 적용하기"
+  },
+  {
+    "stage_id": 5,
+    "level_id": 2,
+    "img": "icon_level.png",
+    "level_name": "Level 03",
+    "theme": "반응형 조건 설정하기"
+  },
+  {
+    "stage_id": 5,
+    "level_id": 3,
+    "img": "icon_level.png",
+    "level_name": "Master",
+    "theme": "반응형 웹 구현하기"
   }
 ]
