@@ -51,13 +51,15 @@ export const useChat = () => {
 
   const resetChat = async () => {
     try {
-      const url = new URL(`${BASE_URL}/api/v1/reset-state`);
-      url.searchParams.append("client_id", CLIENT_ID);
-      const response = await fetch(url.toString(), {
-        method: "GET",
+      const resetUrl = new URL(`${BASE_URL}/api/v1/reset-state`);
+      await fetch(resetUrl.toString(), {
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          client_id: CLIENT_ID,
+        }),
       });
 
       if (!response.ok) {
