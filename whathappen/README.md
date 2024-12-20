@@ -397,13 +397,16 @@
 
 <br>
 
-### 🐬김예원
+### <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/yewon's-Role" target="_blank">🐬김예원</a>
 
 - **UI**
-  - 페이지 : 퀴즈 랜딩페이지/ 퀴즈 결과페이지 / 챗봇 마크업 및 스타일링, 퀴즈풀이 페이지 반응형 구현
-  - 공통 컴포넌트 :
-- **기능**
-  - <br>
+
+  - 퀴즈 랜딩페이지/ 퀴즈 결과페이지 / 챗봇 마크업 및 스타일링, 퀴즈풀이 페이지 반응형 구현
+
+  **자료**
+
+  - Point1 stage5-6에 대한 css 학습자료 생성 및 json 변환
+    <br>
 
 ### 🐶유다형
 
@@ -647,7 +650,7 @@
 - <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">윤시운</a>
 - <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/hwigyoung's-Trouble-shooting" target="_blank">이휘경</a>
 - <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">박예진</a>
-- <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">김예원</a>
+- <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/yewon's-Trouble-shooting" target="_blank">김예원</a>
 - <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">유다형</a>
 
 <br>
@@ -725,7 +728,14 @@
 
 ### 🐬 김예원
 
-느낀점
+학습 자료를 목업 데이터가 아닌 실제 문제로 준비하고 정제하는 과정에서 학습자 입장에서의 콘텐츠 기획의 중요성을 다시금 느낄 수 있었습니다. 이는 현실적이고 유용한 콘텐츠를 제공할 수 있어 프로젝트의 완성도를 높이는 데 큰 기여를 했다고 생각합니다.
+하지만 자료 준비에 많은 시간을 투자하여, 개인적으로 기능 구현에 충분히 참여하지 못한 점은 아쉬움으로 남습니다. 콘텐츠 기획에 치중하다 보니 코드 구현 경험을 쌓을 기회가 적었다는 점이 앞으로 보완해야 할 부분입니다.
+
+또한 결과물 측면에서는, 추후 사용자 친화성을 강화하고 코드 구조를 간결하게 리팩토링할 필요가 있다고 느꼈습니다. 스테이지 기능을 더욱 풍부하게 개선하여 학습자들이 더 흥미를 느끼도록 만들어도 좋을 것 같습니다.
+
+무엇보다도 이번 프로젝트를 통해 팀워크의 중요성을 실감했습니다. 각자 모르는 부분은 화면 공유로 협력하며 함께 문제를 해결했고, 서로의 열정을 나누며 프로젝트를 진행할 수 있었습니다. 이런 과정을 통해 협업의 효율성을 배웠고, 다양한 디바이스에서 테스트하며, UI 설계의 디테일에 집중하는 법도 익힐 수 있었습니다.
+
+이번 경험은 단순히 결과물로 끝나는 것이 아니라, 향후 성장의 기반이 될 소중한 배움과 동기를 안겨주었습니다. 앞으로는 기능 구현에서도 적극적으로 기여하며 기술적 성장과 팀워크를 동시에 발전시켜 나가고 싶습니다.
 
 <br>
 
