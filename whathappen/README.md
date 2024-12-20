@@ -248,11 +248,62 @@
 <br>
     
 ### 👻이휘경
+- **프로젝트 초기 셋팅**
+  1. ESLint와 Prettier 설정 및 통합
+    - 프로젝트의 코드 품질 관리와 스타일 일관성을 위해 EsLInt와 Prettier를 도입했습니다.
+    - 주요 규칙 :
+      - Prettier: 코드 포맷팅 표준화.
+      - ESLint: 문법 검증 및 코드 컨벤션 체크. React에서 보편적으로 사용되는 eslint-config-react/recommended 규칙을 적용했습니다.
+    - 저장 시 자동으로 포맷팅되도록 설정했습니다.(VS Code 사용자: .vscode/settings.json 제공)
+    - 환경 설정 : 
+      - Mac과 Windows 간 줄 바꿈 차이를 해결하기 위해 줄 바꿈 방식 및 Git의 line ending 설정을 수정할 수 있도록 설정했습니다.
+  2. PropTypes 도입
+    - TypeScript를 사용하지 않는 환경에서 props의 명확한 문서화와 런타임 오류 방지를 위해 도입했습니다.
+    - 모든 컴포넌트의 props 구조를 명시적으로 정의하여 협업 시 가독성을 높이고 유지보수를 용이하게 하고자 도입했습니다.
+  3. 공통 패키지 설치
+    - 프로젝트에서 공통적으로 사용되는 패키지를 적용했습니다.
+      - styled-component :
+      - styled-reset : 스타일의 일관성을 위해 글로벌 스타일에 Reset CSS를 적용
+      - redux , reduxjs/toolkit : 전역 상태 관리 및 과도한 prop drilling을 방지하기 위해 도입.
+      - react-router-dom : React의 애플리케이션의 라우팅 관리
 
-- **UI**
-  - 페이지 :
-  - 공통 컴포넌트 :
-- ## **기능**
+- **담당 페이지**
+
+1. 퀴즈 페이지
+
+- 퀴즈페이지는 여러 스텝으로 구성되어 있으며 퀴즈 페이지에서 스텝에 맞게 다른 컴포넌트를 랜더링합니다.
+  각 스텝에서 QuizLanding Page(퀴즈 카테고리 및 문제 선택 페이지), Quiz(실제 퀴즈 풀이 페이지), Quiz Result Page(퀴즈 결과 페이지)를 포함합니다. 저는 주로 Quiz 페이지를 담당했습니다.
+
+- 페이지 별 역할
+
+  1. 퀴즈 페이지
+
+  - Redux 관리: 퀴즈의 스텝, 카테고리, 제한 사항, 사용자 답안 등 공통 상태를 Redux로 관리하여 Props Drilling을 해결하고, 퀴즈 데이터를 효율적으로 처리합니다.
+  - useQuizStep 훅: 퀴즈 스텝을 관리하는 로직을 useQuizStep으로 분리하여 중복을 제거하고 재사용성 및 유지보수성을 향상시켰습니다.
+
+  2. 퀴즈 랜딩 페이지
+
+  - 셀렉트 컴포넌트 리팩토링: 퀴즈 랜딩 페이지의 커스텀 셀렉트 컴포넌트가 카테고리와 제한 사항을 동시에 관리하고 있었는데, 이를 재사용 가능하도록 셀렉트 옵션과 상태를 Props로 전달하는 방식으로 리팩토링했습니다.
+  - '퀴즈 풀기' 버튼 클릭 시 백엔드 API를 통해 퀴즈 데이터를 가져올 수 있게 했습니다.
+  - useFetchQuiz 훅: 퀴즈 랜딩 페이지에서 퀴즈 데이터를 불러오기 위해 useFetchQuiz 훅을 사용하여 백엔드 API에서 퀴즈 데이터를 받아옵니다.
+  - 공통으로 사용되는 상태 redux로 분리 : 카테고리와 제한 사항(limit)을 Redux로 관리하도록 리팩토링했습니다.
+
+  3. 퀴즈 풀기 페이지
+
+  - 퀴즈 풀이 페이지의 반응형을 제외한 스타일링 및 마크업을 진행했습니다.
+  - 사용자 답안을 선택하고 사용자의 답안을 저장한 뒤, 마지막 문제에서 '제출하기' 버튼을 눌러 정답을 채점하는 기능을 구현했습니다.
+  - 프로그래스바로 퀴즈 진행 상황을 시각적으로 표시했습니다.
+  - useFetchQuiz 훅: 퀴즈 풀기 페이지에서도 useFetchQuiz 훅을 사용하여 서버와 통신하고, 퀴즈 데이터를 저장하는 기능을 구현했습니다.
+  - 퀴즈 종료 시 나가겠냐는 확인 모달을 부모 컴포넌트로 옮겨 재사용 가능하게 리팩토링했습니다.
+
+  4. 퀴즈 결과 페이지
+
+  - 하드코딩된 총 문제 수, 맞힌 문제 수, 틀린 문제 수 등을 동적으로 계산하도록 리팩토링했습니다.
+
+2. 실습 페이지
+
+- 실습 페이지의 초기 마크업 및 스타일링
+- 실습 페이지의 반응형 페이지 적용
 
 <br>
 
@@ -491,7 +542,7 @@
 ## 7. 트러블 슈팅
 
 - <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">윤시운</a>
-- <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">이휘경</a>
+- <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/hwigyoung's-Trouble-shooting" target="_blank">이휘경</a>
 - <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">박예진</a>
 - <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">김예원</a>
 - <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">유다형</a>
