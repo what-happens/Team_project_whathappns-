@@ -49,19 +49,50 @@ export const useChat = () => {
     }
   }
 
+  const resetChat = async () => {
+    try {
+      const url = new URL(`${BASE_URL}/api/v1/reset-state`);
+      url.searchParams.append("client_id", CLIENT_ID);
+      const response = await fetch(url.toString(), {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Reset HTTP error! status: ${response.status}`);
+      }
+
+      setMessages([
+        { type: "bot", text: "안녕하세요! 무엇이 궁금하신가요?!?" },
+      ]);
+    } catch (err) {
+      console.error("초기화 중 에러 발생:", err);
+      setError(err.message);
+    }
+  };
+
   const sendMessage = async (userMessage) => {
     if (!userMessage.trim() || isLoading) return;
 
     setIsLoading(true);
     setError(null);
 
-    setMessages((prev) => [...prev, { type: "user", text: userMessage }]);
-
     try {
+      const url = new URL(`${BASE_URL}/api/v1/reset-state`);
+      url.searchParams.append("client_id", CLIENT_ID);
+      await fetch(url.toString(), {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      setMessages((prev) => [...prev, { type: "user", text: userMessage }]);
+
       const data = await askQuestion(userMessage.toString());
-
       const plainText = markdownToText(data.content);
-
       setMessages((prev) => [...prev, { type: "bot", text: plainText }]);
     } catch (err) {
       console.error("에러:", err);
@@ -84,5 +115,6 @@ export const useChat = () => {
     error,
     sendMessage,
     clearError,
+    resetChat,
   };
 };
