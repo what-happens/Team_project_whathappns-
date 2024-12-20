@@ -12,12 +12,12 @@ import {
 import storage from "redux-persist/lib/storage";
 import authReducer from "../authSlice";
 import quizReducer from "../quizSlice";
-import learnReducer from "../learnSlice";
+import exerciseReducer from "../exerciseSlice";
 
 const rootReducer = combineReducers({
   auth: authReducer,
   quiz: quizReducer,
-  learn: learnReducer,
+  exercise: exerciseReducer,
 });
 
 const persistConfig = {

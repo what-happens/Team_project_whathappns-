@@ -4,7 +4,7 @@ import styled from "styled-components";
 import useExercise from "../../../hooks/useExercise";
 
 export default function FileTab() {
-  const { activeTab } = useSelector((state) => state.learn);
+  const { activeTab } = useSelector((state) => state.exercise);
   const { setExerciseActiveTab } = useExercise();
 
   const handleClickTab = (tabType) => {

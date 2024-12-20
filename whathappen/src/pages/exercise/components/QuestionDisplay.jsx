@@ -5,7 +5,7 @@ import Button from "../../../components/Button";
 export default function QuestionDisplay() {
   const [isDisplayQuestion, setIsDisplayQuestion] = useState(true);
   const { parsedData, selectedQid, questions, type, subCode } = useSelector(
-    (state) => state.learn
+    (state) => state.exercise
   );
 
   const onClickDisplayQuestion = () => {

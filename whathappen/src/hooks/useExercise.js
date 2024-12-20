@@ -9,13 +9,13 @@ import {
   setType,
   setSubCode,
   setActiveTab,
-} from "../redux/learnSlice";
+} from "../redux/exerciseSlice";
 import { ParserFactory } from "../utils/parser";
 import { useEffect } from "react";
 
 const useExercise = () => {
   const { questions, codeString, isShowAnswers, type, userAnswers } =
-    useSelector((state) => state.learn);
+    useSelector((state) => state.exercise);
 
   const dispatch = useDispatch();
 

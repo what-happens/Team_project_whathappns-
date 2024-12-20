@@ -12,8 +12,8 @@ const initialState = {
   activeTab: "html",
 };
 
-const learnSlice = createSlice({
-  name: "learn",
+const exerciseSlice = createSlice({
+  name: "exercise",
   initialState,
   reducers: {
     setQuestions(state, action) {
@@ -59,6 +59,6 @@ export const {
   setType,
   setSubCode,
   setActiveTab,
-} = learnSlice.actions;
+} = exerciseSlice.actions;
 
-export default learnSlice.reducer;
+export default exerciseSlice.reducer;
