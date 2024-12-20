@@ -51,8 +51,8 @@ export const useChat = () => {
 
   const resetChat = async () => {
     try {
-      const resetUrl = new URL(`${BASE_URL}/api/v1/reset-state`);
-      await fetch(resetUrl.toString(), {
+      const url = new URL(`${BASE_URL}/api/v1/reset-state`);
+      const response = await fetch(url.toString(), {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -66,6 +66,7 @@ export const useChat = () => {
         throw new Error(`Reset HTTP error! status: ${response.status}`);
       }
 
+      // Reset messages to initial state
       setMessages([
         { type: "bot", text: "안녕하세요! 무엇이 궁금하신가요?!?" },
       ]);
@@ -82,18 +83,21 @@ export const useChat = () => {
     setError(null);
 
     try {
-      const url = new URL(`${BASE_URL}/api/v1/reset-state`);
-      url.searchParams.append("client_id", CLIENT_ID);
-      await fetch(url.toString(), {
-        method: "GET",
+      // Reset state before sending new message
+      const resetUrl = new URL(`${BASE_URL}/api/v1/reset-state`);
+      await fetch(resetUrl.toString(), {
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          client_id: CLIENT_ID,
+        }),
       });
 
       setMessages((prev) => [...prev, { type: "user", text: userMessage }]);
 
-      const data = await askQuestion(userMessage.toString());
+      const { data } = await askQuestion(userMessage.toString());
       const plainText = markdownToText(data.content);
       setMessages((prev) => [...prev, { type: "bot", text: plainText }]);
     } catch (err) {
