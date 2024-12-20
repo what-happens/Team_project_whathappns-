@@ -66,7 +66,6 @@ export const useChat = () => {
         throw new Error(`Reset HTTP error! status: ${response.status}`);
       }
 
-      // Reset messages to initial state
       setMessages([
         { type: "bot", text: "안녕하세요! 무엇이 궁금하신가요?!?" },
       ]);
@@ -83,7 +82,6 @@ export const useChat = () => {
     setError(null);
 
     try {
-      // Reset state before sending new message
       const resetUrl = new URL(`${BASE_URL}/api/v1/reset-state`);
       await fetch(resetUrl.toString(), {
         method: "DELETE",
