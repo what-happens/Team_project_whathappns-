@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 export default function BlankProblem({ qid }) {
   const { setIsShow, setExerciseSelectedQid } = useExercise();
-  const { selectedQid } = useSelector((state) => state.learn);
+  const { selectedQid } = useSelector((state) => state.exercise);
   const handleOnClickBlank = () => {
     setIsShow(true);
     setExerciseSelectedQid(qid);

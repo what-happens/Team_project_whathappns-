@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 export default function UserChoices() {
   const { selectedQid, questions, isShowAnswers } = useSelector(
-    (state) => state.learn
+    (state) => state.exercise
   );
   const { setIsShow, setSelectedUserAnswer, setExerciseSelectedQid } =
     useExercise();
