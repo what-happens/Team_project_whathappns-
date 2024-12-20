@@ -47,11 +47,20 @@
 
 ## 1. 개발 환경
 
-- Front : HTML, React, styled-components, Redux<br>
+- **Front**
+- FramWorlk : React
+- State Managment : Redux Toolkit, React-Redux, Redux Persist
+- Routing: React Router DOM
+- Styling: Styled-components, Styled-reset
+- ESLint (with Prettier integration) / Prettier (Code Formatter)<br>
+
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/HTMLCSS.png?raw=true" width="80">
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/React.png?raw=true" width="80">
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/StyledComponents.png?raw=true" width="80">
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Redux.png?raw=true" width="80">
+  <img src="../whathappen/src/assets/eslint.png" width="80">
+  <img src="../whathappen/src/assets/prettier.png" width="80">
+
 - Back-end : node.js , Firebase , Swagger , Express , CORS , .ENV , Nodemon , PM2 , Nginx
   <br>
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/NodeJS.png?raw=true" width="80">
@@ -231,18 +240,18 @@
 
 ## 4. 역할 분담
 
-### 🍊윤시운
+### 🍊 <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Role" target="_blank">윤시운</a>
 
-- **UI**
+- **UI/UX**
 
-  - markup / styleing : 홈 , 로그인 , 회원가입 , 회원가입 완료 , 복습노트 , 404 페이지
+  - 프로젝트 UI 총 디자인 기획 및 제작
+  - Markup / Styleing : 홈 , 로그인, 회원가입 , 회원가입 완료 , 복습노트트 , 404 페이지 , 회원탈퇴
   - 공통 컴포넌트 : Header , Footer , Loading page
-  - 전 page UI 총 디자인 기획 및 제작
-  - 애니메이션 keyframe 적용 ( quiz landing , quiz result , loading , mypage , study landing 등 )
+  - 페이지 애니메이션 keyframe 적용
 
 - **기능**
-  - 로그인 / 로그아웃 기능 (유효성 검사,api) , 회원가입 기능 (유효성 검사,api) , 복습노트 ( 문제리스트 불러오기 및 퀴즈생성 , 틀린문제 삭제 , 북마크 추가/삭제 ) 마이페이지 api 연동 / 챗봇 ( Markdown Parsing , Prompt 설정 , api 연동) /
-  - redux persist 를 활용한 로그인 상태 관리
+  - 로그인 / 로그아웃 기능 , 회원가입 기능 , 복습노트 / 마이페이지 api 연동 / 챗봇 /
+  - redux 를 활용한 로그인 상태 관리
   - 개발 초기 firebase 로그인 연동 ( 구글 sns 로그인 포함 )
 
 <br>
@@ -551,8 +560,11 @@
 
 ## 8. 개선 목표
 
-- API 통신이나 validation 같은 경우 hook으로 만들어 사용 할 수 있게끔 개선 필요
-- 현재 firebase SNS 로그인 서비스를 사용하고 있으나 백엔드에서 처리하게끔 개선 필요
+- API 통신이나 Validation 같은 기능들은 hook으로 만들어 사용 할 수 있게끔 개선 필요
+- 웹 접근성을 고려하여 TAB 탐색을 통해 모든 서비스를 이용 할 수 있게끔 개선 필요
+- 아이디 / 비밀번호 찾기 , 개인정보 보호 동의 등 회원관련 서비스 추가 및 개선 필요
+- 다양한 에러 코드에 대한 에러 핸들링 개선
+- 그 외 복잡한 코드구조 , 리팩토링
 
 <br>
 

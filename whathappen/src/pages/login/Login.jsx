@@ -249,7 +249,7 @@ const LoiginText = styled.span`
   `}
 `;
 const LoginContents = styled.div`
-  margin-top: 8rem;
+  margin-top: 14rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

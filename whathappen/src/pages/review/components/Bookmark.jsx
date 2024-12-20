@@ -21,7 +21,6 @@ export default function Bookmark({
   }, [isBookmarked]);
 
   const handleAddBookmark = async () => {
-    console.log(typeof quizCategory);
     try {
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/bookmark`,
@@ -49,7 +48,6 @@ export default function Bookmark({
         setClicked(true);
         window.location.reload();
         onBookmarkChange?.(true);
-        console.log("북마크 추가 성공!", data);
       } else {
         console.error("북마크 추가 실패", data);
       }
@@ -85,7 +83,6 @@ export default function Bookmark({
         setClicked(false);
         window.location.reload();
         onBookmarkChange?.(false);
-        console.log("북마크 삭제 성공!", data);
       } else {
         console.error("북마크 삭제 실패", data);
       }

@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import Stamps from "./components/Stamps";
+import DeleteConfirmModal from "./components/DeleteConfirmModal";
 import { media } from "../../styles/MideaQuery";
 import backGround from "../../assets/review-background-2.svg";
 import loadingImg from "../../assets/loading_Img.svg";
@@ -11,6 +12,7 @@ import stageData from "../../data/stageMeta.json";
 export default function MyPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const calculateProgress = (clearStages, totalLevels) => {
     const completedLevels = clearStages.reduce((sum, stage) => {
@@ -36,10 +38,8 @@ export default function MyPage() {
         );
 
         if (response.ok) {
-          console.log("유저 정보를 불러오는데 성공하였습니다!");
           const data = await response.json();
           setUserData(data.user);
-          console.log(data.user);
         } else {
           const errorData = await response.json();
           console.error("Error:", errorData);
@@ -53,6 +53,31 @@ export default function MyPage() {
 
     fetchUserData();
   }, []);
+
+  const handleDeleteUser = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/user/delete`,
+        {
+          method: "DELETE",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        window.location.href = "/";
+      } else {
+        const errorData = await response.json();
+        console.error("Error:", errorData);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+    setShowDeleteModal(false);
+  };
 
   return (
     <Background>
@@ -73,7 +98,6 @@ export default function MyPage() {
               <span style={{ color: "white" }}>{userData.name} 고객님!</span>
             </GreetingMsg>
           </header>
-
           <StatusContents>
             <h2 className="sr-only">학습 현황</h2>
             <StatusBox>
@@ -91,7 +115,6 @@ export default function MyPage() {
               <StatusLabel>북마크</StatusLabel>
             </StatusBox>
           </StatusContents>
-
           <CourseContents>
             <StampContents>
               <h2>Stamp</h2>
@@ -134,6 +157,15 @@ export default function MyPage() {
                   />
                 );
               })()}
+              <DeleteButton onClick={() => setShowDeleteModal(true)}>
+                회원탈퇴
+              </DeleteButton>
+              {showDeleteModal && (
+                <DeleteConfirmModal
+                  onClose={() => setShowDeleteModal(false)}
+                  onDelete={handleDeleteUser}
+                />
+              )}
             </ProgressContents>
           </CourseContents>
         </MyPageContents>
@@ -305,7 +337,7 @@ const StatusContents = styled.div`
   `}
   ${media.xsmall`
     min-width: 32rem;
-   border-radius: 1rem;
+    border-radius: 1rem;
     height: 15rem;
     padding: 1.5rem;
   `}
@@ -353,6 +385,7 @@ const Division = styled.div`
 const CourseContents = styled.section`
   display: flex;
   gap: 1rem;
+  margin-bottom: 2rem;
 
   h2 {
     align-self: flex-start;
@@ -410,5 +443,32 @@ const ProgressContents = styled.section`
     min-width: 32rem;
     border-radius: 1rem;
     padding: 1rem;
+  `}
+`;
+
+const DeleteButton = styled.button`
+  align-self: flex-end;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background-color: #c4c4c4;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #ff0000;
+  }
+
+  ${media.small`
+    font-size: 1.4rem;
+    padding: 0.8rem 1.6rem;
+  `}
+  ${media.xsmall`
+    font-size: 1.2rem;
+    padding: 0.6rem 1.2rem;
   `}
 `;

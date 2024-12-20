@@ -21,7 +21,6 @@ export default function ChatbotMessages({ onPrev }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("submitting message:", inputMessage);
     if (!inputMessage.trim()) return;
 
     await sendMessage(inputMessage);
