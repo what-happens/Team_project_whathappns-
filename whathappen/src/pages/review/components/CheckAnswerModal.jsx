@@ -24,7 +24,6 @@ export default function CheckAnswerModal({ setIsCorrect, quizId }) {
         setIsCorrect(null);
         window.location.reload();
       } else {
-        console.log(quizId);
         console.error("퀴즈삭제실패");
       }
     } catch (error) {
