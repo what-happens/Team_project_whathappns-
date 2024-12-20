@@ -11,7 +11,7 @@
 ## 프로젝트 소개
 
 - HTML / CSS 입문 수준의 기초 학습을 할 수 있는 프로젝트 입니다!
-- 1 ~ 6 단계의 State 에서 이론과 실습을 통해 작은 화면을을
+- 1 ~ 6 단계의 State 에서 이론과 실습을 통해 작은 화면을
   직접 만들어 보며 공부할 수 있습니다!
 - 랜덤하게 출제되는 HTML / CSS 의 기초문제들을 퀴즈게임 형태로 직접 풀어보고 틀린문제를 저장하고 북마크 기능을 통해 저장할 수 있습니다
 - 틀린문제와 북마크한 문제들을 복습노트에서 확인하고 다시 풀어볼 수 있습니다!
@@ -369,7 +369,7 @@
 | ![review](../whathappen/src/assets/readme_review_delete.gif) |
 
 북마크 추가 삭제 ![review](../whathappen/src/assets/readme_review_bookmark.gif)
-문제가 없을시 ![review](../whathappen/src/assets/readme_review_noex.gif)
+문제가 존재하지 않을 시 ![review](../whathappen/src/assets/readme_review_noex.gif)
 
 <br>
 
@@ -505,7 +505,7 @@
 
 <br>
 
-## 10. 프로젝트 후기
+## 9. 프로젝트 후기
 
 ### 🍊 윤시운
 
