@@ -3,7 +3,7 @@
     "level_id": 1,
     "stage_id": 2,
     "done": false,
-    "level_name": "선택자",
+    "level_name": "Level 02",
     "theme": "선택자를 사용해 스타일 적용하기!",
     "questions": [
       {
@@ -66,8 +66,8 @@
     "level_id": 2,
     "stage_id": 2,
     "done": false,
-    "level_name": "텍스트 꾸미기",
-    "theme": "텍스트를 다채롭게!",
+    "level_name": "Level 03",
+    "theme": "텍스트를 꾸미기",
     "questions": [
       {
         "q_id": 0,
@@ -111,8 +111,8 @@
     "level_id": 3,
     "stage_id": 2,
     "done": false,
-    "level_name": "가상클래스와 가상요소 기초",
-    "theme": "세밀하고 동적인 스타일을 적용해보자!",
+    "level_name": "Level 04",
+    "theme": "가상클래스와 가상요소 기초",
     "questions": [
       {
         "q_id": 0,
@@ -218,8 +218,8 @@
     "level_id": 0,
     "stage_id": 3,
     "done": false,
-    "level_name": "display 속성",
-    "theme": "요소를 베치해봅시다!",
+    "level_name": "Level 01",
+    "theme": "display 속성",
     "questions": [
       {
         "q_id": 0,
@@ -263,8 +263,8 @@
     "level_id": 1,
     "stage_id": 3,
     "done": false,
-    "level_name": "이미지 비율 유지하기",
-    "theme": "이미지를 원하는 비율로!",
+    "level_name": "Level 02",
+    "theme": "이미지 비율 유지하기",
     "questions": [
       {
         "q_id": 0,
@@ -296,8 +296,8 @@
     "level_id": 2,
     "stage_id": 3,
     "done": false,
-    "level_name": "position 속성",
-    "theme": "다양한 positiond을 알아보자",
+    "level_name": "Level 03",
+    "theme": "position 속성",
     "questions": [
       {
         "q_id": 0,
@@ -335,7 +335,7 @@
     "level_id": 3,
     "stage_id": 3,
     "done": false,
-    "level_name": "레이아웃",
+    "level_name": "Level 04",
     "theme": "float, flex, grid에 대해 알아보자!",
     "questions": [
       {
