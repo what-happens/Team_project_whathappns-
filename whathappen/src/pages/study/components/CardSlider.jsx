@@ -253,7 +253,7 @@ const CardWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  height: 50vh;
+  height: 50vh; // 수정?
   background-color: white;
   border-radius: 20px;
   transition: all 0.5s ease;
