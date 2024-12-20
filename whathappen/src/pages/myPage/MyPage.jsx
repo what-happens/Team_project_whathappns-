@@ -78,11 +78,7 @@ export default function MyPage() {
             <h2 className="sr-only">학습 현황</h2>
             <StatusBox>
               <StatusVal>{userData.clearStages.length}</StatusVal>
-              <StatusLabel>
-                진행중인
-                <Break />
-                스테이지
-              </StatusLabel>
+              <StatusLabel>스테이지</StatusLabel>
             </StatusBox>
             <Division />
             <StatusBox>
@@ -92,10 +88,7 @@ export default function MyPage() {
             <Division />
             <StatusBox>
               <StatusVal>{userData.bookmarkNum}</StatusVal>
-              <StatusLabel>
-                저장된 <Break />
-                북마크
-              </StatusLabel>
+              <StatusLabel>북마크</StatusLabel>
             </StatusBox>
           </StatusContents>
 
@@ -149,12 +142,6 @@ export default function MyPage() {
   );
 }
 
-const Break = styled.br`
-  display: none;
-  ${media.xsmall`
-    display:block;
-  `}
-`;
 const LoadingPage = styled.div`
   position: fixed;
   top: 0;
@@ -347,7 +334,7 @@ const StatusVal = styled.div`
 `;
 
 const StatusLabel = styled.h3`
-  font-weight: 400;
+  font-weight: 700;
 `;
 
 const Division = styled.div`
@@ -356,7 +343,7 @@ const Division = styled.div`
   background-color: #c4c4c4;
 
   ${media.small`
-    height: 10rem;
+    height: 8rem;
   `}
   ${media.xsmall`
     height: 8rem;
