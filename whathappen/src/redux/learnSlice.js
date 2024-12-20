@@ -51,8 +51,6 @@ const learnSlice = createSlice({
 
 export const {
   setQuestions,
-  setStageId,
-  setLevel,
   setCodeString,
   setParsed,
   setSelectedQid,

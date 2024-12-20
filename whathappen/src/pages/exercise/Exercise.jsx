@@ -5,7 +5,7 @@ import styled from "styled-components";
 import DragableBar from "./components/DragableBar";
 import { fetchJson } from "../../utils/fetchJson";
 import useExercise from "../../hooks/useExercise";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import back from "../../assets/back_link.png";
 
 // import Button from "../../components/Button";
@@ -14,13 +14,25 @@ export default function Exercise() {
   const [totalHeight, setTotalHeight] = useState(80);
   const [editorWidth, setEditorWidth] = useState(40);
   const [renderWidth, setRenderWidth] = useState(60);
+  const navigate = useNavigate();
   const {
     setExerciseCode,
     setExerciseQuestions,
     setExerciseType,
     setExerciseSubcode,
+    markedUserAnswers,
   } = useExercise();
+
   const { stage, level } = useParams();
+
+  const handleNext = () => {
+    if (markedUserAnswers() === false) {
+      /*여기서 모달 띄우기 */
+      return;
+    }
+    navigate("/studyfinish");
+  };
+
   const handleDrag = (delta) => {
     setEditorWidth((prev) => Math.max(40, Math.min(prev + delta, 90))); // 최소 10%, 최대 90%
     setRenderWidth((prev) => Math.max(40, Math.min(prev - delta, 90))); // 나머지 영역 계산
@@ -61,7 +73,7 @@ export default function Exercise() {
         <nav>
           <StyledLink to={`/study/${stage}/${level}`}>&lt; 이전으로</StyledLink>
         </nav>
-        <StyledLink>제출하기 &gt;</StyledLink>
+        <MarkedBtn onClick={handleNext}>제출하기 &gt;</MarkedBtn>
       </ExerciseFooter>
     </>
   );
@@ -119,4 +131,11 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   font-weight: 500;
   font-size: 1.6rem;
+`;
+
+const MarkedBtn = styled(StyledLink).attrs({ as: "button" })`
+  border: none;
+  background-color: transparent;
+  font-family: Gmarket Sans;
+  cursor: pointer;
 `;
