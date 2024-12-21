@@ -28,10 +28,5 @@
     "stage_id": 5,
     "stage_name": "stage 06",
     "img": "icon_stage6.png"
-  },
-  {
-    "stage_id": 6,
-    "stage_name": "stage 07",
-    "img": "icon_stage7.png"
   }
 ]
