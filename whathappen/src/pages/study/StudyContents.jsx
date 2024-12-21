@@ -1,39 +1,83 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import media from "./media";
-import { Menu, AlignRight } from "lucide-react"; // 햄버거 메뉴 아이콘용
+import { Menu, AlignRight } from "lucide-react";
 
 import back from "../../assets/back_link.png";
 
 const LearningPage = () => {
   const { stageId, levelId } = useParams();
+  const navigate = useNavigate();
   const [learnData, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeLevel, setActiveLevel] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isVisible = Number(stageId) === 0 && Number(levelId) === 0;
 
-  useEffect(() => {
-    if (stageId && levelId) {
-      import(`../../data/stage${stageId}/learn${levelId}.json`)
-        .then((module) => {
-          setData(module.default);
-        })
-        .catch((err) => {
-          console.error("Error loading JSON:", err);
-          setError("Failed to load data.");
-        });
+  const loadStageData = async (stageId, levelId) => {
+    try {
+      setIsLoading(true);
+      setError(null);
+
+      // 유효한 stageId 체크 (예: 숫자만 허용)
+      if ((!stageId && levelId) || !/^\d+$/.test(stageId && levelId)) {
+        throw new Error("Invalid stage ID");
+      }
+
+      const module = await import(
+        `../../data/stage${stageId}/learn${levelId}.json`
+      );
+
+      // JSON 데이터가 예상한 형식인지 검증
+      if (!module.default || typeof module.default !== "object") {
+        throw new Error("Invalid data format");
+      }
+
+      setData(module.default);
+      setIsLoading(false);
+    } catch (err) {
+      console.error("Error loading stage data:", err);
+
+      // 에러 종류에 따른 처리
+      if (err.code === "MODULE_NOT_FOUND") {
+        navigate("/NotFound", { replace: true });
+      } else if (err.message === "Invalid stage ID") {
+        setError("Invalid stage ID provided");
+        navigate("/NotFound", { replace: true });
+      } else {
+        setError("Failed to load stage data");
+        navigate("/NotFound", { replace: true });
+      }
+    } finally {
+      setIsLoading(false);
     }
+  };
+
+  useEffect(() => {
+    loadStageData(stageId, levelId);
   }, [stageId, levelId]);
 
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-lg">Loading...</div>
+      </div>
+    );
+  }
+
   if (error) {
-    return <div>{error}</div>;
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-lg text-red-600">{error}</div>
+      </div>
+    );
   }
 
   if (!learnData) {
-    return <div>Loading...</div>;
+    return null;
   }
 
   const handlePrevLevel = () => {

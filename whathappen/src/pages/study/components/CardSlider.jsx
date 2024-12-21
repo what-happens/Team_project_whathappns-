@@ -6,13 +6,15 @@ import "swiper/css/navigation";
 import styled, { ThemeProvider, keyframes } from "styled-components";
 import theme from "../theme";
 import media from "../media";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 const CardSlider = () => {
   const [swiper, setSwiper] = useState(null);
   const [clearData, setClearData] = useState([]);
   const { stageId } = useParams();
+  const navigate = useNavigate();
   const [levelData, setLevelData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -48,26 +50,57 @@ const CardSlider = () => {
     fetchClearStage();
   }, []);
 
-  useEffect(() => {
-    if (stageId) {
-      // 동적 import로 JSON 데이터 불러오기
-      import(`../../../data/stage${stageId}/meta.json`)
-        .then((module) => {
-          setLevelData(module.default);
-        })
-        .catch((err) => {
-          console.error("Error loading JSON:", err);
-          setError("Failed to load data.");
-        });
+  const loadStageData = async (id) => {
+    try {
+      setIsLoading(true);
+      setError(null);
+
+      if (!id || !/^\d+$/.test(id)) {
+        throw new Error("Invalid stage ID");
+      }
+      const module = await import(`../../../data/stage${id}/meta.json`);
+
+      if (!module.default || typeof module.default !== "object") {
+        throw new Error("Invalid data format");
+      }
+
+      setLevelData(module.default);
+      setIsLoading(false);
+    } catch (err) {
+      console.error("Error loading stage data:", err);
+
+      if (err.code === "MODULE_NOT_FOUND") {
+        navigate("/404", { replace: true });
+      } else if (err.message === "Invalid stage ID") {
+        setError("Invalid stage ID provided");
+        navigate("/error", { replace: true });
+      } else {
+        setError("Failed to load stage data");
+        navigate("/404", { replace: true });
+      }
+    } finally {
+      setIsLoading(false);
     }
+  };
+
+  useEffect(() => {
+    loadStageData(stageId);
   }, [stageId]);
 
-  if (error) {
-    return <ErrMessage>{error}</ErrMessage>;
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-lg">Loading...</div>
+      </div>
+    );
   }
 
-  if (!levelData) {
-    return <ErrMessage>Loading...</ErrMessage>;
+  if (error) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-lg text-red-600">{error}</div>
+      </div>
+    );
   }
 
   return (
@@ -168,26 +201,6 @@ const jello = keyframes`
 `;
 
 // start styled-cpomponents
-const ErrMessage = styled.div`
-  ${({ theme }) => theme.tesktop`
-    font-size: 3rem;
-  `};
-  ${({ theme }) => theme.laptop`
-    font-size: 3rem;
-  `};
-  ${({ theme }) => theme.tablet`
-    font-size: 3rem;
-  `};
-  ${({ theme }) => theme.mobile2`
-    font-size: 3rem;
-  `};
-  ${({ theme }) => theme.mobile`
-    font-size: 3rem;
-  `};
-  font-size: 3rem;
-  font-weight: 700;
-  color: #fff;
-`;
 const SliderWrapper = styled.div`
   ${({ theme }) => theme.tesktop`
     width: 70rem;
