@@ -2,6 +2,7 @@ import React from "react";
 import useExercise from "../../../hooks/useExercise";
 import BlankOption from "./BlankOption";
 import { useSelector } from "react-redux";
+import styled from "styled-components";
 
 export default function MobileUserChoices() {
   const { selectedQid, questions } = useSelector((state) => state.exercise);
@@ -19,13 +20,19 @@ export default function MobileUserChoices() {
   );
 
   return (
-    <>
-      <p>{selectedQuestion.q_title}</p>
+    <OptionSection>
+      <h3>{selectedQuestion.q_title}</h3>
       <BlankOption
         choices={selectedQuestion.choices}
         q_id={selectedQuestion.q_id}
         handleOnClick={handleOnClickBlankOption}
       />
-    </>
+    </OptionSection>
   );
 }
+
+const OptionSection = styled.section`
+  width: 100%;
+  height: auto;
+  padding: 2rem 0;
+`;
