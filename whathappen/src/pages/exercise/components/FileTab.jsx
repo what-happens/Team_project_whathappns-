@@ -2,8 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import useExercise from "../../../hooks/useExercise";
+import PropTypes from "prop-types";
 
-export default function FileTab() {
+export default function FileTab({ isMobile }) {
   const { activeTab } = useSelector((state) => state.exercise);
   const { setExerciseActiveTab } = useExercise();
 
@@ -12,7 +13,7 @@ export default function FileTab() {
   };
 
   return (
-    <TabContainer>
+    <TabContainer $isMobile={isMobile}>
       <Tab
         onClick={() => handleClickTab("html")}
         $isActive={activeTab === "html"}
@@ -35,7 +36,8 @@ const TabContainer = styled.div`
   height: 8rem;
   border: 1px solid var(--main-color);
   border-bottom: none;
-  border-radius: 2rem 0 0 0;
+  border-radius: ${(props) =>
+    props.$isMobile ? "2rem 2rem 0 0" : "2rem 0 0 0"};
   z-index: 100;
 `;
 
@@ -43,7 +45,8 @@ const Tab = styled.button`
   flex: 1;
   padding: 0.8rem 2rem;
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 2rem;
+  font-weight: 700;
   cursor: pointer;
   border: none;
   color: var(--main-color);
@@ -56,3 +59,7 @@ const Tab = styled.button`
     color: white;
   }
 `;
+
+FileTab.propTypes = {
+  isMobile: PropTypes.bool,
+};

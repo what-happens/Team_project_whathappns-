@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import Button from "../../../components/Button";
+import AnswerIframe from "./AnswerIframe";
 export default function QuestionDisplay() {
   const [isDisplayQuestion, setIsDisplayQuestion] = useState(true);
-  const { parsedData, selectedQid, questions, type, subCode } = useSelector(
-    (state) => state.exercise
-  );
+  const { selectedQid, questions } = useSelector((state) => state.exercise);
 
   const onClickDisplayQuestion = () => {
     setIsDisplayQuestion(true);
@@ -27,32 +26,6 @@ export default function QuestionDisplay() {
     return <Question>문제를 보시려면 코드의 버튼을 눌러주세요</Question>;
   };
 
-  const generateIframeContent = (cssCode, htmlCode) => {
-    return `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <style>
-          ${cssCode}
-        </style>
-      </head>
-      <body>
-        ${htmlCode} 
-      </body>
-      </html>
-    `;
-  };
-
-  const displayCorrect = () => {
-    let srcDoc = "";
-    if (type === "css") {
-      srcDoc = generateIframeContent(parsedData.cssCode, subCode);
-    } else if (type === "html") {
-      srcDoc = generateIframeContent(subCode, parsedData.htmlCode);
-    }
-    return <StyledIframe srcDoc={srcDoc} />;
-  };
-
   return (
     <QuestionContainer>
       <ButtonWrapper>
@@ -60,7 +33,7 @@ export default function QuestionDisplay() {
         <Button onClick={onClickDisplayAnswer}>정답 화면 보기</Button>
       </ButtonWrapper>
       <Content>
-        {isDisplayQuestion ? displayQuestion() : displayCorrect()}
+        {isDisplayQuestion ? displayQuestion() : <AnswerIframe />}
       </Content>
     </QuestionContainer>
   );
@@ -94,22 +67,5 @@ const Question = styled.p`
   font-size: 2.4rem;
   line-height: 2.4rem;
   word-break: keep-all;
-`;
-const StyledIframe = styled.iframe`
-  width: 100%;
-  height: 90%;
-  /* 웹킷 기반 브라우저 */
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-  &::-webkit-scrollbar-track {
-    background: #f0f0f0;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-  }
-  &::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
+  padding: 0 2rem;
 `;

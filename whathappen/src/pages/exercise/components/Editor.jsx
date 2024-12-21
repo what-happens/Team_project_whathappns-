@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import CodeDisplay from "./CodeDisplay";
 import FileTab from "./FileTab";
-export default function Editor({ width }) {
+export default function Editor({ width, isMobile }) {
   return (
     <EditorContainer $width={width}>
-      <FileTab />
-      <CodeDisplay />
+      <FileTab isMobile={isMobile} />
+      <CodeDisplay isMobile={isMobile} />
     </EditorContainer>
   );
 }
@@ -16,14 +16,15 @@ export default function Editor({ width }) {
 const EditorContainer = styled.section`
   background-color: transparent;
   width: ${(props) => props.$width}%;
-  height: 100%;
+  height: auto;
   /* border: 1px solid #2e5dfe; */
-  border-radius: 20px 0 0 20px;
+  border-radius: 2rem 0 0 2rem;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  overflow: hidden;
+  overflow: auto;
 `;
 Editor.propTypes = {
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  isMobile: PropTypes.bool,
 };
