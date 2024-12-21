@@ -5,7 +5,7 @@ const LoginRoute = () => {
   const auth = useSelector((state) => state.auth);
   const location = useLocation();
 
-  if (auth) {
+  if (auth.isLoggedIn) {
     return <Navigate to="/" state={{ from: location }} replace />;
   }
 
