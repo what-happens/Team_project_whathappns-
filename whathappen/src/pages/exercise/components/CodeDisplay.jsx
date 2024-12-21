@@ -4,9 +4,10 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { html_beautify, css_beautify } from "js-beautify";
-export default function CodeDisplay() {
+import PropTypes from "prop-types";
+export default function CodeDisplay({ isMobile }) {
   const { parsedData, subCode, type, activeTab } = useSelector(
-    (state) => state.learn
+    (state) => state.exercise
   );
 
   const FormatterFactory = {
@@ -34,7 +35,9 @@ export default function CodeDisplay() {
           if (segment.type === "code") {
             return <pre key={index}>{segment.content}</pre>;
           } else {
-            return <BlankProblem key={index} qid={segment.qid} />;
+            return (
+              <BlankProblem key={index} qid={segment.qid} isMobile={isMobile} />
+            );
           }
         })
       );
@@ -57,21 +60,26 @@ export default function CodeDisplay() {
   };
 
   return (
-    <CodeDisplayWrapper>
+    <CodeDisplayWrapper $isMobile={isMobile}>
       <h3 className="sr-only">코드 에디터</h3>
       {displayCode()}
     </CodeDisplayWrapper>
   );
 }
 
+CodeDisplay.propTypes = {
+  isMobile: PropTypes.bool,
+};
+
 const CodeDisplayWrapper = styled.section`
   border: 1px solid var(--main-color);
   flex: 1;
   padding: 1rem;
   height: calc(100% - 10rem);
-  border-bottom-left-radius: 2rem;
   overflow-y: scroll;
   font-size: 1.6rem;
+  border-radius: ${(props) =>
+    props.$isMobile ? "0 0 2rem 2rem" : "0 0 0 2rem"};
   /* 웹킷 기반 브라우저 */
   &::-webkit-scrollbar {
     height: 8px;
