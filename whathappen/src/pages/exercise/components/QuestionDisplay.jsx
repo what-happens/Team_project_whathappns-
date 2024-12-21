@@ -67,4 +67,5 @@ const Question = styled.p`
   font-size: 2.4rem;
   line-height: 2.4rem;
   word-break: keep-all;
+  padding: 0 2rem;
 `;
