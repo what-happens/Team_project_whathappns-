@@ -36,8 +36,6 @@ const CardSlider = () => {
           const levels = data.clearStage[0]?.levels || [];
 
           setClearData(levels);
-          console.log("Levels:", levels);
-          console.log("data:", data);
         } else {
           const errorData = await response.json();
           console.error("Error:", errorData);
@@ -139,13 +137,19 @@ const CardSlider = () => {
           className="mySwiper"
         >
           {Array.isArray(levelData) &&
-            levelData.map((levelCard) => {
+            levelData.map((levelCard, index) => {
               const imageUrl = require(`../../../assets/${levelCard.img}`);
+              const isLastItem = index === levelData.length - 1;
+
               return (
                 <SwiperSlide key={levelCard.level_id}>
                   <CardWrapper>
                     <CardLink
-                      to={`/study/${stageId}/${levelCard.level_id}`}
+                      to={
+                        isLastItem
+                          ? `/exercise/${stageId}/${levelCard.level_id}`
+                          : `/study/${stageId}/${levelCard.level_id}`
+                      }
                       className="mr-2"
                     >
                       <CardImg
