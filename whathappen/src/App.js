@@ -12,6 +12,7 @@ import Review from "./pages/review/ReviewFreeVersion";
 import AuthHeader from "./components/AuthHeader";
 import ProtectedRoute from "./components/ProtectedRoute";
 import JoinSuccess from "./pages/joinSuccess/JoinSuccess";
+import LoginRoute from "./components/LoginRoute";
 
 function App() {
   return (
@@ -19,8 +20,12 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/join" element={<Join />} />
+
+        <Route element={<LoginRoute />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/join" element={<Join />} />
+        </Route>
+
         <Route path="/joinsuccess" element={<JoinSuccess />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/study/*" element={<Study />} />
