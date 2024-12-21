@@ -101,7 +101,9 @@ function Login() {
           navigate("/");
         } else {
           const errorData = await response.json();
-          setIdError(errorData.message || "로그인 실패");
+          setIdError(
+            errorData.message || "아이디 혹은 비밀번호가 일치하지않습니다."
+          );
         }
       } catch (error) {
         console.error("Error:", error);
