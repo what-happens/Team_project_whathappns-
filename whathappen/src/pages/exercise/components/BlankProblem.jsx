@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import useExercise from "../../../hooks/useExercise";
 import UserChoices from "./UserChoices";
 import { useSelector } from "react-redux";
-
-export default function BlankProblem({ qid }) {
+import MobileUserChoices from "./MobileUserChoices";
+export default function BlankProblem({ qid, isMobile }) {
   const { setIsShow, setExerciseSelectedQid } = useExercise();
   const { selectedQid } = useSelector((state) => state.exercise);
   const handleOnClickBlank = () => {
@@ -16,7 +16,9 @@ export default function BlankProblem({ qid }) {
   return (
     <>
       <BlankButton type="button" onClick={handleOnClickBlank} />
-      {selectedQid === qid && <UserChoices />}
+      {isMobile
+        ? selectedQid === qid && <MobileUserChoices />
+        : selectedQid === qid && <UserChoices />}
     </>
   );
 }
@@ -36,4 +38,5 @@ const BlankButton = styled.button`
 
 BlankProblem.propTypes = {
   qid: PropTypes.number,
+  isMobile: PropTypes.isMobile,
 };
