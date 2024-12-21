@@ -18,14 +18,14 @@
     "level_id": 2,
     "img": "icon_level.png",
     "level_name": "Level 03",
-    "theme": "다양한 positiond을 알아보자"
+    "theme": "다양한 positiond을\n알아보자"
   },
   {
     "stage_id": 3,
     "level_id": 3,
     "img": "icon_level.png",
     "level_name": "Level 04",
-    "theme": "float, flex, grid에 대해 알아보자!"
+    "theme": "float, flex, grid에\n 대해 알아보자!"
   },
   {
     "stage_id": 3,
