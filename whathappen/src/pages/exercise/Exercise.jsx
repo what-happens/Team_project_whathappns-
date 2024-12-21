@@ -29,12 +29,26 @@ export default function Exercise() {
 
   const { stage, level } = useParams();
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (markedUserAnswers() === false) {
       /*여기서 모달 띄우기 */
       return;
     }
-    navigate("/studyfinish");
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/stage/clear/${stage}/${level}`,
+        {
+          method: "PUT",
+          credentials: "include",
+        }
+      );
+
+      if (response.ok) {
+        navigate("/studyfinish");
+      }
+    } catch (error) {
+      console.error("error");
+    }
   };
 
   const handleDrag = (delta) => {
@@ -134,7 +148,8 @@ const ExerciseFooter = styled.footer`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: min(90vw, 120rem); // 화면의 90% 또는 최대 120rem
+  width: 90vw;
+  max-width: 180rem;
 `;
 
 const RightContainer = styled.div`
