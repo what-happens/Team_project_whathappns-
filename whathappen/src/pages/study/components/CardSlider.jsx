@@ -158,7 +158,15 @@ const CardSlider = () => {
                         <img src={imageUrl} alt="level 아이콘" />
                       </CardImg>
                       <CardTitle>{levelCard.level_name}</CardTitle>
-                      <CardContent>{levelCard.theme}</CardContent>
+                      <CardContent>
+                        {levelCard.theme.split("\n").map((line, i) => (
+                          <React.Fragment key={i}>
+                            {line}
+                            <br />
+                          </React.Fragment>
+                        ))}
+                      </CardContent>
+                      {/* <CardContent>{levelCard.theme}</CardContent> */}
                     </CardLink>
                   </CardWrapper>
                 </SwiperSlide>
@@ -225,6 +233,7 @@ const SliderWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
   .mySwiper {
     padding: 3rem;
   }
@@ -270,13 +279,14 @@ const CardWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  height: 50vh; // 수정?
+  height: 45rem;
+  padding: 2rem;
+
   background-color: white;
   border-radius: 20px;
   transition: all 0.5s ease;
   border: 1px solid #c4c4c4;
   box-sizing: border-box;
-  /* box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38); */
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   &:hover {
     transform: scale(1.05);
@@ -319,6 +329,7 @@ const CardImg = styled.div`
   width: 20rem;
   height: 20rem;
   border-radius: 50rem;
+  flex-shrink: 0;
 
   img {
     ${({ theme }) => theme.laptop`
@@ -353,7 +364,7 @@ const CardTitle = styled.h3`
   color: var(--main-color);
 `;
 
-const CardContent = styled.span`
+const CardContent = styled.p`
   ${({ theme }) => theme.laptop`
     font-size: 1.8rem;
   `};
@@ -365,7 +376,9 @@ const CardContent = styled.span`
   `};
   font-size: 2rem;
   font-weight: 500;
-  line-height: 4rem;
+  height: 4rem;
+  line-height: 3rem;
   color: #000;
+  word-wrap: keep-all;
 `;
 // end styled-cpomponents
