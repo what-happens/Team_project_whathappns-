@@ -9,7 +9,7 @@
         "sub_id": 0,
         "sub_name": "float",
         "desc": "float은 요소를 페이지의 일반적인 레이아웃 흐름에서 벗어나게 하여, 텍스트나 다른 인라인 요소들이 그 주위를 감싸도록 만드는 레이아웃 기술입니다. float를 사용하면 요소가 물 위에 있는 것처럼 작동하며, 컨테이너의 우측 혹은 좌측으로 이동하게 됩니다. \nleft: 요소를 왼쪽으로 띄웁니다.\nright: 요소를 오른쪽으로 띄웁니다.\nnone: 기본값으로, 요소를 띄우지 않습니다.",
-        "code": ".float-left {\n\tfloat: left;\n}\n.float-right {\n\tfloat: right;\n}",
+        "code": ".float-left {\n    float: left;\n}\n.float-right {\n    float: right;\n}",
         "img": null
       }
     ]
@@ -24,7 +24,7 @@
         "sub_id": 0,
         "sub_name": "flex",
         "desc": "flex는 1차원적 레이아웃(행 또는 열)을 쉽게 만들 수 있으며, 요소들의 크기와 순서를 동적으로 조절할 수 있습니다.\n이 요소를 사용하기 위해서는 부모 요소를 display: flex 로 설정해야 합니다. 부모 요소는 flex-container, 자식 요소는 flex-item이 됩니다.\nflex-contianer(부모) 에 사용되는 속성은 다음과 같습니다.\n1. flex-direction은 주축의 방향을 설정합니다. 기본값은 row입니다.\n2. row: 기본값. 왼쪽에서 오른쪽 (주축이 행 방향)\n3. column: 위에서 아래 방향 (주축이 열 방향)\n주축의 아이템 정렬: 주축을 기준으로 배열의 위치를 조절하거나 아이템 간의 설정을 할 수 있습니다.\njustify-content: 주축을 기준으로 아이템을 정렬합니다.\n1. flex-start: 시작점에 정렬합니다.\n2. flex-end: 끝점에 정렬합니다.\n3. center: 가운데 정렬합니다.\n4. space-between: 아이템 사이에 동일한 간격을 설정합니다.\n5. space-around: 아이템 주변에 동일한 간격을 설정합니다.\n6. space-evenly: 아이템 주변과 시작과 끝에 동일한 간격을 설정합니다.\nalign-items 는 아이템을 교차 축을 기준으로 정렬합니다.\n1. stretch: 기본값. 교차축을 채우기 위해 아이템을 늘립니다.\n2. flex-start: 시작점에 정렬\n3. flex-end: 끝점에 정렬\n4. center: 가운데 정렬\n5. baseline: 텍스트의 기준선에 정렬",
-        "code": ".container {\n\tdisplay: flex;\n\tjustify-content: space-between;\n\tbackground-color: #f0f0f0;\n\tpadding: 10px;\n}\n.item {\n\tbackground-color: #4967d8;\n\tcolor: white;\n\tpadding: 10px;\n\ttext-align: center;\n\tborder-radius: 5px;\n}",
+        "code": ".container {\n    display: flex;\n    justify-content: space-between;\n    background-color: #f0f0f0;\n    padding: 10px;\n}\n.item {\n    background-color: #4967d8;\n    color: white;\n    padding: 10px;\n    text-align: center;\n    border-radius: 5px;\n}",
         "img": null
       }
     ]
@@ -39,21 +39,21 @@
         "sub_id": 0,
         "sub_name": "grid-1",
         "desc": "이 요소를 사용하기 위해서는 부모 요소를 display: grid 로 설정해야 합니다. grid는 2차원 레이아웃을 담당하고, 행과 열을 동시에 제어할 수 있어 복잡한 레이아웃을 쉽게 만들 수 있습니다.\n그리드의 기본 구성 요소:\n1. 그리드 컨테이너: 그리드의 가장 바깥 영역입니다.\n2. 그리드 셀: 그리드의 한 칸을 의미합니다.\n3. 그리드 아이템: 그리드 컨테이너의 자식 요소들을 말합니다.\n4. 그리드 트랙은 그리드의 행 또는 열을 의미합니다.\n5. 그리드 라인과 그리드 넘버: 그리드 셀을 구분하는 선과 그리드 라인의 각 번호를 말합니다.\n6. 그리드 갭: 그리드 셀 사이의 간격을 의미합니다.\n7. 그리드 에어리어: 그리드 셀의 집합을 말합니다.\ngrid-container 에 사용하는 속성\n1. 행 방향과 열 방향 설정\n2. grid-template-columns는 열방향 그리드 트랙의 사이즈를 설정하고 grid-template-rows 행방향 그리드 트랙의 사이즈를 설정합니다.\n3. 픽셀, 백분율, fr 단위를 사용할 수 있습니다. fr은 분수(fraction)의 의미로 컨테이너를 분할해줍니다.",
-        "code": ".container {\n\tdisplay: grid;\n\tgrid-template-columns: repeat(2, minmax(100px, 1fr));\n\tgap: 20px;\n\tpadding: 20px;\n}\n.item {\n\tbackground-color: teal;\n\ttext-align: center;\n}",
+        "code": ".container {\n    display: grid;\n    grid-template-columns: repeat(2, minmax(100px, 1fr));\n    gap: 20px;\n    padding: 20px;\n}\n.item {\n    background-color: teal;\n    text-align: center;\n}",
         "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "grid-2",
         "desc": "수평과 수직 정렬:\n그리드 컨테이너와 아이템의 정렬을 위해 다음과 같은 속성들을 사용할 수 있습니다.\n아래 속성들은 그리드 아이템을 트랙 단위로 정렬합니다.\n1. align-content: 그리드 아이템을 수직(열) 방향으로 정렬합니다.\n2. justify-content: 그리드 아이템을 수평(행) 방향으로 정렬합니다.\n두 속성 모두 stretch  center start end space-around space-between space-evenly 값을 사용할 수 있습니다.\n- 아래 속성들은 각 그리드 셀 내에서 아이템을 정렬합니다.\n1. align-items: 각 셀 내에서 그리드 아이템을 수직(열) 방향으로 정렬합니다.\n2. justify-items: 각 셀 내에서 그리드 아이템을 수평(행) 방향으로 정렬합니다.\n두 속성 모두 stretch, center, start, end 를 사용할 수 있습니다.",
-        "code": ".container {\n\tdisplay: grid;\n\tgrid-template-columns: repeat(2, 100px);\n\tgrid-template-rows: repeat(2, 100px);\n\theight: 300px;\n\tbackground-color: #f0f0f0;\n\tjustify-content: center;\n\talign-content: center;\n\tjustify-items: center;\n\talign-items: center;\n}",
+        "code": ".container {\n    display: grid;\n    grid-template-columns: repeat(2, 100px);\n    grid-template-rows: repeat(2, 100px);\n    height: 300px;\n    background-color: #f0f0f0;\n    justify-content: center;\n    align-content: center;\n    justify-items: center;\n    align-items: center;\n}",
         "img": null
       },
       {
         "sub_id": 2,
         "sub_name": "grid-3",
         "desc": "그리드 아이템 속성\n1. grid-area: 그리드 아이템의 위치와 크기를 지정하는 단축 속성입니다.\n - 각각의 그리드 라인을 의미하는 grid-row-start , grid-column-start, grid-row-end, grid-column-end 순서대로 grid-area의 값에 들어갑니다.\n- 예시: grid-area: 1/1/2/4 \nz-index: 그리드 내에서 z-index를 사용하여 아이템의 쌓임 순서를 제어할 수 있습니다.",
-        "code": ".container {\n\tdisplay: grid;\n\tgrid-template-areas:\n\t\t\"header header header\"\n\t\t\"main main main\";\n\tgap: 10px;\n\tpadding: 20px;\n}\n.item-one {\n\tgrid-area: header; \n}",
+        "code": ".container {\n    display: grid;\n    grid-template-areas:\n        \"header header header\"\n        \"main main main\";\n    gap: 10px;\n    padding: 20px;\n}\n.item-one {\n    grid-area: header; \n}",
         "img": null
       }
     ]

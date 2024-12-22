@@ -24,28 +24,28 @@
         "sub_id": 0,
         "sub_name": "전체 선택자",
         "desc": "전체 선택자는 *를 사용해HTML 문서 내의 모든 요소를 선택합니다. html 태그를 포함한 모든 태그에 스타일을 적용할 수 있습니다.",
-        "code": "* {\n\tfont-size: 24px;\n}",
+        "code": "* {\n      font-size: 24px;\n}",
         "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "아이디 선택자",
         "desc": "아이디 선택자는 # 을 사용해 특정 요소를 선택해 스타일을 적용시키며, HTML 문서 내에서 한 번만 사용될 수 있는 고유한 식별자입니다.",
-        "code": "#nameInput {\n\tcolor: teal;\n}",
+        "code": "#nameInput {\n    color: teal;\n}",
         "img": null
       },
       {
         "sub_id": 2,
         "sub_name": "클래스 선택자",
         "desc": "클래스 선택자는 `.` 를 사용해 특정 요소를 선택해 스타일을 적용시키며, 재사용성이 높아 많이 사용되는 선택자입니다.",
-        "code": ".btn {\n\tcolor: hotpink;\n}",
+        "code": ".btn {\n    color: hotpink;\n}",
         "img": null
       },
       {
         "sub_id": 3,
         "sub_name": "타입 선택자",
         "desc": "타입 선택자는 특정 HTML 태그를 선택해 스타일을 적용합니다.",
-        "code": "input {\n\tbackground-color: tomato;\n}",
+        "code": "input {\n    background-color: tomato;\n}",
         "img": null
       }
     ]
@@ -60,21 +60,21 @@
         "sub_id": 0,
         "sub_name": "그룹 선택자",
         "desc": "여러 개의 선택자를 쉼표”,”로 구분하여 한 번에 동일한 스타일을 적용할 수 있어 코드의 중복을 줄이고, 스타일을 일관되게 적용할 수 있습니다.",
-        "code": "h1,\nh2,\nh3 {\n\tcolor: tomato;\n}",
+        "code": "h1,\nh2,\nh3 {\n    color: tomato;\n}",
         "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "자손 선택자",
         "desc": "자손 선택자는 특정 요소의 모든 하위 요소를 선택합니다. 공백” ”으로 부모와 자손을 구분합니다.",
-        "code": "div p {\n\tcolor: gold;\n}",
+        "code": "div p {\n    color: gold;\n}",
         "img": null
       },
       {
         "sub_id": 2,
         "sub_name": "자식 선택자",
         "desc": "자식 선택자는 >로 특정 요소의 직계 자식 요소만 선택합니다.",
-        "code": "section > p {\n\tcolor: royalblue;\n}",
+        "code": "section > p {\n    color: royalblue;\n}",
         "img": null
       }
     ]
@@ -89,14 +89,14 @@
         "sub_id": 0,
         "sub_name": "일반 형제 선택자",
         "desc": "일반 형제 선택자는 ~ 를 사용해 구분합니다. 뒤에 나오는 형제만 선택합니다.",
-        "code": "section ~ p {\n\ttext-decoration: underline;\n}",
+        "code": "section ~ p {\n    text-decoration: underline;\n}",
         "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "인접 형제 선택자",
         "desc": "일반 형제 선택자는 뒤에 나오는 형제만 선택하지만, 인접 형제 선택자는 + 로 바로 뒤에 인접한 형제만 선택합니다.",
-        "code": "section + p {\n\tbackground: yellow;\n}",
+        "code": "section + p {\n    background: yellow;\n}",
         "img": null
       }
     ]

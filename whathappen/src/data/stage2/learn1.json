@@ -9,28 +9,28 @@
         "sub_id": 0,
         "sub_name": "color로 색상 설정하기",
         "desc": "텍스트의 색상은 color 속성으로 설정합니다. 색상을 표현하는 방법에는 키워드(red, blue), Hex코드(#으로 시작하는 16진수), rgb(), rgba()등 함수 등을 사용할 수 있습니다.",
-        "code": "h1 {\n\tcolor: red;\n}",
+        "code": "h1 {\n      color: red;\n}",
         "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "글꼴 설정하기",
         "desc": "글꼴은 텍스트의 시각적 특성을 결정하는 중요한 요소입니다. font-family 속성을 사용해 글꼴을 지정할 수 있습니다. 폰트를 적용하는데는 link, import, font-face를 사용하는 3가지 방법이 있습니다.",
-        "code": "<link href=\"https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap\" rel=\"stylesheet\"/>\n@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');\n@font-face {\n\tfont-family: 'Pretendard-Regular';\n\tsrc: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');\n\tfont-weight: 400;\n\tfont-style: normal;\n}",
+        "code": "<link href=\"https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap\" rel=\"stylesheet\"/>\n@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');\n@font-face {\n      font-family: 'Pretendard-Regular';\n      src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');\n      font-weight: 400;\n      font-style: normal;\n}",
         "img": null
       },
       {
         "sub_id": 2,
         "sub_name": "글꼴 크기 설정하기",
         "desc": "텍스트의 크기는 font-size 속성으로 조정할 수 있습니다. 크기 단위로는 px, em, rem등의 단위가 자주 사용됩니다. ",
-        "code": "p {\n\tfont-size: 24px;\n}",
+        "code": "p {\n      font-size: 24px;\n}",
         "img": null
       },
       {
         "sub_id": 3,
         "sub_name": "글꼴 굵기 설정하기",
         "desc": "텍스트의 굵기는 font-weight으로 설정할 수 있습니다. normal(기본값), bold(굵게), lighter(부모 요소보다 한 단계 가볍게), bolder(부모 요소보다 한 단계 굵게) 등의 키워드나 100부터 900까지의 숫자 값을 사용할 수 있습니다.",
-        "code": ".sentence1 {\n\tfont-weight: normal;\n}",
+        "code": ".sentence1 {\n      font-weight: normal;\n}",
         "img": null
       }
     ]

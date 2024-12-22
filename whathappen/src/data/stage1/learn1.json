@@ -10,7 +10,7 @@
         "sub_name": "1) form 태그",
         "desc": "<Form> 태그는 웹 페이지에서 사용자로부터 데이터를 수집하고 서버로 전송하는 데 사용되는 HTML 요소입니다. 사용자로부터 입력을 받기 위한 양식을 작성하는 태그들을 통틀어 form이라고 합니다. 로그인, 회원 가입, 검색, 설문조사 등 다양한 상호작용을 구현할 때 폼을 활용합니다. \n\n - action 속성: 폼 데이터를 처리할 서버의 URL을 지정합니다.\n- method 속성: 데이터를 서버로 전송하는 방식을 지정합니다. 주로 GET 또는 POST 방식을 사용합니다.",
         "img": null,
-        "code": "&lt;form action='/login' method='POST'&gt;\n\b\b&lt;!-- 폼 요소들 --&gt;\n&lt;/form&gt;"
+        "code": "&lt;form action='/login' method='POST'&gt;\n      &lt;!-- 폼 요소들 --&gt;\n&lt;/form&gt;"
       },
       {
         "sub_id": 1,
@@ -52,7 +52,7 @@
         "sub_name": "placeholder",
         "desc": "컨트롤에 무엇을 입력해야하는지 알려주는 힌트",
         "img": null,
-        "code": "&lt;fieldset&gt;\n&lt;legend&gt;사용자 정보&lt;/legend&gt;\n\b\b&lt;label for='username'&gt;사용자 이름&lt;/label&gt;\n\b\b&lt;input \n\b\b\btype='text' \n\b\b\bid='username'\n\b\b\bname='username'\n\b\b\bplaceholder='이름을 입력하세요'\n\b\b/&gt;\n&lt;/fieldset&gt;"
+        "code": "&lt;fieldset&gt;\n&lt;legend&gt;사용자 정보&lt;/legend&gt;\n      &lt;label for='username'&gt;사용자 이름&lt;/label&gt;\n      &lt;input \n        type='text' \n        id='username'\n        name='username'\n        placeholder='이름을 입력하세요'\n      /&gt;\n&lt;/fieldset&gt;"
       },
       {
         "sub_id": 7,

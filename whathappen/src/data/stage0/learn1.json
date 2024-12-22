@@ -31,7 +31,7 @@
         "sub_name": "4) br & hr 태그",
         "desc": "HTML에서 `<br>` 태그와 `<hr>` 태그는 각각 줄 바꿈과 수평선을 나타내는 데 사용됩니다. 이 태그들은 문서의 구조를 더 명확하게 하고, 시각적으로 내용을 구분하는 데 유용합니다.\n<br>은 break(line break)로 줄을 나눈다는 뜻입니다. `<br>` 태그는 블록 요소가 아니므로, 문단을 나누지 않고 같은 문단 내에서 줄 바꿈을 생성합니다. \n<hr>은 horizontal rule의 약어로 수평선을 그린다는 뜻입니다. 수평선은 문단을 구분하거나 콘텐츠를 구분하는 데 사용됩니다. 수평선은 블록 요소로 처리되어, 수평선 위 아래로 줄 바꿈이 추가됩니다.",
         "img": null,
-        "code": "&lt;h1&gt;대한민국 헌법 제 1장&lt;/h1&gt;\n&lt;p&gt;\n\b제 1조 대한민국은 민주공화국이다. &lt;br /&gt; \n\b\b대한민국의 주권은 국민에게 있고, 모든 권력은 국민으로 부터 나온다.\n&lt;/p&gt;\n&lt;hr /&gt;\n&lt;p&gt;\n출처: 국가정보법령센터 \n&lt;/p&gt;"
+        "code": "&lt;h1&gt;대한민국 헌법 제 1장&lt;/h1&gt;\n&lt;p&gt;\n    제 1조 대한민국은 민주공화국이다. &lt;br /&gt; \n    대한민국의 주권은 국민에게 있고, 모든 권력은 국민으로 부터 나온다.\n&lt;/p&gt;\n&lt;hr /&gt;\n&lt;p&gt;\n    출처: 국가정보법령센터 \n&lt;/p&gt;"
       }
     ]
   },
@@ -46,14 +46,14 @@
         "sub_name": "1) 기본 목록 태그",
         "desc": "- ol (ordered list) : 순서가 있는 목록 태그 \n- ul (unordered list): 순서가 없는 목록 태그 \n- li (list): 목록의 항목, 반드시 <ol>, <ul>, <menu>의 자식 요소로만 사용해야 합니다.",
         "img": null,
-        "code": "&lt;ol&gt;\n\b\b&lt;li&gt;item&lt;/li&gt;\n\b\b\b&lt;li&gt;item&lt;/li&gt;\n\b\b\b&lt;li&gt;item&lt;/li&gt;\n\b\b&lt;/ol&gt;\n\b\b&lt;ul&gt;\n\b\b\b&lt;li&gt;item&lt;/li&gt;\n\b\b\b&lt;li&gt;item&lt;/li&gt;\n\b\b\b&lt;li&gt;item&lt;/li&gt;\n&lt;/ul&gt;"
+        "code": "&lt;ol&gt;\n    &lt;li&gt;item&lt;/li&gt;\n    &lt;li&gt;item&lt;/li&gt;\n    &lt;li&gt;item&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n      &lt;li&gt;item&lt;/li&gt;\n      &lt;li&gt;item&lt;/li&gt;\n      &lt;li&gt;item&lt;/li&gt;\n&lt;/ul&gt;"
       },
       {
         "sub_id": 1,
         "sub_name": "2) 정의 목록 태그",
         "desc": "정의 목록은 특정 용어와 그 정의를 표현할 때 사용하는 태그입니다. \n- dl (definition list): 설명 목록. 이 태그는 용어와 해당 용어의 설명을 함께 제공하는데 사용됩니다. \n- dt (Definition Term): <dl>에서 정의될 용어를 나타냅니다. \n- dd(Description Details): <dt>로 정의된 용어의 설명을 나타냅니다.",
         "img": null,
-        "code": "&lt;dl&gt;\n\b\b&lt;dt&gt;Web&lt;/dt&gt;\n\b\b\b\b&lt;dd&gt;\n\b\b\b\bWorld Wide Web(WWW)의 줄일말로, 전 세계적으로 분산된 수많은 문서와 기타 리소스들이 서로 연결되어 있는 거대한 정보의 네트워크를 의미합니다.\n\b\b\b\b\b&lt;/dd&gt;\n&lt;/dl&gt;"
+        "code": "&lt;dl&gt;\n    &lt;dt&gt;Web&lt;/dt&gt;\n    &lt;dd&gt;\n        World Wide Web(WWW)의 줄일말로, 전 세계적으로 분산된 수많은 문서와 기타 리소스들이 서로 연결되어 있는 거대한 정보의 네트워크를 의미합니다.\n    &lt;/dd&gt;\n&lt;/dl&gt;"
       }
     ]
   }

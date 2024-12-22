@@ -9,7 +9,7 @@
         "sub_id": 0,
         "sub_name": "1)반응형 디자인이란?",
         "desc": "반응형 디자인은 다양한 화면 크기에서 웹 페이지가 최적화되도록 구성하는 방법입니다. \n반응형 웹은 픽셀 대신 상대적인 단위를 사용하여 레이아웃을 구성하며, 화면 크기에 따라 요소들의 \n크기가 자동으로 조절되도록 할 수 있습니다.",
-        "code": ":root {\n\tfont-size: 16px; \n\t}\n.container {\n\t display: flex;\n\tgap: 2%;\n\t}\n.box {\n\t width: 48%;\n\tbackground: lightblue;\n\tpadding: 2em;\n\tfont-size: 1rem;\n\ttext-align: center;\n\tborder: 1px solid steelblue;\n\t}",
+        "code": ":root {\n    font-size: 16px; \n    }\n.container {\n     display: flex;\n    gap: 2%;\n    }\n.box {\n     width: 48%;\n    background: lightblue;\n    padding: 2em;\n    font-size: 1rem;\n    text-align: center;\n    border: 1px solid steelblue;\n    }",
         "img": null
       }
     ]
@@ -24,21 +24,21 @@
         "sub_id": 0,
         "sub_name": "1)percent 단위",
         "desc": "퍼센트(%)는 부모 요소의 크기를 기준으로 자식 요소의 크기를 비율로 설정합니다.\n유동적인 레이아웃을 만들 때 가장 기본적으로 사용됩니다.\n부모 요소의 크기가 동적으로 변하면, 자식 요소도 함께 변경됩니다.",
-        "code": "div {\n\twidth: 50%; /* 부모 크기의 절반 */\n\t}",
+        "code": "div {\n    width: 50%; /* 부모 크기의 절반 */\n    }",
         "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "2)em 단위",
         "desc": "현재 요소의 폰트 크기를 기준으로 상대적인 크기를 설정합니다.\n배율 개념으로 동작하며, 중첩된 요소에 사용할 경우 예상치 못한 크기 변화가 발생할 수 있으니 주의해야 합니다",
-        "code": "div {\n\tfont-size: 2em; /* 현재 요소 폰트 크기의 두 배 */\n\t}",
+        "code": "div {\n    font-size: 2em; /* 현재 요소 폰트 크기의 두 배 */\n    }",
         "img": null
       },
       {
         "sub_id": 2,
         "sub_name": "3)rem 단위",
         "desc": "문서의 최상위 요소 즉, <html> 의 폰트 크기를 기준으로 계산됩니다.\n기본적으로 브라우저의 기본 폰트 크기인 16px을 사용합니다.\n전역 설정과 조화를 이루기 때문에 예측 가능한 레이아웃을 구성할 수 있습니다.",
-        "code": "html {\n\tfont-size: 16px;\n\t}\ndiv {\n\tfont-size: 1.5rem; /* 24px */\n\t}",
+        "code": "html {\n    font-size: 16px;\n    }\ndiv {\n    font-size: 1.5rem; /* 24px */\n    }",
         "img": null
       }
     ]

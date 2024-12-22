@@ -17,49 +17,49 @@
         "sub_name": "1) <header>",
         "desc": "- 소개 및 탐색에 도움을 줍니다. \n- 회사명, 제목, 로고, 검색 폼, 작성자 이름 등의 요소가 포함 될 수 있어요. \n- 헤더를 중첩 사용하거나 헤더 안에 푸터를 사용할 수 없습니다. \n",
         "img": null,
-        "code": "&lt;body&gt; \n\b\b&lt;header&gt; \n\b\b\b&lt;h1&gt;페이지 제목입니다.&lt;/h1&gt; \n\b\b&lt;/header&gt; \n&lt;/body&gt;"
+        "code": "&lt;body&gt; \n    &lt;header&gt; \n        &lt;h1&gt;페이지 제목입니다.&lt;/h1&gt; \n    &lt;/header&gt; \n&lt;/body&gt;"
       },
       {
         "sub_id": 2,
         "sub_name": "2) <nav>",
         "desc": "- 문서의 부분 중 현재 페이지 내, 또는 다른 페이지로의 링크를 보여줍니다.\n- 내부에는 메뉴, 목차등이 포함됩니다.\n- 문서의 모든 링크가 `<nav>` 안에 있을 필요는 없어요. 페이지의 주요 탐색 링크를 위한 태그입니다.\n- 하나는 사이트 전체 탐색, 다른 하나는 현재 페이지 내 탐색으로 사용하는 등, 하나의 웹페이지에 여러 개의 `<nav>` 태그를 가질 수 있습니다.\n",
         "img": null,
-        "code": "&lt;body&gt; \n\b\b&lt;header&gt; \n\b\b\b&lt;nav&gt;\n\b\b\b\b&lt;ul&gt; \n\b\b\b\b\b&lt;li&gt;&lt;a href='#'&gt;뉴스&lt;/a&gt;&lt;/li&gt; \n\b\b\b\b\b&lt;li&gt;&lt;a href='#'&gt;상품&lt;/a&gt;&lt;/li&gt; \n\b\b\b\b\b&lt;li&gt;&lt;a href='#'&gt;지도&lt;/a&gt;&lt;/li&gt; \n\b\b\b\b&lt;/ul&gt; \n\b\b\b&lt;/nav&gt; \n\b\b&lt;/header&gt; \n&lt;/body&gt;"
+        "code": "&lt;body&gt; \n    &lt;header&gt; \n        &lt;nav&gt;\n            &lt;ul&gt; \n                &lt;li&gt;&lt;a href='#'&gt;뉴스&lt;/a&gt;&lt;/li&gt; \n                &lt;li&gt;&lt;a href='#'&gt;상품&lt;/a&gt;&lt;/li&gt; \n                &lt;li&gt;&lt;a href='#'&gt;지도&lt;/a&gt;&lt;/li&gt;\n            &lt;/ul&gt; \n      &lt;/nav&gt; \n    &lt;/header&gt; \n&lt;/body&gt;"
       },
       {
         "sub_id": 3,
         "sub_name": "3) <footer>",
         "desc": "- 페이지의 작성자, 저작권정보, 페이지 관련 문서 등의 내용을 담습니다.",
         "img": null,
-        "code": "&lt;footer> \n\b\b&lt;address> \n\b\b\b&lt;dl> \n\b\b\b\b&lt;dt>대표자&lt;/dt> \n\b\b\b\b&lt;dd>쿼카&lt;/dd> \n\b\b\b\b&lt;dt>사업자등록번호&lt;/dt> \n\b\b\b\b&lt;dd>123-45-67890&lt;/dd> \n\b\b\b\b&lt;dt>통신판매업신고번호&lt;/dt>\n\b\b\b\b&lt;dd>제1234-서울강남-1234호&lt;/dd>\n\b\b\b&lt;/dl>\n\b\b&lt;/address>\n\b\b&lt;p>ⓒ 2024 quokka. All rights reserved.&lt;/p>\n&lt;/footer>"
+        "code": "&lt;footer> \n    &lt;address> \n      &lt;dl> \n          &lt;dt>대표자&lt;/dt> \n          &lt;dd>쿼카&lt;/dd> \n          &lt;dt>사업자등록번호&lt;/dt> \n          &lt;dd>123-45-67890&lt;/dd> \n          &lt;dt>통신판매업신고번호&lt;/dt>\n          &lt;dd>제1234-서울강남-1234호&lt;/dd>\n      &lt;/dl>\n    &lt;/address>\n    &lt;p>ⓒ 2024 quokka. All rights reserved.&lt;/p>\n&lt;/footer>"
       },
       {
         "sub_id": 4,
         "sub_name": "4) <main>",
         "desc": "- body의 **주요** 콘텐츠를 나타냅니다. \n- 웹페이지에서 한 번만 사용할 수 있습니다. \n- 사이드바, 탐색 링크, 저작권정보, 사이트 로고, 검색 폼 등 여러 페이지에 반복되는 콘텐츠를 포함해서는 안 됩니다. (검색 폼이 주요 기능이라면 예외입니다)",
         "img": null,
-        "code": "&lt;body&gt; \n\b\b&lt;main&gt;hello world!&lt;/main&gt;\n&lt;/body&gt;"
+        "code": "&lt;body&gt; \n    &lt;main&gt;hello world!&lt;/main&gt;\n&lt;/body&gt;"
       },
       {
         "sub_id": 5,
         "sub_name": "5) <section>",
         "desc": "- 문서 내에서 특정한 섹션을 정의하는 데 사용됩니다. 이 태그는 일반적으로 주제나 컨텐츠를 구분짓기 위해 사용됩니다. \n- 제목 요소를 자식으로 포함하여야 합니다.",
         "img": null,
-        "code": "&lt;h1&gt;좋아하는 동물을 소개합니다.&lt;/h1&gt;\n&lt;section&gt;\n\b\b&lt;h2&gt;쿼카!&lt;/h2&gt;\n\b\b&lt;p&gt;쿼카는 캥거루과에 속하는 소형 포유유 동물로써...&lt;/p&gt;\n&lt;/section&gt;\n&lt;section&gt;\n\b\b&lt;h2&gt;쿼카의 습성&lt;/h2&gt;\n\b\b&lt;p&gt;쿼카는 캥거루과에 속하는 소형 포유유 동물로써...&lt;/p&gt;\n&lt;/section&gt;"
+        "code": "&lt;h1&gt;좋아하는 동물을 소개합니다.&lt;/h1&gt;\n&lt;section&gt;\n    &lt;h2&gt;쿼카!&lt;/h2&gt;\n    &lt;p&gt;쿼카는 캥거루과에 속하는 소형 포유유 동물로써...&lt;/p&gt;\n&lt;/section&gt;\n&lt;section&gt;\n    &lt;h2&gt;쿼카의 습성&lt;/h2&gt;\n    &lt;p&gt;쿼카는 캥거루과에 속하는 소형 포유유 동물로써...&lt;/p&gt;\n&lt;/section&gt;"
       },
       {
         "sub_id": 6,
         "sub_name": "6) <article>",
         "desc": "- 독립적으로 구분해 배포하거나 재사용할 수 있는 구획을 나타냅니다.\n - 아티클이 대표적으로 사용되는 곳은 뉴스 홈페이지입니다.\n- 제목 요소를 자식으로 포함하여야 합니다!\n",
         "img": null,
-        "code": "&lt;h1&gt;스포츠 뉴스&lt;/h1&gt;\n&lt;article&gt;\n\b\b&lt;h2&gt;월별 주요 뉴스&lt;/h2&gt;\n\b\b\b&lt;article&gt;\n\b\b\b\b&lt;h3&gt;3월 뉴스&lt;/h3&gt;\n\b\b\b\b&lt;p&gt;월드컵 개최지 선정, 평창 되나?...&lt;/p&gt;\n\b\b\b&lt;/article&gt;\n\b\b&lt;article&gt;\n\b\b\b&lt;h3&gt;4월 뉴스&lt;/h3&gt;\n\b\b\b&lt;p&gt;월트컵 개최지 선정 불발, 어디로 갔나 1조는?...&lt;/p&gt;\n\b\b&lt;/article&gt;\n&lt;/article&gt;"
+        "code": "&lt;h1&gt;스포츠 뉴스&lt;/h1&gt;\n&lt;article&gt;\n    &lt;h2&gt;월별 주요 뉴스&lt;/h2&gt;\n    &lt;article&gt;\n        &lt;h3&gt;3월 뉴스&lt;/h3&gt;\n        &lt;p&gt;월드컵 개최지 선정, 평창 되나?...&lt;/p&gt;\n    &lt;/article&gt;\n    &lt;article&gt;\n        &lt;h3&gt;4월 뉴스&lt;/h3&gt;\n        &lt;p&gt;월트컵 개최지 선정 불발, 어디로 갔나 1조는?...&lt;/p&gt;\n    &lt;/article&gt;\n&lt;/article&gt;"
       },
       {
         "sub_id": 7,
         "sub_name": "7) <aside>",
         "desc": "- 문서의 주요 내용과 간접적으로 연관된 부분을 나타냅니다.\n- 문서의 주요 흐름을 따라가지 않고, 보조적인 역할만 하는 공간입니다.\n- 광고 배너,사이드바 등에 사용합니다.",
         "img": null,
-        "code": "&lt;h1&gt;연예면 뉴스&lt;/h1&gt;\n&lt;article&gt;\n\b\b&lt;h2&gt;크리스 에반스, 로다주에 이어 MCU 복귀?&lt;/h2&gt;\n\b\b&lt;p&gt;배우 크리스 에반스가 MCU(마블 시네마틱 유니버스)에 복귀한다...&lt;/p&gt;\n\b\b&lt;aside&gt;광고&lt;/aside&gt;\n&lt;/article&gt;"
+        "code": "&lt;h1&gt;연예면 뉴스&lt;/h1&gt;\n&lt;article&gt;\n    &lt;h2&gt;크리스 에반스, 로다주에 이어 MCU 복귀?&lt;/h2&gt;\n    &lt;p&gt;배우 크리스 에반스가 MCU(마블 시네마틱 유니버스)에 복귀한다...&lt;/p&gt;\n    &lt;aside&gt;광고&lt;/aside&gt;\n&lt;/article&gt;"
       }
     ]
   }

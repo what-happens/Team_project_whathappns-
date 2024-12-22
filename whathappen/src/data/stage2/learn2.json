@@ -9,7 +9,7 @@
         "sub_id": 0,
         "sub_name": "가상클래스",
         "desc": "가상 클래스 선택자(Pseudo-class selectors)는 요소의 특정 상태를 선택할 수 있게 해줍니다. 이들은 콜론(:)을 사용하여 표현됩니다. \n :link는 아직 방문하지 않은 링크를 선택합니다. \n :visited는 이미 방문한 링크를 선택합니다. \n :hover는 마우스 포인터가 올라간 요소를 선택합니다.",
-        "code": "a:link {\n\tcolor: blue;\n\ttext-decoration: none;\n}\na:visited {\n\tcolor: red;\n\ttext-decoration: underline;\n}\na:hover {\n\tcolor: purple;\n}",
+        "code": "a:link {\n    color: blue;\n    text-decoration: none;\n}\na:visited {\n    color: red;\n    text-decoration: underline;\n}\na:hover {\n    color: purple;\n}",
         "img": null
       }
     ]
@@ -24,7 +24,7 @@
         "sub_id": 0,
         "sub_name": "",
         "desc": ":active는 마우스로 클릭하고 있는 요소를 선택합니다\n :focus는현재 초점을 가진 요소를 선택합니다.",
-        "code": ".link-test:active {\n\tcolor: orange;\n}\n.link-test:focus {\n\toutline: 2px solid green;\n}",
+        "code": ".link-test:active {\n    color: orange;\n}\n.link-test:focus {\n    outline: 2px solid green;\n}",
         "img": null
       }
     ]
@@ -39,14 +39,14 @@
         "sub_id": 0,
         "sub_name": "::before와 ::after",
         "desc": "가상요소는 선택한 요소의 특정 부분에 스타일을 적용할 수 있게 해줍니다. 이들은 이중 콜론(::)을 사용하여 표현됩니다. \n1. ::before와 ::after - 선택한 요소의 내용 앞이나 뒤에서 새로운 요소를 만들어 새로운 콘텐츠를 추가할 수 있게 해줍니다. 주로 content속성을 사용해 장식적인 요소를 추가하거나, 기능적인 목적으로 사용됩니다.",
-        "code": ".header::before {\n\tcontent: '❤️';\n}\n.header::after {\n\tcontent: '❤️';\n}",
+        "code": ".header::before {\n    content: '❤️';\n}\n.header::after {\n    content: '❤️';\n}",
         "img": null
       },
       {
         "sub_id": 1,
         "sub_name": "::placeholder",
         "desc": "<input>태그 같은 요소의 placeholder 텍스트에 스타일을 적용할 수 있게 해줍니다.",
-        "code": "::placeholder {\n\tcolor: #999;\nfont-style: italic;\n\tfont-size: 14px;\n}",
+        "code": "::placeholder {\n    color: #999;\nfont-style: italic;\n    font-size: 14px;\n}",
         "img": null
       }
     ]
