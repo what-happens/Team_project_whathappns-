@@ -9,6 +9,7 @@ import backGround from "../../assets/quiz-page-background3.svg";
 import useQuizStep from "../../hooks/useQuizStep";
 import { useDispatch, useSelector } from "react-redux";
 import { setIncorrectQuiz, setCorrectAnswerCount } from "../../redux/quizSlice";
+import useFetchQuiz from "../../hooks/useFetchQuiz";
 
 export default function Quiz() {
   const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
@@ -16,9 +17,10 @@ export default function Quiz() {
   const { resetQuiz } = useQuizStep();
   const { quiz, limit, category } = useSelector((state) => state.quiz);
   const { moveNext } = useQuizStep();
+  const { postQuizResult } = useFetchQuiz();
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const incorrectIds = [];
     answers.forEach((answer, idx) => {
@@ -29,6 +31,7 @@ export default function Quiz() {
     const corrrectNum = parseInt(limit) - incorrectIds.length;
     dispatch(setCorrectAnswerCount(corrrectNum));
     dispatch(setIncorrectQuiz(incorrectIds));
+    await postQuizResult();
     moveNext();
   };
 
