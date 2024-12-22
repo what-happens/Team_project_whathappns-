@@ -6,13 +6,15 @@ import "swiper/css/navigation";
 import styled, { ThemeProvider, keyframes } from "styled-components";
 import theme from "../theme";
 import media from "../media";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 const CardSlider = () => {
   const [swiper, setSwiper] = useState(null);
   const [clearData, setClearData] = useState([]);
   const { stageId } = useParams();
+  const navigate = useNavigate();
   const [levelData, setLevelData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -31,11 +33,8 @@ const CardSlider = () => {
 
         if (response.ok) {
           const data = await response.json();
-          const levels = data.clearStage[0]?.levels || [];
-
+          const levels = data.clearStage[stageId]?.levels || [];
           setClearData(levels);
-          console.log("Levels:", levels);
-          console.log("data:", data);
         } else {
           const errorData = await response.json();
           console.error("Error:", errorData);
@@ -48,26 +47,57 @@ const CardSlider = () => {
     fetchClearStage();
   }, []);
 
-  useEffect(() => {
-    if (stageId) {
-      // 동적 import로 JSON 데이터 불러오기
-      import(`../../../data/stage${stageId}/meta.json`)
-        .then((module) => {
-          setLevelData(module.default);
-        })
-        .catch((err) => {
-          console.error("Error loading JSON:", err);
-          setError("Failed to load data.");
-        });
+  const loadStageData = async (id) => {
+    try {
+      setIsLoading(true);
+      setError(null);
+
+      if (!id || !/^\d+$/.test(id)) {
+        throw new Error("Invalid stage ID");
+      }
+      const module = await import(`../../../data/stage${id}/meta.json`);
+
+      if (!module.default || typeof module.default !== "object") {
+        throw new Error("Invalid data format");
+      }
+
+      setLevelData(module.default);
+      setIsLoading(false);
+    } catch (err) {
+      console.error("Error loading stage data:", err);
+
+      if (err.code === "MODULE_NOT_FOUND") {
+        navigate("/404", { replace: true });
+      } else if (err.message === "Invalid stage ID") {
+        setError("Invalid stage ID provided");
+        navigate("/error", { replace: true });
+      } else {
+        setError("Failed to load stage data");
+        navigate("/404", { replace: true });
+      }
+    } finally {
+      setIsLoading(false);
     }
+  };
+
+  useEffect(() => {
+    loadStageData(stageId);
   }, [stageId]);
 
-  if (error) {
-    return <ErrMessage>{error}</ErrMessage>;
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-lg">Loading...</div>
+      </div>
+    );
   }
 
-  if (!levelData) {
-    return <ErrMessage>Loading...</ErrMessage>;
+  if (error) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-lg text-red-600">{error}</div>
+      </div>
+    );
   }
 
   return (
@@ -99,20 +129,27 @@ const CardSlider = () => {
               spaceBetween: 50,
             },
             1500: {
-              slidesPerView: 4,
+              slidesPerView:
+                levelData && levelData.length < 4 ? levelData.length : 4,
               spaceBetween: 50,
             },
           }}
           className="mySwiper"
         >
           {Array.isArray(levelData) &&
-            levelData.map((levelCard) => {
+            levelData.map((levelCard, index) => {
               const imageUrl = require(`../../../assets/${levelCard.img}`);
+              const isLastItem = index === levelData.length - 1;
+
               return (
                 <SwiperSlide key={levelCard.level_id}>
                   <CardWrapper>
                     <CardLink
-                      to={`/study/${stageId}/${levelCard.level_id}`}
+                      to={
+                        isLastItem
+                          ? `/exercise/${stageId}/${levelCard.level_id}`
+                          : `/study/${stageId}/${levelCard.level_id}`
+                      }
                       className="mr-2"
                     >
                       <CardImg
@@ -121,7 +158,14 @@ const CardSlider = () => {
                         <img src={imageUrl} alt="level 아이콘" />
                       </CardImg>
                       <CardTitle>{levelCard.level_name}</CardTitle>
-                      <CardContent>{levelCard.theme}</CardContent>
+                      <CardContent>
+                        {levelCard.theme.split("\n").map((line, i) => (
+                          <React.Fragment key={i}>
+                            {line}
+                            <br />
+                          </React.Fragment>
+                        ))}
+                      </CardContent>
                     </CardLink>
                   </CardWrapper>
                 </SwiperSlide>
@@ -168,26 +212,6 @@ const jello = keyframes`
 `;
 
 // start styled-cpomponents
-const ErrMessage = styled.div`
-  ${({ theme }) => theme.tesktop`
-    font-size: 3rem;
-  `};
-  ${({ theme }) => theme.laptop`
-    font-size: 3rem;
-  `};
-  ${({ theme }) => theme.tablet`
-    font-size: 3rem;
-  `};
-  ${({ theme }) => theme.mobile2`
-    font-size: 3rem;
-  `};
-  ${({ theme }) => theme.mobile`
-    font-size: 3rem;
-  `};
-  font-size: 3rem;
-  font-weight: 700;
-  color: #fff;
-`;
 const SliderWrapper = styled.div`
   ${({ theme }) => theme.tesktop`
     width: 70rem;
@@ -208,6 +232,7 @@ const SliderWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
   .mySwiper {
     padding: 3rem;
   }
@@ -245,21 +270,24 @@ const StyledButton = styled.button`
 `;
 
 const CardWrapper = styled.div`
+  ${({ theme }) => theme.tablet`
+    height: 40rem;
+  `};
   ${({ theme }) => theme.mobile`
-    gap: 0.5rem;
+    height: 38rem;
   `};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  height: 50vh; // 수정?
+  height: 45rem;
+  padding: 2rem;
   background-color: white;
   border-radius: 20px;
   transition: all 0.5s ease;
   border: 1px solid #c4c4c4;
   box-sizing: border-box;
-  /* box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38); */
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   &:hover {
     transform: scale(1.05);
@@ -302,6 +330,7 @@ const CardImg = styled.div`
   width: 20rem;
   height: 20rem;
   border-radius: 50rem;
+  flex-shrink: 0;
 
   img {
     ${({ theme }) => theme.laptop`
@@ -336,7 +365,7 @@ const CardTitle = styled.h3`
   color: var(--main-color);
 `;
 
-const CardContent = styled.span`
+const CardContent = styled.p`
   ${({ theme }) => theme.laptop`
     font-size: 1.8rem;
   `};
@@ -348,7 +377,9 @@ const CardContent = styled.span`
   `};
   font-size: 2rem;
   font-weight: 500;
-  line-height: 4rem;
+  height: 4rem;
+  line-height: 3rem;
   color: #000;
+  word-wrap: keep-all;
 `;
 // end styled-cpomponents

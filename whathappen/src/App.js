@@ -28,11 +28,11 @@ function App() {
 
         <Route path="/joinsuccess" element={<JoinSuccess />} />
         <Route path="/*" element={<NotFound />} />
-        <Route path="/study/*" element={<Study />} />
 
         <Route element={<ProtectedRoute />}>
           <Route path="/quizpage" element={<QuizPage />} />
           <Route path="/exercise/:stage/:level" element={<Exercise />} />
+          <Route path="/study/*" element={<Study />} />
 
           <Route element={<AuthHeader />}>
             <Route path="/mypage" element={<MyPage />} />

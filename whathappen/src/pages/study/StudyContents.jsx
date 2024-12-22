@@ -1,50 +1,106 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import media from "./media";
-import { Menu, AlignRight } from "lucide-react"; // 햄버거 메뉴 아이콘용
+import { Menu, AlignRight } from "lucide-react";
 
 import back from "../../assets/back_link.png";
 
 const LearningPage = () => {
   const { stageId, levelId } = useParams();
+  const navigate = useNavigate();
   const [learnData, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeLevel, setActiveLevel] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isVisible = Number(stageId) === 0 && Number(levelId) === 0;
 
-  useEffect(() => {
-    if (stageId && levelId) {
-      import(`../../data/stage${stageId}/learn${levelId}.json`)
-        .then((module) => {
-          setData(module.default);
-        })
-        .catch((err) => {
-          console.error("Error loading JSON:", err);
-          setError("Failed to load data.");
-        });
+  const loadStageData = async (stageId, levelId) => {
+    try {
+      setIsLoading(true);
+      setError(null);
+
+      // 유효한 stageId 체크 (예: 숫자만 허용)
+      if ((!stageId && levelId) || !/^\d+$/.test(stageId && levelId)) {
+        throw new Error("Invalid stage ID");
+      }
+
+      const module = await import(
+        `../../data/stage${stageId}/learn${levelId}.json`
+      );
+
+      // JSON 데이터가 예상한 형식인지 검증
+      if (!module.default || typeof module.default !== "object") {
+        throw new Error("Invalid data format");
+      }
+
+      setData(module.default);
+      setIsLoading(false);
+    } catch (err) {
+      console.error("Error loading stage data:", err);
+
+      // 에러 종류에 따른 처리
+      if (err.code === "MODULE_NOT_FOUND") {
+        navigate("/NotFound", { replace: true });
+      } else if (err.message === "Invalid stage ID") {
+        setError("Invalid stage ID provided");
+        navigate("/NotFound", { replace: true });
+      } else {
+        setError("Failed to load stage data");
+        navigate("/NotFound", { replace: true });
+      }
+    } finally {
+      setIsLoading(false);
     }
+  };
+
+  useEffect(() => {
+    loadStageData(stageId, levelId);
   }, [stageId, levelId]);
 
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-lg">Loading...</div>
+      </div>
+    );
+  }
+
   if (error) {
-    return <div>{error}</div>;
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-lg text-red-600">{error}</div>
+      </div>
+    );
   }
 
   if (!learnData) {
-    return <div>Loading...</div>;
+    return null;
   }
 
   const handlePrevLevel = () => {
     if (activeLevel > 0) {
       setActiveLevel(activeLevel - 1);
+      topScroll();
     }
   };
 
   const handleNextLevel = () => {
     if (activeLevel < learnData.length - 1) {
       setActiveLevel(activeLevel + 1);
+      topScroll();
+    }
+  };
+
+  const topScroll = () => {
+    const mainElement = document.querySelector("main");
+    if (mainElement) {
+      mainElement.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -55,6 +111,7 @@ const LearningPage = () => {
   const handleMenuItemClick = (index) => {
     setActiveLevel(index);
     setIsMenuOpen(false);
+    topScroll();
   };
 
   return (
@@ -76,18 +133,43 @@ const LearningPage = () => {
           <BackLink to={`/study/${stageId}`} className="mr-2" />
           <h1 className="sr-only">학습 페이지</h1>
           <MenuTitle>Level 01</MenuTitle>
-          <div>
+          <div
+            style={{
+              height: "100%",
+            }}
+          >
             <h3 className="sr-only">목차</h3>
-            <nav>
-              {learnData.map((level, index) => (
-                <MenuItem
-                  key={level.level_id}
-                  active={activeLevel === index}
-                  onClick={() => handleMenuItemClick(index)}
-                >
-                  {level.title}
-                </MenuItem>
-              ))}
+            <nav
+              style={{
+                height: "100%",
+                padding: "0",
+                margin: "0",
+                position: "relative",
+              }}
+            >
+              <ol
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: 0,
+                  height: "100%",
+                }}
+              >
+                {learnData.map((level, index) => (
+                  <MenuItem
+                    key={level.level_id}
+                    active={activeLevel === index}
+                    onClick={() => handleMenuItemClick(index)}
+                  >
+                    {level.title}
+                  </MenuItem>
+                ))}
+                <MenuLink>
+                  <ExerciseLink to={`/exercise/${stageId}/${levelId}`}>
+                    실습하러 가기 GO!
+                  </ExerciseLink>
+                </MenuLink>
+              </ol>
             </nav>
           </div>
         </HeaderContainer>
@@ -203,9 +285,9 @@ const BackLink = styled(Link)`
   position: fixed;
   top: 2rem;
   left: 7rem;
-  background-image: url(${back});
   width: 5rem;
   height: 5rem;
+  background-image: url(${back});
   background-size: contain;
   text-decoration: none;
   outline: none;
@@ -244,6 +326,7 @@ const HeaderContainer = styled.header`
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   `};
   width: 40rem;
+  height: 100%;
   border: 1px solid var(--main-color);
   border-radius: 20px;
   transition: all 0.3s ease;
@@ -292,10 +375,11 @@ const MenuItem = styled.li`
   line-height: 5rem;
   font-weight: 500;
   cursor: pointer;
-  background-color: ${(props) => (props.active ? "#7392FF" : "transparent")};
+  background-color: ${(props) =>
+    props.active ? "var(--main-color)" : "transparent"};
   color: ${(props) => (props.active ? "#ffffff" : "#000")};
   &:hover {
-    background-color: var(--main-color);
+    background-color: #7392ff;
     color: #ffffff;
   }
   transition: background-color 0.3s ease;
@@ -422,4 +506,29 @@ const Button = styled.button`
     background-color: var(--main-color);
     color: #fff;
   }
+`;
+
+const MenuLink = styled.li`
+  display: block;
+  position: absolute;
+  bottom: 10rem;
+  line-height: normal;
+  padding: 2rem;
+  width: 100%;
+  list-style: none;
+  margin-top: auto;
+  text-align: center;
+`;
+
+const ExerciseLink = styled(Link)`
+  display: block;
+  text-decoration: none;
+  outline: none;
+  font-size: 2.5rem;
+  line-height: 6rem;
+  font-weight: 700;
+  background: var(--main-color);
+  border-radius: 2rem;
+  color: #fff;
+  cursor: pointer;
 `;
