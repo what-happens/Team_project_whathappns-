@@ -28,6 +28,7 @@ export default function Exercise() {
     setExerciseSubcode,
     markedUserAnswers,
     parseExercise,
+    resetExercise,
   } = useExercise();
 
   const { stage, level } = useParams();
@@ -54,6 +55,7 @@ export default function Exercise() {
 
       if (response.ok) {
         navigate("/study/finish");
+        resetExercise();
       }
     } catch (error) {
       console.error("error");
@@ -79,7 +81,9 @@ export default function Exercise() {
 
   const onConfirmModal = () => {
     navigate("/study");
+    resetExercise();
   };
+
   useEffect(() => {
     // 비동기 작업을 처리하는 함수
     const loadJsonData = async () => {
