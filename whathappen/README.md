@@ -688,9 +688,9 @@
 
 - <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">윤시운</a>
 - <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/hwigyoung's-Trouble-shooting" target="_blank">이휘경</a>
-- <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">박예진</a>
+- <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Yejin's-Trouble-shooting" target="_blank">박예진</a>
 - <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/yewon's-Trouble-shooting" target="_blank">김예원</a>
-- <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Siwoon's-Trouble-shooting" target="_blank">유다형</a>
+- <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/Dahyung's-Trouble-shooting" target="_blank">유다형</a>
 
 <br>
 
