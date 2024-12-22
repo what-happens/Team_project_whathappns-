@@ -1,0 +1,29 @@
+{
+  "level_id": 0,
+  "stage_id": 5,
+  "code_type": "css",
+  "code": ".container {width: 100%;display: flex;justify-content: space-around;}.box {background-color: #4caf50;color: white;text-align: center;padding: 10px;margin: 5px;}.box1 {width: 20|=0=|;}.box2 {width: 20|=1=|;}.box3 {width: 20|=2=|;}",
+  "sub_code": "<!DOCTYPE html><html lang='ko'><head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1.0' /><title></title><link rel='stylesheet' href='1.css' /></head><body><div class='container'><div class='box box1'>유동적</div><div class='box box2'>단위</div><div class='box box3'>알아보기</div></div></body></html>",
+  "level_name": "Level 01",
+  "theme": "반응형 단위 설정하기",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 박스의 너비를 컨테이너(부모)너비에 상대적인 단위로 설정해보세요.",
+      "choices": ["px", "em", "rem", "%"],
+      "answer": "%"
+    },
+    {
+      "q_id": 1,
+      "q_title": " Q2. 박스의 너비를 글꼴 크기에 상대적인 단위로 설정해보세요 ",
+      "choices": ["em", "px", "%", "rem"],
+      "answer": "em"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. 박스의 너비를 루트 글꼴 크기에 상대적인 단위로 설정해보세요",
+      "choices": ["%", "rem", "em", "px"],
+      "answer": "rem"
+    }
+  ]
+}
