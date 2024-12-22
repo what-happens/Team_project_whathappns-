@@ -10,12 +10,14 @@ import back from "../../assets/back_link.png";
 import { useBreakpoints } from "../../hooks/useBreakpoints";
 import Button from "../../components/Button";
 import MobileModal from "./components/MobileModal";
+import ConfirmModal from "../quizResult/components/ConfirmModal";
 
 export default function Exercise() {
   const [editorWidth, setEditorWidth] = useState(40);
   const [renderWidth, setRenderWidth] = useState(60);
   const [isShow, setIsShow] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
+  const [isShowBack, setIsShowBack] = useState(false);
   const breakpoints = useBreakpoints();
   const navigate = useNavigate();
 
@@ -66,6 +68,17 @@ export default function Exercise() {
     setIsShow(false);
   };
 
+  const closeConfirmModal = () => {
+    setIsShowBack(false);
+  };
+
+  const openConfirmModal = () => {
+    setIsShowBack(true);
+  };
+
+  const onConfirmModal = () => {
+    navigate("/study");
+  };
   useEffect(() => {
     // 비동기 작업을 처리하는 함수
     const loadJsonData = async () => {
@@ -111,7 +124,7 @@ export default function Exercise() {
     <>
       <ExerciseHeader>
         <nav>
-          <BackLink to="/study" />
+          <BackBtn onClick={openConfirmModal} />
         </nav>
         {!breakpoints.pc && (
           <Button onClick={() => setIsShow(true)}>정답 화면 보기</Button>
@@ -142,6 +155,13 @@ export default function Exercise() {
         <MessageOverlay>
           <Message>모든 문제를 풀어주세요</Message>
         </MessageOverlay>
+      )}
+      {isShowBack && (
+        <ConfirmModal
+          isOpen={isShowBack}
+          onClose={closeConfirmModal}
+          onConfirm={onConfirmModal}
+        />
       )}
     </>
   );
@@ -189,7 +209,7 @@ const RightContainer = styled.div`
   }
 `;
 
-const BackLink = styled(Link)`
+const BackBtn = styled.button`
   width: 4rem;
   height: 4rem;
   display: inline-block;
@@ -197,6 +217,8 @@ const BackLink = styled(Link)`
   background-size: contain;
   text-decoration: none;
   outline: none;
+  border: none;
+  background-color: transparent;
 `;
 
 const StyledLink = styled(Link)`
