@@ -140,7 +140,7 @@ export default function StudyFinish() {
           <Title>학습을 완료하였습니다!!</Title>
           <Subtitle>다음 학습도 도전 해보세요!</Subtitle>
         </div>
-        <ActionLink to="/">메인페이지로 이동</ActionLink>
+        <ActionLink to="/mypage">마이페이지로 이동</ActionLink>
       </Container>
     </ThemeProvider>
   );
