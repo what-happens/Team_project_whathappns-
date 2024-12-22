@@ -10,13 +10,13 @@ import {
   setSubCode,
   setActiveTab,
   setIncorrectQid,
+  resetExerciseState,
 } from "../redux/exerciseSlice";
-import { ParserFactory } from "../utils/parser";
-import { useEffect } from "react";
 
 const useExercise = () => {
-  const { questions, codeString, isShowAnswers, type, userAnswers } =
-    useSelector((state) => state.exercise);
+  const { questions, isShowAnswers, userAnswers } = useSelector(
+    (state) => state.exercise
+  );
 
   const dispatch = useDispatch();
 
@@ -41,10 +41,8 @@ const useExercise = () => {
     dispatch(setAnswers(answer));
   };
 
-  const parseExercise = (type) => {
-    const parser = ParserFactory[type];
-    const parsedSegment = parser(codeString, questions);
-    dispatch(setParsed(parsedSegment));
+  const parseExercise = () => {
+    dispatch(setParsed());
   };
 
   const setExerciseType = (type) => {
@@ -88,11 +86,9 @@ const useExercise = () => {
     return { isCorrect, isComplete };
   };
 
-  useEffect(() => {
-    if (codeString !== "" && questions.length !== 0) {
-      parseExercise(type);
-    }
-  }, [codeString, questions]);
+  const resetExercise = () => {
+    dispatch(resetExerciseState());
+  };
 
   return {
     setExerciseCode,
@@ -105,6 +101,7 @@ const useExercise = () => {
     setExerciseSubcode,
     setExerciseActiveTab,
     markedUserAnswers,
+    resetExercise,
   };
 };
 

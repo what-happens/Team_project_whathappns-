@@ -1,0 +1,23 @@
+{
+  "level_id": 2,
+  "stage_id": 5,
+  "code_type": "css",
+  "code": "body {font-family: Arial, sans-serif;display: flex;justify-content: center;align-items: center;height: 100vh;margin: 0;background-color: #f0f8ff;}.game {text-align: center;}.responsive-button {padding: 20px 40px;font-size: 16px;background-color: lightblue;border: 2px solid #007acc;border-radius: 8px;cursor: pointer;transition: all 0.3s ease;}@media (|=0=|: 768px) {.responsive-button {background-color: lightcoral;padding: 15px 30px;font-size: 14px;}}@media (|=1=|: 480px) {.responsive-button {background-color: lightgreen;padding: 10px 20px;font-size: 12px;}}",
+  "sub_code": "<!DOCTYPE html><html lang='ko-KR'><head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1.0' /><title></title><link rel='stylesheet' href='5.css' /></head><body><div class='game'><h1>반응형 버튼 미니게임</h1><p>화면 크기를 조정하며 버튼의 색상과 크기를 확인하세요!</p><button class='responsive-button'>button</button></div></body></html>",
+  "level_name": "Level 03",
+  "theme": "반응형 조건 설정하기",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 화면 크기가 최대 768px일 때 요소의 스타일이 변경되도록 설정해보세요.",
+      "choices": ["max-width", "min-width", "min", "max"],
+      "answer": "max-width"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2. 화면 크기가 최대 480px일 때 요소의 스타일이 변경되도록 설정해보세요",
+      "choices": ["min", "max-width ", "max", "min-width"],
+      "answer": "max-width "
+    }
+  ]
+}

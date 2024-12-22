@@ -1,0 +1,37 @@
+{
+  "level_id": 1,
+  "stage_id": 4,
+  "code_type": "css",
+  "code": "div {width: 150px;height: 50px;background-color: orange;color: white;margin: 10px;display: flex;justify-content: center;align-items: center;}.box1:hover {transform: scale(2);width: 300px;|=0=|: width, transform;transition-duration: 0.5s, 0.5s;transition-timing-function: |=ease, ease=|;|=1=|: 0s, 0.5s;}.box2:hover {transform: scale(1.5);|=2=|: 2s;transition-delay: 0s;}",
+  "sub_code": "<!DOCTYPE html><html lang='ko-KR'><head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1.0' /><title>Transition 실습</title><link rel='stylesheet' href='styles.css' /></head><body><div class='box1'>박스 1</div><div class='box2'>박스 2</div></body></html>",
+  "level_name": "Level 02",
+  "theme": "transition 효과",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 박스에 트랜지션을 적용할 속성을 설정해보세요",
+      "choices": ["transition-property", "transform", "transition-delay"],
+      "answer": "transition-property"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2. 박스에 효과가 0.5초 후에 시작되도록 설정해보세요",
+      "choices": [
+        "transition-property",
+        "transition-duration",
+        "transition-delay"
+      ],
+      "answer": "transition-delay"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. 박스가 2초 동안 확장되도록 트랜지션 시간을 설정해보세요 ",
+      "choices": [
+        "transition-property",
+        "transition-duration",
+        "transition-delay"
+      ],
+      "answer": "transition-duration"
+    }
+  ]
+}

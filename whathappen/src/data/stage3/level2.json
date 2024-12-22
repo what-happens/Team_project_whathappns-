@@ -1,0 +1,41 @@
+{
+  "level_id": 2,
+  "stage_id": 3,
+  "level_name": "level 03",
+  "theme": "다양한 positiond을 알아보자",
+  "code": ".container1 {position: |=0=|;border: 2px solid black;padding: 10px;}.container2 {position: |=1=|;left: 20px;top: 20px;border: 2px solid red;padding: 10px;}.container3 {position: relative;height: 100px;border: 2px solid black;}.box {position: |=2=|;right: 10px;bottom: 10px;border: 2px solid blue;padding: 5px;}body {height: 2000px; }.box1 {position: |=3=|;bottom: 20px;right: 20px;border: 2px solid green;padding: 10px;}.container4 {height: 400px;overflow-y: scroll;border: 2px solid black;padding: 10px;}.spacer {height: 100px;}.box2 {position: |=4=|;top: 0;background-color: yellow;padding: 10px;margin: 10px 0;}",
+  "sub_code": "<div class='container1'>이 요소는 고정된 값입니다.</div><div class='container2'>이 요소는 상대적으로 배치된 값입니다.</div><div>Normal flow</div><div class='container3'><div class='box'>이 요소는 절대적인 위치로 배치된 값입니다.</div></div><p>아래로 스크롤하세요.</p><div class='box1'>이 요소는 고정되었습니다.</div><div class='container'><div class='spacer'></div><div class='box2'>이 요소는 스크롤에 따라 고정될수도, 상대적인 위치에 놓이는 요소가 될 수도 있습니다</div></div>",
+  "code_type": "css",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 이 요소를 position의 기본값으로 설정해 줍니다.",
+      "choices": ["default", "static", "normal"],
+      "answer": "static"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2. 이 요소를 상대적으로 배치해 주세요.",
+      "choices": ["absolute", "relatively", "relative"],
+      "answer": "relative"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. 이 요소를 절대적인 위치에 배치되게 해주세요.",
+      "choices": ["absolute", "fixed", "relative"],
+      "answer": "absolute"
+    },
+    {
+      "q_id": 3,
+      "q_title": "Q4. 요소가 고정되도록 설정해 보세요.",
+      "choices": ["fixed", "stabled", "sticked"],
+      "answer": "fixed"
+    },
+    {
+      "q_id": 4,
+      "q_title": "Q5. 요소가 위치에 따라 고정되거나 상대적인 위치에 놓이게 설정해 보세요.",
+      "choices": ["relative", "sticky", "block"],
+      "answer": "sticky"
+    }
+  ]
+}

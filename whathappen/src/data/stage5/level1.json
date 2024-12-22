@@ -1,0 +1,29 @@
+{
+  "level_id": 1,
+  "stage_id": 5,
+  "code_type": "css",
+  "code": ".responsive-box {width: min(600px, 90%);margin: auto;padding: 20px;background-color: #e0e0e0;border-radius: |=0=|(0px, min(8px, |=1=|((100vw - 4px - 100%) * 9999)));}h2 {color: #444;}p {font-size: max(14px, |=2=|(16px, 4vw));}",
+  "sub_code": "<!DOCTYPE html><html lang='ko-KR'><head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1.0' /><title></title><link rel='stylesheet' href='3.css' /></head><body><div class='responsive-box'><h2>반응형 박스</h2><p>이 박스는 화면 크기에 따라 너비가 조절됩니다.</p></div></body></html>",
+  "level_name": "Level 02",
+  "theme": "반응형 속성 적용하기",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 0px과 min 값 중 더 큰 값이 border-radius에 적용되도록 해보세요.",
+      "choices": ["width", "rem", "clamp", "max"],
+      "answer": "max"
+    },
+    {
+      "q_id": 1,
+      "q_title": " Q2. border-radius 속성에서 수학적 연산을 수행하는 함수를 적용해보세요 ",
+      "choices": ["function", "calc", "max", "clamp"],
+      "answer": "calc"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. 16px과 4vw 중 더 작은 값이 글자 크기에 적용되도록 해보세요",
+      "choices": ["calc", "max", "min", "clamp"],
+      "answer": "min"
+    }
+  ]
+}

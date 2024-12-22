@@ -1,0 +1,40 @@
+{
+  "level_id": 0,
+  "stage_id": 4,
+  "code_type": "css",
+  "code": "div {width: 100px;height: 100px;background-color: purple;margin: 20px;display: flex;justify-content: center;align-items: center;text-align: center;color: white;transition: transform 0.3s ease;}.box1:hover {transform: |=0=|(-50px);}.box2:hover {transform: |=1=|(2);} .box3:hover {transform: |=2=|(40deg);}.box4:hover {transform: |=3=|;}",
+  "sub_code": "<!DOCTYPE html><html lang='ko-KR'><head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1.0' /><title>transform실습</title><link rel='stylesheet' href='style.css' /></head><body><div class='box1'>박스 1</div><div class='box2'>박스 2</div><div class='box3'>박스 3</div><div class='box4'>박스 4</div></body></html>",
+  "level_name": "Level 01",
+  "theme": "transform 효과",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 박스를 수직 방향 위로 이동시켜보세요",
+      "choices": ["translate", "translateY", "translateX", "transform"],
+      "answer": "translateY"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2. 박스 크기가 2배로 확대되도록 설정하세요",
+      "choices": ["scale", "translate", "translateX", "scaleY"],
+      "answer": "scale"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. 박스에 X축 방향으로 40도 기울어지는 효과를 적용해보세요 ",
+      "choices": ["rotateX", "skew", "skewX", "translate"],
+      "answer": "skewX"
+    },
+    {
+      "q_id": 3,
+      "q_title": " Q4. 박스에 90도 반시계 방향으로 회전하는 효과를 적용해보세요 ",
+      "choices": [
+        "rotate(90deg)",
+        "rotate(-90deg)",
+        "skew(-90deg)",
+        "scale(90deg)"
+      ],
+      "answer": "rotate(-90deg)"
+    }
+  ]
+}

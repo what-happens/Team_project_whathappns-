@@ -16,8 +16,12 @@ export default function CodeDisplay({ isMobile }) {
         indent_size: 2,
         end_with_newline: true,
         wrap_line_length: 80,
-        wrap_attributes: "force",
+        wrap_attributes: "force-aligned",
+        wrap_attributes_indent_size: 2,
+        preserve_newlines: true,
         indent_empty_lines: true,
+        inline_elements: false,
+        extra_liners: ["p", "span", "a", "strong", "em", "button", "img"],
       }),
     css: (codeString) =>
       css_beautify(codeString, {
