@@ -10,6 +10,7 @@ import {
   setSubCode,
   setActiveTab,
   setIncorrectQid,
+  resetExerciseState,
 } from "../redux/exerciseSlice";
 
 const useExercise = () => {
@@ -85,6 +86,10 @@ const useExercise = () => {
     return { isCorrect, isComplete };
   };
 
+  const resetExercise = () => {
+    dispatch(resetExerciseState());
+  };
+
   return {
     setExerciseCode,
     setExerciseQuestions,
@@ -96,6 +101,7 @@ const useExercise = () => {
     setExerciseSubcode,
     setExerciseActiveTab,
     markedUserAnswers,
+    resetExercise,
   };
 };
 

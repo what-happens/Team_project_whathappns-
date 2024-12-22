@@ -53,6 +53,9 @@ const exerciseSlice = createSlice({
     setIncorrectQid(state, action) {
       state.inCorrectQid = action.payload;
     },
+    resetExerciseState(state) {
+      Object.assign(state, initialState);
+    },
   },
 });
 
@@ -67,6 +70,7 @@ export const {
   setSubCode,
   setActiveTab,
   setIncorrectQid,
+  resetExerciseState,
 } = exerciseSlice.actions;
 
 export default exerciseSlice.reducer;
