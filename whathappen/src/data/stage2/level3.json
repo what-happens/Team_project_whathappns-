@@ -1,0 +1,52 @@
+{
+  "level_id": 3,
+  "stage_id": 2,
+  "code_type": "css",
+  "code": "body {margin: 0;padding: 20px;background-color: #f0f0f0;font-family: 'Arial', sans-serif;display: flex;flex-direction: column;justify-content: center;align-items: center;min-height: 100vh;gap: 20px;}.flip-button {font-size: 16px;color: white;padding: 10px 20px;background-color: #3498db;border: none;border-radius: 5px;cursor: pointer;transition: background-color 0.3s;}.flip-button|=0=| {background-color: #2980b9;}.flip-button|=1=| {transform: scale(0.98);}|=2=|business-card {perspective: 1000px;width: 400px;height: 250px;position: relative;}.card-front|=3=|.card-back {position: absolute;width: 100%;height: 100%;padding: 20px;box-sizing: border-box;border-radius: 10px;box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);backface-visibility: hidden;transition: transform 0.6s;}.card-front {background-color: white;transform: rotateY(0deg);}.card-back {background-color: #2c3e50;color: white;transform: rotateY(180deg);}#business-card.flipped .card-front {transform: rotateY(180deg);}#business-card.flipped .card-back {transform: rotateY(360deg);}.company-logo {width: 100px;}.personal-info h1 {font-size: 28px;color: #2c3e50;margin: 10px 0;}.personal-info .title {font-size: 18px;color: #7f8c8d;margin: 5px 0;}.company-info {margin: 15px 0;font-weight: 500;|=4=|: #34495e;}.company-info p {margin: 5px 0;}.contact-info a:link {color: white;text-decoration: underline;display: block;margin: 5px 0;}.contact-info a:visited {color: white;}.contact-info a:hover {color: #3498db;}.contact-info a::before {content: '→';margin-right: 10px;}.contact-info a::after {content: '';display: block;width: 0;height: 1px;background-color: #3498db;transition: width 0.3s;}.contact-info a:hover::after {width: 100%;}.profile-img {display: flex;justify-content: center;align-items: center;margin-bottom: 20px;}.profile-pic {width: 100px;height: 100px;border: 2px solid white;display: flex;justify-content: center;align-items: center;}.social-links {margin: 20px 0;text-align: center;}.social-link {color: white;|=5=|: underline;margin: 0 10px;transition: color 0.3s;}.social-link:hover {color: #3498db;}",
+  "sub_code": "<!DOCTYPE html><html lang='ko'><head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1.0' /><title>명함 만들기 CSS 실습</title><link rel='stylesheet' href='style.css' /></head><body><button id='flip-button' class='flip-button'>명함 뒤집기</button><div id='business-card'><div class='card-front'><img class='company-logo' src='이게되네.png' alt='회사 로고' /><div class='personal-info'><h1 class='name'>오르미</h1><p class='title'>프론트엔드 개발자</p></div><div class='company-info'><p>이게되네컴퍼니</p><p>웹개발팀</p></div></div><div class='card-back'><div class='profile-img'><div class='profile-pic'>Profile Pic</div></div><div class='contact-info'><a href='tel:010-1234-5678' class='phone'>010-1234-5678</a><a href='mailto:oreumi@tech.com' class='email'>oreumi@tech.com</a><a href='https://www.whathappened.com' class='website'>www.whathappened.com</a></div><div class='social-links'><a href='#' class='social-link'>LinkedIn</a><a href='#' class='social-link'>GitHub</a><a href='#' class='social-link'>Instagram</a></div></div></div><script>document.addEventListener('DOMContentLoaded', function () {const flipButton = document.getElementById('flip-button');const businessCard = document.getElementById('business-card');flipButton.addEventListener('click', function () {businessCard.classList.toggle('flipped');});});</script></body></html>",
+  "level_name": "Master",
+  "theme": "명함 만들기",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 버튼에 마우스를 가져다 댔을 때 버튼의 색상이 변경되도록 해보세요.",
+      "choices": [[":mouse", ":over", ":hover", ":on"]],
+      "answer": ":hover"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2. 버튼을 클릭했을 때 버튼의 사이즈가 커지도록 해보세요.",
+      "choices": [":click", ":active", ":pressed", ":down"],
+      "answer": ":active"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. 한 번만 사용할 수 있는 고유한 식별자로 카드 컨테이너에 스타일을 적용해 주세요.",
+      "choices": ["@", "#", ".", "$"],
+      "answer": "#"
+    },
+    {
+      "q_id": 3,
+      "q_title": "Q4. 카드의 앞면과 뒷면에 같은 스타일을 추가하도록 주세요.",
+      "choices": [".", ",", ":", "@"],
+      "answer": ","
+    },
+    {
+      "q_id": 4,
+      "q_title": "Q5. 글꼴 색상을 설정해 주세요.",
+      "choices": ["text-color", "font-color", "color", "text"],
+      "answer": "color"
+    },
+    {
+      "q_id": 5,
+      "q_title": "Q6..social-link에 해당하는 요소들에 밑줄을 쳐주세요.",
+      "choices": [
+        "font-decoration",
+        "text-decoration",
+        "underline",
+        "text-line"
+      ],
+      "answer": "text-decoration"
+    }
+  ]
+}

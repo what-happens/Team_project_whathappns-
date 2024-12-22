@@ -2,64 +2,46 @@
   "level_id": 1,
   "stage_id": 2,
   "code_type": "css",
-  "code": "|=0=| {margin: 0;padding: 0;}|=1=|container {padding: 20px;}|=2=|box {background-color: #f0f0f0;}|=3=| {color: blue;}p|=4=|li= {margin: 10px 0;}#container|=5=| {color: green;}ul |=6=| li {list-style: square;}h1 |=7=| span {color: red;}.box |=8=| ul {border: 1px solid black;}",
-  "sub_code": "<div id='container'><h1>제목</h1><div class='box'><p>첫 번째 단락</p><p>두 번째 단락</p></div><ul><li>항목 1</li><li>항목 2</li><li>항목 3</li></ul><span>형제 1</span><span>형제 2</span><span>형제 3</span></div><div id='container'><h1>제목</h1><div class='box'><p>첫 번째 단락</p><p>두 번째 단락</p></div><ul><li>항목 1</li><li>항목 2</li><li>항목 3</li></ul><span>형제 1</span><span>형제 2</span><span>형제 3</span></div><div id='container'><h1>제목</h1><div class='box'><p>첫 번째 단락</p><p>두 번째 단락</p></div><ul><li>항목 1</li><li>항목 2</li><li>항목 3</li></ul><span>형제 1</span><span>형제 2</span><span>형제 3</span></div><div id='container'><h1>제목</h1><div class='box'><p>첫 번째 단락</p><p>두 번째 단락</p></div><ul><li>항목 1</li><li>항목 2</li><li>항목 3</li></ul><span>형제 1</span><span>형제 2</span><span>형제 3</span></div><div id='container'><h1>제목</h1><div class='box'><p>첫 번째 단락</p><p>두 번째 단락</p></div><ul><li>항목 1</li><li>항목 2</li><li>항목 3</li></ul><span>형제 1</span><span>형제 2</span><span>형제 3</span></div><div id='container'><h1>제목</h1><div class='box'><p>첫 번째 단락</p><p>두 번째 단락</p></div><ul><li>항목 1</li><li>항목 2</li><li>항목 3</li></ul><span>형제 1</span><span>형제 2</span><span>형제 3</span></div><div id='container'><h1>제목</h1><div class='box'><p>첫 번째 단락</p><p>두 번째 단락</p></div><ul><li>항목 1</li><li>항목 2</li><li>항목 3</li></ul><span>형제 1</span><span>형제 2</span><span>형제 3</span></div><div id='container'><h1>제목</h1><div class='box'><p>첫 번째 단락</p><p>두 번째 단락</p></div><ul><li>항목 1</li><li>항목 2</li><li>항목 3</li></ul><span>형제 1</span><span>형제 2</span><span>형제 3</span></div><div id='container'><h1>제목</h1><div class='box'><p>첫 번째 단락</p><p>두 번째 단락</p></div><ul><li>항목 1</li><li>항목 2</li><li>항목 3</li></ul><span>형제 1</span><span>형제 2</span><span>형제 3</span></div>",
-  "level_name": "선택자",
-  "theme": "선택자를 사용해 스타일 적용하기!",
+  "code": ".container {padding: 20px;}.text1 {|=0=|: #FF5733;background-color: rgb(240, 240, 240);}.text2 {|=1=|: 1.2rem;}.text3 {|=2=|: 700;}.text4{|=3=|: underline wavy blue;}.item1 {|=4=|: center;|=5=|: 1.8;}",
+  "sub_code": "<div class='container'><h1>텍스트 스타일링 예제</h1><p class='text1'>t1</p><p class='text2'>t2</p><p class='text3'>t3</p><p class='text4'>t4</p><div class='item1'>중앙 정렬된 텍스트입니다여러 줄의 텍스트가 있을 때행간이 적용됩니다</div></div>",
+  "level_name": "level 02",
+  "theme": "텍스트를 다채롭게!",
   "questions": [
     {
       "q_id": 0,
-      "q_title": "Q1. 이 선택자는 HTML 내 모든 태그에 스타일을 적용합니다.",
-      "choices": ["*", "%", "$", "#"],
-      "answer": "*"
+      "q_title": "Q1. 텍스트의 색상을 설정해 보세요.",
+      "choices": ["font-color", "color", "text-color"],
+      "answer": "color"
     },
     {
       "q_id": 1,
-      "q_title": "Q2. HTML 문서 내에서 한 번만 사용될 수 있는 고유한 식별자는?",
-      "choices": ["$", ".", "#", "+"],
-      "answer": "#"
+      "q_title": "Q2. 텍스트의 크기를 설정해 보세요.",
+      "choices": ["font-extent", "size", "font-size"],
+      "answer": "font-size"
     },
     {
       "q_id": 2,
-      "q_title": "Q3. 특정 요소를 선택해 스타일을 적용시키고, 재사용성이 높아 많이 사용됩니다.",
-      "choices": ["#", "!", "%", "."],
-      "answer": "."
+      "q_title": "Q3. 텍스트의 굵기를 설정해 보세요.",
+      "choices": ["weight", "bold", "font-weight"],
+      "answer": "font-weight"
     },
     {
       "q_id": 3,
-      "q_title": "Q4. 특정 HTML 태그를 선택해 스타일을 적용합니다. 제목1의 배경색을 토마토로 바꿔보세요. ",
-      "choices": ["input", "*", "h1", "p"],
-      "answer": "h1"
+      "q_title": "Q4. 텍스트를 장식하는 속성은 무엇인가요?",
+      "choices": ["text-design", "text-decoration", "text-line"],
+      "answer": "text-decoration"
     },
     {
       "q_id": 4,
-      "q_title": "Q5. 여러 개의 선택자를 한 번에 동일한 스타일을 적용할 수 있어 코드의 중복을 줄입니다.",
-      "choices": ["&", ",", "<", "+"],
-      "answer": ","
+      "q_title": "Q5. 텍스트를 정렬하는 속성은 무엇인가요?",
+      "choices": ["text-align", "text-justify", "justify-item"],
+      "answer": "text-align"
     },
     {
       "q_id": 5,
-      "q_title": "Q6. 특정 요소의 모든 하위 요소를 선택합니다. div의 자손을 선택해 보세요.",
-      "choices": [" p", "+p", ".p", "!p"],
-      "answer": " p"
-    },
-    {
-      "q_id": 6,
-      "q_title": "Q7. 특정 요소의 직계 자식만 선택합니다.",
-      "choices": ["<", ">", "=", "@"],
-      "answer": ">"
-    },
-    {
-      "q_id": 7,
-      "q_title": "Q8. 특정 요소의 뒤에 나오는 형제 요소들을 모두 선택합니다. ",
-      "choices": ["+", "~", "!", "-"],
-      "answer": "~"
-    },
-    {
-      "q_id": 8,
-      "q_title": "Q9. 특정 요소의 바로 뒤에 나오는 형제 요소만 선택합니다.",
-      "choices": ["+", "~", "!", "-"],
-      "answer": "+"
+      "q_title": "Q6. 텍스트를 행간을 조정하는 속성은 무엇인가요?",
+      "choices": ["font-height", "line-gap", "line-height"],
+      "answer": "line-height"
     }
   ]
 }

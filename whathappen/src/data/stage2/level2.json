@@ -1,0 +1,59 @@
+{
+  "level_id": 2,
+  "stage_id": 2,
+  "code_type": "css",
+  "code": "a|=0=| {color: blue;text-decoration: none;}a|=1=| {color: red;text-decoration: underline;}.mouse-test|=2=| {color: purple;}.link-test|=3=| {color: orange;}.link-test|=4=| {outline: 2px solid green;}.header|=5=| {content: '❤️';}.header|=6=| {content: '🥔';}input|=7=| {color: #999;font-style: italic;font-size: 14px;}",
+  "sub_code": "<h1 class='header'>제목</h1><input type='text' placeholder='이름을 입력하세요' /><a href='#'>링크를 클릭해주세요!</a><a href='#' class='mouse-test'>링크에 마우스를 올려주세요!</a><a href='#' class='link-test'>링크</a>",
+  "level_name": "level 03",
+  "theme": "세밀하고 동적인 스타일을 적용해보자!",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 아직 방문하지 않은 링크를 선택해보세요.",
+      "choices": [":link", ":connect", ":unvisited"],
+      "answer": ":link"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2. 이미 방문한 링크를 선택해보세요.",
+      "choices": [":link", ":used", ":visited"],
+      "answer": ":visited"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. 마우스 포인터를 가져다 댔을 때 링크 색상이 바뀌도록 해보세요.",
+      "choices": [":active", ":hover", ":point"],
+      "answer": ":hover"
+    },
+    {
+      "q_id": 3,
+      "q_title": "Q4. 현재 마우스로 클릭하고 있는 요소를 오렌지색으로 보이게 해주세요.",
+      "choices": [":focus", ":active", ":hover"],
+      "answer": ":active"
+    },
+    {
+      "q_id": 4,
+      "q_title": "Q5. 현재 초점을 가지고 있는 요소를 감싸는 테두리를 초록색으로 보이게 해주세요.",
+      "choices": [":focus", ":active", ":hover"],
+      "answer": ":focus"
+    },
+    {
+      "q_id": 5,
+      "q_title": "Q6. header의 앞에 콘텐츠를 추가해 주세요.",
+      "choices": ["::before", "::front", "::ahead"],
+      "answer": "::before"
+    },
+    {
+      "q_id": 6,
+      "q_title": "Q7. header의 뒷부분에 콘텐츠를 추가해 주세요.",
+      "choices": ["::back", "::after", "::end"],
+      "answer": "::after"
+    },
+    {
+      "q_id": 7,
+      "q_title": "Q8. 입력란 내부에 스타일을 주는 방법은 무엇인가요?",
+      "choices": ["::blank", ":placeholder", "::placeholder"],
+      "answer": "::placeholder"
+    }
+  ]
+}
