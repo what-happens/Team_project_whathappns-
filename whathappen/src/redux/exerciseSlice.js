@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { ParserFactory } from "../utils/parser";
 const initialState = {
   questions: [],
   userAnswers: {},
@@ -20,8 +20,11 @@ const exerciseSlice = createSlice({
     setQuestions(state, action) {
       state.questions = action.payload;
     },
-    setParsed(state, action) {
-      state.parsedData = action.payload;
+    setParsed(state) {
+      if (state.codeString && state.questions.length > 0 && state.type) {
+        const parser = ParserFactory[state.type];
+        state.parsedData = parser(state.codeString, state.questions);
+      }
     },
     setCodeString(state, action) {
       state.codeString = action.payload;
