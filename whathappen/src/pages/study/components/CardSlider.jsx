@@ -121,7 +121,7 @@ const CardSlider = () => {
               spaceBetween: 50,
             },
             1024: {
-              slidesPerView: 2,
+              slidesPerView: 3,
               spaceBetween: 50,
             },
             1200: {
@@ -214,13 +214,13 @@ const jello = keyframes`
 // start styled-cpomponents
 const SliderWrapper = styled.div`
   ${({ theme }) => theme.tesktop`
-    width: 70rem;
+    width: 95rem;
   `};
   ${({ theme }) => theme.laptop`
-    width: 60rem;
+    width: 75rem;
   `};
   ${({ theme }) => theme.tablet`
-    width: 40rem;
+    width: 60rem;
   `};
   ${({ theme }) => theme.mobile2`
     width: 38rem;
@@ -350,6 +350,9 @@ const CardImg = styled.div`
 `;
 
 const CardTitle = styled.h3`
+  ${({ theme }) => theme.tesktop2`
+    font-size: ${({ theme }) => theme.fontSizes.md};
+  `};
   ${({ theme }) => theme.laptop`
     font-size: ${({ theme }) => theme.fontSizes.md};
   `};
@@ -366,8 +369,11 @@ const CardTitle = styled.h3`
 `;
 
 const CardContent = styled.p`
+  ${({ theme }) => theme.tesktop2`
+    font-size: ${({ theme }) => theme.fontSizes.subTitle};
+  `};
   ${({ theme }) => theme.laptop`
-    font-size: 1.8rem;
+    font-size: ${({ theme }) => theme.fontSizes.subTitle};
   `};
   ${({ theme }) => theme.tablet`
     font-size: 1.7rem;

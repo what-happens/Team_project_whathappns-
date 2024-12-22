@@ -7,6 +7,7 @@ const sizes = {
   tablet: 768,
   laptop: 1024,
   tesktop: 1200,
+  tesktop2: 1500,
 };
 
 export default Object.keys(sizes).reduce((acc, label) => {

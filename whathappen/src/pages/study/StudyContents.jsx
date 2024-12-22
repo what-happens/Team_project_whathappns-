@@ -316,14 +316,16 @@ const HeaderContainer = styled.header`
   ${({ theme }) => theme.laptop`
     position: fixed;
     top: 5rem;
-    right: 0;
+    right:0;
     z-index: 100;
     display: ${(props) => (props.isOpen ? "block" : "none")};
     border: none;
-    max-height: 70vh;
-  
+    max-height: 50vh;
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  `};
+  ${({ theme }) => theme.mobile`
+    width: 25rem;
   `};
   width: 40rem;
   height: 100%;
@@ -509,6 +511,12 @@ const Button = styled.button`
 `;
 
 const MenuLink = styled.li`
+  ${({ theme }) => theme.laptop`
+    bottom: 5rem;
+  `};
+  ${({ theme }) => theme.mobile`
+    bottom: 5rem;
+  `};
   display: block;
   position: absolute;
   bottom: 10rem;
@@ -521,14 +529,24 @@ const MenuLink = styled.li`
 `;
 
 const ExerciseLink = styled(Link)`
+  ${({ theme }) => theme.mobile`
+    font-size: ${({ theme }) => theme.fontSizes.subTitle};
+  `};
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 6rem;
+  border-radius: 2rem;
+
+  color: #fff;
+  background: var(--main-color);
+
+  cursor: pointer;
   display: block;
   text-decoration: none;
   outline: none;
-  font-size: 2.5rem;
-  line-height: 6rem;
-  font-weight: 700;
-  background: var(--main-color);
-  border-radius: 2rem;
-  color: #fff;
-  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+    background: #ff2e62;
+  }
 `;

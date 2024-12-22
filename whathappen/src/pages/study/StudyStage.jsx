@@ -4,8 +4,8 @@ import styled, { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import media from "./media";
 import CardSlider from "./components/CardSlider";
-import back from "../../assets/back_link.png";
 import filed from "../../assets/study-state-background.svg";
+import { X } from "lucide-react";
 
 export default function StudyStage() {
   const { stageId } = useParams();
@@ -18,7 +18,9 @@ export default function StudyStage() {
       <Container>
         <h1 className="sr-only">학습 과정 페이지</h1>
         <Header>
-          <BackLink to="/study" />
+          <BackLink to="/study">
+            <StyledX />
+          </BackLink>
           <Title>STAGE {stageInfo}</Title>
         </Header>
         <CardSlider></CardSlider>
@@ -51,20 +53,28 @@ const Container = styled.div`
 
 const BackLink = styled(Link)`
   ${({ theme }) => theme.mobile`
-    width: 4.2rem;
-    height: 4.2rem;
-    margin: 3rem;
+    top: 2rem;
+    left: 2rem;
     `};
   position: fixed;
   top: 2rem;
   left: 7rem;
-  width: 5rem;
-  height: 5rem;
-  display: inline-block;
-  background-image: url(${back});
-  background-size: contain;
   text-decoration: none;
   outline: none;
+  color: #c4c4c4;
+  cursor: pointer;
+  &:hover {
+    color: #ff2e62;
+  }
+`;
+
+const StyledX = styled(X)`
+  ${({ theme }) => theme.mobile`
+    width: 3.5rem;
+    height: 3.5rem;
+    `};
+  width: 5rem;
+  height: 5rem;
 `;
 
 const Header = styled.header`

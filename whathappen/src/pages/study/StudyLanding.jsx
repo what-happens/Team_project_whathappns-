@@ -73,6 +73,13 @@ const BackLink = styled(Link)`
   text-decoration: none;
   outline: none;
 
+  &:hover {
+    color: #ff2e62;
+    &::before {
+      border: solid #ff2e62;
+    }
+  }
+
   &::before {
     ${({ theme }) => theme.laptop`
       width: 1.3rem;
