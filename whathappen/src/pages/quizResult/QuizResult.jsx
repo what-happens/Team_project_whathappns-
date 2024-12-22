@@ -13,7 +13,7 @@ export default function QuizResult() {
   const [isCongratulationsModalOpen, setCongratulationsModalOpen] =
     useState(false);
   const { resetQuiz } = useQuizStep();
-  const { postQuizResult } = useFetchQuiz();
+  const { postQuizInCorrect } = useFetchQuiz();
 
   const { limit, incorrectQuiz, correctAnswerCount } = useSelector(
     (state) => state.quiz
@@ -28,7 +28,7 @@ export default function QuizResult() {
   };
 
   const handleStoreReview = async () => {
-    await postQuizResult();
+    await postQuizInCorrect();
     openCongratulationsModal();
   };
 

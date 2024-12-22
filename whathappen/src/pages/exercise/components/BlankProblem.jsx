@@ -7,15 +7,20 @@ import { useSelector } from "react-redux";
 import MobileUserChoices from "./MobileUserChoices";
 export default function BlankProblem({ qid, isMobile }) {
   const { setIsShow, setExerciseSelectedQid } = useExercise();
-  const { selectedQid, userAnswers } = useSelector((state) => state.exercise);
+  const { selectedQid, userAnswers, inCorrectQid } = useSelector(
+    (state) => state.exercise
+  );
   const handleOnClickBlank = () => {
     setIsShow(true);
     setExerciseSelectedQid(qid);
   };
-
   return (
     <>
-      <BlankButton type="button" onClick={handleOnClickBlank}>
+      <BlankButton
+        type="button"
+        onClick={handleOnClickBlank}
+        $isIncoreect={inCorrectQid.includes(qid)}
+      >
         {userAnswers[qid]}
       </BlankButton>
       {isMobile
@@ -30,7 +35,7 @@ const BlankButton = styled.button`
   margin: 1rem;
   padding: 1rem 3rem;
   font-size: 1.6rem;
-  background-color: #5672d4;
+  background-color: ${(props) => (props.$isIncoreect ? "#D45656" : "#5672d4")};
   cursor: pointer;
   border: none;
   color: #fff;

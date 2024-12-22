@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Editor from "./components/Editor";
 import QuestionDisplay from "./components/QuestionDisplay";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import DragableBar from "./components/DragableBar";
 import { fetchJson } from "../../utils/fetchJson";
 import useExercise from "../../hooks/useExercise";
@@ -10,12 +10,14 @@ import back from "../../assets/back_link.png";
 import { useBreakpoints } from "../../hooks/useBreakpoints";
 import Button from "../../components/Button";
 import MobileModal from "./components/MobileModal";
+import ConfirmModal from "../quizResult/components/ConfirmModal";
 
-// import Button from "../../components/Button";
 export default function Exercise() {
   const [editorWidth, setEditorWidth] = useState(40);
   const [renderWidth, setRenderWidth] = useState(60);
   const [isShow, setIsShow] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
+  const [isShowBack, setIsShowBack] = useState(false);
   const breakpoints = useBreakpoints();
   const navigate = useNavigate();
 
@@ -30,10 +32,16 @@ export default function Exercise() {
   const { stage, level } = useParams();
 
   const handleNext = async () => {
-    if (markedUserAnswers() === false) {
-      /*여기서 모달 띄우기 */
+    const { isCorrect, isComplete } = markedUserAnswers();
+    if (!isComplete) {
+      setShowMessage(true);
       return;
     }
+
+    if (!isCorrect) {
+      return;
+    }
+
     try {
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/stage/clear/${stage}/${level}`,
@@ -60,6 +68,17 @@ export default function Exercise() {
     setIsShow(false);
   };
 
+  const closeConfirmModal = () => {
+    setIsShowBack(false);
+  };
+
+  const openConfirmModal = () => {
+    setIsShowBack(true);
+  };
+
+  const onConfirmModal = () => {
+    navigate("/study");
+  };
   useEffect(() => {
     // 비동기 작업을 처리하는 함수
     const loadJsonData = async () => {
@@ -86,11 +105,26 @@ export default function Exercise() {
     }
   }, [breakpoints.pc, isShow]);
 
+  useEffect(() => {
+    let timer;
+    if (showMessage) {
+      timer = setTimeout(() => {
+        setShowMessage(false);
+      }, 1000); // 1초 후 메시지 숨김
+    }
+
+    return () => {
+      if (timer) {
+        clearTimeout(timer); // 기존 타이머 정리
+      }
+    };
+  }, [showMessage]);
+
   return (
     <>
       <ExerciseHeader>
         <nav>
-          <BackLink to="/study" />
+          <BackBtn onClick={openConfirmModal} />
         </nav>
         {!breakpoints.pc && (
           <Button onClick={() => setIsShow(true)}>정답 화면 보기</Button>
@@ -117,6 +151,18 @@ export default function Exercise() {
         <MarkedBtn onClick={handleNext}>제출하기 &gt;</MarkedBtn>
       </ExerciseFooter>
       {isShow && <MobileModal closeModal={closeModal} />}
+      {showMessage && (
+        <MessageOverlay>
+          <Message>모든 문제를 풀어주세요</Message>
+        </MessageOverlay>
+      )}
+      {isShowBack && (
+        <ConfirmModal
+          isOpen={isShowBack}
+          onClose={closeConfirmModal}
+          onConfirm={onConfirmModal}
+        />
+      )}
     </>
   );
 }
@@ -163,7 +209,7 @@ const RightContainer = styled.div`
   }
 `;
 
-const BackLink = styled(Link)`
+const BackBtn = styled.button`
   width: 4rem;
   height: 4rem;
   display: inline-block;
@@ -171,6 +217,8 @@ const BackLink = styled(Link)`
   background-size: contain;
   text-decoration: none;
   outline: none;
+  border: none;
+  background-color: transparent;
 `;
 
 const StyledLink = styled(Link)`
@@ -185,4 +233,54 @@ const MarkedBtn = styled(StyledLink).attrs({ as: "button" })`
   background-color: transparent;
   font-family: Gmarket Sans;
   cursor: pointer;
+`;
+
+const MessageOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+
+// 사라질 때 애니메이션
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+`;
+
+const Message = styled.div`
+  background: white;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+  color: black;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation:
+    ${fadeIn} 0.3s ease-out,
+    ${fadeOut} 0.3s ease-in 0.7s;
+  animation-fill-mode: forwards;
 `;
