@@ -88,8 +88,7 @@ export default function Join() {
         if (response.ok) {
           navigate("/joinsuccess");
         } else {
-          const errorData = await response.json();
-          setIdError(errorData.message || "회원가입 실패");
+          setIdError("현재 사용중인 이메일 입니다.");
         }
       } catch (error) {
         console.error("Error:", error);
