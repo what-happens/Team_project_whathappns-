@@ -166,6 +166,9 @@ function indentCss(content, depth) {
 
       // 닫힌 중괄호 추가
       braceCount--;
+      if (braceCount < 0) {
+        braceCount = 0; // 기본값 설정 (또는 다른 적절한 값)
+      }
       indentedLines.push("  ".repeat(braceCount) + "}");
     } else if (char === ";") {
       // 세미콜론을 만나면 현재 블록 추가
