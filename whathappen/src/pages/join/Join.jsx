@@ -128,7 +128,7 @@ export default function Join() {
           <InputWarp>
             <Input
               type="text"
-              placeholder="이름"
+              placeholder="이름 ( 한글만 입력 가능 )"
               value={nameValue}
               onChange={handleNameChange}
               required
