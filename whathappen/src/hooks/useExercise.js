@@ -9,6 +9,7 @@ import {
   setType,
   setSubCode,
   setActiveTab,
+  setIncorrectQid,
 } from "../redux/exerciseSlice";
 import { ParserFactory } from "../utils/parser";
 import { useEffect } from "react";
@@ -66,11 +67,13 @@ const useExercise = () => {
 
   const markedUserAnswers = () => {
     let isCorrect = true;
-
+    let isComplete = true;
+    const wrongQids = [];
     const answersEntries = Object.entries(userAnswers);
     if (answersEntries.length < questions.length) {
       isCorrect = false;
-      return isCorrect;
+      isComplete = false;
+      return { isCorrect, isComplete };
     }
 
     for (let i = 0; i < answersEntries.length; i++) {
@@ -78,10 +81,11 @@ const useExercise = () => {
 
       if (questions[key].answer !== answer) {
         isCorrect = false;
-        break;
+        wrongQids.push(parseInt(key));
       }
     }
-    return isCorrect;
+    dispatch(setIncorrectQid(wrongQids));
+    return { isCorrect, isComplete };
   };
 
   useEffect(() => {
