@@ -33,9 +33,8 @@ const CardSlider = () => {
 
         if (response.ok) {
           const data = await response.json();
-          const levels = data.clearStage[0]?.levels || [];
-
-          setClearData(levels);
+          const levels = data.clearStage[stageId]?.levels || [];
+          console.log(levels);
         } else {
           const errorData = await response.json();
           console.error("Error:", errorData);
@@ -130,7 +129,8 @@ const CardSlider = () => {
               spaceBetween: 50,
             },
             1500: {
-              slidesPerView: 4,
+              slidesPerView:
+                levelData && levelData.length < 4 ? levelData.length : 4,
               spaceBetween: 50,
             },
           }}
@@ -166,7 +166,6 @@ const CardSlider = () => {
                           </React.Fragment>
                         ))}
                       </CardContent>
-                      {/* <CardContent>{levelCard.theme}</CardContent> */}
                     </CardLink>
                   </CardWrapper>
                 </SwiperSlide>
@@ -271,8 +270,11 @@ const StyledButton = styled.button`
 `;
 
 const CardWrapper = styled.div`
+  ${({ theme }) => theme.tablet`
+    height: 40rem;
+  `};
   ${({ theme }) => theme.mobile`
-    gap: 0.5rem;
+    height: 38rem;
   `};
   display: flex;
   flex-direction: column;
@@ -281,7 +283,6 @@ const CardWrapper = styled.div`
   gap: 1.5rem;
   height: 45rem;
   padding: 2rem;
-
   background-color: white;
   border-radius: 20px;
   transition: all 0.5s ease;

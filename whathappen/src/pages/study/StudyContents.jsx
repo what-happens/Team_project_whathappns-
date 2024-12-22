@@ -83,12 +83,24 @@ const LearningPage = () => {
   const handlePrevLevel = () => {
     if (activeLevel > 0) {
       setActiveLevel(activeLevel - 1);
+      topScroll();
     }
   };
 
   const handleNextLevel = () => {
     if (activeLevel < learnData.length - 1) {
       setActiveLevel(activeLevel + 1);
+      topScroll();
+    }
+  };
+
+  const topScroll = () => {
+    const mainElement = document.querySelector("main");
+    if (mainElement) {
+      mainElement.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -99,6 +111,7 @@ const LearningPage = () => {
   const handleMenuItemClick = (index) => {
     setActiveLevel(index);
     setIsMenuOpen(false);
+    topScroll();
   };
 
   return (
@@ -120,18 +133,43 @@ const LearningPage = () => {
           <BackLink to={`/study/${stageId}`} className="mr-2" />
           <h1 className="sr-only">학습 페이지</h1>
           <MenuTitle>Level 01</MenuTitle>
-          <div>
+          <div
+            style={{
+              height: "100%",
+            }}
+          >
             <h3 className="sr-only">목차</h3>
-            <nav>
-              {learnData.map((level, index) => (
-                <MenuItem
-                  key={level.level_id}
-                  active={activeLevel === index}
-                  onClick={() => handleMenuItemClick(index)}
-                >
-                  {level.title}
-                </MenuItem>
-              ))}
+            <nav
+              style={{
+                height: "100%",
+                padding: "0",
+                margin: "0",
+                position: "relative",
+              }}
+            >
+              <ol
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: 0,
+                  height: "100%",
+                }}
+              >
+                {learnData.map((level, index) => (
+                  <MenuItem
+                    key={level.level_id}
+                    active={activeLevel === index}
+                    onClick={() => handleMenuItemClick(index)}
+                  >
+                    {level.title}
+                  </MenuItem>
+                ))}
+                <MenuLink>
+                  <ExerciseLink to={`/exercise/${stageId}/${levelId}`}>
+                    실습하러 가기 GO!
+                  </ExerciseLink>
+                </MenuLink>
+              </ol>
             </nav>
           </div>
         </HeaderContainer>
@@ -247,9 +285,9 @@ const BackLink = styled(Link)`
   position: fixed;
   top: 2rem;
   left: 7rem;
-  background-image: url(${back});
   width: 5rem;
   height: 5rem;
+  background-image: url(${back});
   background-size: contain;
   text-decoration: none;
   outline: none;
@@ -288,6 +326,7 @@ const HeaderContainer = styled.header`
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   `};
   width: 40rem;
+  height: 100%;
   border: 1px solid var(--main-color);
   border-radius: 20px;
   transition: all 0.3s ease;
@@ -336,10 +375,11 @@ const MenuItem = styled.li`
   line-height: 5rem;
   font-weight: 500;
   cursor: pointer;
-  background-color: ${(props) => (props.active ? "#7392FF" : "transparent")};
+  background-color: ${(props) =>
+    props.active ? "var(--main-color)" : "transparent"};
   color: ${(props) => (props.active ? "#ffffff" : "#000")};
   &:hover {
-    background-color: var(--main-color);
+    background-color: #7392ff;
     color: #ffffff;
   }
   transition: background-color 0.3s ease;
@@ -466,4 +506,29 @@ const Button = styled.button`
     background-color: var(--main-color);
     color: #fff;
   }
+`;
+
+const MenuLink = styled.li`
+  display: block;
+  position: absolute;
+  bottom: 10rem;
+  line-height: normal;
+  padding: 2rem;
+  width: 100%;
+  list-style: none;
+  margin-top: auto;
+  text-align: center;
+`;
+
+const ExerciseLink = styled(Link)`
+  display: block;
+  text-decoration: none;
+  outline: none;
+  font-size: 2.5rem;
+  line-height: 6rem;
+  font-weight: 700;
+  background: var(--main-color);
+  border-radius: 2rem;
+  color: #fff;
+  cursor: pointer;
 `;

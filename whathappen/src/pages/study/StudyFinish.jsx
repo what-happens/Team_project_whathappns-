@@ -65,7 +65,7 @@ const FinishIcon = styled.img`
     width: 22rem;
   `};
   ${({ theme }) => theme.mobile`
-    width: 20rem;
+    width: 15rem;
     margin: 2rem 0;
   `};
 

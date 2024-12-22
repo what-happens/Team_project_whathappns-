@@ -55,12 +55,11 @@ const BackLink = styled(Link)`
     height: 4.2rem;
     margin: 3rem;
     `};
-  width: 4rem;
-  height: 4rem;
-  margin: 3rem;
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
+  top: 2rem;
+  left: 7rem;
+  width: 5rem;
+  height: 5rem;
   display: inline-block;
   background-image: url(${back});
   background-size: contain;
