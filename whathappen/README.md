@@ -240,31 +240,39 @@
   - 페이지 애니메이션 keyframe 적용
 
 - **기능**
-  - 로그인 / 로그아웃 기능 , 회원가입 기능 , 복습노트 / 마이페이지 api 연동 / 챗봇 /
-  - redux 를 활용한 로그인 상태 관리
+  - 로그인 / 로그아웃 기능 , 회원가입 기능 , 복습노트 , 복습노트 북마크 / 마이페이지 화면 랜더링 / 챗봇
+  - redux 를 활용한 로그인 상태 관리 ( redux persist )
   - 개발 초기 firebase 로그인 연동 ( 구글 sns 로그인 포함 )
+  - Protected route 을 통한 경로 보호 (로그인시 , 비로그인시)
+  - <br>
 
-<br>
-    
+
 ### 👻이휘경
+
 - **프로젝트 초기 셋팅**
+
   1. ESLint와 Prettier 설정 및 통합
-    - 프로젝트의 코드 품질 관리와 스타일 일관성을 위해 EsLInt와 Prettier를 도입했습니다.
-    - 주요 규칙 :
-      - Prettier: 코드 포맷팅 표준화.
-      - ESLint: 문법 검증 및 코드 컨벤션 체크. React에서 보편적으로 사용되는 eslint-config-react/recommended 규칙을 적용했습니다.
-    - 저장 시 자동으로 포맷팅되도록 설정했습니다.(VS Code 사용자: .vscode/settings.json 제공)
-    - 환경 설정 : 
-      - Mac과 Windows 간 줄 바꿈 차이를 해결하기 위해 줄 바꿈 방식 및 Git의 line ending 설정을 수정할 수 있도록 설정했습니다.
+
+  - 프로젝트의 코드 품질 관리와 스타일 일관성을 위해 EsLInt와 Prettier를 도입했습니다.
+  - 주요 규칙 :
+    - Prettier: 코드 포맷팅 표준화.
+    - ESLint: 문법 검증 및 코드 컨벤션 체크. React에서 보편적으로 사용되는 eslint-config-react/recommended 규칙을 적용했습니다.
+  - 저장 시 자동으로 포맷팅되도록 설정했습니다.(VS Code 사용자: .vscode/settings.json 제공)
+  - 환경 설정 :
+    - Mac과 Windows 간 줄 바꿈 차이를 해결하기 위해 줄 바꿈 방식 및 Git의 line ending 설정을 수정할 수 있도록 설정했습니다.
+
   2. PropTypes 도입
-    - TypeScript를 사용하지 않는 환경에서 props의 명확한 문서화와 런타임 오류 방지를 위해 도입했습니다.
-    - 모든 컴포넌트의 props 구조를 명시적으로 정의하여 협업 시 가독성을 높이고 유지보수를 용이하게 하고자 도입했습니다.
+
+  - TypeScript를 사용하지 않는 환경에서 props의 명확한 문서화와 런타임 오류 방지를 위해 도입했습니다.
+  - 모든 컴포넌트의 props 구조를 명시적으로 정의하여 협업 시 가독성을 높이고 유지보수를 용이하게 하고자 도입했습니다.
+
   3. 공통 패키지 설치
-    - 프로젝트에서 공통적으로 사용되는 패키지를 적용했습니다.
-      - styled-component :
-      - styled-reset : 스타일의 일관성을 위해 글로벌 스타일에 Reset CSS를 적용
-      - redux , reduxjs/toolkit : 전역 상태 관리 및 과도한 prop drilling을 방지하기 위해 도입.
-      - react-router-dom : React의 애플리케이션의 라우팅 관리
+
+  - 프로젝트에서 공통적으로 사용되는 패키지를 적용했습니다.
+    - styled-component :
+    - styled-reset : 스타일의 일관성을 위해 글로벌 스타일에 Reset CSS를 적용
+    - redux , reduxjs/toolkit : 전역 상태 관리 및 과도한 prop drilling을 방지하기 위해 도입.
+    - react-router-dom : React의 애플리케이션의 라우팅 관리
 
 - **담당 페이지**
 
