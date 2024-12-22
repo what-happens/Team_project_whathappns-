@@ -52,7 +52,7 @@ export default function Exercise() {
       );
 
       if (response.ok) {
-        navigate("/studyfinish");
+        navigate("/study/finish");
       }
     } catch (error) {
       console.error("error");
