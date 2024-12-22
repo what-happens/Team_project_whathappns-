@@ -75,7 +75,7 @@
         "sub_name": "6) link",
         "desc": "현재 문서와 외부 리소스의 관계를 명시합니다. 외부 스타일 시트, 폰트, 파비콘을 연결할 때 사용합니다. \n 빈 태그, 속성만을 포함합니다. \n - `rel`: relations 관계. 대상 파일의 속성을 나타냅니다. \n- `href`: hyper-references 경로. 연결 시 참조할 파일의 위치를 나타냅니다. \n- `head` 요소 내부에만 위치할 수 있습니다.",
         "img": null,
-        "code": "&lt;html&gt;\n\b\b&lt;head&gt;\n\b\b\b&lt;meta charset='UTF-8'&gt;\n\b\b\b\b&lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;\n\b\b\b\b&lt;title&gt;Document&lt;/title&gt;\n\b\b\b\b&lt;link rel='stylesheet' href='style.css' /&gt;\n\b\b\b\b&lt;/head&gt;\n\b\b\b&lt;body&gt;&lt;/body&gt;\n&lt;/html&gt;"
+        "code": "&lt;html&gt;\n    &lt;head&gt;\n      &lt;meta charset='UTF-8'&gt;\n      &lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;\n      &lt;title&gt;Document&lt;/title&gt;\n      &lt;link rel='stylesheet' href='style.css' /&gt;\n      &lt;/head&gt;\n      &lt;body&gt;&lt;/body&gt;\n&lt;/html&gt;"
       },
       {
         "sub_id": 6,
