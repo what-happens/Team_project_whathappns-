@@ -26,6 +26,25 @@ const useFetchQuiz = () => {
   const postQuizResult = async () => {
     try {
       dispatch(setLoading(true)); // 로딩 시작
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/quiz/results`,
+        {
+          method: "post",
+          credentials: "include",
+        }
+      );
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error.message);
+    } finally {
+      dispatch(setLoading(false)); // 로딩 종료
+    }
+  };
+
+  const postQuizInCorrect = async () => {
+    try {
+      dispatch(setLoading(true)); // 로딩 시작
       const response = await fetch(`${process.env.REACT_APP_API_URL}/review`, {
         method: "post",
         headers: {
@@ -45,7 +64,7 @@ const useFetchQuiz = () => {
     }
   };
 
-  return { getQuiz, postQuizResult, isLoading }; // 필요한 함수와 상태 반환
+  return { getQuiz, postQuizResult, isLoading, postQuizInCorrect }; // 필요한 함수와 상태 반환
 };
 
 export default useFetchQuiz;
