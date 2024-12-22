@@ -99,7 +99,7 @@ const PointTwoBanner = () => {
 
 const PointThreeBanner = () => {
   return (
-    <SubBanner bg="white" padding="23.3rem 0rem 18rem 0rem;">
+    <SubBanner bg="white" padding="18.3rem 0rem 14rem 0rem;">
       <BannerContent center>
         <BannerTitle color="#2E5DFE">POINT 03</BannerTitle>
         <BannerDescription center>
@@ -370,12 +370,15 @@ const PointTwoBannerImage = styled(BannerImage)`
 const PointThreeBannerImage = styled(BannerImage)`
   background-image: url(${subBannerImageThree});
   width: 90vw;
-  max-width: 130rem;
-  height: 86.5rem;
+  height: 80rem;
   margin: 2rem 0 0 0;
-  ${media.mediumlarge`
-    max-width: 60rem;
-    max-height: 68rem;
+  ${media.large`
+    width: 90vw;
+  height: 80rem;
+  `}
+  ${media.small`
+    width: 90vw;
+  height: 30rem;
   `}
 `;
 
