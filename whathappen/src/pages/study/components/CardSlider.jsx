@@ -34,7 +34,7 @@ const CardSlider = () => {
         if (response.ok) {
           const data = await response.json();
           const levels = data.clearStage[stageId]?.levels || [];
-          console.log(levels);
+          setClearData(levels);
         } else {
           const errorData = await response.json();
           console.error("Error:", errorData);

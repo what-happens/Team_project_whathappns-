@@ -43,7 +43,7 @@ const MenuContainer = styled.div`
   ${({ theme }) => theme.mobile`
     width: 30rem;
   `};
-  width: 100rem;
+  width: 80rem;
   margin-right: 1rem;
   padding: 0rem;
 `;
