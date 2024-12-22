@@ -10,6 +10,7 @@ const initialState = {
   isShowAnswers: false,
   type: "",
   activeTab: "html",
+  inCorrectQid: [],
 };
 
 const exerciseSlice = createSlice({
@@ -46,6 +47,9 @@ const exerciseSlice = createSlice({
     setActiveTab(state, action) {
       state.activeTab = action.payload;
     },
+    setIncorrectQid(state, action) {
+      state.inCorrectQid = action.payload;
+    },
   },
 });
 
@@ -59,6 +63,7 @@ export const {
   setType,
   setSubCode,
   setActiveTab,
+  setIncorrectQid,
 } = exerciseSlice.actions;
 
 export default exerciseSlice.reducer;
