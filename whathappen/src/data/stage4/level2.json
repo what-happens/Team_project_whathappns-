@@ -1,0 +1,29 @@
+{
+  "level_id": 2,
+  "stage_id": 4,
+  "code_type": "css",
+  "code": ".container {display: flex;flex-direction: column;gap: 20px;}.box {display: flex;flex-direction: column;justify-content: center;align-items: center;color: white;width: 100px;height: 100px;background-color: palevioletred;transition: transform 0.3s ease;}.box1:hover {transform: |=0=|(300px) scaleZ(1) rotateY(75deg);}.box2:hover {transform: perspective(300px) scaleZ(2) |=1=|(75deg);}.box3:hover {transform: perspective(300px) |=2=|(4) rotateY(75deg);}",
+  "sub_code": "<!DOCTYPE html><html lang='ko-KR'><head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1.0' /><title></title><link rel='stylesheet' href='7.css' /></head><body><div class='container'><div class='box box1'>박스 1</div><div class='box box2'>박스 2</div><div class='box box3'>박스 3</div></div></body></html>",
+  "level_name": "Level 03",
+  "theme": "transform-3D효과",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 박스의 3D 변형에 깊이를 추가하여,3D 공간에서 돌출된 것처럼 설정해보세요",
+      "choices": ["transform", "perspective", "rotateY", "scaleZ"],
+      "answer": "perspective"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2. 박스에 3D 회전을 적용해보세요",
+      "choices": ["rotateY", "skewZ", "rotateX", "scaleZ"],
+      "answer": "rotateY"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. 3D 변형의 깊이를 조정해보세요",
+      "choices": ["scaleY", "rotateX", "scaleZ ", "transition"],
+      "answer": "scaleZ "
+    }
+  ]
+}
