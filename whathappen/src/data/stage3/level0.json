@@ -1,0 +1,47 @@
+{
+  "level_id": 0,
+  "stage_id": 3,
+  "level_name": "level 01",
+  "theme": "요소를 베치해봅시다!",
+  "sub_code": "<span class='span1'>1</span><span class='span2'>2</span><span class='span3'>3</span><div class='container1'><div class='item1'>1</div><div class='item1'>2</div><div class='item1'>3</div></div><div class='container2'><div class='item2'>1</div><div class='item2'>2</div><div class='item2'>3</div><div class='item2'>4</div></div><div><div class='container3'>nothing</div></div>",
+  "code_type": "css",
+  "code": ".span1 {display: |=0=|;background-color: whiteborder: 1px solid #333;padding: 10px;margin: 5px;height: 60px;}.span2 {display: |=1=|;background-color: teal;border: 1px solid #333;padding: 10px;margin: 5px;height: 60px;.span3 {display: |=2=|;width: 150px;height: 50px;background-color: #f0f0f0;border: 1px solid #333;padding: 10px;margin: 5px;}.container1 {display: |=3=|;justify-content: space-between;}.item1 {background-color: #c0c0c0;border: 1px solid #333;padding: 10px;}.container2 {display: |=4=|;grid-template-columns: repeat(2, 1fr);gap: 10px;}.item2 {background-color: #b0b0b0;border: 1px solid #333;padding: 20px;text-align: center;}.container3 {display: |=5=|;}",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 이 요소를 가능한 전체 너비를 차지하게 하고, weight, height, margin, padding속성을 모두 사용할 수 있게 만들어 보세요.",
+      "choices": ["block", "inline", "inline-block"],
+      "answer": "block"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2. 이 요소를 줄 바꿈 없이 다른 요소와 같은 줄에 배치되게끔 해 주세요. width, height 속성을 사용할 수 없고 좌우의 margin만 설정이 가능합니다.",
+      "choices": ["block", "inline", "inline-block"],
+      "answer": "inline"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. 이 요소를 텍스트 흐름에 따라 배치되지만 width, height, margin, padding값을 모두 사용할 수 있게 해주세요.",
+      "choices": ["block", "inline", "inline-block"],
+      "answer": "inline-block"
+    },
+    {
+      "q_id": 3,
+      "q_title": "Q4. container1 안의 요소를 1차원으로 배치되게 해주세요.",
+      "choices": ["grid", "flex", "inline"],
+      "answer": "flex"
+    },
+    {
+      "q_id": 4,
+      "q_title": "Q5. container2의 요소가 2차원 격자 형태로 배치되게 해주세요.",
+      "choices": ["table", "grid", "flex"],
+      "answer": "grid"
+    },
+    {
+      "q_id": 5,
+      "q_title": "Q6. container3가 렌더링되지 않도록 해주세요.",
+      "choices": ["hidden", "none", "disappear"],
+      "answer": "none"
+    }
+  ]
+}

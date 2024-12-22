@@ -1,0 +1,35 @@
+{
+  "level_id": 1,
+  "stage_id": 3,
+  "level_name": "level 02",
+  "theme": "이미지를 원하는 비율로!",
+  "code": ".img1 {width: 300px;|=0=|: |=1=|;object-fit: cover;}.img2 {position: relative;width: 100%;height: 0;|=2=|: 50%;}.img2 img {position: absolute;top: 0;left: 0;width: 100%;height: 100%;|=3=|: cover;}",
+  "sub_code": "<img src='https://picsum.photos/600/500' alt='샘플 이미지' class='img1'/><div class='img2'><img src='https://picsum.photos/600/300' alt='샘플 이미지' /></div>",
+  "code_type": "css",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 이미지의 가로세로 바율을 맞추는 속성은?",
+      "choices": ["aspect-ratio", "ratio"],
+      "answer": "aspect-ratio"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2. 이미지의 비율을 가로 2, 세로 1 비율로 맞춰주세요.",
+      "choices": ["1 / 2", "2 / 1", "1 : 2"],
+      "answer": "2 / 1"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. img2 컨테이너의 높이를 너비의 50%로 설정되게끔 해주세요.",
+      "choices": ["paddingTop", "padding-top", "padding-t"],
+      "answer": "padding-top"
+    },
+    {
+      "q_id": 3,
+      "q_title": "Q4. 이미지 왜곡을 방지하기 위한 속성은 무엇인가요?",
+      "choices": ["image-fit", "fit", "object-fit"],
+      "answer": "object-fit"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "level_id": 3,
+  "stage_id": 3,
+  "level_name": "level 04",
+  "theme": "float, flex, grid에 대해 알아보자!",
+  "code": ".container1 {border: 1px solid #ccc;overflow: hidden;padding: 10px;margin-bottom: 20px;}.float-box {float: left;background: #f0f0f0;padding: 10px;margin-right: 10px;}.container2 {display: |=0=|;|=1=|: space-between;align-items: center;background: #f5f5f5;padding: 20px;margin-bottom: 20px;}.item {background: #e0e0e0;padding: 20px;flex: 1;margin: 0 10px;}.container3 {display: |=2=|;grid-template-areas: 'header header''sidebar main''footer footer'; |=3=|: 200px 1fr;grid-template-rows: auto 1fr auto;gap: 10px;min-height: 400px;}.header {|=4=|: header;background: #ddd;padding: 20px;}.sidebar {grid-area: sidebar;background: #eee;}.main {grid-area: main;background: #f8f8f8;}.footer {grid-area: footer;background: #ddd;padding: 20px;}",
+  "sub_code": "<div class='container1'><div class='float-box'>Float Box</div><p>Float 옆의 텍스트입니다. 텍스트가 float 요소를 감싸게 됩니다.</p></div><div class='container2'><div class='item'>Flex 1</div><div class='item'>Flex 2</div><div class='item'>Flex 3</div></div><div class='container3'><header class='header'>Header</header><nav class='sidebar'>Sidebar</nav><main class='main'>Main Content</main><footer class='footer'>Footer</footer></div>",
+  "code_type": "css",
+  "questions": [
+    {
+      "q_id": 0,
+      "q_title": "Q1. 요소를 1차원적 레이아웃으로 설정해 보세요.",
+      "choices": ["flex", "flexable", "float"],
+      "answer": "flex"
+    },
+    {
+      "q_id": 1,
+      "q_title": "Q2. 주축을 기준으로 아이템을 정렬하도록 설정해 보세요.",
+      "choices": ["justify-item", "justify-content", "justify-items"],
+      "answer": "justify-content"
+    },
+    {
+      "q_id": 2,
+      "q_title": "Q3. 요소를 2차원 레이아웃으로 보이게 만들어 주세요",
+      "choices": ["grid", "table", "griddle"],
+      "answer": "grid"
+    },
+    {
+      "q_id": 3,
+      "q_title": "Q4. 열방향 그리드 트랙을 설정해 주세요.",
+      "choices": ["grid-template-columns", "grid-column", "grid-cols"],
+      "answer": "grid-template-columns"
+    },
+    {
+      "q_id": 4,
+      "q_title": "Q5. 그리드 아이템의 위치와 크기를 지정하는 단축 속성입니다.",
+      "choices": ["grid-areas", "grid-template", "grid-area"],
+      "answer": "grid-area"
+    }
+  ]
+}
