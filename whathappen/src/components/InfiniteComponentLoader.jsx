@@ -28,7 +28,7 @@ const Mainbanner = () => {
           웹사이트!
         </BannerDescription>
         {isLoggedIn ? (
-          <Link to={"/mypage"}>
+          <Link to={"/study"}>
             <Button
               borderRadius="5rem"
               fontsize="2rem"
