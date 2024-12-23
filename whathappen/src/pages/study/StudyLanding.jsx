@@ -77,6 +77,8 @@ const BackLink = styled(Link)`
     color: #ff2e62;
     &::before {
       border: solid #ff2e62;
+      border-width: 0.3rem 0.3rem 0 0;
+      transform: translateY(-50%) rotate(225deg);
     }
   }
 
