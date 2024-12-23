@@ -2,28 +2,28 @@
   {
     "stage_id": 4,
     "level_id": 0,
-    "img": "icon_level.png",
+    "img": "icon_stage5.svg",
     "level_name": "Level 01",
     "theme": "transform 효과"
   },
   {
     "stage_id": 4,
     "level_id": 1,
-    "img": "icon_level.png",
+    "img": "icon_stage5.svg",
     "level_name": "Level 02",
     "theme": "transition 효과"
   },
   {
     "stage_id": 4,
     "level_id": 2,
-    "img": "icon_level.png",
+    "img": "icon_stage5.svg",
     "level_name": "Level 03",
     "theme": "transform-3D효과"
   },
   {
     "stage_id": 4,
     "level_id": 3,
-    "img": "icon_level.png",
+    "img": "icon_stage5.svg",
     "level_name": "Master",
     "theme": "카드 만들기"
   }

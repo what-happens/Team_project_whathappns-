@@ -2,28 +2,28 @@
   {
     "stage_id": 2,
     "level_id": 0,
-    "img": "icon_level.png",
+    "img": "icon_stage3.svg",
     "level_name": "Level 01",
     "theme": "선택자를 사용해\n스타일 적용하기!"
   },
   {
     "stage_id": 2,
     "level_id": 1,
-    "img": "icon_level.png",
+    "img": "icon_stage3.svg",
     "level_name": "Level 02",
     "theme": "텍스트를 다채롭게!"
   },
   {
     "stage_id": 2,
     "level_id": 2,
-    "img": "icon_level.png",
+    "img": "icon_stage3.svg",
     "level_name": "Level 03",
     "theme": "세밀하고 동적인\n스타일을 적용해보자!"
   },
   {
     "stage_id": 2,
     "level_id": 3,
-    "img": "icon_level.png",
+    "img": "icon_stage3.svg",
     "level_name": "Master",
     "theme": "명함 만들기"
   }

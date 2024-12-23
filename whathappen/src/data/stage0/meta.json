@@ -2,28 +2,28 @@
   {
     "stage_id": 0,
     "level_id": 0,
-    "img": "icon_level.png",
+    "img": "icon_stage1.svg",
     "level_name": "Level 01",
     "theme": "HTML 기본 구조"
   },
   {
     "stage_id": 0,
     "level_id": 1,
-    "img": "icon_level.png",
+    "img": "icon_stage1.svg",
     "level_name": "Level 02",
     "theme": "글을 적어보자"
   },
   {
     "stage_id": 0,
     "level_id": 2,
-    "img": "icon_level.png",
+    "img": "icon_stage1.svg",
     "level_name": "Level 03",
     "theme": "공간을 나누는 태그"
   },
   {
     "stage_id": 0,
     "level_id": 3,
-    "img": "icon_level.png",
+    "img": "icon_stage1.svg",
     "level_name": "Master",
     "theme": "영화 소개 페이지 만들기"
   }
