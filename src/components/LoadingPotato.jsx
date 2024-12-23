@@ -34,7 +34,7 @@ const LoadingImg = styled.div`
   background-position: center;
   transform-origin: center center;
   animation: ${roll} 0.8s linear infinite;
-  z-index: 30;
+  z-index: 10000;
   ${media.small`
     left: 38%;
   `}
