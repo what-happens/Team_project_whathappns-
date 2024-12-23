@@ -147,7 +147,7 @@ const NotFound = () => {
   const jump = useCallback(() => {
     if (!isJumping && gameStarted && !gameOver) {
       setIsJumping(true);
-      setJumpHeight(-140);
+      setJumpHeight(-130);
 
       setTimeout(() => {
         setJumpHeight(0);
