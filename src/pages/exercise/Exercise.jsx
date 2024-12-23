@@ -11,6 +11,7 @@ import { useBreakpoints } from "../../hooks/useBreakpoints";
 import Button from "../../components/Button";
 import MobileModal from "./components/MobileModal";
 import ConfirmModal from "../quiz/components/ConfirmModal";
+import LoadingPotato from "../../components/LoadingPotato";
 
 export default function Exercise() {
   const [editorWidth, setEditorWidth] = useState(40);
@@ -18,6 +19,7 @@ export default function Exercise() {
   const [isShow, setIsShow] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const [isShowBack, setIsShowBack] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const breakpoints = useBreakpoints();
   const navigate = useNavigate();
 
@@ -45,6 +47,7 @@ export default function Exercise() {
     }
 
     try {
+      setIsLoading(true);
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/stage/clear/${stage}/${level}`,
         {
@@ -59,6 +62,8 @@ export default function Exercise() {
       }
     } catch (error) {
       console.error("error");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -168,6 +173,7 @@ export default function Exercise() {
           onConfirm={onConfirmModal}
         />
       )}
+      {isLoading && <LoadingPotato />}
     </>
   );
 }
