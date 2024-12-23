@@ -80,22 +80,14 @@
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Notion.png?raw=true" width="80">
 - 서비스 배포 환경 : GCP VM<br>
   <img src="./src/assets/gcp.png" width="80">
-  =======
-  <img src="../whathappen/src/assets/firebase.png" width="80">
-  <img src="../whathappen/src/assets/swagger.png" width="80">
-  <img src="../whathappen/src/assets/express.png" width="80">
-  <img src="../whathappen/src/assets/ENV.png" width="80">
-  <img src="../whathappen/src/assets/Nodemon.png" width="80">
-  <img src="../whathappen/src/assets/pm2.png" width="80">
-  <img src="../whathappen/src/assets/NGINX.png" width="80">
 - 버전 관리 : Github<br>
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Github.png?raw=true" width="80">
 - 협업 툴 : Jira , Notion , Discord<br>
-  <img src="../whathappen/src/assets/Jira.png" width="80">
+  <img src="./src/assets/Jira.png" width="80">
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Discord.png?raw=true" width="80">
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Notion.png?raw=true" width="80">
 - 서비스 배포 환경 : GCP VM<br>
-  <img src="../whathappen/src/assets/gcp.png" width="80">
+  <img src="../src/assets/gcp.png" width="80">
 - [Figma](https://www.figma.com/design/H0EHVsa8f529uoYm0Qm1cw/%EC%9D%B4%EA%B2%8C%EB%90%98%EB%84%A4%3F?node-id=3-2&t=0zzJrQMyIiYO3RZV-1)<br>
 - [Notion](https://www.notion.so/150d8bd3267a80e29e3df64902fca2bf)
   <br>
