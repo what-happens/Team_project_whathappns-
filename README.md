@@ -1,12 +1,6 @@
 # 📖 HTML / CSS 기초 학습 어플리케이션 README
 
-<<<<<<< HEAD
 <img src="./src/assets/top-banner.png">
-=======
-<img src="../whathappen/src/assets/top-banner.png">
-
-> > > > > > > origin/hwigyoung
-> > > > > > > <br><br>
 
 - GitHub repository : https://github.com/what-happens/Team_project_whathappns-
 - 배포 URL : https://whathappen.kr
@@ -63,18 +57,13 @@
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/React.png?raw=true" width="80">
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/StyledComponents.png?raw=true" width="80">
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Redux.png?raw=true" width="80">
-<<<<<<< HEAD
   <img src="./src/assets/eslint.png" width="80">
   <img src="./src/assets/prettier.png" width="80">
-=======
-  <img src="../whathappen/src/assets/eslint.png" width="80">
-  <img src="../whathappen/src/assets/prettier.png" width="80">
->>>>>>> origin/hwigyoung
 
 - Back-end : node.js , Firebase , Swagger , Express , CORS , .ENV , Nodemon , PM2 , Nginx
   <br>
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/NodeJS.png?raw=true" width="80">
-  <<<<<<< HEAD
+
   <img src="./src/assets/firebase.png" width="80">
   <img src="./src/assets/swagger.png" width="80">
   <img src="./src/assets/express.png" width="80">
@@ -82,6 +71,7 @@
   <img src="./src/assets/Nodemon.png" width="80">
   <img src="./src/assets/pm2.png" width="80">
   <img src="./src/assets/NGINX.png" width="80">
+
 - 버전 관리 : Github<br>
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Github.png?raw=true" width="80">
 - 협업 툴 : Jira , Notion , Discord<br>
@@ -106,7 +96,6 @@
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Notion.png?raw=true" width="80">
 - 서비스 배포 환경 : GCP VM<br>
   <img src="../whathappen/src/assets/gcp.png" width="80">
-  > > > > > > > origin/hwigyoung
 - [Figma](https://www.figma.com/design/H0EHVsa8f529uoYm0Qm1cw/%EC%9D%B4%EA%B2%8C%EB%90%98%EB%84%A4%3F?node-id=3-2&t=0zzJrQMyIiYO3RZV-1)<br>
 - [Notion](https://www.notion.so/150d8bd3267a80e29e3df64902fca2bf)
   <br>
@@ -463,7 +452,6 @@
 
 ### <a href="https://github.com/what-happens/Team_project_whathappns-/wiki/yewon's-Role" target="_blank">🐬김예원</a>
 
-<<<<<<< HEAD
 **담당 페이지**
 
 - 퀴즈 랜딩페이지 : 마크업 및 스타일링
@@ -484,7 +472,6 @@
 
   - Point1 stage5-6에 대한 css 학습자료 생성 및 json 변환
     <br>
-    > > > > > > > origin/hwigyoung
 
 ### 🐶유다형
 
@@ -544,8 +531,7 @@
   - 로그인이 되어 있지 않은 경우 : Header의 로그인 버튼
   - 로그인이 되어 있는 경우 : Header 의 로그아웃 버튼과 Nav
 
-<<<<<<< HEAD
-| 랜딩페이지 |
+| 랜딩페이지                                  |
 | ------------------------------------------- |
 | ![landing](./src/assets/readme_landing.gif) |
 
@@ -557,8 +543,6 @@
 
 로그인 Header ![landing](../whathappen/src/assets/readme_login_header.jpg)
 
-> > > > > > > origin/hwigyoung
-
 <br>
 
 ### [회원가입]
@@ -569,7 +553,7 @@
 
 | 회원가입  
 | ---------------------------------------------------------- |
-<<<<<<< HEAD
+
 | ![join](./src/assets/readme_join_success.gif) |
 
 # 유효성 검사 ![join](./src/assets/readme_join_vaildation.gif)
@@ -578,18 +562,13 @@
 
 유효성 검사 ![join](../whathappen/src/assets/readme_join_vaildation.gif)
 
-> > > > > > > origin/hwigyoung
-> > > > > > > <br>
-> > > > > > > <br>
-
 ### [로그인]
 
 - 로그인 버튼을 누르면 유효성 검사 실행
 - 이메일 주소의 형식이 유효하지 않거나 입력창이 비어있는 경우에는, 각 입력창 하단에 경고 문구가 나타납니다.
 - 로그인 버튼 클릭 시 이메일 주소 또는 비밀번호가 일치하지 않을 경우에는 입력창 하단에 경고 문구가 나타나며, 로그인에 성공하면 랜딩페이지로 이동합니다.
 
-<<<<<<< HEAD
-| 로그인 |
+| 로그인                                          |
 | ----------------------------------------------- |
 | ![login](./src/assets/readme_login_success.gif) |
 
@@ -601,24 +580,19 @@
 
 유효성 검사 ![login](../whathappen/src/assets/readme_login_validation.gif)
 
-> > > > > > > origin/hwigyoung
-> > > > > > > <br>
-
 ### [마이페이지]
 
 - 기초학습을 몇 스테이지 까지 진행했는지, 퀴즈풀이를 몇 회 진행했는지, 저장된 퀴즈가 몇 문제인지 확인이 가능합니다.
 - 학습 스탬프, 학습 진척도 프로그래스바로 실습 얼마나 진행했는지 확인이 가능합니다.
 
-<<<<<<< HEAD
-| 마이페이지 |
+| 마이페이지                                |
 | ----------------------------------------- |
 | ![mypage](./src/assets/readme_mypage.gif) |
+
 =======
 | 마이페이지 |
 | ----------------------------------------------------- |
 | ![mypage](../whathappen/src/assets/readme_mypage.gif) |
-
-> > > > > > > origin/hwigyoung
 
 <br>
 
@@ -632,7 +606,7 @@
 
 | 복습노트
 | ----------------------------------------------------------- |
-<<<<<<< HEAD
+
 | ![review](./src/assets/readme_review_delete.gif) |
 
 북마크 추가 삭제 ![review](./src/assets/readme_review_bookmark.gif)
@@ -643,8 +617,6 @@
 북마크 추가 삭제 ![review](../whathappen/src/assets/readme_review_bookmark.gif)
 문제가 존재하지 않을 시 ![review](../whathappen/src/assets/readme_review_noex.gif)
 
-> > > > > > > origin/hwigyoung
-
 <br>
 
 ### [퀴즈페이지]
@@ -653,16 +625,14 @@
 - 5문제, 10문제, 15문제, 20문제 등 퀴즈의 수를 원하는 대로 설정할 수 있습니다. 퀴즈 풀기 버튼을 누르면 퀴즈가 시작됩니다.
 - 뒤로가기 버튼을 누르면 이전 페이지로 돌아갑니다.
 
-<<<<<<< HEAD
-| 퀴즈 랜딩페이지 |
+| 퀴즈 랜딩페이지                           |
 | ----------------------------------------- |
 | ![quizpage](./src/assets/readme_quiz.gif) |
+
 =======
 | 퀴즈 랜딩페이지 |
 | ----------------------------------------------------- |
 | ![quizpage](../whathappen/src/assets/readme_quiz.gif) |
-
-> > > > > > > origin/hwigyoung
 
 ### [퀴즈풀이]
 
@@ -670,16 +640,14 @@
 - 퀴즈가 시작되면 답을 선택하고 다음이나 이전 문제로 넘어갈 수 있습니다.
 - 문제를 다 풀면 퀴즈 결과 페이지로 이동됩니다.
 
-<<<<<<< HEAD
-| 퀴즈 게임페이지 |
+| 퀴즈 게임페이지                                  |
 | ------------------------------------------------ |
 | ![quizgame](./src/assets/readme_quiz_gamego.gif) |
+
 =======
 | 퀴즈 게임페이지 |
 | ------------------------------------------------------------ |
 | ![quizgame](../whathappen/src/assets/readme_quiz_gamego.gif) |
-
-> > > > > > > origin/hwigyoung
 
 <br>
 
@@ -691,12 +659,10 @@
 
 | 퀴즈결과창  
 | -------------------------------------------------------------- |
-<<<<<<< HEAD
-| ![quizresult](./src/assets/readme_quiz_result.gif) |
-=======
-| ![quizresult](../whathappen/src/assets/readme_quiz_result.gif) |
 
-> > > > > > > origin/hwigyoung
+# | ![quizresult](./src/assets/readme_quiz_result.gif) |
+
+| ![quizresult](../whathappen/src/assets/readme_quiz_result.gif) |
 
 <br>
 
@@ -705,16 +671,14 @@
 - stage 버튼을 누르면 선택한 스테이지로 넘어가게 됩니다.
 - 각 스테이지를 완료하면 마이페이지에 학습 스탬프가 찍히게 됩니다.
 
-<<<<<<< HEAD
-| 학습 페이지 |
+| 학습 페이지                                        |
 | -------------------------------------------------- |
 | ![study](./whathappen/src/assets/readme_study.gif) |
+
 =======
 | 학습 페이지 |
 | --------------------------------------------------- |
 | ![study](../whathappen/src/assets/readme_study.gif) |
-
-> > > > > > > origin/hwigyoung
 
 <br>
 
@@ -725,16 +689,14 @@
 - 사용자는 레벨 1부터 시작해 단계별로 학습과 실습을 완료하게 됩니다. 마지막 Master 단계에서는 해당 스테이지에서 배운 내용을 활용해 실습을 진행할 수 있습니다.
 - 좌우 버튼을 클릭하면 모든 레벨을 확인 할 수 있습니다.
 
-<<<<<<< HEAD
-| 학습 스테이지 페이지 (스테이지 별 레벨 소개) |
+| 학습 스테이지 페이지 (스테이지 별 레벨 소개)                  |
 | ------------------------------------------------------------- |
 | ![StudyStage](./whathappen/src/assets/readme_study_stage.gif) |
+
 =======
 | 학습 스테이지 페이지 (스테이지 별 레벨 소개) |
 | -------------------------------------------------------------- |
 | ![StudyStage](../whathappen/src/assets/readme_study_stage.gif) |
-
-> > > > > > > origin/hwigyoung
 
 <br>
 
@@ -744,16 +706,14 @@
 - 실습에 들어가기 전 학습을 하는 페이지입니다.
 - 왼쪽에는 학습내용의 목차가 있습니다. 목차를 클릭하거나 하단 우측 좌우 버튼을 통해 목차간 이동을 할 수 있습니다.
 
-<<<<<<< HEAD
-| 학습 내용 페이지 |
+| 학습 내용 페이지                                                    |
 | ------------------------------------------------------------------- |
 | ![StudyContents](./whathappen/src/assets/readme_study_contents.gif) |
+
 =======
 | 학습 내용 페이지 |
 | -------------------------------------------------------------------- |
 | ![StudyContents](../whathappen/src/assets/readme_study_contents.gif) |
-
-> > > > > > > origin/hwigyoung
 
 <br>
 
@@ -766,16 +726,14 @@
 - 답안을 클릭하면 사용자의 답안이 저장되며, 제출하기 버튼을 눌러 채점할 수 있습니다.
 - 우측의 정답 화면 보기 버튼을 클릭하면 해당 문제에서 사용된 코드로 랜더링 된 화면을 볼 수 있습니다.
 
-<<<<<<< HEAD
-| 실습페이지 |
+| 실습페이지                                     |
 | ---------------------------------------------- |
 | ![exercise](./whathappen/src/assets/homer.jpg) |
+
 =======
 | 실습페이지 |
 | ----------------------------------------------- |
 | ![exercise](../whathappen/src/assets/homer.jpg) |
-
-> > > > > > > origin/hwigyoung
 
 <br>
 
@@ -786,12 +744,10 @@
 
 | 학습완료페이지  
 | ---------------------------------------------------------------- |
-<<<<<<< HEAD
-| ![studyfinish](./whathappen/src/assets/readme_study_finish.gif) |
-=======
-| ![studyfinish](../whathappen/src/assets/readme_study_finish.gif) |
 
-> > > > > > > origin/hwigyoung
+# | ![studyfinish](./whathappen/src/assets/readme_study_finish.gif) |
+
+| ![studyfinish](../whathappen/src/assets/readme_study_finish.gif) |
 
 <br>
 
@@ -800,16 +756,14 @@
 - ALAN AI를 탑재한 챗봇에게게 질문이 가능합니다.
 - 사용자가 질문하면 기초 학습하는 유저임을 인식하고 , 출처를 제외한 정보를 회신합니다.
 
-<<<<<<< HEAD
-| ON / OFF | 실시간 채팅 기능 |
+| ON / OFF                                         | 실시간 채팅 기능                                  |
 | ------------------------------------------------ | ------------------------------------------------- |
 | ![mr.potato](./src/assets/readme_chat_onoff.gif) | ![mr.potato](./src/assets/readme_chat_answer.gif) |
+
 =======
 | ON / OFF | 실시간 채팅 기능 |
 | ------------------------------------------------------------ | ------------------------------------------------------------- |
 | ![mr.potato](../whathappen/src/assets/readme_chat_onoff.gif) | ![mr.potato](../whathappen/src/assets/readme_chat_answer.gif) |
-
-> > > > > > > origin/hwigyoung
 
 <br>
 
@@ -819,16 +773,14 @@
 - 스페이스 바를 누르면 게임을 시작할 수 있습니다.
 - 메인페이지로 이동 버튼을 누르면 랜딩페이지로 이동됩니다.
 
-<<<<<<< HEAD
-| 에러페이지 |
+| 에러페이지                          |
 | ----------------------------------- |
 | ![404](./src/assets/readme_404.gif) |
+
 =======
 | 에러페이지 |
 | ----------------------------------------------- |
 | ![404](../whathappen/src/assets/readme_404.gif) |
-
-> > > > > > > origin/hwigyoung
 
 <br>
 
