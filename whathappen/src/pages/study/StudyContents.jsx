@@ -4,8 +4,9 @@ import styled, { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import media from "./media";
 import { Menu, AlignRight } from "lucide-react";
-
 import back from "../../assets/back_link.png";
+import useExercise from "../../hooks/useExercise";
+import ConfirmModal from "../quizResult/components/ConfirmModal";
 
 const LearningPage = () => {
   const { stageId, levelId } = useParams();
@@ -15,8 +16,9 @@ const LearningPage = () => {
   const [error, setError] = useState(null);
   const [activeLevel, setActiveLevel] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isShow, setIsShow] = useState(false);
   const isVisible = Number(stageId) === 0 && Number(levelId) === 0;
-
+  const { resetExercise } = useExercise();
   const loadStageData = async (stageId, levelId) => {
     try {
       setIsLoading(true);
@@ -114,10 +116,28 @@ const LearningPage = () => {
     topScroll();
   };
 
+  const closeConfirmModal = () => {
+    setIsShow(false);
+  };
+
+  const openConfirmModal = () => {
+    setIsShow(true);
+  };
+
+  const onConfirmModal = () => {
+    navigate("/study");
+    resetExercise();
+  };
+
   return (
     <ThemeProvider theme={{ ...theme, ...media }}>
       <MobileContainer>
-        <BackLink to={`/study/${stageId}`} className="mr-2" />
+        <BackLink
+          to={`/study/${stageId}`}
+          className="mr-2"
+          type="button"
+          onClick={openConfirmModal}
+        />
         <MobileLevelTitle>{learnData[activeLevel].title}</MobileLevelTitle>
         <HamburgerButton onClick={toggleMenu}>
           {isMenuOpen ? (
@@ -129,8 +149,20 @@ const LearningPage = () => {
       </MobileContainer>
 
       <Container>
+        {isShow && (
+          <ConfirmModal
+            isOpen={isShow}
+            onConfirm={onConfirmModal}
+            onClose={closeConfirmModal}
+          />
+        )}
         <HeaderContainer isOpen={isMenuOpen}>
-          <BackLink to={`/study/${stageId}`} className="mr-2" />
+          <BackLink
+            to={`/study/${stageId}`}
+            className="mr-2"
+            type="button"
+            onClick={openConfirmModal}
+          />
           <h1 className="sr-only">학습 페이지</h1>
           <MenuTitle>Level 01</MenuTitle>
           <div
@@ -275,13 +307,14 @@ const HamburgerButton = styled.button`
   display: none;
 `;
 
-const BackLink = styled(Link)`
+const BackLink = styled.button`
   ${({ theme }) => theme.laptop`
     position: static;
     width: 3rem;
     height: 3rem;
   `};
-
+  background-color: transparent;
+  border: none;
   position: fixed;
   top: 2rem;
   left: 7rem;
