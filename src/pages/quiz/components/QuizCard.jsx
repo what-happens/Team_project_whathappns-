@@ -8,10 +8,11 @@ import PropTypes from "prop-types";
 
 export default function QuizCard({
   quiz,
-  handleSubmit,
+  onSubmit,
   handleAnswerSelect,
   answers,
   onBookmarkUpdate,
+  progressComplete,
 }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const isLastQuestion = currentQuestion === quiz.length - 1;
@@ -75,6 +76,7 @@ export default function QuizCard({
       }
     }
   };
+
   return (
     <QuizSection>
       <Bookmark
@@ -90,11 +92,11 @@ export default function QuizCard({
         </span>
       </QuestionNumber>
       <QuizProgress
-        currentQuestionNumber={currentQuestion + 1}
+        currentQuestionNumber={progressComplete ? quiz.length : currentQuestion}
         totalQuestionNumber={quiz.length}
       />
       <QuizQuestion>{quiz[currentQuestion].question}</QuizQuestion>
-      <FormWrapper onSubmit={handleSubmit}>
+      <FormWrapper onSubmit={onSubmit}>
         {quiz[currentQuestion].answers.map((answer, idx) => (
           <QuizInputWrapper key={`${quiz[currentQuestion].id}-${idx}`}>
             <input
@@ -196,7 +198,7 @@ const QuizSection = styled.section`
   position: relative;
   animation: ${bounce} 1.11s both;
   background-color: white;
-
+  height: auto;
   ${media.medium`
     width: 80%; 
     padding: 2.8rem 6rem;
@@ -362,8 +364,9 @@ QuizCard.propTypes = {
       category: PropTypes.string.isRequired,
     })
   ).isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   handleAnswerSelect: PropTypes.func.isRequired,
   answers: PropTypes.arrayOf(PropTypes.string).isRequired,
   onBookmarkUpdate: PropTypes.func,
+  progressComplete: PropTypes.bool,
 };

@@ -5,7 +5,7 @@ import theme from "./theme";
 import media from "./media";
 import { Menu, AlignRight, X } from "lucide-react";
 import useExercise from "../../hooks/useExercise";
-import ConfirmModal from "../quizResult/components/ConfirmModal";
+import ConfirmModal from "../quiz/components/ConfirmModal";
 
 const LearningPage = () => {
   const { stageId, levelId } = useParams();

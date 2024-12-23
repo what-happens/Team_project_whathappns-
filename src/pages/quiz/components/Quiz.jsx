@@ -1,28 +1,37 @@
 import React, { useState } from "react";
-import QuizCard from "./components/QuizCard";
+import QuizCard from "./QuizCard";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import prevImg from "../../assets/iconLeftArrow.png";
-import { media } from "../../styles/MideaQuery";
-import ConfirmExitModal from "../quizResult/components/ConfirmModal";
-import backGround from "../../assets/quiz-page-background3.svg";
-import useQuizStep from "../../hooks/useQuizStep";
+import prevImg from "../../../assets/iconLeftArrow.png";
+import { media } from "../../../styles/MideaQuery";
+import ConfirmExitModal from "./ConfirmModal";
+import backGround from "../../../assets/quiz-page-background3.svg";
+import useQuizStep from "../../../hooks/useQuizStep";
 import { useDispatch, useSelector } from "react-redux";
-import { setIncorrectQuiz, setCorrectAnswerCount } from "../../redux/quizSlice";
-import useFetchQuiz from "../../hooks/useFetchQuiz";
+import useFetchQuiz from "../../../hooks/useFetchQuiz";
+import {
+  setCorrectAnswerCount,
+  setIncorrectQuiz,
+} from "../../../redux/quizSlice";
+import LoadingPotato from "../../../components/LoadingPotato";
 
 export default function Quiz() {
   const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
   const [answers, setAnswers] = useState([]);
+  const [progressComplete, setProgressComplete] = useState(false);
+  const { quiz, limit, category, isLoading } = useSelector(
+    (state) => state.quiz
+  );
   const { resetQuiz } = useQuizStep();
-  const { quiz, limit, category } = useSelector((state) => state.quiz);
   const { moveNext } = useQuizStep();
   const { postQuizResult } = useFetchQuiz();
+
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const incorrectIds = [];
+    setProgressComplete(true);
     answers.forEach((answer, idx) => {
       if (answer !== quiz[idx].correct_answer) {
         incorrectIds.push({ qid: quiz[idx].id, category: category });
@@ -57,9 +66,10 @@ export default function Quiz() {
       <QuizMain>
         <QuizCard
           quiz={quiz}
-          handleSubmit={handleSubmit}
+          onSubmit={handleSubmit}
           handleAnswerSelect={handleAnswerSelect}
           answers={answers}
+          progressComplete={progressComplete}
         />
       </QuizMain>
       {isConfirmModalOpen && (
@@ -69,6 +79,7 @@ export default function Quiz() {
           onClose={closeConfirmModal}
         />
       )}
+      {isLoading && <LoadingPotato />}
     </>
   );
 }

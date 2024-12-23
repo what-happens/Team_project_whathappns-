@@ -1,13 +1,13 @@
 import styled, { css, keyframes } from "styled-components";
-import logoImage from "../../assets/logo.png";
-import CongratulationsModal from "./components/CongratsModal";
-import { media } from "../../styles/MideaQuery";
-import Button from "../../components/Button";
+import logoImage from "../../../assets/logo.png";
+import CongratulationsModal from "./CongratsModal";
+import { media } from "../../../styles/MideaQuery";
+import Button from "../../../components/Button";
 import { useState } from "react";
-import backGround from "../../assets/quiz-result_background.svg";
-import useQuizStep from "../../hooks/useQuizStep";
+import backGround from "../../../assets/quiz-result_background.svg";
+import useQuizStep from "../../../hooks/useQuizStep";
 import { useSelector } from "react-redux";
-import useFetchQuiz from "../../hooks/useFetchQuiz";
+import useFetchQuiz from "../../../hooks/useFetchQuiz";
 
 export default function QuizResult() {
   const [isCongratulationsModalOpen, setCongratulationsModalOpen] =
