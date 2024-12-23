@@ -5,11 +5,16 @@ import { Select } from "./Select";
 import { media } from "../../../styles/MideaQuery";
 import Button from "../../../components/Button";
 import { useNavigate } from "react-router-dom";
-import { Category as Categories, Limits } from "../../../constants/quizConstants";
+import {
+  Category as Categories,
+  Limits,
+} from "../../../constants/quizConstants";
 import { useState, useRef, useEffect } from "react";
 import useFetchQuiz from "../../../hooks/useFetchQuiz";
 import useQuizOptions from "../../../hooks/useQuizOptions";
 import useQuizStep from "../../../hooks/useQuizStep";
+import LoadingPotato from "../../../components/LoadingPotato";
+import { useSelector } from "react-redux";
 
 export default function QuizLanding() {
   const [openSelectIndex, setOpenSelectIndex] = useState(null); // 열린 Select의 인덱스를 저장
@@ -19,10 +24,16 @@ export default function QuizLanding() {
   const { selectCategory, selectLimit } = useQuizOptions();
   const categoryEntries = Object.entries(Categories);
   const limitEntries = Object.entries(Limits);
+  const { isLoading } = useSelector((state) => state.quiz);
+  const navigate = useNavigate();
 
   const onClickQuizStart = async () => {
-    await getQuiz();
-    moveNext();
+    try {
+      await getQuiz();
+      moveNext();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleSelectOpen = (index) => {
@@ -48,58 +59,60 @@ export default function QuizLanding() {
     };
   }, [openSelectIndex]);
 
-  const navigate = useNavigate();
-
   return (
-    <LandingBackground>
-      <QuizLandingMain>
-        <header>
-          <h1>
-            <QuizLogo src={quizImage} alt="퀴즈 이미지"></QuizLogo>
-          </h1>
-        </header>
-        <QuizOptionsSection>
-          <h2 className="sr-only">퀴즈 유형을 선택하세요</h2>
-          <Select
-            index={0}
-            options={categoryEntries}
-            onSelectOption={selectCategory}
-            isOpen={openSelectIndex === 0}
-            onSelectOpen={handleSelectOpen}
-            ref={(el) => (selectRefs.current[0] = el)} // ref 설정
-          />
-          <Select
-            index={1}
-            options={limitEntries}
-            onSelectOption={selectLimit}
-            isOpen={openSelectIndex === 1}
-            onSelectOpen={handleSelectOpen}
-            ref={(el) => (selectRefs.current[1] = el)} // ref 설정
-          />
-        </QuizOptionsSection>
-        <QuizControlSection>
-          <h2 className="sr-only">퀴즈를 풀어보세요</h2>
-          <Button
-            backgroundColor="white"
-            color="green"
-            padding="2rem 5rem"
-            borderRadius="2.5rem"
-            onClick={onClickQuizStart}
-          >
-            퀴즈 풀기!
-          </Button>
+    <>
+      {isLoading && <LoadingPotato />}
+      <LandingBackground>
+        <QuizLandingMain>
+          <header>
+            <h1>
+              <QuizLogo src={quizImage} alt="퀴즈 이미지"></QuizLogo>
+            </h1>
+          </header>
+          <QuizOptionsSection>
+            <h2 className="sr-only">퀴즈 유형을 선택하세요</h2>
+            <Select
+              index={0}
+              options={categoryEntries}
+              onSelectOption={selectCategory}
+              isOpen={openSelectIndex === 0}
+              onSelectOpen={handleSelectOpen}
+              ref={(el) => (selectRefs.current[0] = el)} // ref 설정
+            />
+            <Select
+              index={1}
+              options={limitEntries}
+              onSelectOption={selectLimit}
+              isOpen={openSelectIndex === 1}
+              onSelectOpen={handleSelectOpen}
+              ref={(el) => (selectRefs.current[1] = el)} // ref 설정
+            />
+          </QuizOptionsSection>
+          <QuizControlSection>
+            <h2 className="sr-only">퀴즈를 풀어보세요</h2>
 
-          <Button
-            onClick={() => navigate(-1)}
-            backgroundColor="red"
-            padding="2rem 5rem"
-            borderRadius="2.5rem"
-          >
-            뒤로가기
-          </Button>
-        </QuizControlSection>
-      </QuizLandingMain>
-    </LandingBackground>
+            <Button
+              onClick={() => navigate(-1)}
+              backgroundColor="red"
+              padding="2rem 5rem"
+              borderRadius="2.5rem"
+            >
+              뒤로가기
+            </Button>
+            <Button
+              backgroundColor="white"
+              color="green"
+              padding="2rem 5rem"
+              borderRadius="2.5rem"
+              onClick={onClickQuizStart}
+              disable={isLoading}
+            >
+              퀴즈 풀기!
+            </Button>
+          </QuizControlSection>
+        </QuizLandingMain>
+      </LandingBackground>
+    </>
   );
 }
 
