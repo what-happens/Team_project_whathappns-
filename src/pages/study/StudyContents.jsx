@@ -137,7 +137,7 @@ const LearningPage = () => {
           type="button"
           onClick={openConfirmModal}
         >
-          <StyledX />
+          <MobileX />
         </BackLink>
         <MobileLevelTitle>{learnData[activeLevel].title}</MobileLevelTitle>
         <HamburgerButton onClick={toggleMenu}>
@@ -326,6 +326,11 @@ const BackLink = styled.button`
     color: #ff2e62;
   }
 `;
+
+const MobileX = styled(X)`
+  width: 3.5rem;
+  height: 3.5rem;
+`;
 // MobileHeader
 
 // start Container
@@ -347,9 +352,8 @@ const Container = styled.div`
 `;
 
 const StyledX = styled(X)`
-  ${({ theme }) => theme.mobile`
-    width: 3.5rem;
-    height: 3.5rem;
+  ${({ theme }) => theme.laptop`
+    display: none;
     `};
   width: 5rem;
   height: 5rem;
@@ -555,10 +559,10 @@ const Button = styled.button`
 
 const MenuLink = styled.li`
   ${({ theme }) => theme.laptop`
-    bottom: 5rem;
+    bottom: 7rem;
   `};
   ${({ theme }) => theme.mobile`
-    bottom: 5rem;
+    bottom: 6rem;
   `};
   display: block;
   position: absolute;
