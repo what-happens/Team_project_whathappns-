@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import Button from "../../components/Button";
 import Logo from "../../assets/what_happns_logo_b.png";
 import styled, { keyframes } from "styled-components";
-import { Google } from "./components/LoginSvg";
 import Lock from "../../assets/Lock.svg";
 import Person from "../../assets/Person.svg";
-import { auth } from "../../firebase";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import loadingImg from "../../assets/loading_Img.svg";
 import { useDispatch } from "react-redux";
@@ -22,25 +19,6 @@ function Login() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const handleGoogleLogin = async () => {
-    const provider = new GoogleAuthProvider();
-
-    try {
-      const result = await signInWithPopup(auth, provider);
-      dispatch(
-        login({
-          user: {
-            email: result.user.email,
-            displayName: result.user.displayName,
-          },
-        })
-      );
-      navigate(-1);
-    } catch (err) {
-      console.error("Error during login:", err.message);
-    }
-  };
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -208,15 +186,7 @@ function Login() {
             회원가입
           </Button>
         </Link>
-        <Warp $flexDirection="row" $gap="1.5rem" $margin="2rem 0 2rem 0">
-          <SocialLogin
-            $bg="white"
-            $border="1px solid #C4C4C4"
-            onClick={handleGoogleLogin}
-          >
-            <Google />
-          </SocialLogin>
-        </Warp>
+        <Warp $flexDirection="row" $gap="1.5rem" $margin="2rem 0 2rem 0"></Warp>
         <Link to="/">
           <LogoContent />
         </Link>
@@ -294,18 +264,6 @@ const Warp = styled.div`
   flex-direction: ${(props) => props.$flexDirection};
   gap: ${(props) => props.$gap};
   margin: ${(props) => props.$margin};
-`;
-
-const SocialLogin = styled.a`
-  width: 5rem;
-  height: 5rem;
-  background-color: ${(props) => props.$bg};
-  border-radius: 50px;
-  border: ${(props) => props.$border};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
 `;
 
 const InputIconEmail = styled.div`

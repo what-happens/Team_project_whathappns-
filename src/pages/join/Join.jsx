@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "../../components/Button";
 import Logo from "../../assets/what_happns_logo_b.png";
 import styled, { keyframes } from "styled-components";
-import { Google } from "./components/JoinSvg";
+// import { Google } from "./components/JoinSvg";
 import { useNavigate } from "react-router-dom";
 import loadingImg from "../../assets/loading_Img.svg";
 import { Link } from "react-router-dom";
@@ -210,11 +210,7 @@ export default function Join() {
             </span>
           </Link>
         </p>
-        <SnsWarp>
-          <SocialLogin $bg="white" $border="1px solid #C4C4C4">
-            <Google />
-          </SocialLogin>
-        </SnsWarp>
+        <SnsWarp></SnsWarp>
 
         <Link to="/">
           <LogoContent />
@@ -303,18 +299,6 @@ const SnsWarp = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-`;
-
-const SocialLogin = styled.a`
-  width: 5rem;
-  height: 5rem;
-  background-color: ${(props) => props.$bg};
-  border-radius: 50px;
-  border: ${(props) => props.$border};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
 `;
 
 const LoadingPage = styled.div`
