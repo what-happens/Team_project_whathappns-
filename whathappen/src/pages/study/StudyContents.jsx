@@ -3,8 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import media from "./media";
-import { Menu, AlignRight } from "lucide-react";
-import back from "../../assets/back_link.png";
+import { Menu, AlignRight, X } from "lucide-react";
 import useExercise from "../../hooks/useExercise";
 import ConfirmModal from "../quizResult/components/ConfirmModal";
 
@@ -137,7 +136,9 @@ const LearningPage = () => {
           className="mr-2"
           type="button"
           onClick={openConfirmModal}
-        />
+        >
+          <StyledX />
+        </BackLink>
         <MobileLevelTitle>{learnData[activeLevel].title}</MobileLevelTitle>
         <HamburgerButton onClick={toggleMenu}>
           {isMenuOpen ? (
@@ -162,7 +163,9 @@ const LearningPage = () => {
             className="mr-2"
             type="button"
             onClick={openConfirmModal}
-          />
+          >
+            <StyledX />
+          </BackLink>
           <h1 className="sr-only">학습 페이지</h1>
           <MenuTitle>Level 01</MenuTitle>
           <div
@@ -310,20 +313,18 @@ const HamburgerButton = styled.button`
 const BackLink = styled.button`
   ${({ theme }) => theme.laptop`
     position: static;
-    width: 3rem;
-    height: 3rem;
   `};
   background-color: transparent;
   border: none;
   position: fixed;
   top: 2rem;
   left: 7rem;
-  width: 5rem;
-  height: 5rem;
-  background-image: url(${back});
-  background-size: contain;
+  color: #c4c4c4;
   text-decoration: none;
   outline: none;
+  &:hover {
+    color: #ff2e62;
+  }
 `;
 // MobileHeader
 
@@ -343,6 +344,15 @@ const Container = styled.div`
   height: 100vh;
   padding: 10rem 7rem;
   overflow-x: hidden;
+`;
+
+const StyledX = styled(X)`
+  ${({ theme }) => theme.mobile`
+    width: 3.5rem;
+    height: 3.5rem;
+    `};
+  width: 5rem;
+  height: 5rem;
 `;
 
 const HeaderContainer = styled.header`
