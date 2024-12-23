@@ -28,9 +28,7 @@ const quizSlice = createSlice({
       }
     },
     resetStep(state) {
-      state.step = QuizStep.LANDING;
-      state.incorrectQuiz = [];
-      state.correctAnswerCount = 0;
+      Object.assign(state, initialState);
     },
     setCategory(state, action) {
       if (Category[action.payload]) {
