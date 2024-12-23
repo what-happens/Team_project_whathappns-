@@ -87,7 +87,7 @@
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Discord.png?raw=true" width="80">
   <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Notion.png?raw=true" width="80">
 - 서비스 배포 환경 : GCP VM<br>
-  <img src="../src/assets/gcp.png" width="80">
+  <img src="./src/assets/gcp.png" width="80">
 - [Figma](https://www.figma.com/design/H0EHVsa8f529uoYm0Qm1cw/%EC%9D%B4%EA%B2%8C%EB%90%98%EB%84%A4%3F?node-id=3-2&t=0zzJrQMyIiYO3RZV-1)<br>
 - [Notion](https://www.notion.so/150d8bd3267a80e29e3df64902fca2bf)
   <br>
@@ -529,12 +529,6 @@
 
 # 로그인 Header ![landing](./src/assets/readme_login_header.jpg)
 
-| 랜딩페이지                                              |
-| ------------------------------------------------------- |
-| ![landing](../whathappen/src/assets/readme_landing.gif) |
-
-로그인 Header ![landing](../whathappen/src/assets/readme_login_header.jpg)
-
 <br>
 
 ### [회원가입]
@@ -550,10 +544,6 @@
 
 # 유효성 검사 ![join](./src/assets/readme_join_vaildation.gif)
 
-| ![join](../whathappen/src/assets/readme_join_success.gif) |
-
-유효성 검사 ![join](../whathappen/src/assets/readme_join_vaildation.gif)
-
 ### [로그인]
 
 - 로그인 버튼을 누르면 유효성 검사 실행
@@ -566,12 +556,6 @@
 
 # 유효성 검사 ![login](./src/assets/readme_login_validation.gif)
 
-| 로그인                                                      |
-| ----------------------------------------------------------- |
-| ![login](../whathappen/src/assets/readme_login_success.gif) |
-
-유효성 검사 ![login](../whathappen/src/assets/readme_login_validation.gif)
-
 ### [마이페이지]
 
 - 기초학습을 몇 스테이지 까지 진행했는지, 퀴즈풀이를 몇 회 진행했는지, 저장된 퀴즈가 몇 문제인지 확인이 가능합니다.
@@ -580,11 +564,6 @@
 | 마이페이지                                |
 | ----------------------------------------- |
 | ![mypage](./src/assets/readme_mypage.gif) |
-
-=======
-| 마이페이지 |
-| ----------------------------------------------------- |
-| ![mypage](../whathappen/src/assets/readme_mypage.gif) |
 
 <br>
 
@@ -603,11 +582,6 @@
 
 북마크 추가 삭제 ![review](./src/assets/readme_review_bookmark.gif)
 문제가 존재하지 않을 시 ![review](./src/assets/readme_review_noex.gif)
-=======
-| ![review](../whathappen/src/assets/readme_review_delete.gif) |
-
-북마크 추가 삭제 ![review](../whathappen/src/assets/readme_review_bookmark.gif)
-문제가 존재하지 않을 시 ![review](../whathappen/src/assets/readme_review_noex.gif)
 
 <br>
 
@@ -621,11 +595,6 @@
 | ----------------------------------------- |
 | ![quizpage](./src/assets/readme_quiz.gif) |
 
-=======
-| 퀴즈 랜딩페이지 |
-| ----------------------------------------------------- |
-| ![quizpage](../whathappen/src/assets/readme_quiz.gif) |
-
 ### [퀴즈풀이]
 
 - 퀴즈페이지에서 퀴즈 풀기 버튼을 누르면 나오는
@@ -635,11 +604,6 @@
 | 퀴즈 게임페이지                                  |
 | ------------------------------------------------ |
 | ![quizgame](./src/assets/readme_quiz_gamego.gif) |
-
-=======
-| 퀴즈 게임페이지 |
-| ------------------------------------------------------------ |
-| ![quizgame](../whathappen/src/assets/readme_quiz_gamego.gif) |
 
 <br>
 
@@ -654,8 +618,6 @@
 
 # | ![quizresult](./src/assets/readme_quiz_result.gif) |
 
-| ![quizresult](../whathappen/src/assets/readme_quiz_result.gif) |
-
 <br>
 
 ### [학습 페이지]
@@ -666,11 +628,6 @@
 | 학습 페이지                                        |
 | -------------------------------------------------- |
 | ![study](./whathappen/src/assets/readme_study.gif) |
-
-=======
-| 학습 페이지 |
-| --------------------------------------------------- |
-| ![study](../whathappen/src/assets/readme_study.gif) |
 
 <br>
 
@@ -685,11 +642,6 @@
 | ------------------------------------------------------------- |
 | ![StudyStage](./whathappen/src/assets/readme_study_stage.gif) |
 
-=======
-| 학습 스테이지 페이지 (스테이지 별 레벨 소개) |
-| -------------------------------------------------------------- |
-| ![StudyStage](../whathappen/src/assets/readme_study_stage.gif) |
-
 <br>
 
 ### [학습 내용 페이지]
@@ -701,11 +653,6 @@
 | 학습 내용 페이지                                                    |
 | ------------------------------------------------------------------- |
 | ![StudyContents](./whathappen/src/assets/readme_study_contents.gif) |
-
-=======
-| 학습 내용 페이지 |
-| -------------------------------------------------------------------- |
-| ![StudyContents](../whathappen/src/assets/readme_study_contents.gif) |
 
 <br>
 
@@ -722,11 +669,6 @@
 | ---------------------------------------------- |
 | ![exercise](./whathappen/src/assets/homer.jpg) |
 
-=======
-| 실습페이지 |
-| ----------------------------------------------- |
-| ![exercise](../whathappen/src/assets/homer.jpg) |
-
 <br>
 
 ### [학습완료페이지]
@@ -739,8 +681,6 @@
 
 # | ![studyfinish](./whathappen/src/assets/readme_study_finish.gif) |
 
-| ![studyfinish](../whathappen/src/assets/readme_study_finish.gif) |
-
 <br>
 
 ### [mr.potato]
@@ -751,11 +691,6 @@
 | ON / OFF                                         | 실시간 채팅 기능                                  |
 | ------------------------------------------------ | ------------------------------------------------- |
 | ![mr.potato](./src/assets/readme_chat_onoff.gif) | ![mr.potato](./src/assets/readme_chat_answer.gif) |
-
-=======
-| ON / OFF | 실시간 채팅 기능 |
-| ------------------------------------------------------------ | ------------------------------------------------------------- |
-| ![mr.potato](../whathappen/src/assets/readme_chat_onoff.gif) | ![mr.potato](../whathappen/src/assets/readme_chat_answer.gif) |
 
 <br>
 
@@ -768,11 +703,6 @@
 | 에러페이지                          |
 | ----------------------------------- |
 | ![404](./src/assets/readme_404.gif) |
-
-=======
-| 에러페이지 |
-| ----------------------------------------------- |
-| ![404](../whathappen/src/assets/readme_404.gif) |
 
 <br>
 
