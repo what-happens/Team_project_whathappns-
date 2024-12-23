@@ -10,7 +10,7 @@ import back from "../../assets/back_link.png";
 import { useBreakpoints } from "../../hooks/useBreakpoints";
 import Button from "../../components/Button";
 import MobileModal from "./components/MobileModal";
-import ConfirmModal from "../quizResult/components/ConfirmModal";
+import ConfirmModal from "../quiz/components/ConfirmModal";
 
 export default function Exercise() {
   const [editorWidth, setEditorWidth] = useState(40);

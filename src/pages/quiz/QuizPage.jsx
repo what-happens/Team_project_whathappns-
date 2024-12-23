@@ -1,6 +1,6 @@
-import QuizLanding from "../quizLanding/QuizLanding";
-import Quiz from "./Quiz";
-import QuizResult from "../quizResult/QuizResult";
+import QuizLanding from "./components/QuizLanding";
+import Quiz from "./components/Quiz";
+import QuizResult from "./components/QuizResult";
 import useQuizStep from "../../hooks/useQuizStep";
 
 function QuizPage() {

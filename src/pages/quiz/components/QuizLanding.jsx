@@ -1,15 +1,15 @@
 import styled, { keyframes } from "styled-components";
-import quizImage from "../../assets/quiz-main-logo.png";
-import backgroundImage from "../../assets/quiz-page-background3.svg";
-import { Select } from "./components/Select";
-import { media } from "../../styles/MideaQuery";
-import Button from "../../components/Button";
+import quizImage from "../../../assets/quiz-main-logo.png";
+import backgroundImage from "../../../assets/quiz-page-background3.svg";
+import { Select } from "./Select";
+import { media } from "../../../styles/MideaQuery";
+import Button from "../../../components/Button";
 import { useNavigate } from "react-router-dom";
-import { Category as Categories, Limits } from "../../constants/quizConstants";
+import { Category as Categories, Limits } from "../../../constants/quizConstants";
 import { useState, useRef, useEffect } from "react";
-import useFetchQuiz from "../../hooks/useFetchQuiz";
-import useQuizOptions from "../../hooks/useQuizOptions";
-import useQuizStep from "../../hooks/useQuizStep";
+import useFetchQuiz from "../../../hooks/useFetchQuiz";
+import useQuizOptions from "../../../hooks/useQuizOptions";
+import useQuizStep from "../../../hooks/useQuizStep";
 
 export default function QuizLanding() {
   const [openSelectIndex, setOpenSelectIndex] = useState(null); // 열린 Select의 인덱스를 저장

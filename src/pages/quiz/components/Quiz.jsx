@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import QuizCard from "./components/QuizCard";
+import QuizCard from "./QuizCard";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import prevImg from "../../assets/iconLeftArrow.png";
-import { media } from "../../styles/MideaQuery";
-import ConfirmExitModal from "../quizResult/components/ConfirmModal";
-import backGround from "../../assets/quiz-page-background3.svg";
-import useQuizStep from "../../hooks/useQuizStep";
+import prevImg from "../../../assets/iconLeftArrow.png";
+import { media } from "../../../styles/MideaQuery";
+import ConfirmExitModal from "./ConfirmModal";
+import backGround from "../../../assets/quiz-page-background3.svg";
+import useQuizStep from "../../../hooks/useQuizStep";
 import { useDispatch, useSelector } from "react-redux";
-import { setIncorrectQuiz, setCorrectAnswerCount } from "../../redux/quizSlice";
-import useFetchQuiz from "../../hooks/useFetchQuiz";
+import useFetchQuiz from "../../../hooks/useFetchQuiz";
+import {
+  setCorrectAnswerCount,
+  setIncorrectQuiz,
+} from "../../../redux/quizSlice";
 
 export default function Quiz() {
   const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
