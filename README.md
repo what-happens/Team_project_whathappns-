@@ -3,7 +3,7 @@
 <img src="./src/assets/top-banner.png">
 
 - GitHub repository : https://github.com/what-happens/Team_project_whathappns-
-- 배포 URL : https://whathappen.kr
+- 배포 URL : https://www.whathappen.kr/
 - Test ID : test25@test.com
 - Test PW : test1234!
 
